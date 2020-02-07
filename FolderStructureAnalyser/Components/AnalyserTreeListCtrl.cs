@@ -46,7 +46,6 @@ namespace FolderStructureAnalyser.Components
         /// <remarks>The tree list is reusable due to the passing of the path as a parameter instead of fetching it from the session.</remarks>
         public void CreateFolderStructure(string rootPath)
         {
-            treeListFolderStructure.BeginUpdate();
             treeListFolderStructure.Nodes.Clear();
 
             var root = new Folder(Session, rootPath);
