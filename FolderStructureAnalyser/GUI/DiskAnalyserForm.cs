@@ -54,7 +54,12 @@ namespace FolderStructureAnalyser.gui
 
         private void barButtonItemSelectRoot_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            folderBrowserDialogSelectRootFolder.ShowDialog();
+            var path = folderBrowserDialogSelectRootFolder.SelectedPath;
+            if (!String.IsNullOrWhiteSpace(path))
+            {
+                setRootPath(path);
+            }
         }
     }
 }
