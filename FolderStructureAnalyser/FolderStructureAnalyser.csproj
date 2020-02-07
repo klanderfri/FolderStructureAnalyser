@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuisnessObjects\Folder.cs" />
     <Compile Include="Components\AnalyserTreeList.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -66,6 +67,7 @@
     <Compile Include="Components\ToolStripStatusParameterLabel.Designer.cs">
       <DependentUpon>ToolStripStatusParameterLabel.cs</DependentUpon>
     </Compile>
+    <Compile Include="SessionBound\ByteSizeConverter.cs" />
     <Compile Include="SessionBound\ISessionBound.cs" />
     <Compile Include="SessionBound\Session.cs" />
     <Compile Include="GUI\DiskAnalyserForm.cs">
@@ -77,7 +79,9 @@
     <Compile Include="SessionBound\FolderStructureSettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionBound\SessionBoundClass.cs" />
     <Compile Include="SessionBound\Settings.cs" />
+    <Compile Include="SessionBound\Tools.cs" />
     <EmbeddedResource Include="GUI\DiskAnalyserForm.resx">
       <DependentUpon>DiskAnalyserForm.cs</DependentUpon>
     </EmbeddedResource>
