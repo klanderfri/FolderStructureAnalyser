@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FolderComparer.Properties
+namespace FolderStructureAnalyser.Properties
 {
 
 

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FolderStructureAnalyser.gui;
+using FolderStructureAnalyser.SessionBound;
 
-namespace FolderComparer
+namespace FolderStructureAnalyser
 {
     static class Program
     {
@@ -16,7 +18,11 @@ namespace FolderComparer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            //Run application.
+            var form = new DiskAnalyserForm();
+            form.SessionSet(new Session());
+            Application.Run(form);
         }
     }
 }
