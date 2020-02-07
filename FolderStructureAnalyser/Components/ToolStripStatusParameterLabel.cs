@@ -14,12 +14,17 @@ namespace FolderStructureAnalyser.Components
         public String ParameterText
         {
             get { return base.Text; }
-            set { Text = String.Format(base.ToString(), value); }
+            set { Text = String.Format(FormatText ?? "{0}", value); }
         }
+
+        private String FormatText { get; set; }
 
         public ToolStripStatusParameterLabel()
         {
             InitializeComponent();
+
+            //Let the user enter the format in the text property in the editor and use it as format.
+            FormatText = Text;
         }
 
         public ToolStripStatusParameterLabel(IContainer container)
