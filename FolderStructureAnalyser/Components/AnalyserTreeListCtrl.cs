@@ -27,13 +27,26 @@ namespace FolderStructureAnalyser.Components
             Session = session;
         }
 
+        public void BeginUpdate()
+        {
+            treeListFolderStructure.BeginUpdate();
+            treeListFolderStructure.BeginUnboundLoad();
+        }
+
+        public void EndUpdate()
+        {
+            treeListFolderStructure.EndUnboundLoad();
+            treeListFolderStructure.EndUpdate();
+        }
+
         /// <summary>
         /// Loads the folder structure.
         /// </summary>
         /// <param name="rootPath">The path to the root folder.</param>
         /// <remarks>The tree list is reusable due to the passing of the path as a parameter instead of fetching it from the session.</remarks>
-        public void LoadFolderStructure(string rootPath)
+        public void CreateFolderStructure(string rootPath)
         {
+            treeListFolderStructure.BeginUpdate();
             treeListFolderStructure.Nodes.Clear();
 
             var root = new Folder(Session, rootPath);

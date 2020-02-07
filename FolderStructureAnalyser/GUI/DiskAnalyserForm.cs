@@ -26,13 +26,30 @@ namespace FolderStructureAnalyser.gui
         public void SessionSet(Session session)
         {
             Session = session;
-            toolStripStatusLabelCurrentRootPath.ParameterText = Session.Settings.FolderStructureSettings.RootPath;
+            setRootPath(Session.Settings.FolderStructureSettings.RootPath);
             analyserTreeListCtrlFolderStructure.SessionSet(Session);
+        }
+
+        private void setRootPath(String rootPath)
+        {
+            toolStripStatusLabelCurrentRootPath.ParameterText = rootPath;
+            Session.Settings.FolderStructureSettings.RootPath = rootPath;
         }
 
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
         {
-            analyserTreeListCtrlFolderStructure.LoadFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
+            analyserTreeListCtrlFolderStructure.BeginUpdate();
+            backgroundWorkerAnalyseFolderStructure.RunWorkerAsync();
+        }
+
+        private void backgroundWorkerAnalyseFolderStructure_DoWork(object sender, DoWorkEventArgs e)
+        {
+            analyserTreeListCtrlFolderStructure.CreateFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
+        }
+
+        private void backgroundWorkerAnalyseFolderStructure_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            analyserTreeListCtrlFolderStructure.EndUpdate();
         }
 
         private void barButtonItemSelectRoot_ItemClick(object sender, ItemClickEventArgs e)

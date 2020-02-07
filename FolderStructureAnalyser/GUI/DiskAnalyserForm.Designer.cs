@@ -39,6 +39,7 @@
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.backgroundWorkerAnalyseFolderStructure = new System.ComponentModel.BackgroundWorker();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
+            this.folderBrowserDialogSelectRootFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.statusStripRootPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +52,7 @@
             this.statusStripRootPath.Name = "statusStripRootPath";
             this.statusStripRootPath.Size = new System.Drawing.Size(1359, 22);
             this.statusStripRootPath.TabIndex = 1;
-            this.statusStripRootPath.Text = "statusStrip1";
+            this.statusStripRootPath.Text = "C:\\";
             // 
             // toolStripStatusLabelCurrentRootPath
             // 
@@ -109,12 +110,15 @@
             // 
             this.backgroundWorkerAnalyseFolderStructure.WorkerReportsProgress = true;
             this.backgroundWorkerAnalyseFolderStructure.WorkerSupportsCancellation = true;
+            this.backgroundWorkerAnalyseFolderStructure.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerAnalyseFolderStructure_DoWork);
+            this.backgroundWorkerAnalyseFolderStructure.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerAnalyseFolderStructure_RunWorkerCompleted);
             // 
             // analyserTreeListCtrlFolderStructure
             // 
             this.analyserTreeListCtrlFolderStructure.Dock = System.Windows.Forms.DockStyle.Fill;
             this.analyserTreeListCtrlFolderStructure.Location = new System.Drawing.Point(0, 143);
             this.analyserTreeListCtrlFolderStructure.Name = "analyserTreeListCtrlFolderStructure";
+            this.analyserTreeListCtrlFolderStructure.Session = null;
             this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1359, 575);
             this.analyserTreeListCtrlFolderStructure.TabIndex = 3;
             // 
@@ -147,6 +151,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemSelectRoot;
         private System.ComponentModel.BackgroundWorker backgroundWorkerAnalyseFolderStructure;
         private Components.AnalyserTreeListCtrl analyserTreeListCtrlFolderStructure;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSelectRootFolder;
     }
 }
 
