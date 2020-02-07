@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiskAnalyserForm));
-            this.treeListFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeList();
             this.statusStripRootPath = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCurrentRootPath = new FolderStructureAnalyser.Components.ToolStripStatusParameterLabel(this.components);
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -39,20 +38,10 @@
             this.ribbonPageFolderStructureAnalyser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.backgroundWorkerAnalyseFolderStructure = new System.ComponentModel.BackgroundWorker();
-            ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
+            this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
             this.statusStripRootPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // treeListFolderStructure
-            // 
-            this.treeListFolderStructure.Cursor = System.Windows.Forms.Cursors.Default;
-            this.treeListFolderStructure.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeListFolderStructure.Location = new System.Drawing.Point(0, 143);
-            this.treeListFolderStructure.Name = "treeListFolderStructure";
-            this.treeListFolderStructure.Session = null;
-            this.treeListFolderStructure.Size = new System.Drawing.Size(1359, 597);
-            this.treeListFolderStructure.TabIndex = 0;
             // 
             // statusStripRootPath
             // 
@@ -120,21 +109,26 @@
             // 
             this.backgroundWorkerAnalyseFolderStructure.WorkerReportsProgress = true;
             this.backgroundWorkerAnalyseFolderStructure.WorkerSupportsCancellation = true;
-            this.backgroundWorkerAnalyseFolderStructure.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerAnalyseFolderStructure_DoWork);
-            this.backgroundWorkerAnalyseFolderStructure.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerAnalyseFolderStructure_RunWorkerCompleted);
+            // 
+            // analyserTreeListCtrlFolderStructure
+            // 
+            this.analyserTreeListCtrlFolderStructure.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.analyserTreeListCtrlFolderStructure.Location = new System.Drawing.Point(0, 143);
+            this.analyserTreeListCtrlFolderStructure.Name = "analyserTreeListCtrlFolderStructure";
+            this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1359, 575);
+            this.analyserTreeListCtrlFolderStructure.TabIndex = 3;
             // 
             // DiskAnalyserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1359, 740);
+            this.Controls.Add(this.analyserTreeListCtrlFolderStructure);
             this.Controls.Add(this.statusStripRootPath);
-            this.Controls.Add(this.treeListFolderStructure);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "DiskAnalyserForm";
             this.Ribbon = this.ribbonControl1;
             this.Text = "Disk Analyser";
-            ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
             this.statusStripRootPath.ResumeLayout(false);
             this.statusStripRootPath.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
@@ -144,8 +138,6 @@
         }
 
         #endregion
-
-        private FolderStructureAnalyser.Components.AnalyserTreeList treeListFolderStructure;
         private System.Windows.Forms.StatusStrip statusStripRootPath;
         private Components.ToolStripStatusParameterLabel toolStripStatusLabelCurrentRootPath;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
@@ -154,6 +146,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemAnalyseStructure;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSelectRoot;
         private System.ComponentModel.BackgroundWorker backgroundWorkerAnalyseFolderStructure;
+        private Components.AnalyserTreeListCtrl analyserTreeListCtrlFolderStructure;
     }
 }
 

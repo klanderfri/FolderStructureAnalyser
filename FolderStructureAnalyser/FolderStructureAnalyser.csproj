@@ -55,11 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuisnessObjects\Folder.cs" />
-    <Compile Include="Components\AnalyserTreeList.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Components\AnalyserTreeListCtrl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\AnalyserTreeList.Designer.cs">
-      <DependentUpon>AnalyserTreeList.cs</DependentUpon>
+    <Compile Include="Components\AnalyserTreeListCtrl.Designer.cs">
+      <DependentUpon>AnalyserTreeListCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\ToolStripStatusParameterLabel.cs">
       <SubType>Component</SubType>
@@ -82,6 +82,9 @@
     <Compile Include="SessionBound\SessionBoundClass.cs" />
     <Compile Include="SessionBound\Settings.cs" />
     <Compile Include="SessionBound\Tools.cs" />
+    <EmbeddedResource Include="Components\AnalyserTreeListCtrl.resx">
+      <DependentUpon>AnalyserTreeListCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\DiskAnalyserForm.resx">
       <DependentUpon>DiskAnalyserForm.cs</DependentUpon>
     </EmbeddedResource>

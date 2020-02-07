@@ -27,37 +27,12 @@ namespace FolderStructureAnalyser.gui
         {
             Session = session;
             toolStripStatusLabelCurrentRootPath.ParameterText = Session.Settings.FolderStructureSettings.RootPath;
-            treeListFolderStructure.SessionSet(Session);
+            analyserTreeListCtrlFolderStructure.SessionSet(Session);
         }
 
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!backgroundWorkerAnalyseFolderStructure.IsBusy)
-            {
-                treeListFolderStructure.BeginUnboundLoad();
-                treeListFolderStructure.Nodes.Clear();
-                backgroundWorkerAnalyseFolderStructure.RunWorkerAsync();
-            }
-        }
-
-        private void backgroundWorkerAnalyseFolderStructure_DoWork(object sender, DoWorkEventArgs e)
-        {
-            treeListFolderStructure.CreateFolderStructure(Session.Settings.FolderStructureSettings);
-        }
-
-        private void backgroundWorkerAnalyseFolderStructure_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            treeListFolderStructure.EndUnboundLoad();
-
-            if (!e.Cancelled)
-            {
-                var watch = Stopwatch.StartNew();
-
-                treeListFolderStructure.LoadFolderStructure();
-                treeListFolderStructure.Nodes[0].Expand();
-
-                watch.Stop();
-            }
+            analyserTreeListCtrlFolderStructure.LoadFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
         }
 
         private void barButtonItemSelectRoot_ItemClick(object sender, ItemClickEventArgs e)

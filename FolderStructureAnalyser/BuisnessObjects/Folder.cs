@@ -51,7 +51,7 @@ namespace FolderStructureAnalyser.BuisnessObjects
             SessionSet(session);
 
             Info = new DirectoryInfo(folderpath);
-
+            
             fillSubfolders();
             calculateSize();
         }
