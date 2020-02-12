@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace FolderStructureAnalyser.SessionBound
         {
             RootPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             BigFolderInBytes = 10485760; //10 MB.
+            BigFolderColour = Color.Red;
         }
 
         /// <summary>
@@ -23,5 +25,10 @@ namespace FolderStructureAnalyser.SessionBound
         /// The size in bytes of a folder that is to be considered big.
         /// </summary>
         public long BigFolderInBytes { get; set; }
+
+        /// <summary>
+        /// The colour used to indicate afolder that is to be considered big.
+        /// </summary>
+        public Color BigFolderColour { get; set; }
     }
 }

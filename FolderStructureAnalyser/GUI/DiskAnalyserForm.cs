@@ -29,6 +29,7 @@ namespace FolderStructureAnalyser.gui
         {
             Session = session;
             setRootPath(Session.Settings.FolderStructureSettings.RootPath);
+            setBigFolderColour(Session.Settings.FolderStructureSettings.BigFolderColour);
             analyserTreeListCtrlFolderStructure.SessionSet(Session);
         }
 
@@ -37,6 +38,12 @@ namespace FolderStructureAnalyser.gui
             var format = "Current root path: {0}";
             toolStripStatusLabelCurrentRootPath.Text = String.Format(format, rootPath);
             Session.Settings.FolderStructureSettings.RootPath = rootPath;
+        }
+
+        private void setBigFolderColour(Color bigFolderColour)
+        {
+            barEditItembigFolderColour.EditValue = bigFolderColour;
+            Session.Settings.FolderStructureSettings.BigFolderColour = bigFolderColour;
         }
 
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
@@ -69,6 +76,11 @@ namespace FolderStructureAnalyser.gui
             {
                 setRootPath(path);
             }
+        }
+
+        private void barEditItembigFolderColour_EditValueChanged(object sender, EventArgs e)
+        {
+            setBigFolderColour((Color)(sender as BarEditItem).EditValue);
         }
     }
 }

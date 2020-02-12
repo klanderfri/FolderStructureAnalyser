@@ -120,7 +120,7 @@ namespace FolderStructureAnalyser.Components
                 var sizeInBytes = Convert.ToInt64(e.CellValue);
                 if (sizeInBytes >= Session.Settings.FolderStructureSettings.BigFolderInBytes)
                 {
-                    e.Appearance.ForeColor = Color.Red;
+                    e.Appearance.ForeColor = Session.Settings.FolderStructureSettings.BigFolderColour;
                 }
             }
         }
