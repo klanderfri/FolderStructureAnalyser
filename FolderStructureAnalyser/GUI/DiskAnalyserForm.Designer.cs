@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiskAnalyserForm));
             this.statusStripRootPath = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCurrentRootPath = new System.Windows.Forms.ToolStripStatusLabel();
@@ -76,6 +75,7 @@
             // barButtonItemAnalyseStructure
             // 
             this.barButtonItemAnalyseStructure.Caption = "Analyse Structure";
+            this.barButtonItemAnalyseStructure.Hint = "Analyses the selected root path and displays it.";
             this.barButtonItemAnalyseStructure.Id = 1;
             this.barButtonItemAnalyseStructure.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemAnalyseStructure.ImageOptions.SvgImage")));
             this.barButtonItemAnalyseStructure.Name = "barButtonItemAnalyseStructure";
@@ -84,6 +84,7 @@
             // barButtonItemSelectRoot
             // 
             this.barButtonItemSelectRoot.Caption = "Select Root";
+            this.barButtonItemSelectRoot.Hint = "Selects which folder path that are to be used as the root path.";
             this.barButtonItemSelectRoot.Id = 2;
             this.barButtonItemSelectRoot.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSelectRoot.ImageOptions.SvgImage")));
             this.barButtonItemSelectRoot.Name = "barButtonItemSelectRoot";
