@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using FolderStructureAnalyser.SessionBound;
 using FolderStructureAnalyser.BuisnessObjects;
 using DevExpress.XtraTreeList.Nodes;
+using FolderStructureAnalyser.GUI;
 
 namespace FolderStructureAnalyser.Components
 {
@@ -39,36 +40,68 @@ namespace FolderStructureAnalyser.Components
             treeListFolderStructure.EndUpdate();
         }
 
+        public void SetDataSource(BindingList<FolderNode> structure)
+        {
+            BeginUpdate();
+
+            try
+            {
+                treeListFolderStructure.DataSource = structure;
+            }
+            finally
+            {
+                EndUpdate();
+            }
+
+            if (treeListFolderStructure.Nodes.Any())
+            {
+                treeListFolderStructure.Nodes[0].Expand();
+            }
+        }
+
         /// <summary>
-        /// Loads the folder structure.
+        /// Creates a data source representing the folder structure.
         /// </summary>
         /// <param name="rootPath">The path to the root folder.</param>
         /// <remarks>The tree list is reusable due to the passing of the path as a parameter instead of fetching it from the session.</remarks>
-        public void CreateFolderStructure(string rootPath)
+        public BindingList<FolderNode> CreateFolderStructure(string rootPath)
         {
-            treeListFolderStructure.Nodes.Clear();
+            var structure = new BindingList<FolderNode>();
 
+            //Create the folder structure.
             var root = new Folder(Session, rootPath);
-            addDirectoryToTree(root, null);
 
-            treeListFolderStructure.Nodes[0].Expand();
+            //Add the structure to the data source.
+            var folderID = 0;
+            addDirectoryToDataSource(structure, root, ref folderID, null);
+
+            return structure;
         }
 
         /// <summary>
         /// Adds a directory and its structure to the tree.
         /// </summary>
-        /// <param name="directory">The directory to add.</param>
-        /// <param name="parentNode">The parent node of the directory</param>
-        private void addDirectoryToTree(Folder directory, TreeListNode parentNode)
+        /// <param name="structure">The folder structure containing the folder nodes.</param>
+        /// <param name="directory">The folder to add.</param>
+        /// <param name="folderID">The ID that should be assigned the node.</param>
+        /// <param name="parentID">The ID of the node representing the folder parent.</param>
+        private void addDirectoryToDataSource(BindingList<FolderNode> structure, Folder directory, ref int folderID, int? parentID)
         {
-            //Add the node representing the directory.
-            var data = new object[] { directory.Info.Name, directory.SizeInMB };
-            var directoryNode = treeListFolderStructure.AppendNode(data, parentNode);
+            //Add the node representing the folder.
+            var node = new FolderNode()
+            {
+                ID = folderID++,
+                ParentID = parentID,
+                Name = directory.Info.Name,
+                SizeInMB = directory.SizeInMB,
+                FolderData = directory
+            };
+            structure.Add(node);
 
             //Add the nodes representing all the children.
             foreach (var child in directory.SubFolders)
             {
-                addDirectoryToTree(child, directoryNode);
+                addDirectoryToDataSource(structure, child, ref folderID, node.ID);
             }
         }
     }

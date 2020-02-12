@@ -11,6 +11,8 @@ using DevExpress.XtraBars.Ribbon;
 using FolderStructureAnalyser.SessionBound;
 using DevExpress.XtraBars;
 using System.Diagnostics;
+using FolderStructureAnalyser.BuisnessObjects;
+using FolderStructureAnalyser.GUI;
 
 namespace FolderStructureAnalyser.gui
 {
@@ -38,18 +40,24 @@ namespace FolderStructureAnalyser.gui
 
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
         {
-            analyserTreeListCtrlFolderStructure.BeginUpdate();
-            backgroundWorkerAnalyseFolderStructure.RunWorkerAsync();
+            if (backgroundWorkerAnalyseFolderStructure.IsBusy)
+            {
+                MessageBox.Show("An analyse is already in progress. Please wait for it to finish!", "Analyse in progress...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                backgroundWorkerAnalyseFolderStructure.RunWorkerAsync();
+            }
         }
 
         private void backgroundWorkerAnalyseFolderStructure_DoWork(object sender, DoWorkEventArgs e)
         {
-            analyserTreeListCtrlFolderStructure.CreateFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
+            e.Result = analyserTreeListCtrlFolderStructure.CreateFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
         }
 
         private void backgroundWorkerAnalyseFolderStructure_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            analyserTreeListCtrlFolderStructure.EndUpdate();
+            analyserTreeListCtrlFolderStructure.SetDataSource(e.Result as BindingList<FolderNode>);
         }
 
         private void barButtonItemSelectRoot_ItemClick(object sender, ItemClickEventArgs e)

@@ -54,7 +54,7 @@
             // treeListColumnName
             // 
             this.treeListColumnName.Caption = "Name";
-            this.treeListColumnName.FieldName = "Info.Name";
+            this.treeListColumnName.FieldName = "Name";
             this.treeListColumnName.Name = "treeListColumnName";
             this.treeListColumnName.Visible = true;
             this.treeListColumnName.VisibleIndex = 0;

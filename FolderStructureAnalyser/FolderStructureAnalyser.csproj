@@ -67,6 +67,7 @@
     <Compile Include="Components\ToolStripStatusParameterLabel.Designer.cs">
       <DependentUpon>ToolStripStatusParameterLabel.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\FolderNode.cs" />
     <Compile Include="SessionBound\ByteSizeConverter.cs" />
     <Compile Include="SessionBound\ISessionBound.cs" />
     <Compile Include="SessionBound\Session.cs" />

@@ -23,7 +23,7 @@ namespace FolderStructureAnalyser.BuisnessObjects
         /// The byte size of the folder and its content.
         /// </summary>
         public long SizeInBytes { get; private set; }
-
+        
         /// <summary>
         /// The MB size of the folder and its content.
         /// </summary>
