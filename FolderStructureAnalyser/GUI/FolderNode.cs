@@ -27,7 +27,7 @@ namespace FolderStructureAnalyser.GUI
         /// <summary>
         /// The size of the folder.
         /// </summary>
-        public double SizeInMB { get; set; }
+        public double SizeInBytes { get; set; }
 
         /// <summary>
         /// The container holding information about the folder.

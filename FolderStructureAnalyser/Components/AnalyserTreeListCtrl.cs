@@ -11,6 +11,7 @@ using FolderStructureAnalyser.SessionBound;
 using FolderStructureAnalyser.BuisnessObjects;
 using DevExpress.XtraTreeList.Nodes;
 using FolderStructureAnalyser.GUI;
+using DevExpress.XtraEditors.Controls;
 
 namespace FolderStructureAnalyser.Components
 {
@@ -93,7 +94,7 @@ namespace FolderStructureAnalyser.Components
                 ID = folderID++,
                 ParentID = parentID,
                 Name = directory.Info.Name,
-                SizeInMB = directory.SizeInMB,
+                SizeInBytes = directory.SizeInBytes,
                 FolderData = directory
             };
             structure.Add(node);
@@ -103,6 +104,58 @@ namespace FolderStructureAnalyser.Components
             {
                 addDirectoryToDataSource(structure, child, ref folderID, node.ID);
             }
+        }
+
+        private void repositoryItemTextEditFileSizeEdit_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            var sizeInBytes = Convert.ToInt64(e.Value);
+
+            if (sizeInBytes < Math.Pow(1024, 1))
+            {
+                e.DisplayText = getSizeText(sizeInBytes / Math.Pow(1024, 0), "B");
+            }
+            else if (sizeInBytes < Math.Pow(1024, 2))
+            {
+                e.DisplayText = getSizeText(sizeInBytes / Math.Pow(1024, 1), "kB");
+            }
+            else if (sizeInBytes < Math.Pow(1024, 3))
+            {
+                e.DisplayText = getSizeText(sizeInBytes / Math.Pow(1024, 2), "MB");
+            }
+            else if (sizeInBytes < Math.Pow(1024, 4))
+            {
+                e.DisplayText = getSizeText(sizeInBytes / Math.Pow(1024, 3), "GB");
+            }
+            else if (sizeInBytes < Math.Pow(1024, 5))
+            {
+                e.DisplayText = getSizeText(sizeInBytes / Math.Pow(1024, 4), "TB");
+            }
+            else if (sizeInBytes < Math.Pow(1024, 6))
+            {
+                e.DisplayText = getSizeText(sizeInBytes / Math.Pow(1024, 5), "PB");
+            }
+            else
+            {
+                var format = "Unhandled size, {0} bytes.";
+                var message = String.Format(format, sizeInBytes);
+                throw new InvalidOperationException(message);
+            }
+        }
+
+        private string getSizeText(double size, string unit)
+        {
+            var numberOfDecimals = getNumberOfDecimals(size);
+            var format = "{0:N" + numberOfDecimals + "}";
+
+            var sizeString = String.Format(format, size);
+            return String.Format("{0} {1}", sizeString, unit);
+        }
+
+        private int getNumberOfDecimals(double size)
+        {
+            if (size < 10) { return 2; }
+            if (size < 100) { return 1; }
+            return 0;
         }
     }
 }

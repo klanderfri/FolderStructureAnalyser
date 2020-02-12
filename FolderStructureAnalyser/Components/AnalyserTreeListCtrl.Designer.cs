@@ -32,8 +32,10 @@
             this.treeListFolderStructure = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumnName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumnSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repositoryItemTextEditFileSizeEdit = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSizeEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +51,8 @@
             this.treeListFolderStructure.Name = "treeListFolderStructure";
             this.treeListFolderStructure.OptionsView.AutoWidth = false;
             this.treeListFolderStructure.OptionsView.ShowColumns = true;
+            this.treeListFolderStructure.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEditFileSizeEdit});
             this.treeListFolderStructure.Size = new System.Drawing.Size(570, 266);
             this.treeListFolderStructure.TabIndex = 0;
             this.treeListFolderStructure.ViewStyle = DevExpress.XtraTreeList.TreeListViewStyle.TreeView;
@@ -58,6 +62,7 @@
             this.treeListColumnName.Caption = "Name";
             this.treeListColumnName.FieldName = "Name";
             this.treeListColumnName.Name = "treeListColumnName";
+            this.treeListColumnName.OptionsColumn.AllowEdit = false;
             this.treeListColumnName.Visible = true;
             this.treeListColumnName.VisibleIndex = 0;
             this.treeListColumnName.Width = 300;
@@ -65,10 +70,18 @@
             // treeListColumnSize
             // 
             this.treeListColumnSize.Caption = "Size";
-            this.treeListColumnSize.FieldName = "SizeInMB";
+            this.treeListColumnSize.ColumnEdit = this.repositoryItemTextEditFileSizeEdit;
+            this.treeListColumnSize.FieldName = "SizeInBytes";
             this.treeListColumnSize.Name = "treeListColumnSize";
+            this.treeListColumnSize.OptionsColumn.AllowEdit = false;
             this.treeListColumnSize.Visible = true;
             this.treeListColumnSize.VisibleIndex = 1;
+            // 
+            // repositoryItemTextEditFileSizeEdit
+            // 
+            this.repositoryItemTextEditFileSizeEdit.AutoHeight = false;
+            this.repositoryItemTextEditFileSizeEdit.Name = "repositoryItemTextEditFileSizeEdit";
+            this.repositoryItemTextEditFileSizeEdit.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.repositoryItemTextEditFileSizeEdit_CustomDisplayText);
             // 
             // AnalyserTreeListCtrl
             // 
@@ -78,6 +91,7 @@
             this.Name = "AnalyserTreeListCtrl";
             this.Size = new System.Drawing.Size(570, 266);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSizeEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
@@ -89,5 +103,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnName;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnSize;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSizeEdit;
     }
 }
