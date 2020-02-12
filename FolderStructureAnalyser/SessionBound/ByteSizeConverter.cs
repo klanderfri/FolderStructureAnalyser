@@ -11,14 +11,38 @@ namespace FolderStructureAnalyser.SessionBound
     /// </summary>
     public class ByteSizeConverter
     {
-        /// <summary>
-        /// Converts bytes into MB.
-        /// </summary>
-        /// <param name="sizeInBytes">The size, in bytes, to convert to MB.</param>
-        /// <returns>The size in MB.</returns>
-        public double MbFromByte(long sizeInBytes)
+        public string SizeStringFromByte(long sizeInBytes)
         {
-            return Math.Round(sizeInBytes / Math.Pow(1024, 2), 1);
+            var units = new List<string> { "B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+
+            for (int power = 0; power < units.Count; power++)
+            {
+                if (sizeInBytes < Math.Pow(1024, power + 1))
+                {
+                    return getSizeText(sizeInBytes / Math.Pow(1024, power), units[power]);
+                }
+            }
+
+            //Really? The size was so big even yottabytes couldn't do it?
+            var format = "Unhandled size, {0} bytes.";
+            var message = String.Format(format, sizeInBytes);
+            throw new InvalidOperationException(message);
+        }
+
+        private string getSizeText(double size, string unit)
+        {
+            var numberOfDecimals = getNumberOfDecimals(size);
+            var format = "{0:N" + numberOfDecimals + "}";
+
+            var sizeString = String.Format(format, size);
+            return String.Format("{0} {1}", sizeString, unit);
+        }
+
+        private int getNumberOfDecimals(double size)
+        {
+            if (size < 10) { return 2; }
+            if (size < 100) { return 1; }
+            return 0;
         }
     }
 }
