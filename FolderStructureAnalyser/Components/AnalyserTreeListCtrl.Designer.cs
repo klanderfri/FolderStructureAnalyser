@@ -47,6 +47,8 @@
             this.treeListFolderStructure.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeListFolderStructure.Location = new System.Drawing.Point(0, 0);
             this.treeListFolderStructure.Name = "treeListFolderStructure";
+            this.treeListFolderStructure.OptionsView.AutoWidth = false;
+            this.treeListFolderStructure.OptionsView.ShowColumns = true;
             this.treeListFolderStructure.Size = new System.Drawing.Size(570, 266);
             this.treeListFolderStructure.TabIndex = 0;
             this.treeListFolderStructure.ViewStyle = DevExpress.XtraTreeList.TreeListViewStyle.TreeView;
@@ -58,6 +60,7 @@
             this.treeListColumnName.Name = "treeListColumnName";
             this.treeListColumnName.Visible = true;
             this.treeListColumnName.VisibleIndex = 0;
+            this.treeListColumnName.Width = 300;
             // 
             // treeListColumnSize
             // 
