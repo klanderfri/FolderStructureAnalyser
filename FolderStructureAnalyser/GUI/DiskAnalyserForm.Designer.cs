@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiskAnalyserForm));
             this.statusStripRootPath = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelCurrentRootPath = new FolderStructureAnalyser.Components.ToolStripStatusParameterLabel(this.components);
+            this.toolStripStatusLabelCurrentRootPath = new System.Windows.Forms.ToolStripStatusLabel();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemAnalyseStructure = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSelectRoot = new DevExpress.XtraBars.BarButtonItem();
@@ -52,12 +52,10 @@
             this.statusStripRootPath.Name = "statusStripRootPath";
             this.statusStripRootPath.Size = new System.Drawing.Size(1359, 22);
             this.statusStripRootPath.TabIndex = 1;
-            this.statusStripRootPath.Text = "C:\\";
             // 
             // toolStripStatusLabelCurrentRootPath
             // 
             this.toolStripStatusLabelCurrentRootPath.Name = "toolStripStatusLabelCurrentRootPath";
-            this.toolStripStatusLabelCurrentRootPath.ParameterText = "Current root path: {0}";
             this.toolStripStatusLabelCurrentRootPath.Size = new System.Drawing.Size(119, 17);
             this.toolStripStatusLabelCurrentRootPath.Text = "Current root path: {0}";
             // 
@@ -143,7 +141,7 @@
 
         #endregion
         private System.Windows.Forms.StatusStrip statusStripRootPath;
-        private Components.ToolStripStatusParameterLabel toolStripStatusLabelCurrentRootPath;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCurrentRootPath;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageFolderStructureAnalyser;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAnalyse;

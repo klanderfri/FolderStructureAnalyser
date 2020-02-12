@@ -34,7 +34,8 @@ namespace FolderStructureAnalyser.gui
 
         private void setRootPath(String rootPath)
         {
-            toolStripStatusLabelCurrentRootPath.ParameterText = rootPath;
+            var format = "Current root path: {0}";
+            toolStripStatusLabelCurrentRootPath.Text = String.Format(format, rootPath);
             Session.Settings.FolderStructureSettings.RootPath = rootPath;
         }
 

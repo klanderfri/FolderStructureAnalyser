@@ -61,12 +61,6 @@
     <Compile Include="Components\AnalyserTreeListCtrl.Designer.cs">
       <DependentUpon>AnalyserTreeListCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\ToolStripStatusParameterLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Components\ToolStripStatusParameterLabel.Designer.cs">
-      <DependentUpon>ToolStripStatusParameterLabel.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\FolderNode.cs" />
     <Compile Include="SessionBound\ByteSizeConverter.cs" />
     <Compile Include="SessionBound\ISessionBound.cs" />
