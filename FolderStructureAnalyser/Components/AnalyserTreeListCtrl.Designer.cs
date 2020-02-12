@@ -56,6 +56,7 @@
             this.treeListFolderStructure.Size = new System.Drawing.Size(570, 266);
             this.treeListFolderStructure.TabIndex = 0;
             this.treeListFolderStructure.ViewStyle = DevExpress.XtraTreeList.TreeListViewStyle.TreeView;
+            this.treeListFolderStructure.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.treeListFolderStructure_CustomDrawNodeCell);
             // 
             // treeListColumnName
             // 

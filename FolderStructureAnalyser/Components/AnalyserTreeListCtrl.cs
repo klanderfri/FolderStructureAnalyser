@@ -12,6 +12,7 @@ using FolderStructureAnalyser.BuisnessObjects;
 using DevExpress.XtraTreeList.Nodes;
 using FolderStructureAnalyser.GUI;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraTreeList;
 
 namespace FolderStructureAnalyser.Components
 {
@@ -110,6 +111,18 @@ namespace FolderStructureAnalyser.Components
         {
             var sizeInBytes = Convert.ToInt64(e.Value);
             e.DisplayText = Session.Tools.ByteSizeConverter.SizeStringFromByte(sizeInBytes);
+        }
+
+        private void treeListFolderStructure_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
+        {
+            if (e.Column == treeListColumnSize)
+            {
+                var sizeInBytes = Convert.ToInt64(e.CellValue);
+                if (sizeInBytes >= Session.Settings.FolderStructureSettings.BigFolderInBytes)
+                {
+                    e.Appearance.ForeColor = Color.Red;
+                }
+            }
         }
     }
 }

@@ -44,5 +44,15 @@ namespace FolderStructureAnalyser.SessionBound
             if (size < 100) { return 1; }
             return 0;
         }
+
+        public double MbFromByte(long sizeInBytes)
+        {
+            return sizeInBytes / Math.Pow(1024, 2);
+        }
+
+        public long BytesFromMB(int sizeInMB)
+        {
+            return sizeInMB * (int)Math.Pow(1024, 2);
+        }
     }
 }
