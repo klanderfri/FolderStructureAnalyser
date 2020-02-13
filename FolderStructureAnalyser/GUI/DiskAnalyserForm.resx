@@ -140,24 +140,6 @@
         NzI3MiIgY2xhc3M9IkJsYWNrIiAvPg0KICA8L2c+DQo8L3N2Zz4L
 </value>
   </data>
-  <data name="barButtonItemSelectRoot.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjIsIFZlcnNpb249MTguMi42
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAHkCAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBlbmFibGUt
-        YmFja2dyb3VuZD0ibmV3IDAgMCAzMiAzMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgaWQ9Ik9wZW4iPg0K
-        ICA8ZyBvcGFjaXR5PSIwLjc1IiBjbGFzcz0ic3QwIj4NCiAgICA8cGF0aCBkPSJNMi4yLDI1LjJsNS41
-        LTEyYzAuMy0wLjcsMS0xLjIsMS44LTEuMkgyNlY5YzAtMC42LTAuNC0xLTEtMUgxMlY1YzAtMC42LTAu
-        NC0xLTEtMUgzQzIuNCw0LDIsNC40LDIsNXYyMCAgIGMwLDAuMiwwLDAuMywwLjEsMC40QzIuMSwyNS4z
-        LDIuMiwyNS4zLDIuMiwyNS4yeiIgZmlsbD0iI0ZGQjExNSIgb3BhY2l0eT0iMC43NSIgY2xhc3M9Illl
-        bGxvdyIgLz4NCiAgPC9nPg0KICA8cGF0aCBkPSJNMzEuMywxNEg5LjZMNCwyNmgyMS44YzAuNSwwLDEu
-        MS0wLjMsMS4zLTAuN0wzMiwxNC43QzMyLjEsMTQuMywzMS44LDE0LDMxLjMsMTR6IiBmaWxsPSIjRkZC
-        MTE1IiBjbGFzcz0iWWVsbG93IiAvPg0KPC9zdmc+Cw==
-</value>
-  </data>
   <metadata name="backgroundWorkerAnalyseFolderStructure.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>176, 17</value>
   </metadata>

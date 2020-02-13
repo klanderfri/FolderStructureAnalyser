@@ -13,7 +13,7 @@ namespace FolderStructureAnalyser.SessionBound
         /// </summary>
         public FolderStructureSettings()
         {
-            RootPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            RootPath = null;
             BigFolderInBytes = 10485760; //10 MB.
             BigFolderColour = Color.Red;
         }

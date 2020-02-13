@@ -73,21 +73,24 @@ namespace FolderStructureAnalyser.gui
         {
             if (backgroundWorkerAnalyseFolderStructure.IsBusy)
             {
-                MessageBox.Show("An analyse is already in progress. Please wait for it to finish!", "Analyse in progress...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                var message = "An analyse is already in progress. Please wait for it to finish!";
+                MessageBox.Show(message, "Analyse in progress...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                backgroundWorkerAnalyseFolderStructure.RunWorkerAsync();
-            }
-        }
-
-        private void barButtonItemSelectRoot_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            folderBrowserDialogSelectRootFolder.ShowDialog();
-            var path = folderBrowserDialogSelectRootFolder.SelectedPath;
-            if (!String.IsNullOrWhiteSpace(path))
-            {
-                setRootPath(path);
+                folderBrowserDialogSelectRootFolder.ShowDialog();
+                var path = folderBrowserDialogSelectRootFolder.SelectedPath;
+                if (String.IsNullOrWhiteSpace(path))
+                {
+                    var format = "You have selected an invalid folder path:{0}{1}";
+                    var message = String.Format(format, Environment.NewLine, path);
+                    MessageBox.Show(message, "Invalid folder path.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    setRootPath(path);
+                    backgroundWorkerAnalyseFolderStructure.RunWorkerAsync();
+                }
             }
         }
 

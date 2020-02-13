@@ -33,7 +33,6 @@
             this.toolStripStatusLabelCurrentRootPath = new System.Windows.Forms.ToolStripStatusLabel();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemAnalyseStructure = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemSelectRoot = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItemBigFolderColour = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemColorPickEditBigFolderColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
             this.barEditItemBigFolderSize = new DevExpress.XtraBars.BarEditItem();
@@ -72,7 +71,6 @@
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.barButtonItemAnalyseStructure,
-            this.barButtonItemSelectRoot,
             this.barEditItemBigFolderColour,
             this.barEditItemBigFolderSize});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
@@ -94,16 +92,6 @@
             this.barButtonItemAnalyseStructure.Name = "barButtonItemAnalyseStructure";
             this.barButtonItemAnalyseStructure.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAnalyseStructure_ItemClick);
             // 
-            // barButtonItemSelectRoot
-            // 
-            this.barButtonItemSelectRoot.Caption = "Select Root";
-            this.barButtonItemSelectRoot.Hint = "Selects which folder path that are to be used as the root path.";
-            this.barButtonItemSelectRoot.Id = 2;
-            this.barButtonItemSelectRoot.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSelectRoot.ImageOptions.SvgImage")));
-            this.barButtonItemSelectRoot.Name = "barButtonItemSelectRoot";
-            this.barButtonItemSelectRoot.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-            this.barButtonItemSelectRoot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSelectRoot_ItemClick);
-            // 
             // barEditItemBigFolderColour
             // 
             this.barEditItemBigFolderColour.Caption = "Big Folder Colour";
@@ -113,9 +101,10 @@
             this.barEditItemBigFolderColour.Name = "barEditItemBigFolderColour";
             this.barEditItemBigFolderColour.EditValueChanged += new System.EventHandler(this.barEditItembigFolderColour_EditValueChanged);
             // 
-            // repositoryItemColorEditBigFolderColour
+            // repositoryItemColorPickEditBigFolderColour
             // 
             this.repositoryItemColorPickEditBigFolderColour.AutoHeight = false;
+            this.repositoryItemColorPickEditBigFolderColour.AutomaticColor = System.Drawing.Color.Black;
             this.repositoryItemColorPickEditBigFolderColour.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemColorPickEditBigFolderColour.Name = "repositoryItemColorPickEditBigFolderColour";
@@ -156,7 +145,6 @@
             // 
             // ribbonPageGroupSettings
             // 
-            this.ribbonPageGroupSettings.ItemLinks.Add(this.barButtonItemSelectRoot);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.barEditItemBigFolderColour);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.barEditItemBigFolderSize);
             this.ribbonPageGroupSettings.Name = "ribbonPageGroupSettings";
@@ -177,6 +165,11 @@
             this.analyserTreeListCtrlFolderStructure.Session = null;
             this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1359, 575);
             this.analyserTreeListCtrlFolderStructure.TabIndex = 3;
+            // 
+            // folderBrowserDialogSelectRootFolder
+            // 
+            this.folderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
+            this.folderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
             // 
             // DiskAnalyserForm
             // 
@@ -206,7 +199,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageFolderStructureAnalyser;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAnalyse;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAnalyseStructure;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemSelectRoot;
         private System.ComponentModel.BackgroundWorker backgroundWorkerAnalyseFolderStructure;
         private Components.AnalyserTreeListCtrl analyserTreeListCtrlFolderStructure;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSelectRootFolder;
