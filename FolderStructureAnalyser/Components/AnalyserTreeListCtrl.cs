@@ -33,9 +33,19 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
+        /// Loads a folder structure.
+        /// </summary>
+        /// <param name="rootPath">The path to the root folder.</param>
+        /// <remarks>The tree list is reusable due to the passing of the path as a parameter instead of fetching it from the session.</remarks>
+        public void LoadFolderStructure(string rootPath)
+        {
+            backgroundWorkerStructureAnalyser.RunWorkerAsync(rootPath);
+        }
+
+        /// <summary>
         /// Begins update of the visual content of the tree.
         /// </summary>
-        public void BeginUpdate()
+        private void beginUpdate()
         {
             treeListFolderStructure.BeginUpdate();
             treeListFolderStructure.BeginUnboundLoad();
@@ -44,7 +54,7 @@ namespace FolderStructureAnalyser.Components
         /// <summary>
         /// Ends update of the visual content of the tree.
         /// </summary>
-        public void EndUpdate()
+        private void endUpdate()
         {
             treeListFolderStructure.EndUnboundLoad();
             treeListFolderStructure.EndUpdate();
@@ -54,9 +64,9 @@ namespace FolderStructureAnalyser.Components
         /// Sets the data source of the analyser tree.
         /// </summary>
         /// <param name="folderStructure">The folder structer that are to be used as datasource.</param>
-        public void SetDataSource(BindingList<FolderNode> folderStructure)
+        private void updateDataSource(BindingList<FolderNode> folderStructure)
         {
-            BeginUpdate();
+            beginUpdate();
 
             try
             {
@@ -64,23 +74,13 @@ namespace FolderStructureAnalyser.Components
             }
             finally
             {
-                EndUpdate();
+                endUpdate();
             }
 
             if (treeListFolderStructure.Nodes.Any())
             {
                 treeListFolderStructure.Nodes[0].Expand();
             }
-        }
-
-        /// <summary>
-        /// Loads a folder structure.
-        /// </summary>
-        /// <param name="rootPath">The path to the root folder.</param>
-        /// <remarks>The tree list is reusable due to the passing of the path as a parameter instead of fetching it from the session.</remarks>
-        public void LoadFolderStructure(string rootPath)
-        {
-            backgroundWorkerStructureAnalyser.RunWorkerAsync(rootPath);
         }
 
         private void backgroundWorkerStructureAnalyser_DoWork(object sender, DoWorkEventArgs e)
@@ -100,7 +100,7 @@ namespace FolderStructureAnalyser.Components
 
         private void backgroundWorkerStructureAnalyser_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            SetDataSource(e.Result as BindingList<FolderNode>);
+            updateDataSource(e.Result as BindingList<FolderNode>);
         }
 
         /// <summary>
