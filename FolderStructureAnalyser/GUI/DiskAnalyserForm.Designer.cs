@@ -34,8 +34,10 @@
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemAnalyseStructure = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSelectRoot = new DevExpress.XtraBars.BarButtonItem();
-            this.barEditItembigFolderColour = new DevExpress.XtraBars.BarEditItem();
+            this.barEditItemBigFolderColour = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemColorEditBigFolderColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorEdit();
+            this.barEditItemBigFolderSize = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemSpinEditBigFolderSize = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.ribbonPageFolderStructureAnalyser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -45,6 +47,7 @@
             this.statusStripRootPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEditBigFolderColour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSize)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStripRootPath
@@ -64,19 +67,22 @@
             // 
             // ribbonControl1
             // 
+            this.ribbonControl1.AutoSizeItems = true;
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.barButtonItemAnalyseStructure,
             this.barButtonItemSelectRoot,
-            this.barEditItembigFolderColour});
+            this.barEditItemBigFolderColour,
+            this.barEditItemBigFolderSize});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 4;
+            this.ribbonControl1.MaxItemId = 5;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageFolderStructureAnalyser});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemColorEditBigFolderColour});
+            this.repositoryItemColorEditBigFolderColour,
+            this.repositoryItemSpinEditBigFolderSize});
             this.ribbonControl1.Size = new System.Drawing.Size(1359, 143);
             // 
             // barButtonItemAnalyseStructure
@@ -98,14 +104,14 @@
             this.barButtonItemSelectRoot.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             this.barButtonItemSelectRoot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSelectRoot_ItemClick);
             // 
-            // barEditItembigFolderColour
+            // barEditItemBigFolderColour
             // 
-            this.barEditItembigFolderColour.Caption = "Big Folder Colour";
-            this.barEditItembigFolderColour.Edit = this.repositoryItemColorEditBigFolderColour;
-            this.barEditItembigFolderColour.Hint = "The colour used to indicate a big folder.";
-            this.barEditItembigFolderColour.Id = 3;
-            this.barEditItembigFolderColour.Name = "barEditItembigFolderColour";
-            this.barEditItembigFolderColour.EditValueChanged += new System.EventHandler(this.barEditItembigFolderColour_EditValueChanged);
+            this.barEditItemBigFolderColour.Caption = "Big Folder Colour";
+            this.barEditItemBigFolderColour.Edit = this.repositoryItemColorEditBigFolderColour;
+            this.barEditItemBigFolderColour.Hint = "The colour used to indicate a big folder.";
+            this.barEditItemBigFolderColour.Id = 3;
+            this.barEditItemBigFolderColour.Name = "barEditItemBigFolderColour";
+            this.barEditItemBigFolderColour.EditValueChanged += new System.EventHandler(this.barEditItembigFolderColour_EditValueChanged);
             // 
             // repositoryItemColorEditBigFolderColour
             // 
@@ -113,6 +119,23 @@
             this.repositoryItemColorEditBigFolderColour.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemColorEditBigFolderColour.Name = "repositoryItemColorEditBigFolderColour";
+            // 
+            // barEditItemBigFolderSize
+            // 
+            this.barEditItemBigFolderSize.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barEditItemBigFolderSize.Caption = "Big Folder Size";
+            this.barEditItemBigFolderSize.Edit = this.repositoryItemSpinEditBigFolderSize;
+            this.barEditItemBigFolderSize.Hint = "Defines the size at which a folder should be considered big.";
+            this.barEditItemBigFolderSize.Id = 4;
+            this.barEditItemBigFolderSize.Name = "barEditItemBigFolderSize";
+            this.barEditItemBigFolderSize.EditValueChanged += new System.EventHandler(this.barEditItemBigFolderSize_EditValueChanged);
+            // 
+            // repositoryItemSpinEditBigFolderSize
+            // 
+            this.repositoryItemSpinEditBigFolderSize.AutoHeight = false;
+            this.repositoryItemSpinEditBigFolderSize.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEditBigFolderSize.Name = "repositoryItemSpinEditBigFolderSize";
             // 
             // ribbonPageFolderStructureAnalyser
             // 
@@ -131,7 +154,8 @@
             // ribbonPageGroupSettings
             // 
             this.ribbonPageGroupSettings.ItemLinks.Add(this.barButtonItemSelectRoot);
-            this.ribbonPageGroupSettings.ItemLinks.Add(this.barEditItembigFolderColour);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.barEditItemBigFolderColour);
+            this.ribbonPageGroupSettings.ItemLinks.Add(this.barEditItemBigFolderSize);
             this.ribbonPageGroupSettings.Name = "ribbonPageGroupSettings";
             this.ribbonPageGroupSettings.Text = "Settings";
             // 
@@ -166,6 +190,7 @@
             this.statusStripRootPath.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEditBigFolderColour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,9 +207,11 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerAnalyseFolderStructure;
         private Components.AnalyserTreeListCtrl analyserTreeListCtrlFolderStructure;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSelectRootFolder;
-        private DevExpress.XtraBars.BarEditItem barEditItembigFolderColour;
+        private DevExpress.XtraBars.BarEditItem barEditItemBigFolderColour;
         private DevExpress.XtraEditors.Repository.RepositoryItemColorEdit repositoryItemColorEditBigFolderColour;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSettings;
+        private DevExpress.XtraBars.BarEditItem barEditItemBigFolderSize;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEditBigFolderSize;
     }
 }
 
