@@ -34,6 +34,7 @@
             this.repositoryItemTextEditFileSizeEdit = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager();
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
+            this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSizeEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
@@ -89,6 +90,10 @@
             this.backgroundWorkerStructureAnalyser.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStructureAnalyser_DoWork);
             this.backgroundWorkerStructureAnalyser.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerStructureAnalyser_RunWorkerCompleted);
             // 
+            // splashScreenManagerWaitForStructureAnalyse
+            // 
+            this.splashScreenManagerWaitForStructureAnalyse.ClosingDelay = 500;
+            // 
             // AnalyserTreeListCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -96,6 +101,7 @@
             this.Controls.Add(this.treeListFolderStructure);
             this.Name = "AnalyserTreeListCtrl";
             this.Size = new System.Drawing.Size(570, 266);
+            this.ParentChanged += new System.EventHandler(this.AnalyserTreeListCtrl_ParentChanged);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSizeEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
@@ -111,5 +117,6 @@
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSizeEdit;
         private System.ComponentModel.BackgroundWorker backgroundWorkerStructureAnalyser;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureAnalyse;
     }
 }

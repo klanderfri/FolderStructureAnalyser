@@ -61,6 +61,13 @@
     <Compile Include="Components\AnalyserTreeListCtrl.Designer.cs">
       <DependentUpon>AnalyserTreeListCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\WaitFormCommand.cs" />
+    <Compile Include="Components\WaitForStructureAnalyseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\WaitForStructureAnalyseForm.Designer.cs">
+      <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\FolderNode.cs" />
     <Compile Include="SessionBound\ByteSizeConverter.cs" />
     <Compile Include="SessionBound\ISessionBound.cs" />
@@ -79,6 +86,9 @@
     <Compile Include="SessionBound\Tools.cs" />
     <EmbeddedResource Include="Components\AnalyserTreeListCtrl.resx">
       <DependentUpon>AnalyserTreeListCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\WaitForStructureAnalyseForm.resx">
+      <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DiskAnalyserForm.resx">
       <DependentUpon>DiskAnalyserForm.cs</DependentUpon>

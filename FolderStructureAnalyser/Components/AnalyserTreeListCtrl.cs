@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
@@ -22,6 +23,11 @@ namespace FolderStructureAnalyser.Components
             get { return backgroundWorkerStructureAnalyser.IsBusy; }
         }
 
+        /// <summary>
+        /// Keeps the last known position of the parent of the control.
+        /// </summary>
+        private Point LastKnownParentPosition { get; set; }
+
         public AnalyserTreeListCtrl()
         {
             InitializeComponent();
@@ -30,6 +36,7 @@ namespace FolderStructureAnalyser.Components
         public void SessionSet(Session session)
         {
             Session = session;
+            LastKnownParentPosition = ParentForm.Location;
         }
 
         /// <summary>
@@ -39,6 +46,7 @@ namespace FolderStructureAnalyser.Components
         /// <remarks>The tree list is reusable due to the passing of the path as a parameter instead of fetching it from the session.</remarks>
         public void LoadFolderStructure(string rootPath)
         {
+            splashScreenManagerWaitForStructureAnalyse.ShowWaitForm();
             backgroundWorkerStructureAnalyser.RunWorkerAsync(rootPath);
         }
 
@@ -101,6 +109,7 @@ namespace FolderStructureAnalyser.Components
         private void backgroundWorkerStructureAnalyser_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             updateDataSource(e.Result as BindingList<FolderNode>);
+            splashScreenManagerWaitForStructureAnalyse.CloseWaitForm();
         }
 
         /// <summary>
@@ -148,6 +157,28 @@ namespace FolderStructureAnalyser.Components
                     e.Appearance.ForeColor = Session.Settings.FolderStructureSettings.BigFolderColour;
                 }
             }
+        }
+
+        private void AnalyserTreeListCtrl_ParentChanged(object sender, EventArgs e)
+        {
+            ParentForm.Move += ParentForm_Move;
+        }
+
+        private void ParentForm_Move(object sender, EventArgs e)
+        {
+            if (splashScreenManagerWaitForStructureAnalyse.IsSplashFormVisible)
+            {
+                //Find out how the wait form should be moved.
+                int diffX = ParentForm.Location.X - LastKnownParentPosition.X;
+                int diffY = ParentForm.Location.Y - LastKnownParentPosition.Y;
+                var vector = new int[] { diffX, diffY };
+
+                //Move the waitform.
+                splashScreenManagerWaitForStructureAnalyse.SendCommand(WaitFormCommand.Move, vector);
+            }
+
+            //Update the known parent position.
+            LastKnownParentPosition = ParentForm.Location;
         }
     }
 }
