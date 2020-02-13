@@ -37,7 +37,16 @@ namespace FolderStructureAnalyser.Components
         /// <summary>
         /// Event raised when the control has finished loading the folder structure.
         /// </summary>
-        public event EventHandler FolderStructureLoadFinished;
+        [Category("Analyse")]
+        [Description("Occurs when the control has finished loading a folder structure.")]
+        public event FolderStructureLoadFinishedHandler FolderStructureLoadFinished;
+
+        /// <summary>
+        /// Eventhandler for the event used when the folder structure has finished loading.
+        /// </summary>
+        /// <param name="sender">The user control raising the event.</param>
+        /// <param name="e">The arguments for the event.</param>
+        public delegate void FolderStructureLoadFinishedHandler(object sender, FolderStructureLoadFinishedArgs e);
 
         public AnalyserTreeListCtrl()
         {
