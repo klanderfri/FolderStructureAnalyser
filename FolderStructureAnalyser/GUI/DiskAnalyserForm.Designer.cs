@@ -40,7 +40,7 @@
             this.barButtonItemCancelAnalyse = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageFolderStructureAnalyser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupBigFolderSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
             this.folderBrowserDialogSelectRootFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.statusStripRootPath.SuspendLayout();
@@ -95,7 +95,7 @@
             // 
             // barEditItemBigFolderColour
             // 
-            this.barEditItemBigFolderColour.Caption = "Big Folder Colour";
+            this.barEditItemBigFolderColour.Caption = "Colour";
             this.barEditItemBigFolderColour.Edit = this.repositoryItemColorPickEditBigFolderColour;
             this.barEditItemBigFolderColour.Hint = "The colour used to indicate a big folder.";
             this.barEditItemBigFolderColour.Id = 3;
@@ -113,7 +113,7 @@
             // barEditItemBigFolderSize
             // 
             this.barEditItemBigFolderSize.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barEditItemBigFolderSize.Caption = "Big Folder Size";
+            this.barEditItemBigFolderSize.Caption = "Size";
             this.barEditItemBigFolderSize.Edit = this.repositoryItemSpinEditBigFolderSize;
             this.barEditItemBigFolderSize.EditWidth = 80;
             this.barEditItemBigFolderSize.Hint = "Defines the size at which a folder should be considered big.";
@@ -143,7 +143,7 @@
             // 
             this.ribbonPageFolderStructureAnalyser.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroupAnalyse,
-            this.ribbonPageGroupSettings});
+            this.ribbonPageGroupBigFolderSettings});
             this.ribbonPageFolderStructureAnalyser.Name = "ribbonPageFolderStructureAnalyser";
             this.ribbonPageFolderStructureAnalyser.Text = "Folder Structure";
             // 
@@ -154,12 +154,12 @@
             this.ribbonPageGroupAnalyse.Name = "ribbonPageGroupAnalyse";
             this.ribbonPageGroupAnalyse.Text = "Analyse";
             // 
-            // ribbonPageGroupSettings
+            // ribbonPageGroupBigFolderSettings
             // 
-            this.ribbonPageGroupSettings.ItemLinks.Add(this.barEditItemBigFolderColour);
-            this.ribbonPageGroupSettings.ItemLinks.Add(this.barEditItemBigFolderSize);
-            this.ribbonPageGroupSettings.Name = "ribbonPageGroupSettings";
-            this.ribbonPageGroupSettings.Text = "Settings";
+            this.ribbonPageGroupBigFolderSettings.ItemLinks.Add(this.barEditItemBigFolderColour);
+            this.ribbonPageGroupBigFolderSettings.ItemLinks.Add(this.barEditItemBigFolderSize);
+            this.ribbonPageGroupBigFolderSettings.Name = "ribbonPageGroupBigFolderSettings";
+            this.ribbonPageGroupBigFolderSettings.Text = "Big Folder Settings";
             // 
             // analyserTreeListCtrlFolderStructure
             // 
@@ -208,7 +208,7 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSelectRootFolder;
         private DevExpress.XtraBars.BarEditItem barEditItemBigFolderColour;
         private DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit repositoryItemColorPickEditBigFolderColour;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSettings;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupBigFolderSettings;
         private DevExpress.XtraBars.BarEditItem barEditItemBigFolderSize;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEditBigFolderSize;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCancelAnalyse;
