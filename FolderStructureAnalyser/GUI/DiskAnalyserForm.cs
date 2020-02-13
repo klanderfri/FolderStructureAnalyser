@@ -88,6 +88,11 @@ namespace FolderStructureAnalyser.gui
             }
         }
 
+        private void barButtonItemCancelAnalyse_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            analyserTreeListCtrlFolderStructure.CancelAnalyse();
+        }
+
         private void barEditItembigFolderColour_EditValueChanged(object sender, EventArgs e)
         {
             var selectedColour = (Color)(sender as BarEditItem).EditValue;

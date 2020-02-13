@@ -57,6 +57,17 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
+        /// Cancels the running analyse.
+        /// </summary>
+        public void CancelAnalyse()
+        {
+            if (backgroundWorkerStructureAnalyser.IsBusy)
+            {
+                backgroundWorkerStructureAnalyser.CancelAsync();
+            }
+        }
+
+        /// <summary>
         /// Begins update of the visual content of the tree.
         /// </summary>
         private void beginUpdate()
@@ -101,31 +112,50 @@ namespace FolderStructureAnalyser.Components
         {
             var rootPath = e.Argument as string;
             var structure = new BindingList<FolderNode>();
+            var worker = sender as BackgroundWorker;
 
             //Create the folder structure.
-            var root = new Folder(Session, rootPath);
+            var root = new Folder(Session, worker, rootPath);
+
+            //Check if the process was cancelled.
+            if (worker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
 
             //Add the structure to the data source.
             var folderID = 0;
-            addDirectoryToDataSource(structure, root, ref folderID, null);
-
+            addDirectoryToDataSource(worker, structure, root, ref folderID, null);
             e.Result = structure;
+
+            //Check if the process was cancelled.
+            if (worker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
         }
 
         private void backgroundWorkerStructureAnalyser_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            updateDataSource(e.Result as BindingList<FolderNode>);
+            if (!e.Cancelled)
+            {
+                updateDataSource(e.Result as BindingList<FolderNode>);
+            }
+
             splashScreenManagerWaitForStructureAnalyse.CloseWaitForm();
         }
 
         /// <summary>
         /// Adds a directory and its structure to the tree.
         /// </summary>
+        /// <param name="worker">The background worker responsible for process.</param>
         /// <param name="structure">The folder structure containing the folder nodes.</param>
         /// <param name="directory">The folder to add.</param>
         /// <param name="folderID">The ID that should be assigned the node.</param>
         /// <param name="parentID">The ID of the node representing the folder parent.</param>
-        private void addDirectoryToDataSource(BindingList<FolderNode> structure, Folder directory, ref int folderID, int? parentID)
+        private void addDirectoryToDataSource(BackgroundWorker worker, BindingList<FolderNode> structure, Folder directory, ref int folderID, int? parentID)
         {
             //Add the node representing the folder.
             var node = new FolderNode()
@@ -141,7 +171,10 @@ namespace FolderStructureAnalyser.Components
             //Add the nodes representing all the children.
             foreach (var child in directory.SubFolders)
             {
-                addDirectoryToDataSource(structure, child, ref folderID, node.ID);
+                //Check if the process is to be cancelled.
+                if (worker.CancellationPending) { return; }
+
+                addDirectoryToDataSource(worker, structure, child, ref folderID, node.ID);
             }
         }
 

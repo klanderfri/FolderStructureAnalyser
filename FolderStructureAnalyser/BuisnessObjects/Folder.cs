@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using FolderStructureAnalyser.SessionBound;
 
@@ -33,28 +34,33 @@ namespace FolderStructureAnalyser.BuisnessObjects
         /// <summary>
         /// Creates an object representing a folder in a file-folder tree structure.
         /// </summary>
+        /// <param name="session">The application session.</param>
+        /// <param name="worker">The background worker responsible for the folder object creation.</param>
         /// <param name="folderpath">The physical path to the folder.</param>
-        public Folder(Session session, string folderpath)
+        public Folder(Session session, BackgroundWorker worker, string folderpath)
         {
             SessionSet(session);
 
             Info = new DirectoryInfo(folderpath);
             
-            fillSubfolders();
-            calculateSize();
+            fillSubfolders(worker);
+            calculateSize(worker);
         }
 
         /// <summary>
         /// Adds the subfolder structure to the subfolder list.
         /// </summary>
-        private void fillSubfolders()
+        /// <param name="worker">The background worker responsible for the folder object creation.</param>
+        private void fillSubfolders(BackgroundWorker worker)
         {
             foreach (var child in Info.GetDirectories())
             {
+                if (worker.CancellationPending) { return; }
+
                 try
                 {
                     //The recursion happens when the child folder is created.
-                    SubFolders.Add(new Folder(Session, child.FullName));
+                    SubFolders.Add(new Folder(Session, worker, child.FullName));
                 }
                 catch (UnauthorizedAccessException)
                 {
@@ -66,7 +72,8 @@ namespace FolderStructureAnalyser.BuisnessObjects
         /// <summary>
         /// Calculates the size of the folder and its content.
         /// </summary>
-        private void calculateSize()
+        /// <param name="worker">The background worker responsible for the folder object creation.</param>
+        private void calculateSize(BackgroundWorker worker)
         {
             //The bottom folders finish the creation first and therefore
             //have their size when the top folders continue their creation.
@@ -75,11 +82,13 @@ namespace FolderStructureAnalyser.BuisnessObjects
 
             foreach (var child in SubFolders)
             {
+                if (worker.CancellationPending) { return; }
                 SizeInBytes += child.SizeInBytes;
             }
 
             foreach (var file in Info.GetFiles())
             {
+                if (worker.CancellationPending) { return; }
                 SizeInBytes += file.Length;
             }
         }

@@ -87,6 +87,7 @@
             // 
             // backgroundWorkerStructureAnalyser
             // 
+            this.backgroundWorkerStructureAnalyser.WorkerSupportsCancellation = true;
             this.backgroundWorkerStructureAnalyser.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStructureAnalyser_DoWork);
             this.backgroundWorkerStructureAnalyser.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerStructureAnalyser_RunWorkerCompleted);
             // 

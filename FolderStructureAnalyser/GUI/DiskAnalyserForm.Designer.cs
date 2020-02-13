@@ -42,6 +42,7 @@
             this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
             this.folderBrowserDialogSelectRootFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.barButtonItemCancelAnalyse = new DevExpress.XtraBars.BarButtonItem();
             this.statusStripRootPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
@@ -71,9 +72,10 @@
             this.ribbonControl1.ExpandCollapseItem,
             this.barButtonItemAnalyseStructure,
             this.barEditItemBigFolderColour,
-            this.barEditItemBigFolderSize});
+            this.barEditItemBigFolderSize,
+            this.barButtonItemCancelAnalyse});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 5;
+            this.ribbonControl1.MaxItemId = 6;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageFolderStructureAnalyser});
@@ -84,7 +86,7 @@
             // 
             // barButtonItemAnalyseStructure
             // 
-            this.barButtonItemAnalyseStructure.Caption = "Analyse Structure";
+            this.barButtonItemAnalyseStructure.Caption = "Run Analyse";
             this.barButtonItemAnalyseStructure.Hint = "Analyses the selected root path and displays it.";
             this.barButtonItemAnalyseStructure.Id = 1;
             this.barButtonItemAnalyseStructure.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemAnalyseStructure.ImageOptions.SvgImage")));
@@ -139,6 +141,7 @@
             // ribbonPageGroupAnalyse
             // 
             this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemAnalyseStructure);
+            this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemCancelAnalyse);
             this.ribbonPageGroupAnalyse.Name = "ribbonPageGroupAnalyse";
             this.ribbonPageGroupAnalyse.Text = "Analyse";
             // 
@@ -162,6 +165,15 @@
             // 
             this.folderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
             this.folderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
+            // 
+            // barButtonItemCancelAnalyse
+            // 
+            this.barButtonItemCancelAnalyse.Caption = "Cancel";
+            this.barButtonItemCancelAnalyse.Hint = "Cancels the current analyse.";
+            this.barButtonItemCancelAnalyse.Id = 5;
+            this.barButtonItemCancelAnalyse.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCancelAnalyse.ImageOptions.SvgImage")));
+            this.barButtonItemCancelAnalyse.Name = "barButtonItemCancelAnalyse";
+            this.barButtonItemCancelAnalyse.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCancelAnalyse_ItemClick);
             // 
             // DiskAnalyserForm
             // 
@@ -198,6 +210,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSettings;
         private DevExpress.XtraBars.BarEditItem barEditItemBigFolderSize;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEditBigFolderSize;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCancelAnalyse;
     }
 }
 
