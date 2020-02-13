@@ -153,6 +153,7 @@
             this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemAnalyseStructure);
             this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemCancelAnalyse);
             this.ribbonPageGroupAnalyse.Name = "ribbonPageGroupAnalyse";
+            this.ribbonPageGroupAnalyse.ShowCaptionButton = false;
             this.ribbonPageGroupAnalyse.Text = "Analyse";
             // 
             // ribbonPageGroupBigFolderSettings
@@ -160,6 +161,7 @@
             this.ribbonPageGroupBigFolderSettings.ItemLinks.Add(this.barEditItemBigFolderColour);
             this.ribbonPageGroupBigFolderSettings.ItemLinks.Add(this.barEditItemBigFolderSize);
             this.ribbonPageGroupBigFolderSettings.Name = "ribbonPageGroupBigFolderSettings";
+            this.ribbonPageGroupBigFolderSettings.ShowCaptionButton = false;
             this.ribbonPageGroupBigFolderSettings.Text = "Big Folder Settings";
             // 
             // analyserTreeListCtrlFolderStructure
