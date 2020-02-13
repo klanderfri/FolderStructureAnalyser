@@ -61,6 +61,7 @@
     <Compile Include="Components\AnalyserTreeListCtrl.Designer.cs">
       <DependentUpon>AnalyserTreeListCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\FolderStructureLoadFinishedArgs.cs" />
     <Compile Include="Components\WaitFormCommand.cs" />
     <Compile Include="Components\WaitForStructureAnalyseForm.cs">
       <SubType>Form</SubType>

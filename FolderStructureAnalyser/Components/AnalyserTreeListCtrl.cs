@@ -33,6 +33,12 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         private Size LastKnownSize { get; set; }
 
+
+        /// <summary>
+        /// Event raised when the control has finished loading the folder structure.
+        /// </summary>
+        public event EventHandler FolderStructureLoadFinished;
+
         public AnalyserTreeListCtrl()
         {
             InitializeComponent();
@@ -145,6 +151,19 @@ namespace FolderStructureAnalyser.Components
             }
 
             splashScreenManagerWaitForStructureAnalyse.CloseWaitForm();
+
+            //Tell the subscribers that the loading finished.
+            var args = new FolderStructureLoadFinishedArgs() { Cancelled = e.Cancelled };
+            OnFolderStructureLoadFinished(args);
+        }
+
+        /// <summary>
+        /// Method raising the event used when the folder structure has finished loading.
+        /// </summary>
+        /// <param name="e">The arguments for the event.</param>
+        protected virtual void OnFolderStructureLoadFinished(FolderStructureLoadFinishedArgs e)
+        {
+            FolderStructureLoadFinished?.Invoke(this, e);
         }
 
         /// <summary>
