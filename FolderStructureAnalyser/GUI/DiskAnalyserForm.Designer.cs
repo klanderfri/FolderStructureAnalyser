@@ -40,7 +40,6 @@
             this.ribbonPageFolderStructureAnalyser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.backgroundWorkerAnalyseFolderStructure = new System.ComponentModel.BackgroundWorker();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
             this.folderBrowserDialogSelectRootFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.statusStripRootPath.SuspendLayout();
@@ -150,13 +149,6 @@
             this.ribbonPageGroupSettings.Name = "ribbonPageGroupSettings";
             this.ribbonPageGroupSettings.Text = "Settings";
             // 
-            // backgroundWorkerAnalyseFolderStructure
-            // 
-            this.backgroundWorkerAnalyseFolderStructure.WorkerReportsProgress = true;
-            this.backgroundWorkerAnalyseFolderStructure.WorkerSupportsCancellation = true;
-            this.backgroundWorkerAnalyseFolderStructure.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerAnalyseFolderStructure_DoWork);
-            this.backgroundWorkerAnalyseFolderStructure.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerAnalyseFolderStructure_RunWorkerCompleted);
-            // 
             // analyserTreeListCtrlFolderStructure
             // 
             this.analyserTreeListCtrlFolderStructure.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -199,7 +191,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageFolderStructureAnalyser;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAnalyse;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAnalyseStructure;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerAnalyseFolderStructure;
         private Components.AnalyserTreeListCtrl analyserTreeListCtrlFolderStructure;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSelectRootFolder;
         private DevExpress.XtraBars.BarEditItem barEditItemBigFolderColour;

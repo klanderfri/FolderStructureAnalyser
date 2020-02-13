@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.treeListFolderStructure = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumnName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumnSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEditFileSizeEdit = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager();
+            this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSizeEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
@@ -84,6 +84,11 @@
             this.repositoryItemTextEditFileSizeEdit.Name = "repositoryItemTextEditFileSizeEdit";
             this.repositoryItemTextEditFileSizeEdit.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.repositoryItemTextEditFileSizeEdit_CustomDisplayText);
             // 
+            // backgroundWorkerStructureAnalyser
+            // 
+            this.backgroundWorkerStructureAnalyser.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStructureAnalyser_DoWork);
+            this.backgroundWorkerStructureAnalyser.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerStructureAnalyser_RunWorkerCompleted);
+            // 
             // AnalyserTreeListCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -105,5 +110,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnSize;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSizeEdit;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerStructureAnalyser;
     }
 }

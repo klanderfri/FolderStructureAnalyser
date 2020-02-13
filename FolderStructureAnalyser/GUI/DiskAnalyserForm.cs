@@ -71,7 +71,7 @@ namespace FolderStructureAnalyser.gui
 
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (backgroundWorkerAnalyseFolderStructure.IsBusy)
+            if (analyserTreeListCtrlFolderStructure.IsBusy)
             {
                 var message = "An analyse is already in progress. Please wait for it to finish!";
                 MessageBox.Show(message, "Analyse in progress...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -89,19 +89,9 @@ namespace FolderStructureAnalyser.gui
                 else
                 {
                     setRootPath(path);
-                    backgroundWorkerAnalyseFolderStructure.RunWorkerAsync();
+                    analyserTreeListCtrlFolderStructure.LoadFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
                 }
             }
-        }
-
-        private void backgroundWorkerAnalyseFolderStructure_DoWork(object sender, DoWorkEventArgs e)
-        {
-            e.Result = analyserTreeListCtrlFolderStructure.CreateFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
-        }
-
-        private void backgroundWorkerAnalyseFolderStructure_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            analyserTreeListCtrlFolderStructure.SetDataSource(e.Result as BindingList<FolderNode>);
         }
 
         private void barEditItembigFolderColour_EditValueChanged(object sender, EventArgs e)

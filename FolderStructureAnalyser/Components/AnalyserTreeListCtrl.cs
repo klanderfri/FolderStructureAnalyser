@@ -14,6 +14,14 @@ namespace FolderStructureAnalyser.Components
     {
         public Session Session { get; set; }
 
+        /// <summary>
+        /// Tells if the control is busy analysing a folder structure.
+        /// </summary>
+        public bool IsBusy
+        {
+            get { return backgroundWorkerStructureAnalyser.IsBusy; }
+        }
+
         public AnalyserTreeListCtrl()
         {
             InitializeComponent();
@@ -66,12 +74,18 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// Creates a data source representing the folder structure.
+        /// Loads a folder structure.
         /// </summary>
         /// <param name="rootPath">The path to the root folder.</param>
         /// <remarks>The tree list is reusable due to the passing of the path as a parameter instead of fetching it from the session.</remarks>
-        public BindingList<FolderNode> CreateFolderStructure(string rootPath)
+        public void LoadFolderStructure(string rootPath)
         {
+            backgroundWorkerStructureAnalyser.RunWorkerAsync(rootPath);
+        }
+
+        private void backgroundWorkerStructureAnalyser_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var rootPath = e.Argument as string;
             var structure = new BindingList<FolderNode>();
 
             //Create the folder structure.
@@ -81,7 +95,12 @@ namespace FolderStructureAnalyser.Components
             var folderID = 0;
             addDirectoryToDataSource(structure, root, ref folderID, null);
 
-            return structure;
+            e.Result = structure;
+        }
+
+        private void backgroundWorkerStructureAnalyser_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            SetDataSource(e.Result as BindingList<FolderNode>);
         }
 
         /// <summary>
