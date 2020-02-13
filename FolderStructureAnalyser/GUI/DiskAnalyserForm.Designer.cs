@@ -37,12 +37,12 @@
             this.repositoryItemColorPickEditBigFolderColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
             this.barEditItemBigFolderSize = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemSpinEditBigFolderSize = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.barButtonItemCancelAnalyse = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageFolderStructureAnalyser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
             this.folderBrowserDialogSelectRootFolder = new System.Windows.Forms.FolderBrowserDialog();
-            this.barButtonItemCancelAnalyse = new DevExpress.XtraBars.BarButtonItem();
             this.statusStripRootPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
@@ -130,6 +130,15 @@
             this.repositoryItemSpinEditBigFolderSize.Mask.UseMaskAsDisplayFormat = true;
             this.repositoryItemSpinEditBigFolderSize.Name = "repositoryItemSpinEditBigFolderSize";
             // 
+            // barButtonItemCancelAnalyse
+            // 
+            this.barButtonItemCancelAnalyse.Caption = "Cancel";
+            this.barButtonItemCancelAnalyse.Hint = "Cancels the current analyse.";
+            this.barButtonItemCancelAnalyse.Id = 5;
+            this.barButtonItemCancelAnalyse.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCancelAnalyse.ImageOptions.SvgImage")));
+            this.barButtonItemCancelAnalyse.Name = "barButtonItemCancelAnalyse";
+            this.barButtonItemCancelAnalyse.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCancelAnalyse_ItemClick);
+            // 
             // ribbonPageFolderStructureAnalyser
             // 
             this.ribbonPageFolderStructureAnalyser.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -160,20 +169,12 @@
             this.analyserTreeListCtrlFolderStructure.Session = null;
             this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1359, 575);
             this.analyserTreeListCtrlFolderStructure.TabIndex = 3;
+            this.analyserTreeListCtrlFolderStructure.FolderStructureLoadFinished += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadFinishedHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished);
             // 
             // folderBrowserDialogSelectRootFolder
             // 
             this.folderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
             this.folderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
-            // 
-            // barButtonItemCancelAnalyse
-            // 
-            this.barButtonItemCancelAnalyse.Caption = "Cancel";
-            this.barButtonItemCancelAnalyse.Hint = "Cancels the current analyse.";
-            this.barButtonItemCancelAnalyse.Id = 5;
-            this.barButtonItemCancelAnalyse.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCancelAnalyse.ImageOptions.SvgImage")));
-            this.barButtonItemCancelAnalyse.Name = "barButtonItemCancelAnalyse";
-            this.barButtonItemCancelAnalyse.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCancelAnalyse_ItemClick);
             // 
             // DiskAnalyserForm
             // 

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
+using FolderStructureAnalyser.Components;
 using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.gui
@@ -14,7 +15,7 @@ namespace FolderStructureAnalyser.gui
         /// <summary>
         /// The root path selected before the current one.
         /// </summary>
-        private string PreviousRootPath { get; set; }
+        private string LastRootPath { get; set; }
 
         public DiskAnalyserForm()
         {
@@ -34,9 +35,9 @@ namespace FolderStructureAnalyser.gui
         /// Sets the path that are pointing to the root folder.
         /// </summary>
         /// <param name="rootPath">The full root folder path.</param>
-        private void setRootPath(String rootPath)
+        private void setRootPath(string rootPath)
         {
-            PreviousRootPath = Session.Settings.FolderStructureSettings.RootPath;
+            LastRootPath = Session.Settings.FolderStructureSettings.RootPath;
             var format = "Current root path: {0}";
             toolStripStatusLabelCurrentRootPath.Text = String.Format(format, rootPath);
             Session.Settings.FolderStructureSettings.RootPath = rootPath;
@@ -107,6 +108,14 @@ namespace FolderStructureAnalyser.gui
         {
             var bigFolderSizeInMB = Convert.ToInt32((sender as BarEditItem).EditValue);
             setBigFolderSize(bigFolderSizeInMB);
+        }
+
+        private void analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished(object sender, FolderStructureLoadFinishedArgs e)
+        {
+            if (e.Cancelled)
+            {
+                setRootPath(LastRootPath);
+            }
         }
     }
 }
