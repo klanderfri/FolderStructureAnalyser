@@ -80,13 +80,7 @@ namespace FolderStructureAnalyser.gui
             {
                 folderBrowserDialogSelectRootFolder.ShowDialog();
                 var path = folderBrowserDialogSelectRootFolder.SelectedPath;
-                if (String.IsNullOrWhiteSpace(path))
-                {
-                    var format = "You have selected an invalid folder path:{0}{1}";
-                    var message = String.Format(format, Environment.NewLine, path);
-                    MessageBox.Show(message, "Invalid folder path.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
+                if (!String.IsNullOrWhiteSpace(path))
                 {
                     setRootPath(path);
                     analyserTreeListCtrlFolderStructure.LoadFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
