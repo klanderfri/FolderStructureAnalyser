@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FolderStructureAnalyser.SessionBound;
-using FolderStructureAnalyser.BuisnessObjects;
-using DevExpress.XtraTreeList.Nodes;
-using FolderStructureAnalyser.GUI;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
+using FolderStructureAnalyser.BuisnessObjects;
+using FolderStructureAnalyser.GUI;
+using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
 {
