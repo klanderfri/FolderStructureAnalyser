@@ -13,6 +13,11 @@ namespace FolderStructureAnalyser.gui
     {
         public Session Session { get; set; }
 
+        /// <summary>
+        /// The root path selected before the current one.
+        /// </summary>
+        private string PreviousRootPath { get; set; }
+
         public DiskAnalyserForm()
         {
             InitializeComponent();
@@ -33,6 +38,7 @@ namespace FolderStructureAnalyser.gui
         /// <param name="rootPath">The full root folder path.</param>
         private void setRootPath(String rootPath)
         {
+            PreviousRootPath = Session.Settings.FolderStructureSettings.RootPath;
             var format = "Current root path: {0}";
             toolStripStatusLabelCurrentRootPath.Text = String.Format(format, rootPath);
             Session.Settings.FolderStructureSettings.RootPath = rootPath;
