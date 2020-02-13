@@ -30,25 +30,35 @@ namespace FolderStructureAnalyser.Components
             Session = session;
         }
 
+        /// <summary>
+        /// Begins update of the visual content of the tree.
+        /// </summary>
         public void BeginUpdate()
         {
             treeListFolderStructure.BeginUpdate();
             treeListFolderStructure.BeginUnboundLoad();
         }
 
+        /// <summary>
+        /// Ends update of the visual content of the tree.
+        /// </summary>
         public void EndUpdate()
         {
             treeListFolderStructure.EndUnboundLoad();
             treeListFolderStructure.EndUpdate();
         }
 
-        public void SetDataSource(BindingList<FolderNode> structure)
+        /// <summary>
+        /// Sets the data source of the analyser tree.
+        /// </summary>
+        /// <param name="folderStructure">The folder structer that are to be used as datasource.</param>
+        public void SetDataSource(BindingList<FolderNode> folderStructure)
         {
             BeginUpdate();
 
             try
             {
-                treeListFolderStructure.DataSource = structure;
+                treeListFolderStructure.DataSource = folderStructure;
             }
             finally
             {
@@ -109,6 +119,7 @@ namespace FolderStructureAnalyser.Components
 
         private void repositoryItemTextEditFileSizeEdit_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
         {
+            //Show the size (in MB, GB, etc) instead of just the bytes.
             var sizeInBytes = Convert.ToInt64(e.Value);
             e.DisplayText = Session.Tools.ByteSizeConverter.SizeStringFromByte(sizeInBytes);
         }
@@ -117,6 +128,7 @@ namespace FolderStructureAnalyser.Components
         {
             if (e.Column == treeListColumnSize)
             {
+                //Use the specified colour to indicate big folders.
                 var sizeInBytes = Convert.ToInt64(e.CellValue);
                 if (sizeInBytes >= Session.Settings.FolderStructureSettings.BigFolderInBytes)
                 {

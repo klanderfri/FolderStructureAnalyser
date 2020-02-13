@@ -7,6 +7,9 @@ using FolderStructureAnalyser.BuisnessObjects;
 
 namespace FolderStructureAnalyser.GUI
 {
+    /// <summary>
+    /// Object representing a folder when viewed in a tree.
+    /// </summary>
     public class FolderNode
     {
         /// <summary>
@@ -17,6 +20,7 @@ namespace FolderStructureAnalyser.GUI
         /// <summary>
         /// The ID of the parent folder node.
         /// </summary>
+        /// <remarks>Should be null for the root folder.</remarks>
         public int? ParentID { get; set; }
 
         /// <summary>

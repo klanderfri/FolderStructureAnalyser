@@ -33,6 +33,10 @@ namespace FolderStructureAnalyser.gui
             analyserTreeListCtrlFolderStructure.SessionSet(Session);
         }
 
+        /// <summary>
+        /// Sets the path that are pointing to the root folder.
+        /// </summary>
+        /// <param name="rootPath">The full root folder path.</param>
         private void setRootPath(String rootPath)
         {
             var format = "Current root path: {0}";
@@ -40,6 +44,10 @@ namespace FolderStructureAnalyser.gui
             Session.Settings.FolderStructureSettings.RootPath = rootPath;
         }
 
+        /// <summary>
+        /// Sets the colour used to indicate a big folder.
+        /// </summary>
+        /// <param name="bigFolderColour">The colour to use for big folders.</param>
         private void setBigFolderColour(Color bigFolderColour)
         {
             barEditItembigFolderColour.EditValue = bigFolderColour;
@@ -58,16 +66,6 @@ namespace FolderStructureAnalyser.gui
             }
         }
 
-        private void backgroundWorkerAnalyseFolderStructure_DoWork(object sender, DoWorkEventArgs e)
-        {
-            e.Result = analyserTreeListCtrlFolderStructure.CreateFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
-        }
-
-        private void backgroundWorkerAnalyseFolderStructure_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            analyserTreeListCtrlFolderStructure.SetDataSource(e.Result as BindingList<FolderNode>);
-        }
-
         private void barButtonItemSelectRoot_ItemClick(object sender, ItemClickEventArgs e)
         {
             folderBrowserDialogSelectRootFolder.ShowDialog();
@@ -76,6 +74,16 @@ namespace FolderStructureAnalyser.gui
             {
                 setRootPath(path);
             }
+        }
+
+        private void backgroundWorkerAnalyseFolderStructure_DoWork(object sender, DoWorkEventArgs e)
+        {
+            e.Result = analyserTreeListCtrlFolderStructure.CreateFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
+        }
+
+        private void backgroundWorkerAnalyseFolderStructure_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            analyserTreeListCtrlFolderStructure.SetDataSource(e.Result as BindingList<FolderNode>);
         }
 
         private void barEditItembigFolderColour_EditValueChanged(object sender, EventArgs e)

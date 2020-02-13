@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace FolderStructureAnalyser.SessionBound
 {
+    /// <summary>
+    /// Class for object holding the settings for a folder structure.
+    /// </summary>
     public class FolderStructureSettings
     {
+        /// <summary>
+        /// Creates an object holding the settings for a folder structure.
+        /// </summary>
         public FolderStructureSettings()
         {
             RootPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);

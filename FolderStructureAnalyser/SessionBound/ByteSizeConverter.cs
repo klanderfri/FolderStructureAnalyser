@@ -11,6 +11,11 @@ namespace FolderStructureAnalyser.SessionBound
     /// </summary>
     public class ByteSizeConverter
     {
+        /// <summary>
+        /// Converts a size in bytes to a descriptive string.
+        /// </summary>
+        /// <param name="sizeInBytes">The size to convert.</param>
+        /// <returns>A string describing the size.</returns>
         public string SizeStringFromByte(long sizeInBytes)
         {
             var units = new List<string> { "B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
@@ -29,6 +34,12 @@ namespace FolderStructureAnalyser.SessionBound
             throw new InvalidOperationException(message);
         }
 
+        /// <summary>
+        /// Concatenates the size and unit into a string.
+        /// </summary>
+        /// <param name="size">The size to put into the string.</param>
+        /// <param name="unit">The unit of the size.</param>
+        /// <returns>The concatenated string.</returns>
         private string getSizeText(double size, string unit)
         {
             var numberOfDecimals = getNumberOfDecimals(size);
@@ -38,6 +49,11 @@ namespace FolderStructureAnalyser.SessionBound
             return String.Format("{0} {1}", sizeString, unit);
         }
 
+        /// <summary>
+        /// Finds the number of decimals suitable for a size.
+        /// </summary>
+        /// <param name="size">The size to use when deciding the number of decimals.</param>
+        /// <returns>The number of decimals suitable for a size.</returns>
         private int getNumberOfDecimals(double size)
         {
             if (size < 10) { return 2; }
@@ -45,11 +61,21 @@ namespace FolderStructureAnalyser.SessionBound
             return 0;
         }
 
+        /// <summary>
+        /// Converts a size in bytes to a size in MB.
+        /// </summary>
+        /// <param name="sizeInBytes">The size to convert.</param>
+        /// <returns>The size in MB.</returns>
         public double MbFromByte(long sizeInBytes)
         {
             return sizeInBytes / Math.Pow(1024, 2);
         }
 
+        /// <summary>
+        /// Converts a size in MB to a size in bytes.
+        /// </summary>
+        /// <param name="sizeInMB">The size to convert.</param>
+        /// <returns>The size in bytes.</returns>
         public long BytesFromMB(int sizeInMB)
         {
             return sizeInMB * (int)Math.Pow(1024, 2);
