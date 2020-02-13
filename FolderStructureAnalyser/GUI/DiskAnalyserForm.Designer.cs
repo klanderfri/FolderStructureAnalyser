@@ -133,6 +133,7 @@
             // barButtonItemCancelAnalyse
             // 
             this.barButtonItemCancelAnalyse.Caption = "Cancel";
+            this.barButtonItemCancelAnalyse.Enabled = false;
             this.barButtonItemCancelAnalyse.Hint = "Cancels the current analyse.";
             this.barButtonItemCancelAnalyse.Id = 5;
             this.barButtonItemCancelAnalyse.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCancelAnalyse.ImageOptions.SvgImage")));

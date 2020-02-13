@@ -88,6 +88,7 @@ namespace FolderStructureAnalyser.gui
                 if (!String.IsNullOrWhiteSpace(path))
                 {
                     setRootPath(path);
+                    barButtonItemCancelAnalyse.Enabled = true;
                     analyserTreeListCtrlFolderStructure.LoadFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
                 }
             }
@@ -116,6 +117,8 @@ namespace FolderStructureAnalyser.gui
             {
                 setRootPath(LastRootPath);
             }
+
+            barButtonItemCancelAnalyse.Enabled = false;
         }
     }
 }
