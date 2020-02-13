@@ -28,6 +28,11 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         private Point LastKnownParentPosition { get; set; }
 
+        /// <summary>
+        /// Keeps the last known size of the control.
+        /// </summary>
+        private Size LastKnownSize { get; set; }
+
         public AnalyserTreeListCtrl()
         {
             InitializeComponent();
@@ -37,6 +42,7 @@ namespace FolderStructureAnalyser.Components
         {
             Session = session;
             LastKnownParentPosition = ParentForm.Location;
+            LastKnownSize = Size;
         }
 
         /// <summary>
@@ -179,6 +185,23 @@ namespace FolderStructureAnalyser.Components
 
             //Update the known parent position.
             LastKnownParentPosition = ParentForm.Location;
+        }
+
+        private void AnalyserTreeListCtrl_Resize(object sender, EventArgs e)
+        {
+            if (splashScreenManagerWaitForStructureAnalyse.IsSplashFormVisible)
+            {
+                //Find out how the wait form should be moved.
+                int diffX = (Size.Width - LastKnownSize.Width) / 2;
+                int diffY = (Size.Height - LastKnownSize.Height) / 2;
+                var vector = new int[] { diffX, diffY };
+
+                //Move the waitform.
+                splashScreenManagerWaitForStructureAnalyse.SendCommand(WaitFormCommand.Move, vector);
+            }
+
+            //Update the known size.
+            LastKnownSize = Size;
         }
     }
 }

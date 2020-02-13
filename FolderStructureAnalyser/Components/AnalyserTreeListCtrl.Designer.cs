@@ -101,6 +101,7 @@
             this.Controls.Add(this.treeListFolderStructure);
             this.Name = "AnalyserTreeListCtrl";
             this.Size = new System.Drawing.Size(570, 266);
+            this.Resize += new System.EventHandler(this.AnalyserTreeListCtrl_Resize);
             this.ParentChanged += new System.EventHandler(this.AnalyserTreeListCtrl_ParentChanged);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSizeEdit)).EndInit();
