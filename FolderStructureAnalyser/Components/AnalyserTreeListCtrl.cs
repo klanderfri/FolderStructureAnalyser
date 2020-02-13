@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -263,6 +264,18 @@ namespace FolderStructureAnalyser.Components
 
             //Update the known size.
             LastKnownSize = Size;
+        }
+
+        private void treeListFolderStructure_DoubleClick(object sender, EventArgs e)
+        {
+            var tree = sender as TreeList;
+            var hitInfo = tree.CalcHitInfo(tree.PointToClient(MousePosition));
+            if (hitInfo.Node != null)
+            {
+                //Open folder.
+                var folder = treeListFolderStructure.GetDataRecordByNode(hitInfo.Node) as FolderNode;
+                Process.Start(folder.FolderData.Info.FullName);
+            }
         }
     }
 }

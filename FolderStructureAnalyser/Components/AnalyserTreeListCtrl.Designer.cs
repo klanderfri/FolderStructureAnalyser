@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.treeListFolderStructure = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumnName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumnSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEditFileSizeEdit = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
             this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
@@ -58,6 +59,7 @@
             this.treeListFolderStructure.TabIndex = 0;
             this.treeListFolderStructure.ViewStyle = DevExpress.XtraTreeList.TreeListViewStyle.TreeView;
             this.treeListFolderStructure.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.treeListFolderStructure_CustomDrawNodeCell);
+            this.treeListFolderStructure.DoubleClick += new System.EventHandler(this.treeListFolderStructure_DoubleClick);
             // 
             // treeListColumnName
             // 
