@@ -35,6 +35,10 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         private Size LastKnownSize { get; set; }
 
+        /// <summary>
+        /// The folder structure from the last finished analyse.
+        /// </summary>
+        private BindingList<FolderNode> LastAnalysedStructure { get; set; }
 
         /// <summary>
         /// Event raised when the control has finished loading the folder structure.
@@ -89,7 +93,14 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         public void SetFocusedNodeAsRoot()
         {
-            throw new NotImplementedException();
+            var newRoot = getFolderFromNode(treeListFolderStructure.FocusedNode).FolderData;
+            var newStructure = new BindingList<FolderNode>();
+            var folderID = 0;
+            var worker = new BackgroundWorker();
+
+            addFolderToDataSource(worker, newStructure, newRoot, ref folderID, null);
+
+            updateDataSource(newStructure);
         }
 
         /// <summary>
@@ -116,10 +127,9 @@ namespace FolderStructureAnalyser.Components
         /// <param name="folderStructure">The folder structer that are to be used as datasource.</param>
         private void updateDataSource(BindingList<FolderNode> folderStructure)
         {
-            beginUpdate();
-
             try
             {
+                beginUpdate();
                 treeListFolderStructure.DataSource = folderStructure;
             }
             finally
@@ -152,7 +162,6 @@ namespace FolderStructureAnalyser.Components
             //Add the structure to the data source.
             var folderID = 0;
             addFolderToDataSource(worker, structure, root, ref folderID, null);
-            e.Result = structure;
 
             //Check if the process was cancelled.
             if (worker.CancellationPending)
@@ -160,13 +169,18 @@ namespace FolderStructureAnalyser.Components
                 e.Cancel = true;
                 return;
             }
+
+            //Pass the analysed structure back.
+            e.Result = structure;
         }
 
         private void backgroundWorkerStructureAnalyser_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (!e.Cancelled)
             {
-                updateDataSource(e.Result as BindingList<FolderNode>);
+                var structure = e.Result as BindingList<FolderNode>;
+                updateDataSource(structure);
+                LastAnalysedStructure = structure;
             }
 
             splashScreenManagerWaitForStructureAnalyse.CloseWaitForm();
