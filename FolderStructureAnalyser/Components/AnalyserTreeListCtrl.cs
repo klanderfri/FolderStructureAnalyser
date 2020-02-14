@@ -324,8 +324,11 @@ namespace FolderStructureAnalyser.Components
 
         private void treeListFolderStructure_GetStateImage(object sender, GetStateImageEventArgs e)
         {
-            var folder = getFolderFromNode(e.Node);
-            e.NodeImageIndex = folder.StateImageIndex;
+            if (e.NodeImageIndex >= 0)
+            {
+                var folder = getFolderFromNode(e.Node);
+                e.NodeImageIndex = folder.StateImageIndex;
+            }
         }
     }
 }
