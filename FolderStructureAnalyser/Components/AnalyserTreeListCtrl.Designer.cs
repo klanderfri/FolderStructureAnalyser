@@ -37,6 +37,7 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
             this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
+            this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).BeginInit();
@@ -47,7 +48,8 @@
             // 
             this.treeListFolderStructure.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumnName,
-            this.treeListColumnSize});
+            this.treeListColumnSize,
+            this.treeListColumnOpen});
             this.treeListFolderStructure.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeListFolderStructure.CustomizationFormBounds = new System.Drawing.Rectangle(654, 155, 260, 232);
             this.treeListFolderStructure.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -107,6 +109,14 @@
             // 
             this.splashScreenManagerWaitForStructureAnalyse.ClosingDelay = 500;
             // 
+            // treeListColumnOpen
+            // 
+            this.treeListColumnOpen.Caption = "Open";
+            this.treeListColumnOpen.FieldName = "Open";
+            this.treeListColumnOpen.Name = "treeListColumnOpen";
+            this.treeListColumnOpen.Visible = true;
+            this.treeListColumnOpen.VisibleIndex = 2;
+            // 
             // AnalyserTreeListCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,5 +144,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerStructureAnalyser;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureAnalyse;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionTreeIcons;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
     }
 }
