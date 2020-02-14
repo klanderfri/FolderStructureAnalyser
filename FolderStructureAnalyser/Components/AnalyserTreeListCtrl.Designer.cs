@@ -32,13 +32,13 @@
             this.treeListFolderStructure = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumnName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumnSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.repositoryItemTextEditFileSizeEdit = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEditFileSize = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.svgImageCollectionTreeIcons = new DevExpress.Utils.SvgImageCollection(this.components);
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
             this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSizeEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +56,7 @@
             this.treeListFolderStructure.OptionsView.AutoWidth = false;
             this.treeListFolderStructure.OptionsView.ShowColumns = true;
             this.treeListFolderStructure.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemTextEditFileSizeEdit});
+            this.repositoryItemTextEditFileSize});
             this.treeListFolderStructure.Size = new System.Drawing.Size(570, 266);
             this.treeListFolderStructure.StateImageList = this.svgImageCollectionTreeIcons;
             this.treeListFolderStructure.TabIndex = 0;
@@ -78,18 +78,18 @@
             // treeListColumnSize
             // 
             this.treeListColumnSize.Caption = "Size";
-            this.treeListColumnSize.ColumnEdit = this.repositoryItemTextEditFileSizeEdit;
+            this.treeListColumnSize.ColumnEdit = this.repositoryItemTextEditFileSize;
             this.treeListColumnSize.FieldName = "SizeInBytes";
             this.treeListColumnSize.Name = "treeListColumnSize";
             this.treeListColumnSize.OptionsColumn.AllowEdit = false;
             this.treeListColumnSize.Visible = true;
             this.treeListColumnSize.VisibleIndex = 1;
             // 
-            // repositoryItemTextEditFileSizeEdit
+            // repositoryItemTextEditFileSize
             // 
-            this.repositoryItemTextEditFileSizeEdit.AutoHeight = false;
-            this.repositoryItemTextEditFileSizeEdit.Name = "repositoryItemTextEditFileSizeEdit";
-            this.repositoryItemTextEditFileSizeEdit.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.repositoryItemTextEditFileSizeEdit_CustomDisplayText);
+            this.repositoryItemTextEditFileSize.AutoHeight = false;
+            this.repositoryItemTextEditFileSize.Name = "repositoryItemTextEditFileSize";
+            this.repositoryItemTextEditFileSize.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.repositoryItemTextEditFileSizeEdit_CustomDisplayText);
             // 
             // svgImageCollectionTreeIcons
             // 
@@ -117,7 +117,7 @@
             this.Resize += new System.EventHandler(this.AnalyserTreeListCtrl_Resize);
             this.ParentChanged += new System.EventHandler(this.AnalyserTreeListCtrl_ParentChanged);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSizeEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
@@ -130,7 +130,7 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnName;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnSize;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSizeEdit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSize;
         private System.ComponentModel.BackgroundWorker backgroundWorkerStructureAnalyser;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureAnalyse;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionTreeIcons;
