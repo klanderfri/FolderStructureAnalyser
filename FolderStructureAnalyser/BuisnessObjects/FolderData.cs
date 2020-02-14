@@ -9,7 +9,7 @@ namespace FolderStructureAnalyser.BuisnessObjects
     /// <summary>
     /// Class for object representing a folder in a file-folder tree structure.
     /// </summary>
-    public class Folder : SessionBoundClass
+    public class FolderData : SessionBoundClass
     {
         /// <summary>
         /// The information about the folder.
@@ -24,7 +24,7 @@ namespace FolderStructureAnalyser.BuisnessObjects
         /// <summary>
         /// The subfolders of the folder.
         /// </summary>
-        public List<Folder> SubFolders { get; private set; } = new List<Folder>();
+        public List<FolderData> SubFolders { get; private set; } = new List<FolderData>();
 
         /// <summary>
         /// The subfolders that are not available for the application.
@@ -37,7 +37,7 @@ namespace FolderStructureAnalyser.BuisnessObjects
         /// <param name="session">The application session.</param>
         /// <param name="worker">The background worker responsible for the folder object creation.</param>
         /// <param name="folderpath">The physical path to the folder.</param>
-        public Folder(Session session, BackgroundWorker worker, string folderpath)
+        public FolderData(Session session, BackgroundWorker worker, string folderpath)
         {
             SessionSet(session);
 
@@ -60,7 +60,7 @@ namespace FolderStructureAnalyser.BuisnessObjects
                 try
                 {
                     //The recursion happens when the child folder is created.
-                    SubFolders.Add(new Folder(Session, worker, child.FullName));
+                    SubFolders.Add(new FolderData(Session, worker, child.FullName));
                 }
                 catch (UnauthorizedAccessException)
                 {

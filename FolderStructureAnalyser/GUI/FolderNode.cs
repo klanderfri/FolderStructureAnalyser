@@ -36,6 +36,6 @@ namespace FolderStructureAnalyser.GUI
         /// <summary>
         /// The container holding information about the folder.
         /// </summary>
-        public Folder FolderData { get; set; }
+        public FolderData FolderData { get; set; }
     }
 }

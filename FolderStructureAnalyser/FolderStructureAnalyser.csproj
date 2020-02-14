@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuisnessObjects\Folder.cs" />
+    <Compile Include="BuisnessObjects\FolderData.cs" />
     <Compile Include="Components\AnalyserTreeListCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>

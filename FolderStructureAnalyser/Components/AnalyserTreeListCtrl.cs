@@ -132,7 +132,7 @@ namespace FolderStructureAnalyser.Components
             var worker = sender as BackgroundWorker;
 
             //Create the folder structure.
-            var root = new Folder(Session, worker, rootPath);
+            var root = new FolderData(Session, worker, rootPath);
 
             //Check if the process was cancelled.
             if (worker.CancellationPending)
@@ -185,7 +185,7 @@ namespace FolderStructureAnalyser.Components
         /// <param name="directory">The folder to add.</param>
         /// <param name="folderID">The ID that should be assigned the node.</param>
         /// <param name="parentID">The ID of the node representing the folder parent.</param>
-        private void addDirectoryToDataSource(BackgroundWorker worker, BindingList<FolderNode> structure, Folder directory, ref int folderID, int? parentID)
+        private void addDirectoryToDataSource(BackgroundWorker worker, BindingList<FolderNode> structure, FolderData directory, ref int folderID, int? parentID)
         {
             //Add the node representing the folder.
             var node = new FolderNode()
