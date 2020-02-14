@@ -29,13 +29,13 @@ namespace FolderStructureAnalyser.GUI
         public double SizeInBytes { get; set; }
 
         /// <summary>
+        /// The index of the image the tree should use as state image for the folder.
+        /// </summary>
+        public int StateImageIndex { get; set; }
+
+        /// <summary>
         /// The container holding information about the folder.
         /// </summary>
         public Folder FolderData { get; set; }
-
-        /// <summary>
-        /// The index of the image the tree should use as state image for the folder.
-        /// </summary>
-        public int StateImageIndex { get { return 0; } }
     }
 }

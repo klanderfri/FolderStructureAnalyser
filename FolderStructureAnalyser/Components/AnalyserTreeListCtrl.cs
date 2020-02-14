@@ -194,6 +194,7 @@ namespace FolderStructureAnalyser.Components
                 ParentID = parentID,
                 Name = directory.Info.Name,
                 SizeInBytes = directory.SizeInBytes,
+                StateImageIndex = 0,
                 FolderData = directory
             };
             structure.Add(node);
