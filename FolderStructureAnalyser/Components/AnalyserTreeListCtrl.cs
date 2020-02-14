@@ -85,6 +85,14 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
+        /// Sets the focused node as root.
+        /// </summary>
+        public void SetFocusedNodeAsRoot()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Begins update of the visual content of the tree.
         /// </summary>
         private void beginUpdate()

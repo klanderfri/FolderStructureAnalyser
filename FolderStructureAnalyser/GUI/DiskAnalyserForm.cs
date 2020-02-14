@@ -99,6 +99,11 @@ namespace FolderStructureAnalyser.gui
             analyserTreeListCtrlFolderStructure.CancelAnalyse();
         }
 
+        private void barButtonItemSetAsRoot_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            analyserTreeListCtrlFolderStructure.SetFocusedNodeAsRoot();
+        }
+
         private void barEditItembigFolderColour_EditValueChanged(object sender, EventArgs e)
         {
             var selectedColour = (Color)(sender as BarEditItem).EditValue;
