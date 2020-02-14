@@ -219,6 +219,17 @@ namespace FolderStructureAnalyser.Components
             return treeListFolderStructure.GetDataRecordByNode(node) as FolderNode;
         }
 
+        /// <summary>
+        /// Extracts the folder at a specific location.
+        /// </summary>
+        /// <param name="location">The point specifying the folder to get.</param>
+        /// <returns>The folder.</returns>
+        private FolderNode getFolderFromLocation(Point location)
+        {
+            var node = treeListFolderStructure.GetNodeAt(location);
+            return getFolderFromNode(node);
+        }
+
         private void repositoryItemTextEditFileSizeEdit_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
         {
             //Show the size (in MB, GB, etc) instead of just the bytes.
