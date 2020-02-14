@@ -248,6 +248,7 @@ namespace FolderStructureAnalyser.Components
                 location.Offset(middleX, 1);
 
                 e.Graphics.DrawImage(openIcon, location);
+                e.Handled = true;
             }
         }
 
