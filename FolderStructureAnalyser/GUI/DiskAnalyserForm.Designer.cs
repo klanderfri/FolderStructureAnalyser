@@ -115,7 +115,7 @@
             this.barEditItemBigFolderSize.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.barEditItemBigFolderSize.Caption = "Size";
             this.barEditItemBigFolderSize.Edit = this.repositoryItemSpinEditBigFolderSize;
-            this.barEditItemBigFolderSize.EditWidth = 80;
+            this.barEditItemBigFolderSize.EditWidth = 100;
             this.barEditItemBigFolderSize.Hint = "Defines the size at which a folder should be considered big.";
             this.barEditItemBigFolderSize.Id = 4;
             this.barEditItemBigFolderSize.Name = "barEditItemBigFolderSize";
@@ -128,6 +128,16 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemSpinEditBigFolderSize.Mask.EditMask = ",#######0 MB";
             this.repositoryItemSpinEditBigFolderSize.Mask.UseMaskAsDisplayFormat = true;
+            this.repositoryItemSpinEditBigFolderSize.MaxValue = new decimal(new int[] {
+            1073741824,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEditBigFolderSize.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.repositoryItemSpinEditBigFolderSize.Name = "repositoryItemSpinEditBigFolderSize";
             // 
             // barButtonItemCancelAnalyse
