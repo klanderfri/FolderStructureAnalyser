@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Nodes;
 using FolderStructureAnalyser.BuisnessObjects;
 using FolderStructureAnalyser.GUI;
 using FolderStructureAnalyser.SessionBound;
@@ -207,6 +208,16 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
+        /// <summary>
+        /// Extracts the folder from a tree node.
+        /// </summary>
+        /// <param name="node">The node representing the folder.</param>
+        /// <returns>The folder.</returns>
+        private FolderNode getFolderFromNode(TreeListNode node)
+        {
+            return treeListFolderStructure.GetDataRecordByNode(node) as FolderNode;
+        }
+
         private void repositoryItemTextEditFileSizeEdit_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
         {
             //Show the size (in MB, GB, etc) instead of just the bytes.
@@ -273,9 +284,15 @@ namespace FolderStructureAnalyser.Components
             if (hitInfo.Node != null)
             {
                 //Open folder.
-                var folder = treeListFolderStructure.GetDataRecordByNode(hitInfo.Node) as FolderNode;
+                var folder = getFolderFromNode(hitInfo.Node);
                 Process.Start(folder.FolderData.Info.FullName);
             }
+        }
+
+        private void treeListFolderStructure_GetStateImage(object sender, GetStateImageEventArgs e)
+        {
+            var folder = getFolderFromNode(e.Node);
+            e.NodeImageIndex = folder.StateImageIndex;
         }
     }
 }
