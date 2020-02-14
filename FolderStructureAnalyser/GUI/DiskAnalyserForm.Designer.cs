@@ -38,13 +38,14 @@
             this.barEditItemBigFolderSize = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemSpinEditBigFolderSize = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.barButtonItemCancelAnalyse = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemSetAsRoot = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageFolderStructureAnalyser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupBigFolderSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
             this.folderBrowserDialogSelectRootFolder = new System.Windows.Forms.FolderBrowserDialog();
-            this.ribbonPageGroupOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItemSetAsRoot = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemResetTreeView = new DevExpress.XtraBars.BarButtonItem();
             this.statusStripRootPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
@@ -76,9 +77,10 @@
             this.barEditItemBigFolderColour,
             this.barEditItemBigFolderSize,
             this.barButtonItemCancelAnalyse,
-            this.barButtonItemSetAsRoot});
+            this.barButtonItemSetAsRoot,
+            this.barButtonItemResetTreeView});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 7;
+            this.ribbonControl1.MaxItemId = 8;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageFolderStructureAnalyser});
@@ -153,6 +155,14 @@
             this.barButtonItemCancelAnalyse.Name = "barButtonItemCancelAnalyse";
             this.barButtonItemCancelAnalyse.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCancelAnalyse_ItemClick);
             // 
+            // barButtonItemSetAsRoot
+            // 
+            this.barButtonItemSetAsRoot.Caption = "Set as Root";
+            this.barButtonItemSetAsRoot.Id = 6;
+            this.barButtonItemSetAsRoot.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSetAsRoot.ImageOptions.SvgImage")));
+            this.barButtonItemSetAsRoot.Name = "barButtonItemSetAsRoot";
+            this.barButtonItemSetAsRoot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSetAsRoot_ItemClick);
+            // 
             // ribbonPageFolderStructureAnalyser
             // 
             this.ribbonPageFolderStructureAnalyser.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -178,6 +188,13 @@
             this.ribbonPageGroupBigFolderSettings.ShowCaptionButton = false;
             this.ribbonPageGroupBigFolderSettings.Text = "Big Folder Settings";
             // 
+            // ribbonPageGroupOperations
+            // 
+            this.ribbonPageGroupOperations.ItemLinks.Add(this.barButtonItemSetAsRoot);
+            this.ribbonPageGroupOperations.ItemLinks.Add(this.barButtonItemResetTreeView);
+            this.ribbonPageGroupOperations.Name = "ribbonPageGroupOperations";
+            this.ribbonPageGroupOperations.Text = "Operations";
+            // 
             // analyserTreeListCtrlFolderStructure
             // 
             this.analyserTreeListCtrlFolderStructure.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -193,19 +210,13 @@
             this.folderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
             this.folderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
             // 
-            // ribbonPageGroupOperations
+            // barButtonItemResetTreeView
             // 
-            this.ribbonPageGroupOperations.ItemLinks.Add(this.barButtonItemSetAsRoot);
-            this.ribbonPageGroupOperations.Name = "ribbonPageGroupOperations";
-            this.ribbonPageGroupOperations.Text = "Operations";
-            // 
-            // barButtonItemSetAsRoot
-            // 
-            this.barButtonItemSetAsRoot.Caption = "Set as Root";
-            this.barButtonItemSetAsRoot.Id = 6;
-            this.barButtonItemSetAsRoot.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSetAsRoot.ImageOptions.SvgImage")));
-            this.barButtonItemSetAsRoot.Name = "barButtonItemSetAsRoot";
-            this.barButtonItemSetAsRoot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSetAsRoot_ItemClick);
+            this.barButtonItemResetTreeView.Caption = "Reset Tree View";
+            this.barButtonItemResetTreeView.Id = 7;
+            this.barButtonItemResetTreeView.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemResetTreeView.ImageOptions.SvgImage")));
+            this.barButtonItemResetTreeView.Name = "barButtonItemResetTreeView";
+            this.barButtonItemResetTreeView.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemResetTreeView_ItemClick);
             // 
             // DiskAnalyserForm
             // 
@@ -245,6 +256,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemCancelAnalyse;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSetAsRoot;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupOperations;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemResetTreeView;
     }
 }
 

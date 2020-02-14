@@ -93,14 +93,22 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         public void SetFocusedNodeAsRoot()
         {
-            var newRoot = getFolderFromNode(treeListFolderStructure.FocusedNode).FolderData;
-            var newStructure = new BindingList<FolderNode>();
-            var folderID = 0;
-            var worker = new BackgroundWorker();
+            if (treeListFolderStructure.FocusedNode != null)
+            {
+                var newRoot = getFolderFromNode(treeListFolderStructure.FocusedNode).FolderData;
+                var newStructure = new BindingList<FolderNode>();
+                var folderID = 0;
+                var worker = new BackgroundWorker();
 
-            addFolderToDataSource(worker, newStructure, newRoot, ref folderID, null);
+                addFolderToDataSource(worker, newStructure, newRoot, ref folderID, null);
 
-            updateDataSource(newStructure);
+                updateDataSource(newStructure);
+            }
+        }
+
+        public void ResetTreeToLastAnalyse()
+        {
+            updateDataSource(LastAnalysedStructure);
         }
 
         /// <summary>
