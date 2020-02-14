@@ -306,7 +306,7 @@ namespace FolderStructureAnalyser.Components
         {
             var tree = sender as TreeList;
             var hitInfo = tree.CalcHitInfo(tree.PointToClient(MousePosition));
-            if (hitInfo.Node != null)
+            if (hitInfo.Node != null && hitInfo.Column == treeListColumnOpen)
             {
                 //Open folder.
                 var folder = getFolderFromNode(hitInfo.Node);
