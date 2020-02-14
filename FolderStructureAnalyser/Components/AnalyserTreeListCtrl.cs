@@ -237,6 +237,18 @@ namespace FolderStructureAnalyser.Components
                     e.Appearance.ForeColor = Session.Settings.FolderStructureSettings.BigFolderColour;
                 }
             }
+            if (e.Column == treeListColumnOpen)
+            {
+                e.DefaultDraw();
+
+                var openIcon = svgImageCollectionTreeIcons.GetImage(2);
+
+                var location = e.Bounds.Location;
+                int middleX = (e.Column.Width - openIcon.Width) / 2;
+                location.Offset(middleX, 1);
+
+                e.Graphics.DrawImage(openIcon, location);
+            }
         }
 
         private void AnalyserTreeListCtrl_ParentChanged(object sender, EventArgs e)
