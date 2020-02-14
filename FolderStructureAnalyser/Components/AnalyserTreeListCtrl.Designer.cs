@@ -33,11 +33,11 @@
             this.treeListColumnName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumnSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEditFileSize = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.svgImageCollectionTreeIcons = new DevExpress.Utils.SvgImageCollection(this.components);
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
             this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
-            this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).BeginInit();
@@ -93,6 +93,15 @@
             this.repositoryItemTextEditFileSize.Name = "repositoryItemTextEditFileSize";
             this.repositoryItemTextEditFileSize.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.repositoryItemTextEditFileSizeEdit_CustomDisplayText);
             // 
+            // treeListColumnOpen
+            // 
+            this.treeListColumnOpen.Caption = "Open";
+            this.treeListColumnOpen.FieldName = "Open";
+            this.treeListColumnOpen.Name = "treeListColumnOpen";
+            this.treeListColumnOpen.OptionsColumn.AllowEdit = false;
+            this.treeListColumnOpen.Visible = true;
+            this.treeListColumnOpen.VisibleIndex = 2;
+            // 
             // svgImageCollectionTreeIcons
             // 
             this.svgImageCollectionTreeIcons.Add("folder", "image://svgimages/actions/open.svg");
@@ -108,14 +117,6 @@
             // splashScreenManagerWaitForStructureAnalyse
             // 
             this.splashScreenManagerWaitForStructureAnalyse.ClosingDelay = 500;
-            // 
-            // treeListColumnOpen
-            // 
-            this.treeListColumnOpen.Caption = "Open";
-            this.treeListColumnOpen.FieldName = "Open";
-            this.treeListColumnOpen.Name = "treeListColumnOpen";
-            this.treeListColumnOpen.Visible = true;
-            this.treeListColumnOpen.VisibleIndex = 2;
             // 
             // AnalyserTreeListCtrl
             // 
