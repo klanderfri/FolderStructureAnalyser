@@ -143,7 +143,7 @@ namespace FolderStructureAnalyser.Components
 
             //Add the structure to the data source.
             var folderID = 0;
-            addDirectoryToDataSource(worker, structure, root, ref folderID, null);
+            addFolderToDataSource(worker, structure, root, ref folderID, null);
             e.Result = structure;
 
             //Check if the process was cancelled.
@@ -178,34 +178,34 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// Adds a directory and its structure to the tree.
+        /// Adds a folder and its structure to the tree.
         /// </summary>
         /// <param name="worker">The background worker responsible for process.</param>
         /// <param name="structure">The folder structure containing the folder nodes.</param>
-        /// <param name="directory">The folder to add.</param>
+        /// <param name="folder">The folder to add.</param>
         /// <param name="folderID">The ID that should be assigned the node.</param>
         /// <param name="parentID">The ID of the node representing the folder parent.</param>
-        private void addDirectoryToDataSource(BackgroundWorker worker, BindingList<FolderNode> structure, FolderData directory, ref int folderID, int? parentID)
+        private void addFolderToDataSource(BackgroundWorker worker, BindingList<FolderNode> structure, FolderData folder, ref int folderID, int? parentID)
         {
             //Add the node representing the folder.
             var node = new FolderNode()
             {
                 ID = folderID++,
                 ParentID = parentID,
-                Name = directory.Info.Name,
-                SizeInBytes = directory.SizeInBytes,
+                Name = folder.Info.Name,
+                SizeInBytes = folder.SizeInBytes,
                 StateImageIndex = 0,
-                FolderData = directory
+                FolderData = folder
             };
             structure.Add(node);
 
             //Add the nodes representing all the children.
-            foreach (var child in directory.SubFolders)
+            foreach (var child in folder.SubFolders)
             {
                 //Check if the process is to be cancelled.
                 if (worker.CancellationPending) { return; }
 
-                addDirectoryToDataSource(worker, structure, child, ref folderID, node.ID);
+                addFolderToDataSource(worker, structure, child, ref folderID, node.ID);
             }
         }
 
