@@ -46,6 +46,9 @@
             this.ribbonPageGroupOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
             this.folderBrowserDialogSelectRootFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.ribbonPageFolderStructureComparer = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroupCompare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItemCompareStructures = new DevExpress.XtraBars.BarButtonItem();
             this.statusStripRootPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
@@ -78,12 +81,14 @@
             this.barEditItemBigFolderSize,
             this.barButtonItemCancelAnalyse,
             this.barButtonItemSetAsRoot,
-            this.barButtonItemResetTreeView});
+            this.barButtonItemResetTreeView,
+            this.barButtonItemCompareStructures});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 8;
+            this.ribbonControl1.MaxItemId = 9;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPageFolderStructureAnalyser});
+            this.ribbonPageFolderStructureAnalyser,
+            this.ribbonPageFolderStructureComparer});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemColorPickEditBigFolderColour,
             this.repositoryItemSpinEditBigFolderSize});
@@ -180,7 +185,7 @@
             this.ribbonPageGroupBigFolderSettings,
             this.ribbonPageGroupOperations});
             this.ribbonPageFolderStructureAnalyser.Name = "ribbonPageFolderStructureAnalyser";
-            this.ribbonPageFolderStructureAnalyser.Text = "Folder Structure";
+            this.ribbonPageFolderStructureAnalyser.Text = "Analyse";
             // 
             // ribbonPageGroupAnalyse
             // 
@@ -219,6 +224,27 @@
             // 
             this.folderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
             this.folderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
+            // 
+            // ribbonPageFolderStructureComparer
+            // 
+            this.ribbonPageFolderStructureComparer.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroupCompare});
+            this.ribbonPageFolderStructureComparer.Name = "ribbonPageFolderStructureComparer";
+            this.ribbonPageFolderStructureComparer.Text = "Compare";
+            // 
+            // ribbonPageGroupCompare
+            // 
+            this.ribbonPageGroupCompare.ItemLinks.Add(this.barButtonItemCompareStructures);
+            this.ribbonPageGroupCompare.Name = "ribbonPageGroupCompare";
+            this.ribbonPageGroupCompare.Text = "Compare";
+            // 
+            // barButtonItemCompareStructures
+            // 
+            this.barButtonItemCompareStructures.Caption = "Run Comparison";
+            this.barButtonItemCompareStructures.Hint = "Compares the selected structures and displays any differences.";
+            this.barButtonItemCompareStructures.Id = 8;
+            this.barButtonItemCompareStructures.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCompareStructures.ImageOptions.SvgImage")));
+            this.barButtonItemCompareStructures.Name = "barButtonItemCompareStructures";
             // 
             // DiskAnalyserForm
             // 
@@ -259,6 +285,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemSetAsRoot;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupOperations;
         private DevExpress.XtraBars.BarButtonItem barButtonItemResetTreeView;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCompareStructures;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageFolderStructureComparer;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupCompare;
     }
 }
 
