@@ -39,9 +39,6 @@ namespace FolderStructureAnalyser.gui
         /// <param name="rootPath">The full root folder path.</param>
         private void setRootPath(string rootPath)
         {
-            LastRootPath = Session.Settings.FolderStructureSettings.RootPath;
-            var format = "Current root path: {0}";
-            toolStripStatusLabelCurrentRootPath.Text = String.Format(format, rootPath);
             Session.Settings.FolderStructureSettings.RootPath = rootPath;
         }
 
@@ -125,11 +122,6 @@ namespace FolderStructureAnalyser.gui
 
         private void analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished(object sender, FolderStructureLoadFinishedArgs e)
         {
-            if (e.Cancelled)
-            {
-                setRootPath(LastRootPath);
-            }
-
             barButtonItemCancelAnalyse.Enabled = false;
         }
 

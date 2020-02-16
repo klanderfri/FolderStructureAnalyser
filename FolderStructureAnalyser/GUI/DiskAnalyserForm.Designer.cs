@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiskAnalyserForm));
-            this.statusStripRootPath = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelCurrentRootPath = new System.Windows.Forms.ToolStripStatusLabel();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemAnalyseStructure = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItemBigFolderColour = new DevExpress.XtraBars.BarEditItem();
@@ -52,7 +50,6 @@
             this.xtraTabPageAnalyseStructure = new DevExpress.XtraTab.XtraTabPage();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
             this.xtraTabPageCompareStructures = new DevExpress.XtraTab.XtraTabPage();
-            this.statusStripRootPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSize)).BeginInit();
@@ -60,21 +57,6 @@
             this.xtraTabControlAnalyserPages.SuspendLayout();
             this.xtraTabPageAnalyseStructure.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // statusStripRootPath
-            // 
-            this.statusStripRootPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelCurrentRootPath});
-            this.statusStripRootPath.Location = new System.Drawing.Point(0, 718);
-            this.statusStripRootPath.Name = "statusStripRootPath";
-            this.statusStripRootPath.Size = new System.Drawing.Size(1359, 22);
-            this.statusStripRootPath.TabIndex = 1;
-            // 
-            // toolStripStatusLabelCurrentRootPath
-            // 
-            this.toolStripStatusLabelCurrentRootPath.Name = "toolStripStatusLabelCurrentRootPath";
-            this.toolStripStatusLabelCurrentRootPath.Size = new System.Drawing.Size(119, 17);
-            this.toolStripStatusLabelCurrentRootPath.Text = "Current root path: {0}";
             // 
             // ribbonControl1
             // 
@@ -249,7 +231,7 @@
             this.xtraTabControlAnalyserPages.Location = new System.Drawing.Point(0, 143);
             this.xtraTabControlAnalyserPages.Name = "xtraTabControlAnalyserPages";
             this.xtraTabControlAnalyserPages.SelectedTabPage = this.xtraTabPageAnalyseStructure;
-            this.xtraTabControlAnalyserPages.Size = new System.Drawing.Size(1359, 575);
+            this.xtraTabControlAnalyserPages.Size = new System.Drawing.Size(1359, 597);
             this.xtraTabControlAnalyserPages.TabIndex = 5;
             this.xtraTabControlAnalyserPages.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageAnalyseStructure,
@@ -259,7 +241,7 @@
             // 
             this.xtraTabPageAnalyseStructure.Controls.Add(this.analyserTreeListCtrlFolderStructure);
             this.xtraTabPageAnalyseStructure.Name = "xtraTabPageAnalyseStructure";
-            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1353, 547);
+            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1353, 569);
             this.xtraTabPageAnalyseStructure.Text = "Analyse Structure";
             // 
             // analyserTreeListCtrlFolderStructure
@@ -268,7 +250,7 @@
             this.analyserTreeListCtrlFolderStructure.Location = new System.Drawing.Point(0, 0);
             this.analyserTreeListCtrlFolderStructure.Name = "analyserTreeListCtrlFolderStructure";
             this.analyserTreeListCtrlFolderStructure.Session = null;
-            this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1353, 547);
+            this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1353, 569);
             this.analyserTreeListCtrlFolderStructure.TabIndex = 4;
             // 
             // xtraTabPageCompareStructures
@@ -283,13 +265,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1359, 740);
             this.Controls.Add(this.xtraTabControlAnalyserPages);
-            this.Controls.Add(this.statusStripRootPath);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "DiskAnalyserForm";
             this.Ribbon = this.ribbonControl1;
             this.Text = "Disk Analyser";
-            this.statusStripRootPath.ResumeLayout(false);
-            this.statusStripRootPath.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSize)).EndInit();
@@ -302,8 +281,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.StatusStrip statusStripRootPath;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCurrentRootPath;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageFolderStructureAnalyser;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAnalyse;
