@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
@@ -260,6 +261,33 @@ namespace FolderStructureAnalyser.Components
             return getFolderFromNode(node);
         }
 
+        /// <summary>
+        /// Opens a specific folder in the Windows Explorer.
+        /// </summary>
+        /// <param name="folder">The folder to open.</param>
+        private void openFolderInExplorer(FolderNode folder)
+        {
+            var path = folder.FolderData.Info.FullName;
+            if (Directory.Exists(path))
+            {
+                try
+                {
+                    Process.Start(path);
+                }
+                catch (Win32Exception ex)
+                {
+                    var format = "Problem opening folder {1}.{0}Path: {2}{0}Error: {3}";
+                    var message = String.Format(format, Environment.NewLine, folder.Name, path, ex.Message);
+                    MessageBox.Show(message, "Problem opening folder.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                var message = "The folder does no longer exist.";
+                MessageBox.Show(message, "Non-existing folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void repositoryItemTextEditFileSizeEdit_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
         {
             //Show the size (in MB, GB, etc) instead of just the bytes.
@@ -340,7 +368,7 @@ namespace FolderStructureAnalyser.Components
             {
                 //Open folder.
                 var folder = getFolderFromNode(hitInfo.Node);
-                Process.Start(folder.FolderData.Info.FullName);
+                openFolderInExplorer(folder);
             }
         }
 
