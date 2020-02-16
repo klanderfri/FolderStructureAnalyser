@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using FolderStructureAnalyser.Components;
@@ -29,6 +30,7 @@ namespace FolderStructureAnalyser.gui
             setBigFolderColour(Session.Settings.FolderStructureSettings.BigFolderColour);
             setBigFolderSize(Session.Settings.FolderStructureSettings.BigFolderInBytes);
             analyserTreeListCtrlFolderStructure.SessionSet(Session);
+            xtraTabControlAnalyserPages.ShowTabHeader = DefaultBoolean.False;
         }
 
         /// <summary>
@@ -129,6 +131,19 @@ namespace FolderStructureAnalyser.gui
             }
 
             barButtonItemCancelAnalyse.Enabled = false;
+        }
+
+        private void ribbonControl1_SelectedPageChanged(object sender, EventArgs e)
+        {
+            var ribbon = sender as RibbonControl;
+            if (ribbon.SelectedPage == ribbonPageFolderStructureAnalyser)
+            {
+                xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageAnalyseStructure;
+            }
+            if (ribbon.SelectedPage == ribbonPageFolderStructureComparer)
+            {
+                xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageCompareStructures;
+            }
         }
     }
 }

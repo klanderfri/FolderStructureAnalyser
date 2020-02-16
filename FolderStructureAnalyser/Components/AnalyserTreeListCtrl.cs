@@ -323,7 +323,10 @@ namespace FolderStructureAnalyser.Components
 
         private void AnalyserTreeListCtrl_ParentChanged(object sender, EventArgs e)
         {
-            ParentForm.Move += ParentForm_Move;
+            if (ParentForm != null)
+            {
+                ParentForm.Move += ParentForm_Move;
+            }
         }
 
         private void ParentForm_Move(object sender, EventArgs e)
