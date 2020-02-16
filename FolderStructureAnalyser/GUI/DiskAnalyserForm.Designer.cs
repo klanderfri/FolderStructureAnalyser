@@ -252,6 +252,7 @@
             this.analyserTreeListCtrlFolderStructure.Session = null;
             this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1353, 569);
             this.analyserTreeListCtrlFolderStructure.TabIndex = 4;
+            this.analyserTreeListCtrlFolderStructure.FolderStructureLoadFinished += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadFinishedHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished);
             // 
             // xtraTabPageCompareStructures
             // 
