@@ -26,20 +26,10 @@ namespace FolderStructureAnalyser.gui
         public void SessionSet(Session session)
         {
             Session = session;
-            setRootPath(Session.Settings.FolderStructureSettings.RootPath);
             setBigFolderColour(Session.Settings.FolderStructureSettings.BigFolderColour);
             setBigFolderSize(Session.Settings.FolderStructureSettings.BigFolderInBytes);
             analyserTreeListCtrlFolderStructure.SessionSet(Session);
             xtraTabControlAnalyserPages.ShowTabHeader = DefaultBoolean.False;
-        }
-
-        /// <summary>
-        /// Sets the path that are pointing to the root folder.
-        /// </summary>
-        /// <param name="rootPath">The full root folder path.</param>
-        private void setRootPath(string rootPath)
-        {
-            Session.Settings.FolderStructureSettings.RootPath = rootPath;
         }
 
         /// <summary>
@@ -86,9 +76,8 @@ namespace FolderStructureAnalyser.gui
                 var path = folderBrowserDialogSelectRootFolder.SelectedPath;
                 if (!String.IsNullOrWhiteSpace(path))
                 {
-                    setRootPath(path);
                     barButtonItemCancelAnalyse.Enabled = true;
-                    analyserTreeListCtrlFolderStructure.LoadFolderStructure(Session.Settings.FolderStructureSettings.RootPath);
+                    analyserTreeListCtrlFolderStructure.LoadFolderStructure(path);
                 }
             }
         }

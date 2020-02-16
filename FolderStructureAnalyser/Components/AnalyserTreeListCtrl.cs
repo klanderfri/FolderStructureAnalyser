@@ -75,6 +75,7 @@ namespace FolderStructureAnalyser.Components
         public void LoadFolderStructure(string rootPath)
         {
             splashScreenManagerWaitForStructureAnalyse.ShowWaitForm();
+            Session.Settings.FolderStructureSettings.RootPath = rootPath;
             backgroundWorkerStructureAnalyser.RunWorkerAsync(rootPath);
         }
 
