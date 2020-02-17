@@ -97,6 +97,7 @@ namespace FolderStructureAnalyser.Components
             Session = session;
             LastKnownParentPosition = ParentForm.Location;
             LastKnownSize = Size;
+            ParentForm.Move += ParentForm_Move;
         }
 
         /// <summary>
@@ -399,14 +400,6 @@ namespace FolderStructureAnalyser.Components
 
                 e.Graphics.DrawImage(openIcon, location);
                 e.Handled = true;
-            }
-        }
-
-        private void AnalyserTreeListCtrl_ParentChanged(object sender, EventArgs e)
-        {
-            if (ParentForm != null)
-            {
-                ParentForm.Move += ParentForm_Move;
             }
         }
 
