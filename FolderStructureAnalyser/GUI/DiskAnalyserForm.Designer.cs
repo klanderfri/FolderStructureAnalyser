@@ -80,7 +80,10 @@
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemColorPickEditBigFolderColour,
             this.repositoryItemSpinEditBigFolderSize});
-            this.ribbonControl1.Size = new System.Drawing.Size(1359, 143);
+            this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
+            this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.Size = new System.Drawing.Size(1367, 154);
             this.ribbonControl1.SelectedPageChanged += new System.EventHandler(this.ribbonControl1_SelectedPageChanged);
             // 
             // barButtonItemAnalyseStructure
@@ -230,12 +233,12 @@
             this.xtraTabControlAnalyserPages.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControlAnalyserPages.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControlAnalyserPages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControlAnalyserPages.Location = new System.Drawing.Point(0, 143);
+            this.xtraTabControlAnalyserPages.Location = new System.Drawing.Point(0, 154);
             this.xtraTabControlAnalyserPages.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.xtraTabControlAnalyserPages.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControlAnalyserPages.Name = "xtraTabControlAnalyserPages";
             this.xtraTabControlAnalyserPages.SelectedTabPage = this.xtraTabPageAnalyseStructure;
-            this.xtraTabControlAnalyserPages.Size = new System.Drawing.Size(1359, 597);
+            this.xtraTabControlAnalyserPages.Size = new System.Drawing.Size(1367, 590);
             this.xtraTabControlAnalyserPages.TabIndex = 5;
             this.xtraTabControlAnalyserPages.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageAnalyseStructure,
@@ -245,7 +248,7 @@
             // 
             this.xtraTabPageAnalyseStructure.Controls.Add(this.analyserTreeListCtrlFolderStructure);
             this.xtraTabPageAnalyseStructure.Name = "xtraTabPageAnalyseStructure";
-            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1359, 575);
+            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1367, 568);
             this.xtraTabPageAnalyseStructure.Text = "Analyse Structure";
             // 
             // analyserTreeListCtrlFolderStructure
@@ -254,21 +257,21 @@
             this.analyserTreeListCtrlFolderStructure.Location = new System.Drawing.Point(0, 0);
             this.analyserTreeListCtrlFolderStructure.Name = "analyserTreeListCtrlFolderStructure";
             this.analyserTreeListCtrlFolderStructure.Session = null;
-            this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1359, 575);
+            this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1367, 568);
             this.analyserTreeListCtrlFolderStructure.TabIndex = 4;
             this.analyserTreeListCtrlFolderStructure.FolderStructureLoadFinished += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadFinishedHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished);
             // 
             // xtraTabPageCompareStructures
             // 
             this.xtraTabPageCompareStructures.Name = "xtraTabPageCompareStructures";
-            this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(1353, 569);
+            this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(1367, 568);
             this.xtraTabPageCompareStructures.Text = "Compare Structures";
             // 
             // DiskAnalyserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1359, 740);
+            this.ClientSize = new System.Drawing.Size(1367, 744);
             this.Controls.Add(this.xtraTabControlAnalyserPages);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "DiskAnalyserForm";
