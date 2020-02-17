@@ -63,7 +63,10 @@ namespace FolderStructureAnalyser.gui
             Session.Settings.FolderStructureSettings.BigFolderInBytes = Session.Tools.ByteSizeConverter.BytesFromMB(bigFolderInMB);
         }
 
-        private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
+        /// <summary>
+        /// Starts an analyse of a folder structure.
+        /// </summary>
+        private void startFolderStructureAnalyse()
         {
             if (analyserTreeListCtrlFolderStructure.IsBusy)
             {
@@ -80,6 +83,27 @@ namespace FolderStructureAnalyser.gui
                     analyserTreeListCtrlFolderStructure.LoadFolderStructure(path);
                 }
             }
+        }
+
+        /// <summary>
+        /// Updates the content page shown to the user.
+        /// </summary>
+        /// <param name="currentRibbonPage">The currently selected page in the ribbon.</param>
+        private void updateContentPage(RibbonPage currentRibbonPage)
+        {
+            if (currentRibbonPage == ribbonPageFolderStructureAnalyser)
+            {
+                xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageAnalyseStructure;
+            }
+            if (currentRibbonPage == ribbonPageFolderStructureComparer)
+            {
+                xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageCompareStructures;
+            }
+        }
+
+        private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            startFolderStructureAnalyse();
         }
 
         private void barButtonItemCancelAnalyse_ItemClick(object sender, ItemClickEventArgs e)
@@ -117,14 +141,7 @@ namespace FolderStructureAnalyser.gui
         private void ribbonControl1_SelectedPageChanged(object sender, EventArgs e)
         {
             var ribbon = sender as RibbonControl;
-            if (ribbon.SelectedPage == ribbonPageFolderStructureAnalyser)
-            {
-                xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageAnalyseStructure;
-            }
-            if (ribbon.SelectedPage == ribbonPageFolderStructureComparer)
-            {
-                xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageCompareStructures;
-            }
+            updateContentPage(ribbon.SelectedPage);
         }
     }
 }
