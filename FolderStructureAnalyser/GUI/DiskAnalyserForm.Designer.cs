@@ -190,17 +190,15 @@
             // 
             this.barHeaderItemOperationTime.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.barHeaderItemOperationTime.Appearance.Options.UseFont = true;
-            this.barHeaderItemOperationTime.Caption = "Operation time:";
+            this.barHeaderItemOperationTime.Caption = "Last operation time:";
             this.barHeaderItemOperationTime.Id = 9;
             this.barHeaderItemOperationTime.Name = "barHeaderItemOperationTime";
-            this.barHeaderItemOperationTime.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // barStaticItemOperationTime
             // 
             this.barStaticItemOperationTime.Caption = "0 sec";
             this.barStaticItemOperationTime.Id = 10;
             this.barStaticItemOperationTime.Name = "barStaticItemOperationTime";
-            this.barStaticItemOperationTime.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // ribbonPageFolderStructureAnalyser
             // 

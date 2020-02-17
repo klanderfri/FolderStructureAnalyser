@@ -306,6 +306,9 @@ namespace FolderStructureAnalyser.Components
 
             //Pass the analysed structure back.
             e.Result = structure;
+
+            //Make a last progress update.
+            worker.ReportProgress(100);
         }
 
         private void backgroundWorkerStructureAnalyser_ProgressChanged(object sender, ProgressChangedEventArgs e)
