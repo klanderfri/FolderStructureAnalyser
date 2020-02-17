@@ -1,7 +1,6 @@
 ﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using FolderStructureAnalyser.GUI;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace FolderStructureAnalyser.Components
 {
@@ -14,59 +13,36 @@ namespace FolderStructureAnalyser.Components
 
         public void CompareFolderStructures()
         {
-            if (mayStartCompare())
+            if (MayStartAnalysis())
             {
                 var paths = askUserForFoldersToCompare();
-                CompareFolderStructures(paths);
+
+                if (paths != null)
+                {
+                    StartAnalysis(paths);
+                }
             }
         }
 
-        private void CompareFolderStructures(Tuple<string, string> paths)
+        private List<string> askUserForFoldersToCompare()
         {
-            if (mayStartCompare(paths))
-            {
-                throw new NotImplementedException();
-            }
+            var originalFolder = ShowSelectFolderDialog("Select original", "Select the folder that are to act as original.");
+            if (!PathIsValid(originalFolder)) { return null; }
+
+            var clonedFolder = ShowSelectFolderDialog("Select clone", "Select the folder that are to act as clone.");
+            if (!PathIsValid(clonedFolder)) { return null; }
+
+            return new List<string>() { originalFolder, clonedFolder };
         }
 
-        private Tuple<string, string> askUserForFoldersToCompare()
+        private void FolderStructureCompareCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
         {
-            var result = xtraFolderBrowserDialogOriginalFolder.ShowDialog();
-            var originalFolder = (result == DialogResult.OK) ? xtraFolderBrowserDialogOriginalFolder.SelectedPath : null;
-
-            xtraFolderBrowserDialogCloneFolder.ShowDialog();
-            var clonedFolder = (result == DialogResult.OK) ? xtraFolderBrowserDialogCloneFolder.SelectedPath : null;
-
-            return new Tuple<string, string>(originalFolder, clonedFolder);
+            throw new NotImplementedException();
         }
 
-        private bool mayStartCompare()
+        private void FolderStructureCompareCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (backgroundWorkerCompareFolders.IsBusy)
-            {
-                MessageBoxes.ShowAnalyseInProgressMessage();
-                return false;
-            }
-            return true;
-        }
-
-        private bool mayStartCompare(Tuple<string, string> paths)
-        {
-            if (!mayStartCompare()) { return false; }
-            if (!pathIsValid(paths.Item1)) { return false; }
-            if (!pathIsValid(paths.Item2)) { return false; }
-            return true;
-        }
-
-        private bool pathIsValid(string path)
-        {
-            if (String.IsNullOrWhiteSpace(path)) { return false; }
-            if (!Directory.Exists(path))
-            {
-                MessageBoxes.ShowDirectoryDoesNotExistMessage(path);
-                return false;
-            }
-            return true;
+            throw new NotImplementedException();
         }
     }
 }
