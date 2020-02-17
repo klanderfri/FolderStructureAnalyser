@@ -38,7 +38,7 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
             this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
-            this.folderBrowserDialogSelectRootFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog();
+            this.xtraFolderBrowserDialogSelectRootFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
             this.timerOperationTime = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
@@ -123,10 +123,10 @@
             // 
             this.splashScreenManagerWaitForStructureAnalyse.ClosingDelay = 500;
             // 
-            // folderBrowserDialogSelectRootFolder
+            // xtraFolderBrowserDialogSelectRootFolder
             // 
-            this.folderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
-            this.folderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
+            this.xtraFolderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
+            this.xtraFolderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
             // 
             // timerOperationTime
             // 
@@ -159,7 +159,7 @@
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureAnalyse;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionTreeIcons;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
-        private DevExpress.XtraEditors.XtraFolderBrowserDialog folderBrowserDialogSelectRootFolder;
+        private DevExpress.XtraEditors.XtraFolderBrowserDialog xtraFolderBrowserDialogSelectRootFolder;
         private System.Windows.Forms.Timer timerOperationTime;
     }
 }

@@ -215,8 +215,8 @@ namespace FolderStructureAnalyser.Components
         /// <returns>The full root path the user has selected.</returns>
         private string askUserForRootPath()
         {
-            var result = folderBrowserDialogSelectRootFolder.ShowDialog();
-            return (result == DialogResult.OK) ? folderBrowserDialogSelectRootFolder.SelectedPath : null;
+            var result = xtraFolderBrowserDialogSelectRootFolder.ShowDialog();
+            return (result == DialogResult.OK) ? xtraFolderBrowserDialogSelectRootFolder.SelectedPath : null;
         }
 
         /// <summary>
