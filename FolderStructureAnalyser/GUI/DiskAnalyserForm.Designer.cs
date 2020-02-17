@@ -227,8 +227,12 @@
             // 
             // xtraTabControlAnalyserPages
             // 
+            this.xtraTabControlAnalyserPages.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.xtraTabControlAnalyserPages.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControlAnalyserPages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControlAnalyserPages.Location = new System.Drawing.Point(0, 143);
+            this.xtraTabControlAnalyserPages.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.xtraTabControlAnalyserPages.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControlAnalyserPages.Name = "xtraTabControlAnalyserPages";
             this.xtraTabControlAnalyserPages.SelectedTabPage = this.xtraTabPageAnalyseStructure;
             this.xtraTabControlAnalyserPages.Size = new System.Drawing.Size(1359, 597);
@@ -241,7 +245,7 @@
             // 
             this.xtraTabPageAnalyseStructure.Controls.Add(this.analyserTreeListCtrlFolderStructure);
             this.xtraTabPageAnalyseStructure.Name = "xtraTabPageAnalyseStructure";
-            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1353, 569);
+            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1359, 575);
             this.xtraTabPageAnalyseStructure.Text = "Analyse Structure";
             // 
             // analyserTreeListCtrlFolderStructure
@@ -250,14 +254,14 @@
             this.analyserTreeListCtrlFolderStructure.Location = new System.Drawing.Point(0, 0);
             this.analyserTreeListCtrlFolderStructure.Name = "analyserTreeListCtrlFolderStructure";
             this.analyserTreeListCtrlFolderStructure.Session = null;
-            this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1353, 569);
+            this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1359, 575);
             this.analyserTreeListCtrlFolderStructure.TabIndex = 4;
             this.analyserTreeListCtrlFolderStructure.FolderStructureLoadFinished += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadFinishedHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished);
             // 
             // xtraTabPageCompareStructures
             // 
             this.xtraTabPageCompareStructures.Name = "xtraTabPageCompareStructures";
-            this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(1353, 547);
+            this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(1353, 569);
             this.xtraTabPageCompareStructures.Text = "Compare Structures";
             // 
             // DiskAnalyserForm
