@@ -128,6 +128,40 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
+        /// Cancels the running analyse.
+        /// </summary>
+        public void CancelAnalyse()
+        {
+            if (backgroundWorkerStructureAnalyser.IsBusy)
+            {
+                backgroundWorkerStructureAnalyser.CancelAsync();
+            }
+        }
+
+        /// <summary>
+        /// Sets the focused node as root.
+        /// </summary>
+        public void SetFocusedNodeAsRoot()
+        {
+            if (treeListFolderStructure.FocusedNode != null)
+            {
+                var newRoot = getFolderFromNode(treeListFolderStructure.FocusedNode).FolderData;
+                var newStructure = new BindingList<FolderNode>();
+                var folderID = 0;
+                var worker = new BackgroundWorker();
+
+                addFolderToDataSource(worker, newStructure, newRoot, ref folderID, null);
+
+                updateDataSource(newStructure);
+            }
+        }
+
+        public void ResetTreeToLastAnalyse()
+        {
+            updateDataSource(LastAnalysedStructure);
+        }
+
+        /// <summary>
         /// Promt the user for a root path.
         /// </summary>
         /// <returns>The full root path the user has selected.</returns>
@@ -166,40 +200,6 @@ namespace FolderStructureAnalyser.Components
                 return false;
             }
             return true;
-        }
-
-        /// <summary>
-        /// Cancels the running analyse.
-        /// </summary>
-        public void CancelAnalyse()
-        {
-            if (backgroundWorkerStructureAnalyser.IsBusy)
-            {
-                backgroundWorkerStructureAnalyser.CancelAsync();
-            }
-        }
-
-        /// <summary>
-        /// Sets the focused node as root.
-        /// </summary>
-        public void SetFocusedNodeAsRoot()
-        {
-            if (treeListFolderStructure.FocusedNode != null)
-            {
-                var newRoot = getFolderFromNode(treeListFolderStructure.FocusedNode).FolderData;
-                var newStructure = new BindingList<FolderNode>();
-                var folderID = 0;
-                var worker = new BackgroundWorker();
-
-                addFolderToDataSource(worker, newStructure, newRoot, ref folderID, null);
-
-                updateDataSource(newStructure);
-            }
-        }
-
-        public void ResetTreeToLastAnalyse()
-        {
-            updateDataSource(LastAnalysedStructure);
         }
 
         /// <summary>
