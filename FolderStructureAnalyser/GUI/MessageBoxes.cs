@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FolderStructureAnalyser.GUI
 {
-    public class MessageBoxes
+    public static class MessageBoxes
     {
         public static void ShowAnalyseInProgressMessage()
         {
