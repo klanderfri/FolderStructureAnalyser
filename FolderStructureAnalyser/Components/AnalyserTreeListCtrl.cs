@@ -118,7 +118,7 @@ namespace FolderStructureAnalyser.Components
         /// <remarks>The tree list is reusable due to the passing of the path as a parameter instead of fetching it from the session.</remarks>
         public void LoadFolderStructure(string rootPath)
         {
-            if (mayStartAnalyse() && Directory.Exists(rootPath))
+            if (mayStartAnalyse(rootPath))
             {
                 OnFolderStructureLoadStart(new FolderStructureLoadStartArgs());
                 splashScreenManagerWaitForStructureAnalyse.ShowWaitForm();
@@ -133,8 +133,8 @@ namespace FolderStructureAnalyser.Components
         /// <returns>The full root path the user has selected.</returns>
         private string askUserForRootPath()
         {
-            folderBrowserDialogSelectRootFolder.ShowDialog();
-            return folderBrowserDialogSelectRootFolder.SelectedPath;
+            var result = folderBrowserDialogSelectRootFolder.ShowDialog();
+            return (result == DialogResult.OK) ? folderBrowserDialogSelectRootFolder.SelectedPath : null;
         }
 
         /// <summary>
@@ -146,6 +146,23 @@ namespace FolderStructureAnalyser.Components
             if (IsBusy)
             {
                 MessageBoxes.ShowAnalyseInProgressMessage();
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Checks if an analyse can be started.
+        /// </summary>
+        /// <param name="rootPath">The full path to the root folder that are to be analysed.</param>
+        /// <returns>TRUE if an analyse may start, else FALSE.</returns>
+        private bool mayStartAnalyse(string rootPath)
+        {
+            if (!mayStartAnalyse()) { return false; }
+            if (String.IsNullOrWhiteSpace(rootPath)) { return false; }
+            if (!Directory.Exists(rootPath))
+            {
+                MessageBoxes.ShowDirectoryDoesNotExistMessage(rootPath);
                 return false;
             }
             return true;

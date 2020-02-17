@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,14 @@ namespace FolderStructureAnalyser.GUI
         {
             var message = "An analyse is already in progress. Please wait for it to finish!";
             MessageBox.Show(message, "Analyse in progress...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        public static void ShowDirectoryDoesNotExistMessage(string folderPath)
+        {
+            var folderName = new DirectoryInfo(folderPath).Name;
+            var format = "The folder '{1}' does not exist.{0}Path: {2}";
+            var message = String.Format(format, Environment.NewLine, folderName, folderPath);
+            MessageBox.Show(message, "Folder does not exist", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
