@@ -63,7 +63,7 @@
             // 
             // xtraFolderBrowserDialogCloneFolder
             // 
-            this.xtraFolderBrowserDialogCloneFolder.Description = "S";
+            this.xtraFolderBrowserDialogCloneFolder.Description = "Select the folder that should be considered a clone of the original folder.";
             this.xtraFolderBrowserDialogCloneFolder.SelectedPath = "xtraFolderBrowserDialog1";
             this.xtraFolderBrowserDialogCloneFolder.Title = "Select cloned folder";
             // 
