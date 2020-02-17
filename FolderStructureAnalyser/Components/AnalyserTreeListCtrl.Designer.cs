@@ -130,7 +130,6 @@
             // 
             // timerOperationTime
             // 
-            this.timerOperationTime.Interval = 1000;
             this.timerOperationTime.Tick += new System.EventHandler(this.timerOperationTime_Tick);
             // 
             // AnalyserTreeListCtrl

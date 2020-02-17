@@ -27,9 +27,14 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// The amount of milliseconds elapsed since the last analyse was started.
+        /// The amount of timer ticks elapsed since the last analyse was started.
         /// </summary>
-        private int ElapsedSeconds { get; set; }
+        private long ElapsedTicks { get; set; }
+
+        /// <summary>
+        /// Watch keeping track of the lenght of the folder structure analyse.
+        /// </summary>
+        private Stopwatch AnalyseOperationTime { get; set; } = new Stopwatch();
 
         /// <summary>
         /// Keeps the last known position of the parent of the control.
@@ -157,8 +162,9 @@ namespace FolderStructureAnalyser.Components
                 OnFolderStructureLoadProgressChanged(progressArgs);
 
                 //Start the timer keeping track of the progress.
-                ElapsedSeconds = 0;
+                ElapsedTicks = 0;
                 timerOperationTime.Start();
+                AnalyseOperationTime.Restart();
 
                 //Show the wait form.
                 splashScreenManagerWaitForStructureAnalyse.ShowWaitForm();
@@ -317,8 +323,8 @@ namespace FolderStructureAnalyser.Components
 
         private void timerOperationTime_Tick(object sender, EventArgs e)
         {
-            ElapsedSeconds++;
-            var args = new TimedProgressChangedEventArgs(ElapsedSeconds * 1000);
+            //Tell the user that the operation has progressed.
+            var args = new TimedProgressChangedEventArgs(AnalyseOperationTime.ElapsedMilliseconds);
             OnFolderStructureLoadProgressChanged(args);
         }
 
@@ -326,17 +332,24 @@ namespace FolderStructureAnalyser.Components
         {
             if (!e.Cancelled)
             {
+                //Update the structure shown.
                 var structure = e.Result as BindingList<FolderNode>;
                 updateDataSource(structure);
                 LastAnalysedStructure = structure;
             }
 
+            //Stop components needed to handle the operation.
             splashScreenManagerWaitForStructureAnalyse.CloseWaitForm();
             timerOperationTime.Stop();
+            AnalyseOperationTime.Stop();
+
+            //Make a last progress update.
+            var progressArgs = new TimedProgressChangedEventArgs(AnalyseOperationTime.ElapsedMilliseconds);
+            OnFolderStructureLoadProgressChanged(progressArgs);
 
             //Tell the subscribers that the loading finished.
-            var args = new FolderStructureLoadFinishedArgs() { Cancelled = e.Cancelled };
-            OnFolderStructureLoadFinished(args);
+            var finishedArgs = new FolderStructureLoadFinishedArgs() { Cancelled = e.Cancelled };
+            OnFolderStructureLoadFinished(finishedArgs);
         }
 
         /// <summary>
