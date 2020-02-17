@@ -168,7 +168,7 @@ namespace FolderStructureAnalyser.Components
         /// <param name="title">The title of the folder dialog.</param>
         /// <param name="description">The description within the folder dialog.</param>
         /// <returns>The full path to the selected folder, NULL if the user cancelled.</returns>
-        public string ShowSelectFolderDialog(string title, string description)
+        protected string ShowSelectFolderDialog(string title, string description)
         {
             xtraFolderBrowserDialogSelectFolder.Title = title;
             xtraFolderBrowserDialogSelectFolder.Description = description;
@@ -181,22 +181,21 @@ namespace FolderStructureAnalyser.Components
         /// <summary>
         /// Shows a wait form.
         /// </summary>
-        /// <param name="description">The desription to show in the wait form.</param>
-        public void ShowWaitForm(string description)
+        private void showWaitForm()
         {
             splashScreenManagerWaitForm.ShowWaitForm();
-            splashScreenManagerWaitForm.SetWaitFormDescription(description);
+            splashScreenManagerWaitForm.SetWaitFormDescription(WaitFormDescription);
         }
 
         /// <summary>
         /// Closes the wait form shown.
         /// </summary>
-        public void CloseWaitForm()
+        private void closeWaitForm()
         {
             splashScreenManagerWaitForm.CloseWaitForm();
         }
 
-        public void StartAnalysis(object argument)
+        protected void StartAnalysis(object argument)
         {
             //Tell the user that the loading has started.
             OnFolderStructureAnalysisStart(new FolderStructureAnalysisStartArgs());
@@ -211,7 +210,7 @@ namespace FolderStructureAnalyser.Components
             AnalysisRunningTime.Restart();
 
             //Show the wait form.
-            ShowWaitForm(WaitFormDescription);
+            showWaitForm();
 
             //Load the folder structure.
             backgroundWorkerTimeHeavyAnalysis.RunWorkerAsync(argument);
@@ -238,7 +237,7 @@ namespace FolderStructureAnalyser.Components
         /// Checks if an analysis can be started.
         /// </summary>
         /// <returns>TRUE if the operation may start, else FALSE.</returns>
-        public bool MayStartAnalysis()
+        protected bool MayStartAnalysis()
         {
             if (IsBusy)
             {
@@ -253,7 +252,7 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         /// <param name="path">The full path to the folder that is to be analysed.</param>
         /// <returns>TRUE if the operation may start, else FALSE.</returns>
-        public bool MayStartAnalysis(string path)
+        protected bool MayStartAnalysis(string path)
         {
             return MayStartAnalysis(new List<string>() { path });
         }
@@ -263,7 +262,7 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         /// <param name="paths">The full paths to the folders that are to be analysed.</param>
         /// <returns>TRUE if an analyse may start, else FALSE.</returns>
-        public bool MayStartAnalysis(IEnumerable<string> paths)
+        protected bool MayStartAnalysis(IEnumerable<string> paths)
         {
             if (!MayStartAnalysis()) { return false; }
 
@@ -280,7 +279,7 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         /// <param name="path">The path to test.</param>
         /// <returns>TRUE if the path is valid, else FALSE.</returns>
-        public bool PathIsValid(string path)
+        protected bool PathIsValid(string path)
         {
             if (String.IsNullOrWhiteSpace(path)) { return false; }
             if (!Directory.Exists(path))
@@ -341,7 +340,7 @@ namespace FolderStructureAnalyser.Components
         private void backgroundWorkerTimeHeavyAnalysis_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             //Stop components needed to handle the operation.
-            CloseWaitForm();
+            closeWaitForm();
             timerAnalysisProgress.Stop();
             AnalysisRunningTime.Stop();
             
