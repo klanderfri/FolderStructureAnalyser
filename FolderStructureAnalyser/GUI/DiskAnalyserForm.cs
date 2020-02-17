@@ -117,16 +117,9 @@ namespace FolderStructureAnalyser.gui
             analyserTreeListCtrlFolderStructure.ResetTreeToLastAnalyse();
         }
 
-        private void barEditItembigFolderColour_EditValueChanged(object sender, EventArgs e)
+        private void barButtonItemCompareStructures_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var selectedColour = (Color)(sender as BarEditItem).EditValue;
-            setBigFolderColour(selectedColour);
-        }
-
-        private void barEditItemBigFolderSize_EditValueChanged(object sender, EventArgs e)
-        {
-            var bigFolderSizeInMB = Convert.ToInt32((sender as BarEditItem).EditValue);
-            setBigFolderSize(bigFolderSizeInMB);
+            folderStructureCompareCtrl1.CompareFolderStructures();
         }
 
         private void analyserTreeListCtrlFolderStructure_FolderStructureLoadStart(object sender, FolderStructureLoadStartArgs e)
@@ -139,20 +132,27 @@ namespace FolderStructureAnalyser.gui
             barButtonItemCancelAnalyse.Enabled = false;
         }
 
+        private void analyserTreeListCtrlFolderStructure_FolderStructureLoadProgressChanged(object sender, TimedProgressChangedEventArgs e)
+        {
+            updateOperationTime(e.ElapsedMilliseconds);
+        }
+
+        private void barEditItembigFolderColour_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectedColour = (Color)(sender as BarEditItem).EditValue;
+            setBigFolderColour(selectedColour);
+        }
+
+        private void barEditItemBigFolderSize_EditValueChanged(object sender, EventArgs e)
+        {
+            var bigFolderSizeInMB = Convert.ToInt32((sender as BarEditItem).EditValue);
+            setBigFolderSize(bigFolderSizeInMB);
+        }
+
         private void ribbonControl1_SelectedPageChanged(object sender, EventArgs e)
         {
             var ribbon = sender as RibbonControl;
             updateContentPage(ribbon.SelectedPage);
-        }
-
-        private void barButtonItemCompareStructures_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            folderStructureCompareCtrl1.CompareFolderStructures();
-        }
-
-        private void analyserTreeListCtrlFolderStructure_FolderStructureLoadProgressChanged(object sender, TimedProgressChangedEventArgs e)
-        {
-            updateOperationTime(e.ElapsedMilliseconds);
         }
     }
 }
