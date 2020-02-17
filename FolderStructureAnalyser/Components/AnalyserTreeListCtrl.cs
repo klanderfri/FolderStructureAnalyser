@@ -49,11 +49,43 @@ namespace FolderStructureAnalyser.Components
         public event FolderStructureLoadFinishedHandler FolderStructureLoadFinished;
 
         /// <summary>
+        /// Event raised when the control is about to load a folder structure.
+        /// </summary>
+        [Category("Analyse")]
+        [Description("Occurs when the control is about to load a folder structure.")]
+        public event FolderStructureLoadStartHandler FolderStructureLoadStart;
+
+        /// <summary>
         /// Eventhandler for the event used when the folder structure has finished loading.
         /// </summary>
         /// <param name="sender">The user control raising the event.</param>
         /// <param name="e">The arguments for the event.</param>
         public delegate void FolderStructureLoadFinishedHandler(object sender, FolderStructureLoadFinishedArgs e);
+
+        /// <summary>
+        /// Eventhandler for the event used when the folder structure is about to be loaded.
+        /// </summary>
+        /// <param name="sender">The user control raising the event.</param>
+        /// <param name="e">The arguments for the event.</param>
+        public delegate void FolderStructureLoadStartHandler(object sender, FolderStructureLoadStartArgs e);
+
+        /// <summary>
+        /// Method raising the event used when the folder structure has finished loading.
+        /// </summary>
+        /// <param name="e">The arguments for the event.</param>
+        protected virtual void OnFolderStructureLoadFinished(FolderStructureLoadFinishedArgs e)
+        {
+            FolderStructureLoadFinished?.Invoke(this, e);
+        }
+
+        /// <summary>
+        /// Method raising the event used when the folder structure has finished loading.
+        /// </summary>
+        /// <param name="e">The arguments for the event.</param>
+        protected virtual void OnFolderStructureLoadStart(FolderStructureLoadStartArgs e)
+        {
+            FolderStructureLoadStart?.Invoke(this, e);
+        }
 
         public AnalyserTreeListCtrl()
         {
@@ -68,15 +100,55 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
+        /// Loads a folder structure the user selects.
+        /// </summary>
+        public void LoadFolderStructure()
+        {
+            if (mayStartAnalyse())
+            {
+                var path = askUserForRootPath();
+                LoadFolderStructure(path);
+            }
+        }
+
+        /// <summary>
         /// Loads a folder structure.
         /// </summary>
         /// <param name="rootPath">The path to the root folder.</param>
         /// <remarks>The tree list is reusable due to the passing of the path as a parameter instead of fetching it from the session.</remarks>
         public void LoadFolderStructure(string rootPath)
         {
-            splashScreenManagerWaitForStructureAnalyse.ShowWaitForm();
-            Session.Settings.FolderStructureSettings.RootPath = rootPath;
-            backgroundWorkerStructureAnalyser.RunWorkerAsync(rootPath);
+            if (mayStartAnalyse() && Directory.Exists(rootPath))
+            {
+                OnFolderStructureLoadStart(new FolderStructureLoadStartArgs());
+                splashScreenManagerWaitForStructureAnalyse.ShowWaitForm();
+                Session.Settings.FolderStructureSettings.RootPath = rootPath;
+                backgroundWorkerStructureAnalyser.RunWorkerAsync(rootPath);
+            }
+        }
+
+        /// <summary>
+        /// Promt the user for a root path.
+        /// </summary>
+        /// <returns>The full root path the user has selected.</returns>
+        private string askUserForRootPath()
+        {
+            folderBrowserDialogSelectRootFolder.ShowDialog();
+            return folderBrowserDialogSelectRootFolder.SelectedPath;
+        }
+
+        /// <summary>
+        /// Checks if an analyse can be started.
+        /// </summary>
+        /// <returns>TRUE if an analyse may start, else FALSE.</returns>
+        private bool mayStartAnalyse()
+        {
+            if (IsBusy)
+            {
+                MessageBoxes.ShowAnalyseInProgressMessage();
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -198,15 +270,6 @@ namespace FolderStructureAnalyser.Components
             //Tell the subscribers that the loading finished.
             var args = new FolderStructureLoadFinishedArgs() { Cancelled = e.Cancelled };
             OnFolderStructureLoadFinished(args);
-        }
-
-        /// <summary>
-        /// Method raising the event used when the folder structure has finished loading.
-        /// </summary>
-        /// <param name="e">The arguments for the event.</param>
-        protected virtual void OnFolderStructureLoadFinished(FolderStructureLoadFinishedArgs e)
-        {
-            FolderStructureLoadFinished?.Invoke(this, e);
         }
 
         /// <summary>

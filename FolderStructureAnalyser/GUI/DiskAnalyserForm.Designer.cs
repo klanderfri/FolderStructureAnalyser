@@ -45,7 +45,6 @@
             this.ribbonPageGroupOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageFolderStructureComparer = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupCompare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.folderBrowserDialogSelectRootFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.xtraTabControlAnalyserPages = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageAnalyseStructure = new DevExpress.XtraTab.XtraTabPage();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
@@ -228,11 +227,6 @@
             this.ribbonPageGroupCompare.ShowCaptionButton = false;
             this.ribbonPageGroupCompare.Text = "Compare";
             // 
-            // folderBrowserDialogSelectRootFolder
-            // 
-            this.folderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
-            this.folderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
-            // 
             // xtraTabControlAnalyserPages
             // 
             this.xtraTabControlAnalyserPages.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
@@ -265,6 +259,7 @@
             this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1367, 568);
             this.analyserTreeListCtrlFolderStructure.TabIndex = 4;
             this.analyserTreeListCtrlFolderStructure.FolderStructureLoadFinished += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadFinishedHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished);
+            this.analyserTreeListCtrlFolderStructure.FolderStructureLoadStart += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadStartHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadStart);
             // 
             // xtraTabPageCompareStructures
             // 
@@ -309,7 +304,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageFolderStructureAnalyser;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAnalyse;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAnalyseStructure;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSelectRootFolder;
         private DevExpress.XtraBars.BarEditItem barEditItemBigFolderColour;
         private DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit repositoryItemColorPickEditBigFolderColour;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupBigFolderSettings;

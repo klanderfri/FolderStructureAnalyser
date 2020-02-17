@@ -38,6 +38,7 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
             this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
+            this.folderBrowserDialogSelectRootFolder = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).BeginInit();
@@ -121,6 +122,11 @@
             // 
             this.splashScreenManagerWaitForStructureAnalyse.ClosingDelay = 500;
             // 
+            // folderBrowserDialogSelectRootFolder
+            // 
+            this.folderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
+            this.folderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
+            // 
             // AnalyserTreeListCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,5 +155,6 @@
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureAnalyse;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionTreeIcons;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSelectRootFolder;
     }
 }

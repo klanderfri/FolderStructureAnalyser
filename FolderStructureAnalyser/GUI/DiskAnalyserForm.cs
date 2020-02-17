@@ -64,38 +64,11 @@ namespace FolderStructureAnalyser.gui
         }
 
         /// <summary>
-        /// Starts an analyse of a folder structure.
-        /// </summary>
-        private void startFolderStructureAnalyse()
-        {
-            if (analyserTreeListCtrlFolderStructure.IsBusy)
-            {
-                showAnalyseInProgressMessage();
-            }
-            else
-            {
-                folderBrowserDialogSelectRootFolder.ShowDialog();
-                var path = folderBrowserDialogSelectRootFolder.SelectedPath;
-                if (!String.IsNullOrWhiteSpace(path))
-                {
-                    barButtonItemCancelAnalyse.Enabled = true;
-                    analyserTreeListCtrlFolderStructure.LoadFolderStructure(path);
-                }
-            }
-        }
-
-        /// <summary>
         /// Starts a comparision of two folder structures.
         /// </summary>
         private void startFolderStructureCompare()
         {
             throw new NotImplementedException();
-        }
-
-        private static void showAnalyseInProgressMessage()
-        {
-            var message = "An analyse is already in progress. Please wait for it to finish!";
-            MessageBox.Show(message, "Analyse in progress...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         /// <summary>
@@ -122,7 +95,7 @@ namespace FolderStructureAnalyser.gui
 
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
         {
-            startFolderStructureAnalyse();
+            analyserTreeListCtrlFolderStructure.LoadFolderStructure();
         }
 
         private void barButtonItemCancelAnalyse_ItemClick(object sender, ItemClickEventArgs e)
@@ -150,6 +123,11 @@ namespace FolderStructureAnalyser.gui
         {
             var bigFolderSizeInMB = Convert.ToInt32((sender as BarEditItem).EditValue);
             setBigFolderSize(bigFolderSizeInMB);
+        }
+
+        private void analyserTreeListCtrlFolderStructure_FolderStructureLoadStart(object sender, FolderStructureLoadStartArgs e)
+        {
+            barButtonItemCancelAnalyse.Enabled = true;
         }
 
         private void analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished(object sender, FolderStructureLoadFinishedArgs e)
