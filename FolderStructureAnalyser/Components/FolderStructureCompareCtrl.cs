@@ -15,6 +15,8 @@ namespace FolderStructureAnalyser.Components
     {
         public Session Session { get; set; }
 
+        public bool IsBusy { get { throw new NotImplementedException(); } }
+
         public FolderStructureCompareCtrl()
         {
             InitializeComponent();

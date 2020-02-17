@@ -179,6 +179,7 @@
             this.barButtonItemCompareStructures.Id = 8;
             this.barButtonItemCompareStructures.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCompareStructures.ImageOptions.SvgImage")));
             this.barButtonItemCompareStructures.Name = "barButtonItemCompareStructures";
+            this.barButtonItemCompareStructures.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCompareStructures_ItemClick);
             // 
             // ribbonPageFolderStructureAnalyser
             // 

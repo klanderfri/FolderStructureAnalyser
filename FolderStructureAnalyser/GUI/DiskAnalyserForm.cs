@@ -70,8 +70,7 @@ namespace FolderStructureAnalyser.gui
         {
             if (analyserTreeListCtrlFolderStructure.IsBusy)
             {
-                var message = "An analyse is already in progress. Please wait for it to finish!";
-                MessageBox.Show(message, "Analyse in progress...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                showAnalyseInProgressMessage();
             }
             else
             {
@@ -83,6 +82,20 @@ namespace FolderStructureAnalyser.gui
                     analyserTreeListCtrlFolderStructure.LoadFolderStructure(path);
                 }
             }
+        }
+
+        /// <summary>
+        /// Starts a comparision of two folder structures.
+        /// </summary>
+        private void startFolderStructureCompare()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void showAnalyseInProgressMessage()
+        {
+            var message = "An analyse is already in progress. Please wait for it to finish!";
+            MessageBox.Show(message, "Analyse in progress...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         /// <summary>
@@ -148,6 +161,11 @@ namespace FolderStructureAnalyser.gui
         {
             var ribbon = sender as RibbonControl;
             updateContentPage(ribbon.SelectedPage);
+        }
+
+        private void barButtonItemCompareStructures_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            startFolderStructureCompare();
         }
     }
 }
