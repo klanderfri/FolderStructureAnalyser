@@ -29,6 +29,7 @@ namespace FolderStructureAnalyser.gui
             setBigFolderColour(Session.Settings.FolderStructureSettings.BigFolderColour);
             setBigFolderSize(Session.Settings.FolderStructureSettings.BigFolderInBytes);
             analyserTreeListCtrlFolderStructure.SessionSet(Session);
+            folderStructureCompareCtrl1.SessionSet(Session);
             xtraTabControlAnalyserPages.ShowTabHeader = DefaultBoolean.False;
         }
 
