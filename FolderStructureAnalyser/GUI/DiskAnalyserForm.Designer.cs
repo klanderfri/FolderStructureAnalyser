@@ -208,6 +208,7 @@
             this.ribbonPageGroupOperations.ItemLinks.Add(this.barButtonItemSetAsRoot);
             this.ribbonPageGroupOperations.ItemLinks.Add(this.barButtonItemResetTreeView);
             this.ribbonPageGroupOperations.Name = "ribbonPageGroupOperations";
+            this.ribbonPageGroupOperations.ShowCaptionButton = false;
             this.ribbonPageGroupOperations.Text = "Operations";
             // 
             // ribbonPageFolderStructureComparer
@@ -221,6 +222,7 @@
             // 
             this.ribbonPageGroupCompare.ItemLinks.Add(this.barButtonItemCompareStructures);
             this.ribbonPageGroupCompare.Name = "ribbonPageGroupCompare";
+            this.ribbonPageGroupCompare.ShowCaptionButton = false;
             this.ribbonPageGroupCompare.Text = "Compare";
             // 
             // folderBrowserDialogSelectRootFolder
