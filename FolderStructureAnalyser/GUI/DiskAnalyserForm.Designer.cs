@@ -50,12 +50,14 @@
             this.xtraTabPageAnalyseStructure = new DevExpress.XtraTab.XtraTabPage();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
             this.xtraTabPageCompareStructures = new DevExpress.XtraTab.XtraTabPage();
+            this.folderStructureCompareCtrl1 = new FolderStructureAnalyser.Components.FolderStructureCompareCtrl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlAnalyserPages)).BeginInit();
             this.xtraTabControlAnalyserPages.SuspendLayout();
             this.xtraTabPageAnalyseStructure.SuspendLayout();
+            this.xtraTabPageCompareStructures.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -265,9 +267,19 @@
             // 
             // xtraTabPageCompareStructures
             // 
+            this.xtraTabPageCompareStructures.Controls.Add(this.folderStructureCompareCtrl1);
             this.xtraTabPageCompareStructures.Name = "xtraTabPageCompareStructures";
             this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(1367, 568);
             this.xtraTabPageCompareStructures.Text = "Compare Structures";
+            // 
+            // folderStructureCompareCtrl1
+            // 
+            this.folderStructureCompareCtrl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.folderStructureCompareCtrl1.Location = new System.Drawing.Point(0, 0);
+            this.folderStructureCompareCtrl1.Name = "folderStructureCompareCtrl1";
+            this.folderStructureCompareCtrl1.Session = null;
+            this.folderStructureCompareCtrl1.Size = new System.Drawing.Size(1367, 568);
+            this.folderStructureCompareCtrl1.TabIndex = 0;
             // 
             // DiskAnalyserForm
             // 
@@ -285,6 +297,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlAnalyserPages)).EndInit();
             this.xtraTabControlAnalyserPages.ResumeLayout(false);
             this.xtraTabPageAnalyseStructure.ResumeLayout(false);
+            this.xtraTabPageCompareStructures.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,6 +325,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPageAnalyseStructure;
         private Components.AnalyserTreeListCtrl analyserTreeListCtrlFolderStructure;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageCompareStructures;
+        private Components.FolderStructureCompareCtrl folderStructureCompareCtrl1;
     }
 }
 

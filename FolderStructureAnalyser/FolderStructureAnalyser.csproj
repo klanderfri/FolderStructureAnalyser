@@ -61,6 +61,12 @@
     <Compile Include="Components\AnalyserTreeListCtrl.Designer.cs">
       <DependentUpon>AnalyserTreeListCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\FolderStructureCompareCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\FolderStructureCompareCtrl.Designer.cs">
+      <DependentUpon>FolderStructureCompareCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\FolderStructureLoadFinishedArgs.cs" />
     <Compile Include="Components\WaitFormCommand.cs" />
     <Compile Include="Components\WaitForStructureAnalyseForm.cs">
@@ -87,6 +93,9 @@
     <Compile Include="SessionBound\Tools.cs" />
     <EmbeddedResource Include="Components\AnalyserTreeListCtrl.resx">
       <DependentUpon>AnalyserTreeListCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\FolderStructureCompareCtrl.resx">
+      <DependentUpon>FolderStructureCompareCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\WaitForStructureAnalyseForm.resx">
       <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>
