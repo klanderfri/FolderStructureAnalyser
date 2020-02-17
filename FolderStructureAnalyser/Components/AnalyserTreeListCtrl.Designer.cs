@@ -35,7 +35,6 @@
             this.repositoryItemTextEditFileSize = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.svgImageCollectionTreeIcons = new DevExpress.Utils.SvgImageCollection(this.components);
-            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
             this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
             this.xtraFolderBrowserDialogSelectRootFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
@@ -43,7 +42,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // treeListFolderStructure
@@ -143,7 +141,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,7 +150,6 @@
         private DevExpress.XtraTreeList.TreeList treeListFolderStructure;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnName;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnSize;
-        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSize;
         private System.ComponentModel.BackgroundWorker backgroundWorkerStructureAnalyser;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureAnalyse;
