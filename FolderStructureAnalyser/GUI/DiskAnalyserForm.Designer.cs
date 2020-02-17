@@ -39,12 +39,15 @@
             this.barButtonItemSetAsRoot = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemResetTreeView = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCompareStructures = new DevExpress.XtraBars.BarButtonItem();
+            this.barHeaderItemOperationTime = new DevExpress.XtraBars.BarHeaderItem();
+            this.barStaticItemOperationTime = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPageFolderStructureAnalyser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupBigFolderSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageFolderStructureComparer = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupCompare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabControlAnalyserPages = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageAnalyseStructure = new DevExpress.XtraTab.XtraTabPage();
             this.analyserTreeListCtrlFolderStructure = new FolderStructureAnalyser.Components.AnalyserTreeListCtrl();
@@ -71,9 +74,11 @@
             this.barButtonItemCancelAnalyse,
             this.barButtonItemSetAsRoot,
             this.barButtonItemResetTreeView,
-            this.barButtonItemCompareStructures});
+            this.barButtonItemCompareStructures,
+            this.barHeaderItemOperationTime,
+            this.barStaticItemOperationTime});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 9;
+            this.ribbonControl1.MaxItemId = 11;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageFolderStructureAnalyser,
@@ -85,6 +90,7 @@
             this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.Size = new System.Drawing.Size(1367, 154);
+            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.SelectedPageChanged += new System.EventHandler(this.ribbonControl1_SelectedPageChanged);
             // 
             // barButtonItemAnalyseStructure
@@ -180,6 +186,22 @@
             this.barButtonItemCompareStructures.Name = "barButtonItemCompareStructures";
             this.barButtonItemCompareStructures.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCompareStructures_ItemClick);
             // 
+            // barHeaderItemOperationTime
+            // 
+            this.barHeaderItemOperationTime.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.barHeaderItemOperationTime.Appearance.Options.UseFont = true;
+            this.barHeaderItemOperationTime.Caption = "Operation time:";
+            this.barHeaderItemOperationTime.Id = 9;
+            this.barHeaderItemOperationTime.Name = "barHeaderItemOperationTime";
+            this.barHeaderItemOperationTime.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // barStaticItemOperationTime
+            // 
+            this.barStaticItemOperationTime.Caption = "0 sec";
+            this.barStaticItemOperationTime.Id = 10;
+            this.barStaticItemOperationTime.Name = "barStaticItemOperationTime";
+            this.barStaticItemOperationTime.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
             // ribbonPageFolderStructureAnalyser
             // 
             this.ribbonPageFolderStructureAnalyser.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -227,6 +249,15 @@
             this.ribbonPageGroupCompare.ShowCaptionButton = false;
             this.ribbonPageGroupCompare.Text = "Compare";
             // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.ItemLinks.Add(this.barHeaderItemOperationTime);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItemOperationTime);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 722);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1367, 22);
+            // 
             // xtraTabControlAnalyserPages
             // 
             this.xtraTabControlAnalyserPages.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
@@ -260,6 +291,7 @@
             this.analyserTreeListCtrlFolderStructure.TabIndex = 4;
             this.analyserTreeListCtrlFolderStructure.FolderStructureLoadFinished += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadFinishedHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished);
             this.analyserTreeListCtrlFolderStructure.FolderStructureLoadStart += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadStartHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadStart);
+            this.analyserTreeListCtrlFolderStructure.FolderStructureLoadProgressChanged += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadProgressChangedHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadProgressChanged);
             // 
             // xtraTabPageCompareStructures
             // 
@@ -282,10 +314,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1367, 744);
+            this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.xtraTabControlAnalyserPages);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "DiskAnalyserForm";
             this.Ribbon = this.ribbonControl1;
+            this.StatusBar = this.ribbonStatusBar1;
             this.Text = "Disk Analyser";
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).EndInit();
@@ -321,6 +355,9 @@
         private Components.AnalyserTreeListCtrl analyserTreeListCtrlFolderStructure;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageCompareStructures;
         private Components.FolderStructureCompareCtrl folderStructureCompareCtrl1;
+        private DevExpress.XtraBars.BarHeaderItem barHeaderItemOperationTime;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemOperationTime;
+        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
     }
 }
 

@@ -66,6 +66,8 @@ namespace FolderStructureAnalyser.BuisnessObjects
                 {
                     UnavailableFolders.Add(child.FullName);
                 }
+
+                worker.ReportProgress(-1);
             }
         }
 
@@ -84,12 +86,16 @@ namespace FolderStructureAnalyser.BuisnessObjects
             {
                 if (worker.CancellationPending) { return; }
                 SizeInBytes += child.SizeInBytes;
+
+                worker.ReportProgress(-1);
             }
 
             foreach (var file in Info.GetFiles())
             {
                 if (worker.CancellationPending) { return; }
                 SizeInBytes += file.Length;
+
+                worker.ReportProgress(-1);
             }
         }
 

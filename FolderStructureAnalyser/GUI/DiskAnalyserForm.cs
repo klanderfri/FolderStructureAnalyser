@@ -1,6 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
-using System.Windows.Forms;
 using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
@@ -93,6 +93,18 @@ namespace FolderStructureAnalyser.gui
             }
         }
 
+        /// <summary>
+        /// Updates the label telling the user how long the folder structure analyse has run.
+        /// </summary>
+        /// <param name="elapsedMilliseconds">The amount of milliseconds that has passed since the analyse started.</param>
+        private void updateOperationTime(long elapsedMilliseconds)
+        {
+            var seconds = Math.Round((decimal)elapsedMilliseconds / 1000, 0);
+            var format = "{0} sec";
+            var text = String.Format(format, seconds);
+            barStaticItemOperationTime.Caption = text;
+        }
+
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
         {
             analyserTreeListCtrlFolderStructure.LoadFolderStructure();
@@ -128,11 +140,15 @@ namespace FolderStructureAnalyser.gui
         private void analyserTreeListCtrlFolderStructure_FolderStructureLoadStart(object sender, FolderStructureLoadStartArgs e)
         {
             barButtonItemCancelAnalyse.Enabled = true;
+            barHeaderItemOperationTime.Visibility = BarItemVisibility.Always;
+            barStaticItemOperationTime.Visibility = BarItemVisibility.Always;
         }
 
         private void analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished(object sender, FolderStructureLoadFinishedArgs e)
         {
             barButtonItemCancelAnalyse.Enabled = false;
+            barHeaderItemOperationTime.Visibility = BarItemVisibility.Never;
+            barStaticItemOperationTime.Visibility = BarItemVisibility.Never;
         }
 
         private void ribbonControl1_SelectedPageChanged(object sender, EventArgs e)
@@ -144,6 +160,12 @@ namespace FolderStructureAnalyser.gui
         private void barButtonItemCompareStructures_ItemClick(object sender, ItemClickEventArgs e)
         {
             startFolderStructureCompare();
+        }
+
+        private void analyserTreeListCtrlFolderStructure_FolderStructureLoadProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            var elapsedMilliseconds = (sender as AnalyserTreeListCtrl).ElapsedMilliseconds;
+            updateOperationTime(elapsedMilliseconds);
         }
     }
 }

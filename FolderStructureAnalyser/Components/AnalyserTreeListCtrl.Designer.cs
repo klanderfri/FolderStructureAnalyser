@@ -114,8 +114,10 @@
             // 
             // backgroundWorkerStructureAnalyser
             // 
+            this.backgroundWorkerStructureAnalyser.WorkerReportsProgress = true;
             this.backgroundWorkerStructureAnalyser.WorkerSupportsCancellation = true;
             this.backgroundWorkerStructureAnalyser.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStructureAnalyser_DoWork);
+            this.backgroundWorkerStructureAnalyser.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerStructureAnalyser_ProgressChanged);
             this.backgroundWorkerStructureAnalyser.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerStructureAnalyser_RunWorkerCompleted);
             // 
             // splashScreenManagerWaitForStructureAnalyse
