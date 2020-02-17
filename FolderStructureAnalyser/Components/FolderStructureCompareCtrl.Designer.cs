@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureCompare = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true, typeof(System.Windows.Forms.UserControl));
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.backgroundWorkerCompareFolders = new System.ComponentModel.BackgroundWorker();
@@ -56,11 +57,19 @@
             // 
             // xtraFolderBrowserDialogOriginalFolder
             // 
+            this.xtraFolderBrowserDialogOriginalFolder.Description = "Select the folder that should act as the original folder.";
             this.xtraFolderBrowserDialogOriginalFolder.SelectedPath = "xtraFolderBrowserDialog1";
+            this.xtraFolderBrowserDialogOriginalFolder.Title = "Select original folder";
             // 
             // xtraFolderBrowserDialogCloneFolder
             // 
+            this.xtraFolderBrowserDialogCloneFolder.Description = "S";
             this.xtraFolderBrowserDialogCloneFolder.SelectedPath = "xtraFolderBrowserDialog1";
+            this.xtraFolderBrowserDialogCloneFolder.Title = "Select cloned folder";
+            // 
+            // splashScreenManagerWaitForStructureCompare
+            // 
+            splashScreenManagerWaitForStructureCompare.ClosingDelay = 500;
             // 
             // FolderStructureCompareCtrl
             // 
