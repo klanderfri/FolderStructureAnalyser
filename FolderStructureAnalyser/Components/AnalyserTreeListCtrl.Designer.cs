@@ -36,7 +36,6 @@
             this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.svgImageCollectionTreeIcons = new DevExpress.Utils.SvgImageCollection(this.components);
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
-            this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
             this.timerOperationTime = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
@@ -116,10 +115,6 @@
             this.backgroundWorkerStructureAnalyser.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStructureAnalyser_DoWork);
             this.backgroundWorkerStructureAnalyser.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerStructureAnalyser_RunWorkerCompleted);
             // 
-            // splashScreenManagerWaitForStructureAnalyse
-            // 
-            this.splashScreenManagerWaitForStructureAnalyse.ClosingDelay = 500;
-            // 
             // timerOperationTime
             // 
             this.timerOperationTime.Tick += new System.EventHandler(this.timerOperationTime_Tick);
@@ -131,7 +126,6 @@
             this.Controls.Add(this.treeListFolderStructure);
             this.Name = "AnalyserTreeListCtrl";
             this.Size = new System.Drawing.Size(570, 266);
-            this.Resize += new System.EventHandler(this.AnalyserTreeListCtrl_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).EndInit();
@@ -146,7 +140,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnSize;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSize;
         private System.ComponentModel.BackgroundWorker backgroundWorkerStructureAnalyser;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureAnalyse;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionTreeIcons;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
         private System.Windows.Forms.Timer timerOperationTime;

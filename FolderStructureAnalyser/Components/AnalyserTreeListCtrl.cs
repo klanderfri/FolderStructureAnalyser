@@ -35,16 +35,6 @@ namespace FolderStructureAnalyser.Components
         private Stopwatch AnalyseOperationTime { get; set; } = new Stopwatch();
 
         /// <summary>
-        /// Keeps the last known position of the parent of the control.
-        /// </summary>
-        private Point LastKnownParentPosition { get; set; }
-
-        /// <summary>
-        /// Keeps the last known size of the control.
-        /// </summary>
-        private Size LastKnownSize { get; set; }
-
-        /// <summary>
         /// The folder structure from the last finished analyse.
         /// </summary>
         private BindingList<FolderNode> LastAnalysedStructure { get; set; }
@@ -123,14 +113,6 @@ namespace FolderStructureAnalyser.Components
             InitializeComponent();
         }
 
-        public override void SessionSet(Session session)
-        {
-            base.SessionSet(session);
-            LastKnownParentPosition = ParentForm.Location;
-            LastKnownSize = Size;
-            ParentForm.Move += ParentForm_Move;
-        }
-
         /// <summary>
         /// Loads a folder structure the user selects.
         /// </summary>
@@ -165,7 +147,7 @@ namespace FolderStructureAnalyser.Components
                 AnalyseOperationTime.Restart();
 
                 //Show the wait form.
-                splashScreenManagerWaitForStructureAnalyse.ShowWaitForm();
+                ShowWaitForm("Folder structure analyse in progress.");
 
                 //Load the folder structure.
                 Session.Settings.FolderStructureSettings.RootPath = rootPath;
@@ -327,7 +309,7 @@ namespace FolderStructureAnalyser.Components
             }
 
             //Stop components needed to handle the operation.
-            splashScreenManagerWaitForStructureAnalyse.CloseWaitForm();
+            CloseWaitForm();
             timerOperationTime.Stop();
             AnalyseOperationTime.Stop();
 
@@ -451,40 +433,6 @@ namespace FolderStructureAnalyser.Components
                 e.Graphics.DrawImage(openIcon, location);
                 e.Handled = true;
             }
-        }
-
-        private void ParentForm_Move(object sender, EventArgs e)
-        {
-            if (splashScreenManagerWaitForStructureAnalyse.IsSplashFormVisible)
-            {
-                //Find out how the wait form should be moved.
-                int diffX = ParentForm.Location.X - LastKnownParentPosition.X;
-                int diffY = ParentForm.Location.Y - LastKnownParentPosition.Y;
-                var vector = new int[] { diffX, diffY };
-
-                //Move the waitform.
-                splashScreenManagerWaitForStructureAnalyse.SendCommand(WaitFormCommand.Move, vector);
-            }
-
-            //Update the known parent position.
-            LastKnownParentPosition = ParentForm.Location;
-        }
-
-        private void AnalyserTreeListCtrl_Resize(object sender, EventArgs e)
-        {
-            if (splashScreenManagerWaitForStructureAnalyse.IsSplashFormVisible)
-            {
-                //Find out how the wait form should be moved.
-                int diffX = (Size.Width - LastKnownSize.Width) / 2;
-                int diffY = (Size.Height - LastKnownSize.Height) / 2;
-                var vector = new int[] { diffX, diffY };
-
-                //Move the waitform.
-                splashScreenManagerWaitForStructureAnalyse.SendCommand(WaitFormCommand.Move, vector);
-            }
-
-            //Update the known size.
-            LastKnownSize = Size;
         }
 
         private void treeListFolderStructure_DoubleClick(object sender, EventArgs e)

@@ -30,18 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.xtraFolderBrowserDialogSelectFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
+            this.splashScreenManagerWaitForm = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
             this.SuspendLayout();
             // 
             // xtraFolderBrowserDialogSelectFolder
             // 
-            this.xtraFolderBrowserDialogSelectFolder.SelectedPath = "xtraFolderBrowserDialog1";
             this.xtraFolderBrowserDialogSelectFolder.ShowNewFolderButton = false;
+            // 
+            // splashScreenManagerWaitForm
+            // 
+            this.splashScreenManagerWaitForm.ClosingDelay = 500;
             // 
             // FolderStructureAnalyserCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "FolderStructureAnalyserCtrl";
+            this.Resize += new System.EventHandler(this.FolderStructureAnalyserCtrl_Resize);
             this.ResumeLayout(false);
 
         }
@@ -49,5 +54,6 @@
         #endregion
 
         private DevExpress.XtraEditors.XtraFolderBrowserDialog xtraFolderBrowserDialogSelectFolder;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForm;
     }
 }
