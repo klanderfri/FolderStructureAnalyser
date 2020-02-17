@@ -39,6 +39,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
+            // splashScreenManagerWaitForStructureCompare
+            // 
+            splashScreenManagerWaitForStructureCompare.ClosingDelay = 500;
+            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -59,17 +63,15 @@
             // 
             this.xtraFolderBrowserDialogOriginalFolder.Description = "Select the folder that should act as the original folder.";
             this.xtraFolderBrowserDialogOriginalFolder.SelectedPath = "xtraFolderBrowserDialog1";
+            this.xtraFolderBrowserDialogOriginalFolder.ShowNewFolderButton = false;
             this.xtraFolderBrowserDialogOriginalFolder.Title = "Select original folder";
             // 
             // xtraFolderBrowserDialogCloneFolder
             // 
             this.xtraFolderBrowserDialogCloneFolder.Description = "Select the folder that should be considered a clone of the original folder.";
             this.xtraFolderBrowserDialogCloneFolder.SelectedPath = "xtraFolderBrowserDialog1";
+            this.xtraFolderBrowserDialogCloneFolder.ShowNewFolderButton = false;
             this.xtraFolderBrowserDialogCloneFolder.Title = "Select cloned folder";
-            // 
-            // splashScreenManagerWaitForStructureCompare
-            // 
-            splashScreenManagerWaitForStructureCompare.ClosingDelay = 500;
             // 
             // FolderStructureCompareCtrl
             // 
