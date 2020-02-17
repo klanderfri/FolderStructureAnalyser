@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using FolderStructureAnalyser.Components;
 using FolderStructureAnalyser.SessionBound;
@@ -35,9 +36,9 @@ namespace FolderStructureAnalyser.BuisnessObjects
         /// Creates an object representing a folder in a file-folder tree structure.
         /// </summary>
         /// <param name="session">The application session.</param>
-        /// <param name="worker">The worker responsible for the folder object creation.</param>
+        /// <param name="worker">The background worker responsible for the folder object creation.</param>
         /// <param name="folderpath">The physical path to the folder.</param>
-        public FolderData(Session session, ICancellable worker, string folderpath)
+        public FolderData(Session session, BackgroundWorker worker, string folderpath)
         {
             SessionSet(session);
 
@@ -50,8 +51,8 @@ namespace FolderStructureAnalyser.BuisnessObjects
         /// <summary>
         /// Adds the subfolder structure to the subfolder list.
         /// </summary>
-        /// <param name="worker">The worker responsible for the folder object creation.</param>
-        private void fillSubfolders(ICancellable worker)
+        /// <param name="worker">The background worker responsible for the folder object creation.</param>
+        private void fillSubfolders(BackgroundWorker worker)
         {
             foreach (var child in Info.GetDirectories())
             {
@@ -72,8 +73,8 @@ namespace FolderStructureAnalyser.BuisnessObjects
         /// <summary>
         /// Calculates the size of the folder and its content.
         /// </summary>
-        /// <param name="worker">The worker responsible for the folder object creation.</param>
-        private void calculateSize(ICancellable worker)
+        /// <param name="worker">The background worker responsible for the folder object creation.</param>
+        private void calculateSize(BackgroundWorker worker)
         {
             //The bottom folders finish the creation first and therefore
             //have their size when the top folders continue their creation.

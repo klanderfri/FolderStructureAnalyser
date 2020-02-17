@@ -10,25 +10,9 @@ using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
 {
-    public partial class FolderStructureAnalyserCtrl : UserControl, ISessionBound, ICancellable
+    public partial class FolderStructureAnalyserCtrl : UserControl, ISessionBound
     {
         public Session Session { get; set; }
-
-        /// <summary>
-        /// Tells if the control is busy analysing a folder structure.
-        /// </summary>
-        public bool IsBusy
-        {
-            get { return backgroundWorkerTimeHeavyAnalysis.IsBusy; }
-        }
-
-        /// <summary>
-        /// Tells if the analysis the control is doing is to be cancelled.
-        /// </summary>
-        public bool CancellationPending
-        {
-            get { return backgroundWorkerTimeHeavyAnalysis.CancellationPending; }
-        }
 
         /// <summary>
         /// The description used for the analysis handled by the control.
@@ -36,6 +20,11 @@ namespace FolderStructureAnalyser.Components
         [Category("Analyse")]
         [Description("The description used for the analysis handled by the control.")]
         public string WaitFormDescription { get; set; }
+
+        /// <summary>
+        /// The background worker responsible for performing the analysis.
+        /// </summary>
+        public BackgroundWorker AnalysisWorker { get { return backgroundWorkerTimeHeavyAnalysis; } }
 
         /// <summary>
         /// Keeps the last known position of the parent of the control.
@@ -154,7 +143,7 @@ namespace FolderStructureAnalyser.Components
             InitializeComponent();
         }
 
-        public virtual void SessionSet(Session session)
+        public void SessionSet(Session session)
         {
             Session = session;
             LastKnownParentPosition = ParentForm.Location;
@@ -168,7 +157,7 @@ namespace FolderStructureAnalyser.Components
         /// <param name="title">The title of the folder dialog.</param>
         /// <param name="description">The description within the folder dialog.</param>
         /// <returns>The full path to the selected folder, NULL if the user cancelled.</returns>
-        protected string ShowSelectFolderDialog(string title, string description)
+        public string ShowSelectFolderDialog(string title, string description)
         {
             xtraFolderBrowserDialogSelectFolder.Title = title;
             xtraFolderBrowserDialogSelectFolder.Description = description;
@@ -195,7 +184,20 @@ namespace FolderStructureAnalyser.Components
             splashScreenManagerWaitForm.CloseWaitForm();
         }
 
-        protected void StartAnalysis(object argument)
+        /// <summary>
+        /// Starts the analysis.
+        /// </summary>
+        /// <param name="path">The path that is to be included in the analysis.</param>
+        public void StartAnalysis(string path)
+        {
+            StartAnalysis(new List<string>() { path });
+        }
+
+        /// <summary>
+        /// Starts the analysis.
+        /// </summary>
+        /// <param name="paths">The paths that are to be included in the analysis.</param>
+        public void StartAnalysis(IEnumerable<string> paths)
         {
             //Tell the user that the loading has started.
             OnFolderStructureAnalysisStart(new FolderStructureAnalysisStartArgs());
@@ -213,7 +215,7 @@ namespace FolderStructureAnalyser.Components
             showWaitForm();
 
             //Load the folder structure.
-            backgroundWorkerTimeHeavyAnalysis.RunWorkerAsync(argument);
+            backgroundWorkerTimeHeavyAnalysis.RunWorkerAsync(paths);
         }
 
         /// <summary>
@@ -225,21 +227,12 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// Cancel the analysis.
-        /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public void CancelAsync()
-        {
-            CancelAnalysis();
-        }
-
-        /// <summary>
         /// Checks if an analysis can be started.
         /// </summary>
         /// <returns>TRUE if the operation may start, else FALSE.</returns>
-        protected bool MayStartAnalysis()
+        public bool MayStartAnalysis()
         {
-            if (IsBusy)
+            if (AnalysisWorker.IsBusy)
             {
                 MessageBoxes.ShowAnalyseInProgressMessage();
                 return false;
@@ -252,7 +245,7 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         /// <param name="path">The full path to the folder that is to be analysed.</param>
         /// <returns>TRUE if the operation may start, else FALSE.</returns>
-        protected bool MayStartAnalysis(string path)
+        public bool MayStartAnalysis(string path)
         {
             return MayStartAnalysis(new List<string>() { path });
         }
@@ -262,7 +255,7 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         /// <param name="paths">The full paths to the folders that are to be analysed.</param>
         /// <returns>TRUE if an analyse may start, else FALSE.</returns>
-        protected bool MayStartAnalysis(IEnumerable<string> paths)
+        public bool MayStartAnalysis(IEnumerable<string> paths)
         {
             if (!MayStartAnalysis()) { return false; }
 
@@ -279,7 +272,7 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         /// <param name="path">The path to test.</param>
         /// <returns>TRUE if the path is valid, else FALSE.</returns>
-        protected bool PathIsValid(string path)
+        public bool PathIsValid(string path)
         {
             if (String.IsNullOrWhiteSpace(path)) { return false; }
             if (!Directory.Exists(path))

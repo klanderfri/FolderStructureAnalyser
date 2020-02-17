@@ -2,7 +2,6 @@
 using System.IO;
 using System.Windows.Forms;
 using FolderStructureAnalyser.GUI;
-using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
 {

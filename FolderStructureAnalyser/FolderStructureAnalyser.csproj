@@ -76,7 +76,6 @@
       <DependentUpon>FolderStructureCompareCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\FolderStructureAnalysisStartArgs.cs" />
-    <Compile Include="Components\ICancellable.cs" />
     <Compile Include="Components\TimedProgressChangedEventArgs.cs" />
     <Compile Include="Components\WaitFormCommand.cs" />
     <Compile Include="Components\WaitForStructureAnalyseForm.cs">

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -57,7 +58,7 @@ namespace FolderStructureAnalyser.Components
                 var newRoot = getFolderFromNode(treeListFolderStructure.FocusedNode).FolderData;
                 var newStructure = new BindingList<FolderNode>();
                 var folderID = 0;
-                var worker = new FolderStructureAnalyserCtrl() as ICancellable; //Argh! This does NOT look nice! :-(
+                var worker = new BackgroundWorker();
 
                 addFolderToDataSource(worker, newStructure, newRoot, ref folderID, null);
 
@@ -112,9 +113,9 @@ namespace FolderStructureAnalyser.Components
 
         private void AnalyserTreeListCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
         {
-            var rootPath = e.Argument as string;
+            var rootPath = (e.Argument as IEnumerable<string>).First();
             var structure = new BindingList<FolderNode>();
-            var worker = sender as ICancellable;
+            var worker = (sender as FolderStructureAnalyserCtrl).AnalysisWorker;
 
             //Create the folder structure.
             var root = new FolderData(Session, worker, rootPath);
@@ -155,12 +156,12 @@ namespace FolderStructureAnalyser.Components
         /// <summary>
         /// Adds a folder and its structure to the tree.
         /// </summary>
-        /// <param name="worker">The worker responsible for process.</param>
+        /// <param name="worker">The backgroundWorker worker responsible for process.</param>
         /// <param name="structure">The folder structure containing the folder nodes.</param>
         /// <param name="folder">The folder to add.</param>
         /// <param name="folderID">The ID that should be assigned the node.</param>
         /// <param name="parentID">The ID of the node representing the folder parent.</param>
-        private void addFolderToDataSource(ICancellable worker, BindingList<FolderNode> structure, FolderData folder, ref int folderID, int? parentID)
+        private void addFolderToDataSource(BackgroundWorker worker, BindingList<FolderNode> structure, FolderData folder, ref int folderID, int? parentID)
         {
             //Add the node representing the folder.
             var node = new FolderNode()
