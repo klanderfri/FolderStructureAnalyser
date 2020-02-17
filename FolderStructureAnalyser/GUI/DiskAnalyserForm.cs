@@ -64,14 +64,6 @@ namespace FolderStructureAnalyser.gui
         }
 
         /// <summary>
-        /// Starts a comparision of two folder structures.
-        /// </summary>
-        private void startFolderStructureCompare()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Updates the content page shown to the user.
         /// </summary>
         /// <param name="currentRibbonPage">The currently selected page in the ribbon.</param>
@@ -155,7 +147,7 @@ namespace FolderStructureAnalyser.gui
 
         private void barButtonItemCompareStructures_ItemClick(object sender, ItemClickEventArgs e)
         {
-            startFolderStructureCompare();
+            folderStructureCompareCtrl1.CompareFolderStructures();
         }
 
         private void analyserTreeListCtrlFolderStructure_FolderStructureLoadProgressChanged(object sender, TimedProgressChangedEventArgs e)

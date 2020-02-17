@@ -26,5 +26,10 @@ namespace FolderStructureAnalyser.Components
         {
             Session = session;
         }
+
+        public void CompareFolderStructures()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
