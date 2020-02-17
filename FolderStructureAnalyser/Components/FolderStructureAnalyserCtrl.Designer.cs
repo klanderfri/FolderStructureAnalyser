@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.xtraFolderBrowserDialogSelectFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
             this.splashScreenManagerWaitForm = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
+            this.backgroundWorkerTimeHeavyAnalysis = new System.ComponentModel.BackgroundWorker();
+            this.timerAnalysisProgress = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // xtraFolderBrowserDialogSelectFolder
@@ -40,6 +42,16 @@
             // splashScreenManagerWaitForm
             // 
             this.splashScreenManagerWaitForm.ClosingDelay = 500;
+            // 
+            // backgroundWorkerTimeHeavyAnalysis
+            // 
+            this.backgroundWorkerTimeHeavyAnalysis.WorkerSupportsCancellation = true;
+            this.backgroundWorkerTimeHeavyAnalysis.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerTimeHeavyAnalysis_DoWork);
+            this.backgroundWorkerTimeHeavyAnalysis.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerTimeHeavyAnalysis_RunWorkerCompleted);
+            // 
+            // timerAnalysisProgress
+            // 
+            this.timerAnalysisProgress.Tick += new System.EventHandler(this.timerAnalysisProgress_Tick);
             // 
             // FolderStructureAnalyserCtrl
             // 
@@ -55,5 +67,7 @@
 
         private DevExpress.XtraEditors.XtraFolderBrowserDialog xtraFolderBrowserDialogSelectFolder;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForm;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerTimeHeavyAnalysis;
+        private System.Windows.Forms.Timer timerAnalysisProgress;
     }
 }

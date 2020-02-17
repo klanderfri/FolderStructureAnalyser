@@ -17,96 +17,9 @@ namespace FolderStructureAnalyser.Components
     public partial class AnalyserTreeListCtrl : FolderStructureAnalyserCtrl
     {
         /// <summary>
-        /// Tells if the control is busy analysing a folder structure.
-        /// </summary>
-        public bool IsBusy
-        {
-            get { return backgroundWorkerStructureAnalyser.IsBusy; }
-        }
-
-        /// <summary>
-        /// The amount of timer ticks elapsed since the last analyse was started.
-        /// </summary>
-        private long ElapsedTicks { get; set; }
-
-        /// <summary>
-        /// Watch keeping track of the lenght of the folder structure analyse.
-        /// </summary>
-        private Stopwatch AnalyseOperationTime { get; set; } = new Stopwatch();
-
-        /// <summary>
         /// The folder structure from the last finished analyse.
         /// </summary>
         private BindingList<FolderNode> LastAnalysedStructure { get; set; }
-
-        /// <summary>
-        /// Event raised when the control has finished loading the folder structure.
-        /// </summary>
-        [Category("Analyse")]
-        [Description("Occurs when the control has finished loading a folder structure.")]
-        public event FolderStructureLoadFinishedHandler FolderStructureLoadFinished;
-
-        /// <summary>
-        /// Event raised when the control is about to load a folder structure.
-        /// </summary>
-        [Category("Analyse")]
-        [Description("Occurs when the control is about to load a folder structure.")]
-        public event FolderStructureLoadStartHandler FolderStructureLoadStart;
-
-        /// <summary>
-        /// Event raised when the loading of a folder structure has progressed.
-        /// </summary>
-        [Category("Analyse")]
-        [Description("Occurs when the control is about to load a folder structure.")]
-        public event FolderStructureLoadProgressChangedHandler FolderStructureLoadProgressChanged;
-
-        /// <summary>
-        /// Eventhandler for the event used when the folder structure has finished loading.
-        /// </summary>
-        /// <param name="sender">The user control raising the event.</param>
-        /// <param name="e">The arguments for the event.</param>
-        public delegate void FolderStructureLoadFinishedHandler(object sender, FolderStructureLoadFinishedArgs e);
-
-        /// <summary>
-        /// Eventhandler for the event used when the folder structure is about to be loaded.
-        /// </summary>
-        /// <param name="sender">The user control raising the event.</param>
-        /// <param name="e">The arguments for the event.</param>
-        public delegate void FolderStructureLoadStartHandler(object sender, FolderStructureLoadStartArgs e);
-
-        /// <summary>
-        /// Eventhandler for the event used when the loading of a folder structure has progressed.
-        /// </summary>
-        /// <param name="sender">The user control raising the event.</param>
-        /// <param name="e">The arguments for the event.</param>
-        public delegate void FolderStructureLoadProgressChangedHandler(object sender, TimedProgressChangedEventArgs e);
-
-        /// <summary>
-        /// Method raising the event used when the folder structure has finished loading.
-        /// </summary>
-        /// <param name="e">The arguments for the event.</param>
-        protected virtual void OnFolderStructureLoadFinished(FolderStructureLoadFinishedArgs e)
-        {
-            FolderStructureLoadFinished?.Invoke(this, e);
-        }
-
-        /// <summary>
-        /// Method raising the event used when the folder structure has finished loading.
-        /// </summary>
-        /// <param name="e">The arguments for the event.</param>
-        protected virtual void OnFolderStructureLoadStart(FolderStructureLoadStartArgs e)
-        {
-            FolderStructureLoadStart?.Invoke(this, e);
-        }
-
-        /// <summary>
-        /// Method raising the event used when the loading of a folder structure has progressed.
-        /// </summary>
-        /// <param name="e">The arguments for the event.</param>
-        protected virtual void OnFolderStructureLoadProgressChanged(TimedProgressChangedEventArgs e)
-        {
-            FolderStructureLoadProgressChanged?.Invoke(this, e);
-        }
 
         public AnalyserTreeListCtrl()
         {
@@ -118,51 +31,19 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         public void LoadFolderStructure()
         {
-            if (mayStartAnalyse())
+            if (MayStartAnalysis())
             {
-                var path = ShowSelectFolderDialog("Select root folder", "Select the root folder to analyse.");
-                LoadFolderStructure(path);
-            }
-        }
+                //Select folder.
+                var rootPath = ShowSelectFolderDialog("Select root folder", "Select the root folder to analyse.");
 
-        /// <summary>
-        /// Loads a folder structure.
-        /// </summary>
-        /// <param name="rootPath">The path to the root folder.</param>
-        /// <remarks>The tree list is reusable due to the passing of the path as a parameter instead of fetching it from the session.</remarks>
-        public void LoadFolderStructure(string rootPath)
-        {
-            if (mayStartAnalyse(rootPath))
-            {
-                //Tell the user that the loading has started.
-                OnFolderStructureLoadStart(new FolderStructureLoadStartArgs());
+                if (PathIsValid(rootPath))
+                {
+                    //Store the path in the settings.
+                    Session.Settings.FolderStructureSettings.RootPath = rootPath;
 
-                //Send a first progress update to indicate 0 seconds progressed.
-                var progressArgs = new TimedProgressChangedEventArgs(0);
-                OnFolderStructureLoadProgressChanged(progressArgs);
-
-                //Start the timer keeping track of the progress.
-                ElapsedTicks = 0;
-                timerOperationTime.Start();
-                AnalyseOperationTime.Restart();
-
-                //Show the wait form.
-                ShowWaitForm("Folder structure analyse in progress.");
-
-                //Load the folder structure.
-                Session.Settings.FolderStructureSettings.RootPath = rootPath;
-                backgroundWorkerStructureAnalyser.RunWorkerAsync(rootPath);
-            }
-        }
-
-        /// <summary>
-        /// Cancels the running analyse.
-        /// </summary>
-        public void CancelAnalyse()
-        {
-            if (backgroundWorkerStructureAnalyser.IsBusy)
-            {
-                backgroundWorkerStructureAnalyser.CancelAsync();
+                    //Run the analysis.
+                    StartAnalysis(rootPath);
+                }
             }
         }
 
@@ -176,7 +57,7 @@ namespace FolderStructureAnalyser.Components
                 var newRoot = getFolderFromNode(treeListFolderStructure.FocusedNode).FolderData;
                 var newStructure = new BindingList<FolderNode>();
                 var folderID = 0;
-                var worker = new BackgroundWorker();
+                var worker = new FolderStructureAnalyserCtrl() as ICancellable; //Argh! This does NOT look nice! :-(
 
                 addFolderToDataSource(worker, newStructure, newRoot, ref folderID, null);
 
@@ -187,37 +68,6 @@ namespace FolderStructureAnalyser.Components
         public void ResetTreeToLastAnalyse()
         {
             updateDataSource(LastAnalysedStructure);
-        }
-
-        /// <summary>
-        /// Checks if an analyse can be started.
-        /// </summary>
-        /// <returns>TRUE if an analyse may start, else FALSE.</returns>
-        private bool mayStartAnalyse()
-        {
-            if (IsBusy)
-            {
-                MessageBoxes.ShowAnalyseInProgressMessage();
-                return false;
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// Checks if an analyse can be started.
-        /// </summary>
-        /// <param name="rootPath">The full path to the root folder that are to be analysed.</param>
-        /// <returns>TRUE if an analyse may start, else FALSE.</returns>
-        private bool mayStartAnalyse(string rootPath)
-        {
-            if (!mayStartAnalyse()) { return false; }
-            if (String.IsNullOrWhiteSpace(rootPath)) { return false; }
-            if (!Directory.Exists(rootPath))
-            {
-                MessageBoxes.ShowDirectoryDoesNotExistMessage(rootPath);
-                return false;
-            }
-            return true;
         }
 
         /// <summary>
@@ -260,11 +110,11 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
-        private void backgroundWorkerStructureAnalyser_DoWork(object sender, DoWorkEventArgs e)
+        private void AnalyserTreeListCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
         {
             var rootPath = e.Argument as string;
             var structure = new BindingList<FolderNode>();
-            var worker = sender as BackgroundWorker;
+            var worker = sender as ICancellable;
 
             //Create the folder structure.
             var root = new FolderData(Session, worker, rootPath);
@@ -291,14 +141,7 @@ namespace FolderStructureAnalyser.Components
             e.Result = structure;
         }
 
-        private void timerOperationTime_Tick(object sender, EventArgs e)
-        {
-            //Tell the user that the operation has progressed.
-            var args = new TimedProgressChangedEventArgs(AnalyseOperationTime.ElapsedMilliseconds);
-            OnFolderStructureLoadProgressChanged(args);
-        }
-
-        private void backgroundWorkerStructureAnalyser_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void AnalyserTreeListCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
             if (!e.Cancelled)
             {
@@ -307,30 +150,17 @@ namespace FolderStructureAnalyser.Components
                 updateDataSource(structure);
                 LastAnalysedStructure = structure;
             }
-
-            //Stop components needed to handle the operation.
-            CloseWaitForm();
-            timerOperationTime.Stop();
-            AnalyseOperationTime.Stop();
-
-            //Make a last progress update.
-            var progressArgs = new TimedProgressChangedEventArgs(AnalyseOperationTime.ElapsedMilliseconds);
-            OnFolderStructureLoadProgressChanged(progressArgs);
-
-            //Tell the subscribers that the loading finished.
-            var finishedArgs = new FolderStructureLoadFinishedArgs() { Cancelled = e.Cancelled };
-            OnFolderStructureLoadFinished(finishedArgs);
         }
 
         /// <summary>
         /// Adds a folder and its structure to the tree.
         /// </summary>
-        /// <param name="worker">The background worker responsible for process.</param>
+        /// <param name="worker">The worker responsible for process.</param>
         /// <param name="structure">The folder structure containing the folder nodes.</param>
         /// <param name="folder">The folder to add.</param>
         /// <param name="folderID">The ID that should be assigned the node.</param>
         /// <param name="parentID">The ID of the node representing the folder parent.</param>
-        private void addFolderToDataSource(BackgroundWorker worker, BindingList<FolderNode> structure, FolderData folder, ref int folderID, int? parentID)
+        private void addFolderToDataSource(ICancellable worker, BindingList<FolderNode> structure, FolderData folder, ref int folderID, int? parentID)
         {
             //Add the node representing the folder.
             var node = new FolderNode()

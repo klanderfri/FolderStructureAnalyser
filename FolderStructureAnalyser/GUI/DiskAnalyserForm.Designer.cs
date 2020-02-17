@@ -287,9 +287,9 @@
             this.analyserTreeListCtrlFolderStructure.Session = null;
             this.analyserTreeListCtrlFolderStructure.Size = new System.Drawing.Size(1367, 568);
             this.analyserTreeListCtrlFolderStructure.TabIndex = 4;
-            this.analyserTreeListCtrlFolderStructure.FolderStructureLoadFinished += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadFinishedHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished);
-            this.analyserTreeListCtrlFolderStructure.FolderStructureLoadStart += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadStartHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadStart);
-            this.analyserTreeListCtrlFolderStructure.FolderStructureLoadProgressChanged += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureLoadProgressChangedHandler(this.analyserTreeListCtrlFolderStructure_FolderStructureLoadProgressChanged);
+            this.analyserTreeListCtrlFolderStructure.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureAnalysisFinishedHandler(this.analyserTreeListCtrlFolderStructure_OnFolderStructureAnalysisFinished);
+            this.analyserTreeListCtrlFolderStructure.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureAnalysisStartHandler(this.analyserTreeListCtrlFolderStructure_OnFolderStructureAnalysisStart);
+            this.analyserTreeListCtrlFolderStructure.FolderStructureAnalysisProgressChanged += new FolderStructureAnalyser.Components.AnalyserTreeListCtrl.FolderStructureAnalysisProgressChangedHandler(this.analyserTreeListCtrlFolderStructure_OnFolderStructureAnalysisProgressChanged);
             // 
             // xtraTabPageCompareStructures
             // 

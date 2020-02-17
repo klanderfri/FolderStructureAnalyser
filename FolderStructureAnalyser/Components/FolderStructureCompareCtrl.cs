@@ -8,8 +8,6 @@ namespace FolderStructureAnalyser.Components
 {
     public partial class FolderStructureCompareCtrl : FolderStructureAnalyserCtrl
     {
-        public bool IsBusy { get { throw new NotImplementedException(); } }
-
         public FolderStructureCompareCtrl()
         {
             InitializeComponent();

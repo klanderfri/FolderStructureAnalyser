@@ -36,7 +36,7 @@
             this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.svgImageCollectionTreeIcons = new DevExpress.Utils.SvgImageCollection(this.components);
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
-            this.timerOperationTime = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).BeginInit();
@@ -112,12 +112,6 @@
             // backgroundWorkerStructureAnalyser
             // 
             this.backgroundWorkerStructureAnalyser.WorkerSupportsCancellation = true;
-            this.backgroundWorkerStructureAnalyser.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStructureAnalyser_DoWork);
-            this.backgroundWorkerStructureAnalyser.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerStructureAnalyser_RunWorkerCompleted);
-            // 
-            // timerOperationTime
-            // 
-            this.timerOperationTime.Tick += new System.EventHandler(this.timerOperationTime_Tick);
             // 
             // AnalyserTreeListCtrl
             // 
@@ -126,6 +120,9 @@
             this.Controls.Add(this.treeListFolderStructure);
             this.Name = "AnalyserTreeListCtrl";
             this.Size = new System.Drawing.Size(570, 266);
+            this.WaitFormDescription = "Structure size analysis in progress...";
+            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureAnalyserCtrl.FolderStructureAnalysisFinishedHandler(this.AnalyserTreeListCtrl_FolderStructureAnalysisFinished);
+            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.FolderStructureAnalyserCtrl.DoFolderStructureAnalysisHandler(this.AnalyserTreeListCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).EndInit();
@@ -142,6 +139,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerStructureAnalyser;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionTreeIcons;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
-        private System.Windows.Forms.Timer timerOperationTime;
+        private System.Windows.Forms.Timer timer1;
     }
 }

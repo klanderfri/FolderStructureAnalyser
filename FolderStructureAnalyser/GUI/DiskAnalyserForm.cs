@@ -105,7 +105,7 @@ namespace FolderStructureAnalyser.gui
 
         private void barButtonItemCancelAnalyse_ItemClick(object sender, ItemClickEventArgs e)
         {
-            analyserTreeListCtrlFolderStructure.CancelAnalyse();
+            analyserTreeListCtrlFolderStructure.CancelAnalysis();
         }
 
         private void barButtonItemSetAsRoot_ItemClick(object sender, ItemClickEventArgs e)
@@ -123,17 +123,17 @@ namespace FolderStructureAnalyser.gui
             folderStructureCompareCtrl1.CompareFolderStructures();
         }
 
-        private void analyserTreeListCtrlFolderStructure_FolderStructureLoadStart(object sender, FolderStructureLoadStartArgs e)
+        private void analyserTreeListCtrlFolderStructure_OnFolderStructureAnalysisStart(object sender, FolderStructureAnalysisStartArgs e)
         {
             barButtonItemCancelAnalyse.Enabled = true;
         }
 
-        private void analyserTreeListCtrlFolderStructure_FolderStructureLoadFinished(object sender, FolderStructureLoadFinishedArgs e)
+        private void analyserTreeListCtrlFolderStructure_OnFolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
             barButtonItemCancelAnalyse.Enabled = false;
         }
 
-        private void analyserTreeListCtrlFolderStructure_FolderStructureLoadProgressChanged(object sender, TimedProgressChangedEventArgs e)
+        private void analyserTreeListCtrlFolderStructure_OnFolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
         {
             updateOperationTime(e.ElapsedMilliseconds);
         }
