@@ -6,20 +6,13 @@ using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
 {
-    public partial class FolderStructureCompareCtrl : UserControl, ISessionBound
+    public partial class FolderStructureCompareCtrl : FolderStructureAnalyserCtrl
     {
-        public Session Session { get; set; }
-
         public bool IsBusy { get { throw new NotImplementedException(); } }
 
         public FolderStructureCompareCtrl()
         {
             InitializeComponent();
-        }
-
-        public void SessionSet(Session session)
-        {
-            Session = session;
         }
 
         public void CompareFolderStructures()

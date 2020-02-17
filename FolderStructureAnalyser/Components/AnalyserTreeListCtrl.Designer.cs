@@ -37,7 +37,6 @@
             this.svgImageCollectionTreeIcons = new DevExpress.Utils.SvgImageCollection(this.components);
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
             this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
-            this.xtraFolderBrowserDialogSelectRootFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
             this.timerOperationTime = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
@@ -121,11 +120,6 @@
             // 
             this.splashScreenManagerWaitForStructureAnalyse.ClosingDelay = 500;
             // 
-            // xtraFolderBrowserDialogSelectRootFolder
-            // 
-            this.xtraFolderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
-            this.xtraFolderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
-            // 
             // timerOperationTime
             // 
             this.timerOperationTime.Tick += new System.EventHandler(this.timerOperationTime_Tick);
@@ -155,7 +149,6 @@
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureAnalyse;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionTreeIcons;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
-        private DevExpress.XtraEditors.XtraFolderBrowserDialog xtraFolderBrowserDialogSelectRootFolder;
         private System.Windows.Forms.Timer timerOperationTime;
     }
 }

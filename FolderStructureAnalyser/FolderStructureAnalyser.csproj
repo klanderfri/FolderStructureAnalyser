@@ -63,6 +63,12 @@
     <Compile Include="Components\AnalyserTreeListCtrl.Designer.cs">
       <DependentUpon>AnalyserTreeListCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\FolderStructureAnalyserCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\FolderStructureAnalyserCtrl.Designer.cs">
+      <DependentUpon>FolderStructureAnalyserCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\FolderStructureCompareCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     <Compile Include="SessionBound\Tools.cs" />
     <EmbeddedResource Include="Components\AnalyserTreeListCtrl.resx">
       <DependentUpon>AnalyserTreeListCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\FolderStructureAnalyserCtrl.resx">
+      <DependentUpon>FolderStructureAnalyserCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\FolderStructureCompareCtrl.resx">
       <DependentUpon>FolderStructureCompareCtrl.cs</DependentUpon>

@@ -14,10 +14,8 @@ using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
 {
-    public partial class AnalyserTreeListCtrl : UserControl, ISessionBound
+    public partial class AnalyserTreeListCtrl : FolderStructureAnalyserCtrl
     {
-        public Session Session { get; set; }
-
         /// <summary>
         /// Tells if the control is busy analysing a folder structure.
         /// </summary>
@@ -125,9 +123,9 @@ namespace FolderStructureAnalyser.Components
             InitializeComponent();
         }
 
-        public void SessionSet(Session session)
+        public override void SessionSet(Session session)
         {
-            Session = session;
+            base.SessionSet(session);
             LastKnownParentPosition = ParentForm.Location;
             LastKnownSize = Size;
             ParentForm.Move += ParentForm_Move;
@@ -140,7 +138,7 @@ namespace FolderStructureAnalyser.Components
         {
             if (mayStartAnalyse())
             {
-                var path = askUserForRootPath();
+                var path = ShowSelectFolderDialog("Select root folder", "Select the root folder to analyse.");
                 LoadFolderStructure(path);
             }
         }
@@ -207,16 +205,6 @@ namespace FolderStructureAnalyser.Components
         public void ResetTreeToLastAnalyse()
         {
             updateDataSource(LastAnalysedStructure);
-        }
-
-        /// <summary>
-        /// Promt the user for a root path.
-        /// </summary>
-        /// <returns>The full root path the user has selected.</returns>
-        private string askUserForRootPath()
-        {
-            var result = xtraFolderBrowserDialogSelectRootFolder.ShowDialog();
-            return (result == DialogResult.OK) ? xtraFolderBrowserDialogSelectRootFolder.SelectedPath : null;
         }
 
         /// <summary>
