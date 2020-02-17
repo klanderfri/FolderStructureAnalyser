@@ -254,7 +254,7 @@ namespace FolderStructureAnalyser.Components
         /// Checks if an analysis can be started.
         /// </summary>
         /// <param name="paths">The full paths to the folders that are to be analysed.</param>
-        /// <returns>TRUE if an analyse may start, else FALSE.</returns>
+        /// <returns>TRUE if an analysis may start, else FALSE.</returns>
         public bool MayStartAnalysis(IEnumerable<string> paths)
         {
             if (!MayStartAnalysis()) { return false; }

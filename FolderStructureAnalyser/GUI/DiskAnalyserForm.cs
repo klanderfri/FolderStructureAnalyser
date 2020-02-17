@@ -87,9 +87,9 @@ namespace FolderStructureAnalyser.gui
         }
 
         /// <summary>
-        /// Updates the label telling the user how long the folder structure analyse has run.
+        /// Updates the label telling the user how long the folder structure analysis has run.
         /// </summary>
-        /// <param name="elapsedMilliseconds">The amount of milliseconds that has passed since the analyse started.</param>
+        /// <param name="elapsedMilliseconds">The amount of milliseconds that has passed since the analysis started.</param>
         private void updateOperationTime(long elapsedMilliseconds)
         {
             var seconds = (long)Math.Floor((decimal)elapsedMilliseconds / 1000);

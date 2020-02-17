@@ -18,7 +18,7 @@ namespace FolderStructureAnalyser.Components
     public partial class AnalyserTreeListCtrl : FolderStructureAnalyserCtrl
     {
         /// <summary>
-        /// The folder structure from the last finished analyse.
+        /// The folder structure from the last finished analysis.
         /// </summary>
         private BindingList<FolderNode> LastAnalysedStructure { get; set; }
 

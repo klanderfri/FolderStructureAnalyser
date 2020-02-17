@@ -8,8 +8,8 @@ namespace FolderStructureAnalyser.GUI
     {
         public static void ShowAnalyseInProgressMessage()
         {
-            var message = "An analyse is already in progress. Please wait for it to finish!";
-            MessageBox.Show(message, "Analyse in progress...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            var message = "An analysis is already in progress. Please wait for it to finish!";
+            MessageBox.Show(message, "Analysis in progress...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         public static void ShowDirectoryDoesNotExistMessage(string folderPath)

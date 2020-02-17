@@ -95,7 +95,7 @@
             // 
             // barButtonItemAnalyseStructure
             // 
-            this.barButtonItemAnalyseStructure.Caption = "Run Analyse";
+            this.barButtonItemAnalyseStructure.Caption = "Run Analysis";
             this.barButtonItemAnalyseStructure.Hint = "Analyses the selected root path and displays it.";
             this.barButtonItemAnalyseStructure.Id = 1;
             this.barButtonItemAnalyseStructure.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemAnalyseStructure.ImageOptions.SvgImage")));
@@ -153,7 +153,7 @@
             // 
             this.barButtonItemCancelAnalyse.Caption = "Cancel";
             this.barButtonItemCancelAnalyse.Enabled = false;
-            this.barButtonItemCancelAnalyse.Hint = "Cancels the current analyse.";
+            this.barButtonItemCancelAnalyse.Hint = "Cancels the current analysis.";
             this.barButtonItemCancelAnalyse.Id = 5;
             this.barButtonItemCancelAnalyse.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCancelAnalyse.ImageOptions.SvgImage")));
             this.barButtonItemCancelAnalyse.Name = "barButtonItemCancelAnalyse";
@@ -171,7 +171,7 @@
             // barButtonItemResetTreeView
             // 
             this.barButtonItemResetTreeView.Caption = "Reset Tree View";
-            this.barButtonItemResetTreeView.Hint = "Resets the folder structure to the state after the last finished analyse.";
+            this.barButtonItemResetTreeView.Hint = "Resets the folder structure to the state after the last finished analysis.";
             this.barButtonItemResetTreeView.Id = 7;
             this.barButtonItemResetTreeView.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemResetTreeView.ImageOptions.SvgImage")));
             this.barButtonItemResetTreeView.Name = "barButtonItemResetTreeView";
