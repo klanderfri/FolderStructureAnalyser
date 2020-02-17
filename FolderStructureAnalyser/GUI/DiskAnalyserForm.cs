@@ -95,9 +95,15 @@ namespace FolderStructureAnalyser.gui
             {
                 xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageAnalyseStructure;
             }
-            if (currentRibbonPage == ribbonPageFolderStructureComparer)
+            else if (currentRibbonPage == ribbonPageFolderStructureComparer)
             {
                 xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageCompareStructures;
+            }
+            else
+            {
+                var format = "The ribbon page '{0}' has not been assigned a content page.";
+                var message = String.Format(format, currentRibbonPage.Text);
+                throw new NotImplementedException(message);
             }
         }
 
