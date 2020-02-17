@@ -29,12 +29,7 @@ namespace FolderStructureAnalyser.Components
         /// <summary>
         /// The amount of milliseconds elapsed since the last analyse was started.
         /// </summary>
-        public long ElapsedMilliseconds { get { return AnalyseProgress.ElapsedMilliseconds; } }
-
-        /// <summary>
-        /// Watch keeping track of how long the analyse has run.
-        /// </summary>
-        private Stopwatch AnalyseProgress { get; set; } = new Stopwatch();
+        private int ElapsedSeconds { get; set; }
 
         /// <summary>
         /// Keeps the last known position of the parent of the control.
@@ -91,7 +86,7 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         /// <param name="sender">The user control raising the event.</param>
         /// <param name="e">The arguments for the event.</param>
-        public delegate void FolderStructureLoadProgressChangedHandler(object sender, ProgressChangedEventArgs e);
+        public delegate void FolderStructureLoadProgressChangedHandler(object sender, TimedProgressChangedEventArgs e);
 
         /// <summary>
         /// Method raising the event used when the folder structure has finished loading.
@@ -115,7 +110,7 @@ namespace FolderStructureAnalyser.Components
         /// Method raising the event used when the loading of a folder structure has progressed.
         /// </summary>
         /// <param name="e">The arguments for the event.</param>
-        protected virtual void OnFolderStructureLoadProgressChanged(ProgressChangedEventArgs e)
+        protected virtual void OnFolderStructureLoadProgressChanged(TimedProgressChangedEventArgs e)
         {
             FolderStructureLoadProgressChanged?.Invoke(this, e);
         }
@@ -154,9 +149,21 @@ namespace FolderStructureAnalyser.Components
         {
             if (mayStartAnalyse(rootPath))
             {
+                //Tell the user that the loading has started.
                 OnFolderStructureLoadStart(new FolderStructureLoadStartArgs());
-                AnalyseProgress.Restart();
+
+                //Send a first progress update to indicate 0 seconds progressed.
+                var progressArgs = new TimedProgressChangedEventArgs(0);
+                OnFolderStructureLoadProgressChanged(progressArgs);
+
+                //Start the timer keeping track of the progress.
+                ElapsedSeconds = 0;
+                timerOperationTime.Start();
+
+                //Show the wait form.
                 splashScreenManagerWaitForStructureAnalyse.ShowWaitForm();
+
+                //Load the folder structure.
                 Session.Settings.FolderStructureSettings.RootPath = rootPath;
                 backgroundWorkerStructureAnalyser.RunWorkerAsync(rootPath);
             }
@@ -306,14 +313,13 @@ namespace FolderStructureAnalyser.Components
 
             //Pass the analysed structure back.
             e.Result = structure;
-
-            //Make a last progress update.
-            worker.ReportProgress(100);
         }
 
-        private void backgroundWorkerStructureAnalyser_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void timerOperationTime_Tick(object sender, EventArgs e)
         {
-            OnFolderStructureLoadProgressChanged(e);
+            ElapsedSeconds++;
+            var args = new TimedProgressChangedEventArgs(ElapsedSeconds * 1000);
+            OnFolderStructureLoadProgressChanged(args);
         }
 
         private void backgroundWorkerStructureAnalyser_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -326,7 +332,7 @@ namespace FolderStructureAnalyser.Components
             }
 
             splashScreenManagerWaitForStructureAnalyse.CloseWaitForm();
-            AnalyseProgress.Stop();
+            timerOperationTime.Stop();
 
             //Tell the subscribers that the loading finished.
             var args = new FolderStructureLoadFinishedArgs() { Cancelled = e.Cancelled };
@@ -362,8 +368,6 @@ namespace FolderStructureAnalyser.Components
                 if (worker.CancellationPending) { return; }
 
                 addFolderToDataSource(worker, structure, child, ref folderID, node.ID);
-
-                worker.ReportProgress(-1);
             }
         }
 

@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Components\FolderStructureLoadFinishedArgs.cs" />
     <Compile Include="Components\FolderStructureLoadStartArgs.cs" />
+    <Compile Include="Components\TimedProgressChangedEventArgs.cs" />
     <Compile Include="Components\WaitFormCommand.cs" />
     <Compile Include="Components\WaitForStructureAnalyseForm.cs">
       <SubType>Form</SubType>

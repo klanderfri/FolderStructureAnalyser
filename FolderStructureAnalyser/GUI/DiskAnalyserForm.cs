@@ -158,10 +158,9 @@ namespace FolderStructureAnalyser.gui
             startFolderStructureCompare();
         }
 
-        private void analyserTreeListCtrlFolderStructure_FolderStructureLoadProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void analyserTreeListCtrlFolderStructure_FolderStructureLoadProgressChanged(object sender, TimedProgressChangedEventArgs e)
         {
-            var elapsedMilliseconds = (sender as AnalyserTreeListCtrl).ElapsedMilliseconds;
-            updateOperationTime(elapsedMilliseconds);
+            updateOperationTime(e.ElapsedMilliseconds);
         }
     }
 }

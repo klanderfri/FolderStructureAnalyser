@@ -39,6 +39,7 @@
             this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
             this.splashScreenManagerWaitForStructureAnalyse = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
             this.folderBrowserDialogSelectRootFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.timerOperationTime = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).BeginInit();
@@ -114,10 +115,8 @@
             // 
             // backgroundWorkerStructureAnalyser
             // 
-            this.backgroundWorkerStructureAnalyser.WorkerReportsProgress = true;
             this.backgroundWorkerStructureAnalyser.WorkerSupportsCancellation = true;
             this.backgroundWorkerStructureAnalyser.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStructureAnalyser_DoWork);
-            this.backgroundWorkerStructureAnalyser.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerStructureAnalyser_ProgressChanged);
             this.backgroundWorkerStructureAnalyser.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerStructureAnalyser_RunWorkerCompleted);
             // 
             // splashScreenManagerWaitForStructureAnalyse
@@ -128,6 +127,11 @@
             // 
             this.folderBrowserDialogSelectRootFolder.Description = "Select the root folder to analyse.";
             this.folderBrowserDialogSelectRootFolder.ShowNewFolderButton = false;
+            // 
+            // timerOperationTime
+            // 
+            this.timerOperationTime.Interval = 1000;
+            this.timerOperationTime.Tick += new System.EventHandler(this.timerOperationTime_Tick);
             // 
             // AnalyserTreeListCtrl
             // 
@@ -157,5 +161,6 @@
         private DevExpress.Utils.SvgImageCollection svgImageCollectionTreeIcons;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSelectRootFolder;
+        private System.Windows.Forms.Timer timerOperationTime;
     }
 }
