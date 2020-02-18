@@ -138,7 +138,9 @@ namespace FolderStructureAnalyser.Components
 
         private void updateDataSource(BindingList<StructureDifference> differences)
         {
-            throw new NotImplementedException();
+            gridControl1.BeginUpdate();
+            gridControl1.DataSource = differences;
+            gridControl1.EndUpdate();
         }
     }
 }
