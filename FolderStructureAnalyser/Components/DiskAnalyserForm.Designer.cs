@@ -45,7 +45,7 @@
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupBigFolderSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupCompare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupStopOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabControlAnalyserPages = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageAnalyseStructure = new DevExpress.XtraTab.XtraTabPage();
@@ -148,9 +148,9 @@
             // 
             // barButtonItemCancelAnalyse
             // 
-            this.barButtonItemCancelAnalyse.Caption = "Cancel";
+            this.barButtonItemCancelAnalyse.Caption = "Cancel operation";
             this.barButtonItemCancelAnalyse.Enabled = false;
-            this.barButtonItemCancelAnalyse.Hint = "Cancels the current analysis.";
+            this.barButtonItemCancelAnalyse.Hint = "Cancels the current operation.";
             this.barButtonItemCancelAnalyse.Id = 5;
             this.barButtonItemCancelAnalyse.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCancelAnalyse.ImageOptions.SvgImage")));
             this.barButtonItemCancelAnalyse.Name = "barButtonItemCancelAnalyse";
@@ -205,7 +205,7 @@
             this.ribbonPageGroupAnalyse,
             this.ribbonPageGroupBigFolderSettings,
             this.ribbonPageGroupCompare,
-            this.ribbonPageGroupOperations});
+            this.ribbonPageGroupStopOperations});
             this.ribbonPageAnalyseFolderStructure.Name = "ribbonPageAnalyseFolderStructure";
             this.ribbonPageAnalyseFolderStructure.Text = "Analyse";
             // 
@@ -233,12 +233,12 @@
             this.ribbonPageGroupCompare.ShowCaptionButton = false;
             this.ribbonPageGroupCompare.Text = "Compare";
             // 
-            // ribbonPageGroupOperations
+            // ribbonPageGroupStopOperations
             // 
-            this.ribbonPageGroupOperations.ItemLinks.Add(this.barButtonItemCancelAnalyse);
-            this.ribbonPageGroupOperations.Name = "ribbonPageGroupOperations";
-            this.ribbonPageGroupOperations.ShowCaptionButton = false;
-            this.ribbonPageGroupOperations.Text = "Operations";
+            this.ribbonPageGroupStopOperations.ItemLinks.Add(this.barButtonItemCancelAnalyse);
+            this.ribbonPageGroupStopOperations.Name = "ribbonPageGroupStopOperations";
+            this.ribbonPageGroupStopOperations.ShowCaptionButton = false;
+            this.ribbonPageGroupStopOperations.Text = "Stop";
             // 
             // ribbonStatusBar1
             // 
@@ -337,7 +337,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEditBigFolderSize;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCancelAnalyse;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSetAsRoot;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupOperations;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupStopOperations;
         private DevExpress.XtraBars.BarButtonItem barButtonItemResetTreeView;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCompareStructures;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupCompare;
