@@ -171,6 +171,7 @@
             this.bandedGridColumnItemName.Caption = "Item";
             this.bandedGridColumnItemName.FieldName = "ItemName";
             this.bandedGridColumnItemName.Name = "bandedGridColumnItemName";
+            this.bandedGridColumnItemName.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnItemName.Visible = true;
             this.bandedGridColumnItemName.Width = 200;
             // 
