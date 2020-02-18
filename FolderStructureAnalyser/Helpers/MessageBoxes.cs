@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace FolderStructureAnalyser.Helpers
 {
+    /// <summary>
+    /// Class holding dialogs with messages for the user.
+    /// </summary>
     public static class MessageBoxes
     {
         public static void ShowAnalyseInProgressMessage()
