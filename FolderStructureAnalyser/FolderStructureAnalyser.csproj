@@ -75,6 +75,7 @@
     <Compile Include="Components\FolderStructureComparerCtrl.Designer.cs">
       <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataObjects\StructureDifference.cs" />
     <Compile Include="Events\FolderStructureAnalysisStartArgs.cs" />
     <Compile Include="Events\TimedProgressChangedEventArgs.cs" />
     <Compile Include="Enums\WaitFormCommand.cs" />
@@ -85,6 +86,7 @@
       <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataObjects\FolderNode.cs" />
+    <Compile Include="Helpers\FileHandler.cs" />
     <Compile Include="Helpers\MessageBoxes.cs" />
     <Compile Include="Helpers\ByteSizeConverter.cs" />
     <Compile Include="SessionBound\ISessionBound.cs" />
