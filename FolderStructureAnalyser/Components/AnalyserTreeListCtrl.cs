@@ -39,9 +39,6 @@ namespace FolderStructureAnalyser.Components
 
                 if (PathIsValid(rootPath))
                 {
-                    //Store the path in the settings.
-                    Session.Settings.FolderStructureSettings.RootPath = rootPath;
-
                     //Run the analysis.
                     StartAnalysis(rootPath);
                 }
