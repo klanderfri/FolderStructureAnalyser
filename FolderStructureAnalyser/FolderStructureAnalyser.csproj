@@ -69,11 +69,11 @@
     <Compile Include="Components\FolderStructureParentCtrl.Designer.cs">
       <DependentUpon>FolderStructureParentCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\FolderStructureCompareCtrl.cs">
+    <Compile Include="Components\FolderStructureComparerCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\FolderStructureCompareCtrl.Designer.cs">
-      <DependentUpon>FolderStructureCompareCtrl.cs</DependentUpon>
+    <Compile Include="Components\FolderStructureComparerCtrl.Designer.cs">
+      <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="Events\FolderStructureAnalysisStartArgs.cs" />
     <Compile Include="Events\TimedProgressChangedEventArgs.cs" />
@@ -106,8 +106,8 @@
     <EmbeddedResource Include="Components\FolderStructureParentCtrl.resx">
       <DependentUpon>FolderStructureParentCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\FolderStructureCompareCtrl.resx">
-      <DependentUpon>FolderStructureCompareCtrl.cs</DependentUpon>
+    <EmbeddedResource Include="Components\FolderStructureComparerCtrl.resx">
+      <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\WaitForStructureAnalyseForm.resx">
       <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>

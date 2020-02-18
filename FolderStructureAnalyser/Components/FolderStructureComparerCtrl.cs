@@ -4,9 +4,9 @@ using System.ComponentModel;
 
 namespace FolderStructureAnalyser.Components
 {
-    public partial class FolderStructureCompareCtrl : FolderStructureParentCtrl
+    public partial class FolderStructureComparerCtrl : FolderStructureParentCtrl
     {
-        public FolderStructureCompareCtrl()
+        public FolderStructureComparerCtrl()
         {
             InitializeComponent();
         }
@@ -35,12 +35,12 @@ namespace FolderStructureAnalyser.Components
             return new List<string>() { originalFolder, clonedFolder };
         }
 
-        private void FolderStructureCompareCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
+        private void FolderStructureComparerCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void FolderStructureCompareCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        private void FolderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
             throw new NotImplementedException();
         }

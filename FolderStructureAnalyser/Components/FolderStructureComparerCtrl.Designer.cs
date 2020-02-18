@@ -1,6 +1,6 @@
 ﻿namespace FolderStructureAnalyser.Components
 {
-    partial class FolderStructureCompareCtrl
+    partial class FolderStructureComparerCtrl
     {
         /// <summary> 
         /// Required designer variable.
@@ -73,16 +73,16 @@
             this.xtraFolderBrowserDialogCloneFolder.ShowNewFolderButton = false;
             this.xtraFolderBrowserDialogCloneFolder.Title = "Select cloned folder";
             // 
-            // FolderStructureCompareCtrl
+            // FolderStructureComparerCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gridControl1);
-            this.Name = "FolderStructureCompareCtrl";
+            this.Name = "FolderStructureComparerCtrl";
             this.Size = new System.Drawing.Size(522, 316);
             this.WaitFormDescription = "Folder comparision in progress...";
-            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.FolderStructureCompareCtrl_FolderStructureAnalysisFinished);
-            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureCompareCtrl_DoFolderStructureAnalysis);
+            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.FolderStructureComparerCtrl_FolderStructureAnalysisFinished);
+            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureComparerCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);

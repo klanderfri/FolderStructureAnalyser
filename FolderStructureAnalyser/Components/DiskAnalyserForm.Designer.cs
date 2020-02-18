@@ -52,7 +52,7 @@
             this.xtraTabPageAnalyseStructure = new DevExpress.XtraTab.XtraTabPage();
             this.folderStructureAnalyserCtrl = new FolderStructureAnalyser.Components.FolderStructureAnalyserCtrl();
             this.xtraTabPageCompareStructures = new DevExpress.XtraTab.XtraTabPage();
-            this.folderStructureComparerCtrl = new FolderStructureAnalyser.Components.FolderStructureCompareCtrl();
+            this.folderStructureComparerCtrl = new FolderStructureAnalyser.Components.FolderStructureComparerCtrl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSize)).BeginInit();
@@ -279,7 +279,7 @@
             this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1367, 568);
             this.xtraTabPageAnalyseStructure.Text = "Analyse Structure";
             // 
-            // analyserTreeListCtrlFolderStructure
+            // folderStructureAnalyserCtrl
             // 
             this.folderStructureAnalyserCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.folderStructureAnalyserCtrl.Location = new System.Drawing.Point(0, 0);
@@ -298,7 +298,7 @@
             this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(1367, 568);
             this.xtraTabPageCompareStructures.Text = "Compare Structures";
             // 
-            // folderStructureCompareCtrl1
+            // folderStructureComparerCtrl
             // 
             this.folderStructureComparerCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.folderStructureComparerCtrl.Location = new System.Drawing.Point(0, 0);
@@ -352,7 +352,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPageAnalyseStructure;
         private Components.FolderStructureAnalyserCtrl folderStructureAnalyserCtrl;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageCompareStructures;
-        private Components.FolderStructureCompareCtrl folderStructureComparerCtrl;
+        private Components.FolderStructureComparerCtrl folderStructureComparerCtrl;
         private DevExpress.XtraBars.BarHeaderItem barHeaderItemOperationTime;
         private DevExpress.XtraBars.BarStaticItem barStaticItemOperationTime;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
