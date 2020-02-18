@@ -3,12 +3,36 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using FolderStructureAnalyser.DataObjects;
+using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
 
 namespace FolderStructureAnalyser.Components
 {
     public partial class FolderStructureComparerCtrl : FolderStructureParentCtrl
     {
+        /// <summary>
+        /// Event raised when the control has found a difference between two folder structures.
+        /// </summary>
+        [Category("Compare")]
+        [Description("Occurs when the control has found a difference between two folder structures.")]
+        public event FolderStructureDifferenceAddedHandler FolderStructureDifferenceAdded;
+
+        /// <summary>
+        /// Eventhandler for the event used when the control has found a difference between two folder structures.
+        /// </summary>
+        /// <param name="sender">The user control raising the event.</param>
+        /// <param name="e">The arguments for the event.</param>
+        public delegate void FolderStructureDifferenceAddedHandler(object sender, FolderStructureDifferenceAddedArgs e);
+
+        /// <summary>
+        /// Method raising the event used when the control has found a difference between two folder structures.
+        /// </summary>
+        /// <param name="e">The arguments for the event.</param>
+        protected virtual void OnFolderStructureDifferenceAdded(FolderStructureDifferenceAddedArgs e)
+        {
+            FolderStructureDifferenceAdded?.Invoke(this, e);
+        }
+
         public FolderStructureComparerCtrl()
         {
             InitializeComponent();
@@ -148,16 +172,21 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
-        private static void addDifference(BindingList<StructureDifference> differences, string originalRootPath, string cloneRootPath, string descriptionFormat, params object[] descriptionArgs)
+        private void addDifference(BindingList<StructureDifference> differences, string originalRootPath, string cloneRootPath, string descriptionFormat, params object[] descriptionArgs)
         {
             var description = String.Format(descriptionFormat, descriptionArgs);
             addDifference(differences, originalRootPath, cloneRootPath, description);
         }
 
-        private static void addDifference(BindingList<StructureDifference> differences, string originalRootPath, string cloneRootPath, string description)
+        private void addDifference(BindingList<StructureDifference> differences, string originalRootPath, string cloneRootPath, string description)
         {
+            //Add the differences.
             var diff = new StructureDifference(originalRootPath, cloneRootPath, description);
             differences.Add(diff);
+
+            //Raise the event.
+            var args = new FolderStructureDifferenceAddedArgs(diff);
+            OnFolderStructureDifferenceAdded(args);
         }
 
         private void updateDataSource(BindingList<StructureDifference> differences)
