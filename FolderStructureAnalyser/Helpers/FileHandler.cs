@@ -49,6 +49,7 @@ namespace FolderStructureAnalyser.Helpers
                 {
                     if ((subItem as T) == null)
                     {
+                        //Crash now instead of later.
                         throw new NullReferenceException("The subitem cannot be null");
                     }
 
