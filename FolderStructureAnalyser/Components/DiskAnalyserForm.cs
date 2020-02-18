@@ -64,28 +64,6 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// Updates the content page shown to the user.
-        /// </summary>
-        /// <param name="currentRibbonPage">The currently selected page in the ribbon.</param>
-        private void updateContentPage(RibbonPage currentRibbonPage)
-        {
-            if (currentRibbonPage == ribbonPageFolderStructureAnalyser)
-            {
-                xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageAnalyseStructure;
-            }
-            else if (currentRibbonPage == ribbonPageFolderStructureComparer)
-            {
-                xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageCompareStructures;
-            }
-            else
-            {
-                var format = "The ribbon page '{0}' has not been assigned a content page.";
-                var message = String.Format(format, currentRibbonPage.Text);
-                throw new NotImplementedException(message);
-            }
-        }
-
-        /// <summary>
         /// Updates the label telling the user how long the folder structure analysis has run.
         /// </summary>
         /// <param name="elapsedMilliseconds">The amount of milliseconds that has passed since the analysis started.</param>
@@ -105,6 +83,7 @@ namespace FolderStructureAnalyser.Components
         private void barButtonItemCancelAnalyse_ItemClick(object sender, ItemClickEventArgs e)
         {
             folderStructureAnalyserCtrl.CancelAnalysis();
+            folderStructureComparerCtrl.CancelAnalysis();
         }
 
         private void barButtonItemSetAsRoot_ItemClick(object sender, ItemClickEventArgs e)
@@ -122,17 +101,34 @@ namespace FolderStructureAnalyser.Components
             folderStructureComparerCtrl.CompareFolderStructures();
         }
 
-        private void folderStructureAnalyserCtrl_OnFolderStructureAnalysisStart(object sender, FolderStructureAnalysisStartArgs e)
+        private void folderStructureAnalyserCtrl_FolderStructureAnalysisStart(object sender, FolderStructureAnalysisStartArgs e)
         {
             barButtonItemCancelAnalyse.Enabled = true;
         }
 
-        private void folderStructureAnalyserCtrl_OnFolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        private void folderStructureComparerCtrl_FolderStructureAnalysisStart(object sender, FolderStructureAnalysisStartArgs e)
         {
-            barButtonItemCancelAnalyse.Enabled = false;
+            barButtonItemCancelAnalyse.Enabled = true;
         }
 
-        private void folderStructureAnalyserCtrl_OnFolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
+        private void folderStructureAnalyserCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        {
+            barButtonItemCancelAnalyse.Enabled = false;
+            xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageAnalyseStructure;
+        }
+
+        private void folderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        {
+            barButtonItemCancelAnalyse.Enabled = false;
+            xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageCompareStructures;
+        }
+
+        private void folderStructureAnalyserCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
+        {
+            updateOperationTime(e.ElapsedMilliseconds);
+        }
+
+        private void folderStructureComparerCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
         {
             updateOperationTime(e.ElapsedMilliseconds);
         }
@@ -147,12 +143,6 @@ namespace FolderStructureAnalyser.Components
         {
             var bigFolderSizeInMB = Convert.ToInt32((sender as BarEditItem).EditValue);
             setBigFolderSize(bigFolderSizeInMB);
-        }
-
-        private void ribbonControl1_SelectedPageChanged(object sender, EventArgs e)
-        {
-            var ribbon = sender as RibbonControl;
-            updateContentPage(ribbon.SelectedPage);
         }
     }
 }
