@@ -61,6 +61,15 @@ namespace FolderStructureAnalyser.Components
             e.Result = differences;
         }
 
+        private void FolderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (!e.Cancelled)
+            {
+                var differences = e.Result as BindingList<StructureDifference>;
+                updateDataSource(differences);
+            }
+        }
+
         private void compareFolders(string originalRootPath, string cloneRootPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
         {
             //Check if the clone folder exists.
@@ -139,32 +148,38 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
+        private static void addDifference(BindingList<StructureDifference> differences, string originalRootPath, string cloneRootPath, string descriptionFormat, params object[] descriptionArgs)
+        {
+            var description = String.Format(descriptionFormat, descriptionArgs);
+            addDifference(differences, originalRootPath, cloneRootPath, description);
+        }
+
         private static void addDifference(BindingList<StructureDifference> differences, string originalRootPath, string cloneRootPath, string description)
         {
             var diff = new StructureDifference(originalRootPath, cloneRootPath, description);
             differences.Add(diff);
         }
 
-        private static void addDifference(BindingList<StructureDifference> differences, string originalRootPath, string cloneRootPath, string descriptionFormat, params object[] descriptionArgs)
+        private void updateDataSource(BindingList<StructureDifference> differences)
         {
-            var description = String.Format(descriptionFormat, descriptionArgs);
-            var diff = new StructureDifference(originalRootPath, cloneRootPath, description);
-            differences.Add(diff);
-        }
-
-        private void FolderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (!e.Cancelled)
+            try
             {
-                var differences = e.Result as BindingList<StructureDifference>;
-                updateDataSource(differences);
+                beginUpdate();
+                gridControl1.DataSource = differences;
+            }
+            finally
+            {
+                endUpdate();
             }
         }
 
-        private void updateDataSource(BindingList<StructureDifference> differences)
+        private void beginUpdate()
         {
             gridControl1.BeginUpdate();
-            gridControl1.DataSource = differences;
+        }
+
+        private void endUpdate()
+        {
             gridControl1.EndUpdate();
         }
     }
