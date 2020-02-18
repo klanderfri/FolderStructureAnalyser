@@ -40,20 +40,31 @@ namespace FolderStructureAnalyser.Components
 
         private void FolderStructureComparerCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
         {
+            var worker = (sender as FolderStructureComparerCtrl).AnalysisWorker;
+
             var rootPaths = e.Argument as List<string>;
             var originalPath = rootPaths[0];
             var clonePath = rootPaths[1];
 
             var differences = new BindingList<StructureDifference>();
 
-            compareFolders(originalPath, clonePath, differences);
+            compareFolders(originalPath, clonePath, differences, worker);
 
+            //Check if the process was cancelled.
+            if (worker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            //Pass the comparison result back.
             e.Result = differences;
         }
 
-        private void compareFolders(string originalRootPath, string cloneRootPath, BindingList<StructureDifference> differences)
+        private void compareFolders(string originalRootPath, string cloneRootPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
         {
             //Check if the clone folder exists.
+            if (worker.CancellationPending) { return; }
             if (!Directory.Exists(cloneRootPath))
             {
                 var description = "The clone folder is missing.";
@@ -62,6 +73,7 @@ namespace FolderStructureAnalyser.Components
             }
 
             //Compare the folders.
+            if (worker.CancellationPending) { return; }
             var original = new DirectoryInfo(originalRootPath);
             var clone = new DirectoryInfo(cloneRootPath);
             if (original.Name != clone.Name)
@@ -78,9 +90,10 @@ namespace FolderStructureAnalyser.Components
             }
 
             //Compare the files in the folders.
-            compareFiles(originalRootPath, cloneRootPath, differences);
+            compareFiles(originalRootPath, cloneRootPath, differences, worker);
 
             //Compare subfolders recursively.
+            if (worker.CancellationPending) { return; }
             foreach (var indexOriginalSubfolder in FileHandler.GetDirectoryIndex(originalRootPath))
             {
                 var originalSubfolder = indexOriginalSubfolder.Value;
@@ -88,18 +101,20 @@ namespace FolderStructureAnalyser.Components
                 var originalPath = originalSubfolder.FullName;
                 var clonePath = Path.Combine(cloneRootPath, originalSubfolder.Name);
 
-                compareFolders(originalPath, clonePath, differences);
+                compareFolders(originalPath, clonePath, differences, worker);
             }
         }
 
-        private void compareFiles(string originalRootPath, string cloneRootPath, BindingList<StructureDifference> differences)
+        private void compareFiles(string originalRootPath, string cloneRootPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
         {
+            if (worker.CancellationPending) { return; }
             var originalFiles = FileHandler.GetFileIndex(originalRootPath);
             var cloneFiles = FileHandler.GetFileIndex(cloneRootPath);
 
             foreach (var indexOriginalFile in originalFiles)
             {
                 //Check if the clone file exists.
+                if (worker.CancellationPending) { return; }
                 var originalFile = indexOriginalFile.Value;
                 if (!cloneFiles.ContainsKey(originalFile.Name))
                 {
@@ -109,6 +124,7 @@ namespace FolderStructureAnalyser.Components
                 }
 
                 //Compare the files.
+                if (worker.CancellationPending) { return; }
                 var cloneFile = cloneFiles[originalFile.Name];
                 if (originalFile.Attributes != cloneFile.Attributes)
                 {
