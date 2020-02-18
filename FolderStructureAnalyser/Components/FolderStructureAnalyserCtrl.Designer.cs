@@ -1,6 +1,6 @@
 ﻿namespace FolderStructureAnalyser.Components
 {
-    partial class AnalyserTreeListCtrl
+    partial class FolderStructureAnalyserCtrl
     {
         /// <summary> 
         /// Required designer variable.
@@ -113,12 +113,12 @@
             // 
             this.backgroundWorkerStructureAnalyser.WorkerSupportsCancellation = true;
             // 
-            // AnalyserTreeListCtrl
+            // FolderStructureAnalyserCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.treeListFolderStructure);
-            this.Name = "AnalyserTreeListCtrl";
+            this.Name = "FolderStructureAnalyserCtrl";
             this.Size = new System.Drawing.Size(570, 266);
             this.WaitFormDescription = "Structure size analysis in progress...";
             this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.AnalyserTreeListCtrl_FolderStructureAnalysisFinished);

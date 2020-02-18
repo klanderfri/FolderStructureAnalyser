@@ -15,14 +15,14 @@ using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
 {
-    public partial class AnalyserTreeListCtrl : FolderStructureParentCtrl
+    public partial class FolderStructureAnalyserCtrl : FolderStructureParentCtrl
     {
         /// <summary>
         /// The folder structure from the last finished analysis.
         /// </summary>
         private BindingList<FolderNode> LastAnalysedStructure { get; set; }
 
-        public AnalyserTreeListCtrl()
+        public FolderStructureAnalyserCtrl()
         {
             InitializeComponent();
         }
