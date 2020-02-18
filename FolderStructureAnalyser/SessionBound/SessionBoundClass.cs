@@ -4,7 +4,7 @@
     {
         public Session Session { get; set; }
 
-        public void SessionSet(Session session)
+        public void SetSession(Session session)
         {
             Session = session;
         }

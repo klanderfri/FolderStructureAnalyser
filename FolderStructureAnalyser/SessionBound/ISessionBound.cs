@@ -4,6 +4,6 @@
     {
         Session Session { get; set; }
 
-        void SessionSet(Session session);
+        void SetSession(Session session);
     }
 }

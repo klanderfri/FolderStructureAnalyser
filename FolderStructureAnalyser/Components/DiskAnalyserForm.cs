@@ -23,13 +23,13 @@ namespace FolderStructureAnalyser.Components
             InitializeComponent();
         }
 
-        public void SessionSet(Session session)
+        public void SetSession(Session session)
         {
             Session = session;
             setBigFolderColour(Session.Settings.FolderStructureSettings.BigFolderColour);
             setBigFolderSize(Session.Settings.FolderStructureSettings.BigFolderInBytes);
-            folderStructureAnalyserCtrl.SessionSet(Session);
-            folderStructureComparerCtrl.SessionSet(Session);
+            folderStructureAnalyserCtrl.SetSession(session);
+            folderStructureComparerCtrl.SetSession(session);
         }
 
         /// <summary>

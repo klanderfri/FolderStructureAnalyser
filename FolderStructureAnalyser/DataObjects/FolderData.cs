@@ -39,7 +39,7 @@ namespace FolderStructureAnalyser.DataObjects
         /// <param name="folderpath">The physical path to the folder.</param>
         public FolderData(Session session, BackgroundWorker worker, string folderpath)
         {
-            SessionSet(session);
+            SetSession(session);
 
             Info = new DirectoryInfo(folderpath);
             
