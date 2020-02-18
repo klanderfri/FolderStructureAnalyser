@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace FolderStructureAnalyser.Components
 {
-    public partial class FolderStructureCompareCtrl : FolderStructureAnalyserCtrl
+    public partial class FolderStructureCompareCtrl : FolderStructureParentCtrl
     {
         public FolderStructureCompareCtrl()
         {

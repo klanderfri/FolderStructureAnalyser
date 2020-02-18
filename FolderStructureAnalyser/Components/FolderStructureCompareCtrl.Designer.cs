@@ -81,8 +81,8 @@
             this.Name = "FolderStructureCompareCtrl";
             this.Size = new System.Drawing.Size(522, 316);
             this.WaitFormDescription = "Folder comparision in progress...";
-            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureAnalyserCtrl.FolderStructureAnalysisFinishedHandler(this.FolderStructureCompareCtrl_FolderStructureAnalysisFinished);
-            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.FolderStructureAnalyserCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureCompareCtrl_DoFolderStructureAnalysis);
+            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.FolderStructureCompareCtrl_FolderStructureAnalysisFinished);
+            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureCompareCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);

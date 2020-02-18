@@ -1,6 +1,6 @@
 ﻿namespace FolderStructureAnalyser.Components
 {
-    partial class FolderStructureAnalyserCtrl
+    partial class FolderStructureParentCtrl
     {
         /// <summary> 
         /// Required designer variable.
@@ -53,11 +53,11 @@
             // 
             this.timerAnalysisProgress.Tick += new System.EventHandler(this.timerAnalysisProgress_Tick);
             // 
-            // FolderStructureAnalyserCtrl
+            // FolderStructureParentCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "FolderStructureAnalyserCtrl";
+            this.Name = "FolderStructureParentCtrl";
             this.Resize += new System.EventHandler(this.FolderStructureAnalyserCtrl_Resize);
             this.ResumeLayout(false);
 

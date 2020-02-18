@@ -15,7 +15,7 @@ using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
 {
-    public partial class AnalyserTreeListCtrl : FolderStructureAnalyserCtrl
+    public partial class AnalyserTreeListCtrl : FolderStructureParentCtrl
     {
         /// <summary>
         /// The folder structure from the last finished analysis.
@@ -112,7 +112,7 @@ namespace FolderStructureAnalyser.Components
         {
             var rootPath = (e.Argument as IEnumerable<string>).First();
             var structure = new BindingList<FolderNode>();
-            var worker = (sender as FolderStructureAnalyserCtrl).AnalysisWorker;
+            var worker = (sender as FolderStructureParentCtrl).AnalysisWorker;
 
             //Create the folder structure.
             var root = new FolderData(Session, worker, rootPath);

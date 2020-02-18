@@ -12,7 +12,7 @@ using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
 {
-    public partial class FolderStructureAnalyserCtrl : UserControl, ISessionBound
+    public partial class FolderStructureParentCtrl : UserControl, ISessionBound
     {
         public Session Session { get; set; }
 
@@ -140,7 +140,7 @@ namespace FolderStructureAnalyser.Components
             DoFolderStructureAnalysis?.Invoke(this, e);
         }
 
-        public FolderStructureAnalyserCtrl()
+        public FolderStructureParentCtrl()
         {
             InitializeComponent();
         }
