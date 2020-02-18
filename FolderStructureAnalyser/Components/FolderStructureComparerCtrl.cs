@@ -56,8 +56,8 @@ namespace FolderStructureAnalyser.Components
             //Check if the clone folder exists.
             if (!Directory.Exists(cloneRootPath))
             {
-                var diff = new StructureDifference(originalRootPath, "The clone folder is missing.");
-                differences.Add(diff);
+                var description = "The clone folder is missing.";
+                addDifference(differences, originalRootPath, cloneRootPath, description);
                 return;
             }
 
@@ -68,11 +68,12 @@ namespace FolderStructureAnalyser.Components
             {
                 //Should only be possible to happen for the selected root folders.
                 var format = "The clone root folder has a different name: {0}";
-                addDifference(originalRootPath, clone.Name, format, differences);
+                addDifference(differences, originalRootPath, cloneRootPath, format, clone.Name);
             }
             if (original.Attributes != clone.Attributes)
             {
-                var diff = new StructureDifference(originalRootPath, "The clone has different attributes.");
+                var description = "The clone has different attributes.";
+                var diff = new StructureDifference(originalRootPath, cloneRootPath, description);
                 differences.Add(diff);
             }
 
@@ -101,7 +102,7 @@ namespace FolderStructureAnalyser.Components
                 if (!cloneFiles.ContainsKey(originalFile.Name))
                 {
                     var format = "The clone is missing the file '{0}'.";
-                    addDifference(originalRootPath, originalFile.Name, format, differences);
+                    addDifference(differences, originalRootPath, cloneRootPath, format, originalFile.Name);
                     continue;
                 }
 
@@ -110,20 +111,26 @@ namespace FolderStructureAnalyser.Components
                 if (originalFile.Attributes != cloneFile.Attributes)
                 {
                     var format = "The clone file {0} has different attributes.";
-                    addDifference(originalRootPath, cloneFile.Name, format, differences);
+                    addDifference(differences, originalRootPath, cloneRootPath, format, cloneFile.Name);
                 }
                 if (originalFile.Length != cloneFile.Length)
                 {
                     var format = "The clone file {0} has a different size.";
-                    addDifference(originalRootPath, cloneFile.Name, format, differences);
+                    addDifference(differences, originalRootPath, cloneRootPath, format, cloneFile.Name);
                 }
             }
         }
 
-        private static void addDifference(string originalRootPath, string cloneFileName, string descriptionFormat, BindingList<StructureDifference> differences)
+        private static void addDifference(BindingList<StructureDifference> differences, string originalRootPath, string cloneRootPath, string description)
         {
-            var description = String.Format(descriptionFormat, cloneFileName);
-            var diff = new StructureDifference(originalRootPath, description);
+            var diff = new StructureDifference(originalRootPath, cloneRootPath, description);
+            differences.Add(diff);
+        }
+
+        private static void addDifference(BindingList<StructureDifference> differences, string originalRootPath, string cloneRootPath, string descriptionFormat, params object[] descriptionArgs)
+        {
+            var description = String.Format(descriptionFormat, descriptionArgs);
+            var diff = new StructureDifference(originalRootPath, cloneRootPath, description);
             differences.Add(diff);
         }
 
