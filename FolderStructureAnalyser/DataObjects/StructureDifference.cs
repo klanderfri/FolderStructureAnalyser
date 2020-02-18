@@ -3,6 +3,9 @@ using System.IO;
 
 namespace FolderStructureAnalyser.DataObjects
 {
+    /// <summary>
+    /// Class for object holding data about a difference between two folder structures.
+    /// </summary>
     public class StructureDifference
     {
         /// <summary>
@@ -16,12 +19,12 @@ namespace FolderStructureAnalyser.DataObjects
         public string OriginalFullPath { get; private set; }
 
         /// <summary>
-        /// The name of the original folder.
+        /// The name of the clone folder.
         /// </summary>
         public string CloneName { get; private set; }
 
         /// <summary>
-        /// The full path of the original folder.
+        /// The full path of the clone folder.
         /// </summary>
         public string CloneFullPath { get; private set; }
 
@@ -30,15 +33,23 @@ namespace FolderStructureAnalyser.DataObjects
         /// </summary>
         public string Description { get; private set; }
 
+        /// <summary>
+        /// Creates an object holding data about a difference between two folder structures.
+        /// </summary>
+        /// <param name="originalFullPath">The full path of the original folder.</param>
+        /// <param name="cloneFullPath">The full path of the clone folder.</param>
+        /// <param name="description">The description of the difference.</param>
         public StructureDifference(string originalFullPath, string cloneFullPath, string description)
         {
-            OriginalName = Path.GetDirectoryName(originalFullPath);
-            OriginalFullPath = originalFullPath;
+            var original = new DirectoryInfo(originalFullPath);
+            OriginalName = original.Name;
+            OriginalFullPath = original.FullName;
 
             if (!String.IsNullOrWhiteSpace(cloneFullPath))
             {
-                CloneName = Path.GetDirectoryName(cloneFullPath);
-                CloneFullPath = cloneFullPath;
+                var clone = new DirectoryInfo(cloneFullPath);
+                CloneName = clone.Name;
+                CloneFullPath = clone.FullName;
             }
 
             Description = description;
