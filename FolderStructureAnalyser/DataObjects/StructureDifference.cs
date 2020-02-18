@@ -34,25 +34,29 @@ namespace FolderStructureAnalyser.DataObjects
         public string Description { get; private set; }
 
         /// <summary>
+        /// The name of the item in question.
+        /// </summary>
+        public string ItemName { get; private set; }
+
+        /// <summary>
         /// Creates an object holding data about a difference between two folder structures.
         /// </summary>
         /// <param name="originalFullPath">The full path of the original folder.</param>
         /// <param name="cloneFullPath">The full path of the clone folder.</param>
         /// <param name="description">The description of the difference.</param>
-        public StructureDifference(string originalFullPath, string cloneFullPath, string description)
+        /// <param name="itemName">The name of the item in question.</param>
+        public StructureDifference(string originalFullPath, string cloneFullPath, string description, string itemName)
         {
             var original = new DirectoryInfo(originalFullPath);
             OriginalParentFolderName = original.Name;
             OriginalParentFolderFullPath = original.FullName;
 
-            if (!String.IsNullOrWhiteSpace(cloneFullPath))
-            {
-                var clone = new DirectoryInfo(cloneFullPath);
-                CloneParentFolderName = clone.Name;
-                CloneParentFolderFullPath = clone.FullName;
-            }
+            var clone = new DirectoryInfo(cloneFullPath);
+            CloneParentFolderName = clone.Name;
+            CloneParentFolderFullPath = clone.FullName;
 
             Description = description;
+            ItemName = itemName;
         }
     }
 }
