@@ -98,28 +98,21 @@ namespace FolderStructureAnalyser.Components
         {
             //Check if the clone folder exists.
             if (worker.CancellationPending) { return; }
-            if (!Directory.Exists(cloneRootPath))
+            var clone = new DirectoryInfo(cloneRootPath);
+            if (!clone.Exists)
             {
-                var description = "The clone folder is missing.";
-                addDifference(differences, originalRootPath, cloneRootPath, description);
+                var format = "The clone is missing the folder '{0}'.";
+                addDifference(differences, originalRootPath, cloneRootPath, format, clone.Name);
                 return;
             }
 
             //Compare the folders.
             if (worker.CancellationPending) { return; }
             var original = new DirectoryInfo(originalRootPath);
-            var clone = new DirectoryInfo(cloneRootPath);
-            if (original.Name != clone.Name)
-            {
-                //Should only be possible to happen for the selected root folders.
-                var format = "The clone root folder has a different name.";
-                addDifference(differences, originalRootPath, cloneRootPath, format);
-            }
             if (original.Attributes != clone.Attributes)
             {
-                var description = "The clone has different attributes.";
-                var diff = new StructureDifference(originalRootPath, cloneRootPath, description);
-                differences.Add(diff);
+                var format = "The clone folder '{0}' has different attributes.";
+                addDifference(differences, originalRootPath, cloneRootPath, format, clone.Name);
             }
 
             //Compare the files in the folders.
@@ -161,12 +154,12 @@ namespace FolderStructureAnalyser.Components
                 var cloneFile = cloneFiles[originalFile.Name];
                 if (originalFile.Attributes != cloneFile.Attributes)
                 {
-                    var format = "The clone file {0} has different attributes.";
+                    var format = "The clone file '{0}' has different attributes.";
                     addDifference(differences, originalRootPath, cloneRootPath, format, cloneFile.Name);
                 }
                 if (originalFile.Length != cloneFile.Length)
                 {
-                    var format = "The clone file {0} has a different size.";
+                    var format = "The clone file '{0}' has a different size.";
                     addDifference(differences, originalRootPath, cloneRootPath, format, cloneFile.Name);
                 }
             }

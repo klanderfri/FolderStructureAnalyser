@@ -11,22 +11,22 @@ namespace FolderStructureAnalyser.DataObjects
         /// <summary>
         /// The name of the original folder.
         /// </summary>
-        public string OriginalName { get; private set; }
+        public string OriginalParentFolderName { get; private set; }
 
         /// <summary>
         /// The full path of the original folder.
         /// </summary>
-        public string OriginalFullPath { get; private set; }
+        public string OriginalParentFolderFullPath { get; private set; }
 
         /// <summary>
         /// The name of the clone folder.
         /// </summary>
-        public string CloneName { get; private set; }
+        public string CloneParentFolderName { get; private set; }
 
         /// <summary>
         /// The full path of the clone folder.
         /// </summary>
-        public string CloneFullPath { get; private set; }
+        public string CloneParentFolderFullPath { get; private set; }
 
         /// <summary>
         /// The description of the difference.
@@ -42,14 +42,14 @@ namespace FolderStructureAnalyser.DataObjects
         public StructureDifference(string originalFullPath, string cloneFullPath, string description)
         {
             var original = new DirectoryInfo(originalFullPath);
-            OriginalName = original.Name;
-            OriginalFullPath = original.FullName;
+            OriginalParentFolderName = original.Name;
+            OriginalParentFolderFullPath = original.FullName;
 
             if (!String.IsNullOrWhiteSpace(cloneFullPath))
             {
                 var clone = new DirectoryInfo(cloneFullPath);
-                CloneName = clone.Name;
-                CloneFullPath = clone.FullName;
+                CloneParentFolderName = clone.Name;
+                CloneParentFolderFullPath = clone.FullName;
             }
 
             Description = description;
