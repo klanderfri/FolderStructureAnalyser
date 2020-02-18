@@ -31,7 +31,13 @@ namespace FolderStructureAnalyser.Helpers
             return getDiskItemIndex<DirectoryInfo>(folderPath, getSubItems);
         }
 
-
+        /// <summary>
+        /// Gives an index of the subitems within a folder.
+        /// </summary>
+        /// <typeparam name="T">The type of item info to return.</typeparam>
+        /// <param name="folderPath">The full path to the folder containing the subitems.</param>
+        /// <param name="getSubItems">A method fetching the subitems from the folder.</param>
+        /// <returns>A dictionary containing the subitem names and the subitems themselves.</returns>
         private static Dictionary<string, T> getDiskItemIndex<T>(string folderPath, Func<DirectoryInfo, IEnumerable<FileSystemInfo>> getSubItems) where T : FileSystemInfo
         {
             var folder = new DirectoryInfo(folderPath);
