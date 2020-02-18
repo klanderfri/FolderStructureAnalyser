@@ -99,7 +99,7 @@
             this.treeListColumnOpen.FieldName = "Open";
             this.treeListColumnOpen.Name = "treeListColumnOpen";
             this.treeListColumnOpen.OptionsColumn.AllowEdit = false;
-            this.treeListColumnOpen.ToolTip = "Dobule click the icon to open the folder in Windows Explorer.";
+            this.treeListColumnOpen.ToolTip = "Double click the icon to open the folder in Windows Explorer.";
             this.treeListColumnOpen.Visible = true;
             this.treeListColumnOpen.VisibleIndex = 2;
             // 
