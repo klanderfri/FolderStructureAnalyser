@@ -112,8 +112,8 @@ namespace FolderStructureAnalyser.Components
             if (original.Name != clone.Name)
             {
                 //Should only be possible to happen for the selected root folders.
-                var format = "The clone root folder has a different name: {0}";
-                addDifference(differences, originalRootPath, cloneRootPath, format, clone.Name);
+                var format = "The clone root folder has a different name.";
+                addDifference(differences, originalRootPath, cloneRootPath, format);
             }
             if (original.Attributes != clone.Attributes)
             {
