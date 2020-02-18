@@ -81,8 +81,10 @@ namespace FolderStructureAnalyser.Components
             compareFiles(originalRootPath, cloneRootPath, differences);
 
             //Compare subfolders recursively.
-            foreach (var originalSubfolder in original.GetDirectories())
+            foreach (var indexOriginalSubfolder in FileHandler.GetDirectoryIndex(originalRootPath))
             {
+                var originalSubfolder = indexOriginalSubfolder.Value;
+
                 var originalPath = originalSubfolder.FullName;
                 var clonePath = Path.Combine(cloneRootPath, originalSubfolder.Name);
 
