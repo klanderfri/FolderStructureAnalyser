@@ -158,11 +158,17 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         /// <param name="title">The title of the folder dialog.</param>
         /// <param name="description">The description within the folder dialog.</param>
+        /// <param name="resetSelectedPath">TRUE if the control should remember the last path the user selected, FALSE if the path should be reset.</param>
         /// <returns>The full path to the selected folder, NULL if the user cancelled.</returns>
-        public string ShowSelectFolderDialog(string title, string description)
+        public string ShowSelectFolderDialog(string title, string description, bool rememberSelectedPath = true)
         {
             xtraFolderBrowserDialogSelectFolder.Title = title;
             xtraFolderBrowserDialogSelectFolder.Description = description;
+
+            if (!rememberSelectedPath)
+            {
+                xtraFolderBrowserDialogSelectFolder.SelectedPath = null;
+            }
 
             var result = xtraFolderBrowserDialogSelectFolder.ShowDialog();
 
