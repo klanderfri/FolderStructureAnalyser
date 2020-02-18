@@ -258,12 +258,8 @@
             // 
             // xtraTabControlAnalyserPages
             // 
-            this.xtraTabControlAnalyserPages.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.xtraTabControlAnalyserPages.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControlAnalyserPages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControlAnalyserPages.Location = new System.Drawing.Point(0, 154);
-            this.xtraTabControlAnalyserPages.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
-            this.xtraTabControlAnalyserPages.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControlAnalyserPages.Name = "xtraTabControlAnalyserPages";
             this.xtraTabControlAnalyserPages.SelectedTabPage = this.xtraTabPageAnalyseStructure;
             this.xtraTabControlAnalyserPages.Size = new System.Drawing.Size(1367, 568);
@@ -276,7 +272,7 @@
             // 
             this.xtraTabPageAnalyseStructure.Controls.Add(this.folderStructureAnalyserCtrl);
             this.xtraTabPageAnalyseStructure.Name = "xtraTabPageAnalyseStructure";
-            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1367, 546);
+            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1365, 545);
             this.xtraTabPageAnalyseStructure.Text = "Analyse Structure";
             // 
             // folderStructureAnalyserCtrl
@@ -285,18 +281,18 @@
             this.folderStructureAnalyserCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureAnalyserCtrl.Name = "folderStructureAnalyserCtrl";
             this.folderStructureAnalyserCtrl.Session = null;
-            this.folderStructureAnalyserCtrl.Size = new System.Drawing.Size(1367, 546);
+            this.folderStructureAnalyserCtrl.Size = new System.Drawing.Size(1365, 545);
             this.folderStructureAnalyserCtrl.TabIndex = 4;
             this.folderStructureAnalyserCtrl.WaitFormDescription = "Structure size analysis in progress...";
-            this.folderStructureAnalyserCtrl.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureAnalyserCtrl.FolderStructureAnalysisFinishedHandler(this.folderStructureAnalyserCtrl_OnFolderStructureAnalysisFinished);
-            this.folderStructureAnalyserCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.FolderStructureAnalyserCtrl.FolderStructureAnalysisStartHandler(this.folderStructureAnalyserCtrl_OnFolderStructureAnalysisStart);
-            this.folderStructureAnalyserCtrl.FolderStructureAnalysisProgressChanged += new FolderStructureAnalyser.Components.FolderStructureAnalyserCtrl.FolderStructureAnalysisProgressChangedHandler(this.folderStructureAnalyserCtrl_OnFolderStructureAnalysisProgressChanged);
+            this.folderStructureAnalyserCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureAnalyserCtrl_OnFolderStructureAnalysisStart);
+            this.folderStructureAnalyserCtrl.FolderStructureAnalysisProgressChanged += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisProgressChangedHandler(this.folderStructureAnalyserCtrl_OnFolderStructureAnalysisProgressChanged);
+            this.folderStructureAnalyserCtrl.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.folderStructureAnalyserCtrl_OnFolderStructureAnalysisFinished);
             // 
             // xtraTabPageCompareStructures
             // 
             this.xtraTabPageCompareStructures.Controls.Add(this.folderStructureComparerCtrl);
             this.xtraTabPageCompareStructures.Name = "xtraTabPageCompareStructures";
-            this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(799, 322);
+            this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(1367, 546);
             this.xtraTabPageCompareStructures.Text = "Compare Structures";
             // 
             // folderStructureComparerCtrl
@@ -305,7 +301,7 @@
             this.folderStructureComparerCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureComparerCtrl.Name = "folderStructureComparerCtrl";
             this.folderStructureComparerCtrl.Session = null;
-            this.folderStructureComparerCtrl.Size = new System.Drawing.Size(799, 322);
+            this.folderStructureComparerCtrl.Size = new System.Drawing.Size(1367, 546);
             this.folderStructureComparerCtrl.TabIndex = 0;
             this.folderStructureComparerCtrl.WaitFormDescription = "Folder comparision in progress...";
             // 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using FolderStructureAnalyser.Events;
@@ -31,7 +30,6 @@ namespace FolderStructureAnalyser.Components
             setBigFolderSize(Session.Settings.FolderStructureSettings.BigFolderInBytes);
             folderStructureAnalyserCtrl.SessionSet(Session);
             folderStructureComparerCtrl.SessionSet(Session);
-            xtraTabControlAnalyserPages.ShowTabHeader = DefaultBoolean.False;
         }
 
         /// <summary>
