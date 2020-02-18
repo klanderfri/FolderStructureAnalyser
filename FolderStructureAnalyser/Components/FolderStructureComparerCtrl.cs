@@ -53,10 +53,10 @@ namespace FolderStructureAnalyser.Components
 
         private List<string> askUserForFoldersToCompare()
         {
-            var originalFolder = ShowSelectFolderDialog("Select original", "Select the folder that are to act as original.");
+            var originalFolder = ShowSelectFolderDialog("Select original", "Select the folder that is to act as original.");
             if (!PathIsValid(originalFolder)) { return null; }
 
-            var clonedFolder = ShowSelectFolderDialog("Select clone", "Select the folder that are to act as clone.");
+            var clonedFolder = ShowSelectFolderDialog("Select clone", "Select the folder that is to act as clone.");
             if (!PathIsValid(clonedFolder)) { return null; }
 
             return new List<string>() { originalFolder, clonedFolder };
