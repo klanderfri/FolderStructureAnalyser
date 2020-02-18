@@ -5,6 +5,7 @@ using DevExpress.Utils;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using FolderStructureAnalyser.Components;
+using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.gui

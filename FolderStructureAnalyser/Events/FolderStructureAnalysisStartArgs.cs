@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FolderStructureAnalyser.Components
+namespace FolderStructureAnalyser.Events
 {
     /// <summary>
     /// Class for object holding the arguments for the event used when a folder structure is about to be loaded.

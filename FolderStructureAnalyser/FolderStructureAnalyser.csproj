@@ -75,9 +75,9 @@
     <Compile Include="Components\FolderStructureCompareCtrl.Designer.cs">
       <DependentUpon>FolderStructureCompareCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\FolderStructureAnalysisStartArgs.cs" />
-    <Compile Include="Components\TimedProgressChangedEventArgs.cs" />
-    <Compile Include="Components\WaitFormCommand.cs" />
+    <Compile Include="Events\FolderStructureAnalysisStartArgs.cs" />
+    <Compile Include="Events\TimedProgressChangedEventArgs.cs" />
+    <Compile Include="Enums\WaitFormCommand.cs" />
     <Compile Include="Components\WaitForStructureAnalyseForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,4 +1,4 @@
-﻿namespace FolderStructureAnalyser.Components
+﻿namespace FolderStructureAnalyser.Enums
 {
     public enum WaitFormCommand
     {

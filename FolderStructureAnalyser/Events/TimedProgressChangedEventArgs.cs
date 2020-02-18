@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FolderStructureAnalyser.Components
+namespace FolderStructureAnalyser.Events
 {
     /// <summary>
     /// Provides data for an event keeping track of the progress of an operation with indeterminable length.

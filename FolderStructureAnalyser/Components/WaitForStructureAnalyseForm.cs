@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using DevExpress.XtraWaitForm;
+using FolderStructureAnalyser.Enums;
 
 namespace FolderStructureAnalyser.Components
 {
