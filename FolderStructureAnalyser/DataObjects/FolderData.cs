@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using FolderStructureAnalyser.Components;
 using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.DataObjects

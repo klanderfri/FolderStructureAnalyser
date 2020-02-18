@@ -1,5 +1,4 @@
 ﻿using FolderStructureAnalyser.DataObjects;
-using FolderStructureAnalyser.Helpers;
 
 namespace FolderStructureAnalyser.SessionBound
 {

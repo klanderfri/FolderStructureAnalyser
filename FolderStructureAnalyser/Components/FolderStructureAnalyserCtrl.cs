@@ -5,10 +5,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using FolderStructureAnalyser.Events;
-using FolderStructureAnalyser.SessionBound;
 using FolderStructureAnalyser.Enums;
+using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
+using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
 {
