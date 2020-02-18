@@ -145,7 +145,7 @@ namespace FolderStructureAnalyser.Components
             InitializeComponent();
         }
 
-        public void SessionSet(Session session)
+        public virtual void SessionSet(Session session)
         {
             Session = session;
             LastKnownParentPosition = ParentForm.Location;
