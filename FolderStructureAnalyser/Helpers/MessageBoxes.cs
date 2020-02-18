@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace FolderStructureAnalyser.GUI
+namespace FolderStructureAnalyser.Helpers
 {
     public static class MessageBoxes
     {

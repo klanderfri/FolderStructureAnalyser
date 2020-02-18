@@ -5,7 +5,7 @@ using System.IO;
 using FolderStructureAnalyser.Components;
 using FolderStructureAnalyser.SessionBound;
 
-namespace FolderStructureAnalyser.BuisnessObjects
+namespace FolderStructureAnalyser.DataObjects
 {
     /// <summary>
     /// Class for object representing a folder in a file-folder tree structure.

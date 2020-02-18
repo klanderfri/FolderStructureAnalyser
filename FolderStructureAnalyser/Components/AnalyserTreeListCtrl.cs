@@ -9,8 +9,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
-using FolderStructureAnalyser.BuisnessObjects;
-using FolderStructureAnalyser.GUI;
+using FolderStructureAnalyser.DataObjects;
+using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
@@ -237,7 +237,7 @@ namespace FolderStructureAnalyser.Components
         {
             //Show the size (in MB, GB, etc) instead of just the bytes.
             var sizeInBytes = Convert.ToInt64(e.Value);
-            e.DisplayText = Session.Tools.ByteSizeConverter.SizeStringFromByte(sizeInBytes);
+            e.DisplayText = ByteSizeConverter.SizeStringFromByte(sizeInBytes);
         }
 
         private void treeListFolderStructure_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)

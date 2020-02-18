@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FolderStructureAnalyser.SessionBound
+namespace FolderStructureAnalyser.Helpers
 {
     /// <summary>
     /// Class for converting byte sizes.
     /// </summary>
-    public class ByteSizeConverter
+    public static class ByteSizeConverter
     {
         /// <summary>
         /// Converts a size in bytes to a descriptive string.
         /// </summary>
         /// <param name="sizeInBytes">The size to convert.</param>
         /// <returns>A string describing the size.</returns>
-        public string SizeStringFromByte(long sizeInBytes)
+        public static string SizeStringFromByte(long sizeInBytes)
         {
             var units = new List<string> { "B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
 
@@ -37,7 +37,7 @@ namespace FolderStructureAnalyser.SessionBound
         /// <param name="size">The size to put into the string.</param>
         /// <param name="unit">The unit of the size.</param>
         /// <returns>The concatenated string.</returns>
-        private string getSizeText(double size, string unit)
+        private static string getSizeText(double size, string unit)
         {
             var numberOfDecimals = getNumberOfDecimals(size);
             var format = "{0:N" + numberOfDecimals + "}";
@@ -51,7 +51,7 @@ namespace FolderStructureAnalyser.SessionBound
         /// </summary>
         /// <param name="size">The size to use when deciding the number of decimals.</param>
         /// <returns>The number of decimals suitable for a size.</returns>
-        private int getNumberOfDecimals(double size)
+        private static int getNumberOfDecimals(double size)
         {
             if (size < 10) { return 2; }
             if (size < 100) { return 1; }
@@ -63,7 +63,7 @@ namespace FolderStructureAnalyser.SessionBound
         /// </summary>
         /// <param name="sizeInBytes">The size to convert.</param>
         /// <returns>The size in MB.</returns>
-        public double MbFromByte(long sizeInBytes)
+        public static double MbFromByte(long sizeInBytes)
         {
             return sizeInBytes / Math.Pow(1024, 2);
         }
@@ -73,7 +73,7 @@ namespace FolderStructureAnalyser.SessionBound
         /// </summary>
         /// <param name="sizeInMB">The size to convert.</param>
         /// <returns>The size in bytes.</returns>
-        public long BytesFromMB(int sizeInMB)
+        public static long BytesFromMB(int sizeInMB)
         {
             return sizeInMB * (int)Math.Pow(1024, 2);
         }

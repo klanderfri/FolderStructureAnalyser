@@ -6,9 +6,9 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using FolderStructureAnalyser.Events;
-using FolderStructureAnalyser.GUI;
 using FolderStructureAnalyser.SessionBound;
 using FolderStructureAnalyser.Enums;
+using FolderStructureAnalyser.Helpers;
 
 namespace FolderStructureAnalyser.Components
 {

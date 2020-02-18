@@ -6,6 +6,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using FolderStructureAnalyser.Components;
 using FolderStructureAnalyser.Events;
+using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.gui
@@ -50,7 +51,7 @@ namespace FolderStructureAnalyser.gui
         /// <param name="bigFolderInBytes">The size limit in bytes.</param>
         private void setBigFolderSize(long bigFolderInBytes)
         {
-            var bigFolderInMB = Session.Tools.ByteSizeConverter.MbFromByte(bigFolderInBytes);
+            var bigFolderInMB = ByteSizeConverter.MbFromByte(bigFolderInBytes);
             var bigFolderSize = (int)Math.Round(bigFolderInMB, 0);
             setBigFolderSize(bigFolderSize);
         }
@@ -62,7 +63,7 @@ namespace FolderStructureAnalyser.gui
         private void setBigFolderSize(int bigFolderInMB)
         {
             barEditItemBigFolderSize.EditValue = bigFolderInMB;
-            Session.Settings.FolderStructureSettings.BigFolderInBytes = Session.Tools.ByteSizeConverter.BytesFromMB(bigFolderInMB);
+            Session.Settings.FolderStructureSettings.BigFolderInBytes = ByteSizeConverter.BytesFromMB(bigFolderInMB);
         }
 
         /// <summary>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace FolderStructureAnalyser.SessionBound
+namespace FolderStructureAnalyser.DataObjects
 {
     /// <summary>
     /// Class for object holding the settings for a folder structure.

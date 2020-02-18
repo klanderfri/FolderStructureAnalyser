@@ -1,6 +1,4 @@
-﻿using FolderStructureAnalyser.BuisnessObjects;
-
-namespace FolderStructureAnalyser.GUI
+﻿namespace FolderStructureAnalyser.DataObjects
 {
     /// <summary>
     /// Object representing a folder when viewed in a tree.
