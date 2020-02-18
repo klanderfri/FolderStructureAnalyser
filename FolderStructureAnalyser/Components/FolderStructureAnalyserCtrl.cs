@@ -108,7 +108,7 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
-        private void AnalyserTreeListCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
+        private void FolderStructureAnalyserCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
         {
             var rootPath = (e.Argument as IEnumerable<string>).First();
             var structure = new BindingList<FolderNode>();
@@ -139,7 +139,7 @@ namespace FolderStructureAnalyser.Components
             e.Result = structure;
         }
 
-        private void AnalyserTreeListCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        private void FolderStructureAnalyserCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
             if (!e.Cancelled)
             {

@@ -121,8 +121,8 @@
             this.Name = "FolderStructureAnalyserCtrl";
             this.Size = new System.Drawing.Size(570, 266);
             this.WaitFormDescription = "Structure size analysis in progress...";
-            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.AnalyserTreeListCtrl_FolderStructureAnalysisFinished);
-            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.AnalyserTreeListCtrl_DoFolderStructureAnalysis);
+            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.FolderStructureAnalyserCtrl_FolderStructureAnalysisFinished);
+            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureAnalyserCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).EndInit();
