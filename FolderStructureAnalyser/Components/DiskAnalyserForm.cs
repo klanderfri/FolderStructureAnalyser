@@ -29,8 +29,8 @@ namespace FolderStructureAnalyser.Components
             Session = session;
             setBigFolderColour(Session.Settings.FolderStructureSettings.BigFolderColour);
             setBigFolderSize(Session.Settings.FolderStructureSettings.BigFolderInBytes);
-            analyserTreeListCtrlFolderStructure.SessionSet(Session);
-            folderStructureCompareCtrl1.SessionSet(Session);
+            folderStructureAnalyserCtrl.SessionSet(Session);
+            folderStructureComparerCtrl.SessionSet(Session);
             xtraTabControlAnalyserPages.ShowTabHeader = DefaultBoolean.False;
         }
 
@@ -101,40 +101,40 @@ namespace FolderStructureAnalyser.Components
 
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
         {
-            analyserTreeListCtrlFolderStructure.LoadFolderStructure();
+            folderStructureAnalyserCtrl.LoadFolderStructure();
         }
 
         private void barButtonItemCancelAnalyse_ItemClick(object sender, ItemClickEventArgs e)
         {
-            analyserTreeListCtrlFolderStructure.CancelAnalysis();
+            folderStructureAnalyserCtrl.CancelAnalysis();
         }
 
         private void barButtonItemSetAsRoot_ItemClick(object sender, ItemClickEventArgs e)
         {
-            analyserTreeListCtrlFolderStructure.SetFocusedNodeAsRoot();
+            folderStructureAnalyserCtrl.SetFocusedNodeAsRoot();
         }
 
         private void barButtonItemResetTreeView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            analyserTreeListCtrlFolderStructure.ResetTreeToLastAnalyse();
+            folderStructureAnalyserCtrl.ResetTreeToLastAnalyse();
         }
 
         private void barButtonItemCompareStructures_ItemClick(object sender, ItemClickEventArgs e)
         {
-            folderStructureCompareCtrl1.CompareFolderStructures();
+            folderStructureComparerCtrl.CompareFolderStructures();
         }
 
-        private void analyserTreeListCtrlFolderStructure_OnFolderStructureAnalysisStart(object sender, FolderStructureAnalysisStartArgs e)
+        private void folderStructureAnalyserCtrl_OnFolderStructureAnalysisStart(object sender, FolderStructureAnalysisStartArgs e)
         {
             barButtonItemCancelAnalyse.Enabled = true;
         }
 
-        private void analyserTreeListCtrlFolderStructure_OnFolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        private void folderStructureAnalyserCtrl_OnFolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
             barButtonItemCancelAnalyse.Enabled = false;
         }
 
-        private void analyserTreeListCtrlFolderStructure_OnFolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
+        private void folderStructureAnalyserCtrl_OnFolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
         {
             updateOperationTime(e.ElapsedMilliseconds);
         }

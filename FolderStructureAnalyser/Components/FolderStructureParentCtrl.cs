@@ -302,7 +302,7 @@ namespace FolderStructureAnalyser.Components
             LastKnownParentPosition = ParentForm.Location;
         }
 
-        private void FolderStructureAnalyserCtrl_Resize(object sender, EventArgs e)
+        private void FolderStructureParentCtrl_Resize(object sender, EventArgs e)
         {
             if (splashScreenManagerWaitForm.IsSplashFormVisible)
             {
