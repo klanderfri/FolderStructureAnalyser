@@ -1,4 +1,4 @@
-﻿namespace FolderStructureAnalyser.gui
+﻿namespace FolderStructureAnalyser.Components
 {
     partial class DiskAnalyserForm
     {

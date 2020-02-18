@@ -9,7 +9,7 @@ using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
 
-namespace FolderStructureAnalyser.gui
+namespace FolderStructureAnalyser.Components
 {
     public partial class DiskAnalyserForm : RibbonForm, ISessionBound
     {
