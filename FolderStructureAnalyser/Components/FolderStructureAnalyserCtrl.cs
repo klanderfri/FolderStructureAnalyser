@@ -201,16 +201,7 @@ namespace FolderStructureAnalyser.Components
             }
             if (e.Column == treeListColumnOpen)
             {
-                e.DefaultDraw();
-
-                var openIcon = svgImageCollectionTreeIcons.GetImage(2);
-
-                var location = e.Bounds.Location;
-                int middleX = (e.Column.Width - openIcon.Width) / 2;
-                location.Offset(middleX, 1);
-
-                e.Graphics.DrawImage(openIcon, location);
-                e.Handled = true;
+                DrawCellNodeIcon(e, e.Column.Width, 2, svgImageCollectionTreeIcons);
             }
         }
 

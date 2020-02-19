@@ -32,20 +32,22 @@
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureCompare = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true, typeof(System.Windows.Forms.UserControl));
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBandDifference = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumnDescription = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnItemType = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBandOriginal = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnOriginalName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnOriginalFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBandClone = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnCloneName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCloneFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBandDifference = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumnDescription = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumnItemType = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.backgroundWorkerCompareFolders = new System.ComponentModel.BackgroundWorker();
             this.xtraFolderBrowserDialogOriginalFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
             this.xtraFolderBrowserDialogCloneFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
+            this.svgImageCollectionGridIcons = new DevExpress.Utils.SvgImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionGridIcons)).BeginInit();
             this.SuspendLayout();
             // 
             // splashScreenManagerWaitForStructureCompare
@@ -80,6 +82,34 @@
             this.bandedGridView1.GridControl = this.gridControl1;
             this.bandedGridView1.Name = "bandedGridView1";
             this.bandedGridView1.OptionsView.ColumnAutoWidth = false;
+            this.bandedGridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.bandedGridView1_CustomDrawCell);
+            // 
+            // gridBandDifference
+            // 
+            this.gridBandDifference.Caption = "Difference";
+            this.gridBandDifference.Columns.Add(this.bandedGridColumnDescription);
+            this.gridBandDifference.Columns.Add(this.bandedGridColumnItemType);
+            this.gridBandDifference.Name = "gridBandDifference";
+            this.gridBandDifference.VisibleIndex = 0;
+            this.gridBandDifference.Width = 270;
+            // 
+            // bandedGridColumnDescription
+            // 
+            this.bandedGridColumnDescription.Caption = "Description";
+            this.bandedGridColumnDescription.FieldName = "Description";
+            this.bandedGridColumnDescription.Name = "bandedGridColumnDescription";
+            this.bandedGridColumnDescription.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumnDescription.Visible = true;
+            this.bandedGridColumnDescription.Width = 220;
+            // 
+            // bandedGridColumnItemType
+            // 
+            this.bandedGridColumnItemType.Caption = "Type";
+            this.bandedGridColumnItemType.FieldName = "ItemType";
+            this.bandedGridColumnItemType.Name = "bandedGridColumnItemType";
+            this.bandedGridColumnItemType.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumnItemType.Visible = true;
+            this.bandedGridColumnItemType.Width = 50;
             // 
             // gridBandOriginal
             // 
@@ -135,33 +165,6 @@
             this.bandedGridColumnCloneFullPath.Visible = true;
             this.bandedGridColumnCloneFullPath.Width = 520;
             // 
-            // gridBandDifference
-            // 
-            this.gridBandDifference.Caption = "Difference";
-            this.gridBandDifference.Columns.Add(this.bandedGridColumnDescription);
-            this.gridBandDifference.Columns.Add(this.bandedGridColumnItemType);
-            this.gridBandDifference.Name = "gridBandDifference";
-            this.gridBandDifference.VisibleIndex = 0;
-            this.gridBandDifference.Width = 280;
-            // 
-            // bandedGridColumnDescription
-            // 
-            this.bandedGridColumnDescription.Caption = "Description";
-            this.bandedGridColumnDescription.FieldName = "Description";
-            this.bandedGridColumnDescription.Name = "bandedGridColumnDescription";
-            this.bandedGridColumnDescription.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumnDescription.Visible = true;
-            this.bandedGridColumnDescription.Width = 220;
-            // 
-            // bandedGridColumnItemType
-            // 
-            this.bandedGridColumnItemType.Caption = "Type";
-            this.bandedGridColumnItemType.FieldName = "ItemType";
-            this.bandedGridColumnItemType.Name = "bandedGridColumnItemType";
-            this.bandedGridColumnItemType.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumnItemType.Visible = true;
-            this.bandedGridColumnItemType.Width = 60;
-            // 
             // xtraFolderBrowserDialogOriginalFolder
             // 
             this.xtraFolderBrowserDialogOriginalFolder.Description = "Select the folder that should act as the original folder.";
@@ -176,6 +179,15 @@
             this.xtraFolderBrowserDialogCloneFolder.ShowNewFolderButton = false;
             this.xtraFolderBrowserDialogCloneFolder.Title = "Select cloned folder";
             // 
+            // svgImageCollectionGridIcons
+            // 
+            this.svgImageCollectionGridIcons.Add("folder", "image://svgimages/actions/open.svg");
+            this.svgImageCollectionGridIcons.Add("file", "image://svgimages/outlook inspired/new.svg");
+            this.svgImageCollectionGridIcons.Add("additionalFile", "image://svgimages/outlook inspired/addfile.svg");
+            this.svgImageCollectionGridIcons.Add("attributesFile", "image://svgimages/dashboards/parameters.svg");
+            this.svgImageCollectionGridIcons.Add("missingFile", "image://svgimages/snap/snapdeletelist.svg");
+            this.svgImageCollectionGridIcons.Add("sizeFile", "image://svgimages/richedit/richeditpapersize.svg");
+            // 
             // FolderStructureComparerCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,6 +200,7 @@
             this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureComparerCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionGridIcons)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -208,5 +221,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandClone;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandDifference;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnItemType;
+        private DevExpress.Utils.SvgImageCollection svgImageCollectionGridIcons;
     }
 }

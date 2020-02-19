@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.BandedGrid.ViewInfo;
+using DevExpress.XtraGrid.Views.Base;
 using FolderStructureAnalyser.DataObjects;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
@@ -227,7 +228,7 @@ namespace FolderStructureAnalyser.Components
             {
                 //Check for cancellation.
                 if (worker.CancellationPending) { return; }
-                
+
                 //Get the information about the original file.
                 var originalFile = FileHandler.GetFileInfo(originalFolderPath, cloneFile.Name);
 
@@ -281,6 +282,27 @@ namespace FolderStructureAnalyser.Components
             {
                 var parentFolder = FileHandler.GetParentFolder(row.CloneFullPath);
                 FileHandler.OpenFolderInExplorer(parentFolder);
+            }
+        }
+
+        private void bandedGridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column == bandedGridColumnItemType)
+            {
+                DrawCellNodeIcon(e, e.Column.Width, getImageIndex(e), svgImageCollectionGridIcons);
+            }
+        }
+
+        private static int getImageIndex(RowCellCustomDrawEventArgs e)
+        {
+            switch (e.CellValue as string)
+            {
+                case "Directory":
+                    return 0;
+                case "File":
+                    return 1;
+                default:
+                    return -1;
             }
         }
     }

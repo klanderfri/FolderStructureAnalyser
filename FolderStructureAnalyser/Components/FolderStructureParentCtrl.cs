@@ -5,6 +5,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using DevExpress.Utils;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraTreeList;
 using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
@@ -297,6 +300,39 @@ namespace FolderStructureAnalyser.Components
                 return false;
             }
             return true;
+        }
+
+        public void DrawCellNodeIcon(CustomDrawNodeCellEventArgs e, int columnWidth, int imageIndex, SvgImageCollection imageCollection)
+        {
+            if (imageIndex >= 0)
+            {
+                e.CellText = null;
+                drawCellNodeIcon(e.DefaultDraw, e.Bounds, e.Graphics, columnWidth, imageIndex, imageCollection);
+                e.Handled = true;
+            }
+        }
+
+        public void DrawCellNodeIcon(RowCellCustomDrawEventArgs e, int columnWidth, int imageIndex, SvgImageCollection imageCollection)
+        {
+            if (imageIndex >= 0)
+            {
+                e.DisplayText = null;
+                drawCellNodeIcon(e.DefaultDraw, e.Bounds, e.Graphics, columnWidth, imageIndex, imageCollection);
+                e.Handled = true;
+            }
+        }
+
+        private void drawCellNodeIcon(Action defaultDraw, Rectangle bounds, Graphics graphics, int columnWidth, int imageIndex, SvgImageCollection imageCollection)
+        {
+            defaultDraw();
+
+            var openIcon = imageCollection.GetImage(imageIndex);
+
+            var location = bounds.Location;
+            int middleX = (columnWidth - openIcon.Width) / 2;
+            location.Offset(middleX, 1);
+
+            graphics.DrawImage(openIcon, location);
         }
 
         private void ParentForm_Move(object sender, EventArgs e)
