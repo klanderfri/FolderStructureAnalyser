@@ -87,7 +87,7 @@ namespace FolderStructureAnalyser.Helpers
                 {
                     Process.Start(folder.FullName);
                 }
-                catch (Win32Exception ex)
+                catch (Exception ex)
                 {
                     MessageBoxes.ShowProblemOpeningFolderMessage(folder, ex);
                 }
