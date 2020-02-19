@@ -158,7 +158,7 @@ namespace FolderStructureAnalyser.Components
             compareFiles(originalFolderPath, cloneFolderPath, differences, worker);
 
             //Check if the clone has any folders the original does not.
-            foreach (var cloneSubFolder in FileHandler.GetDirectories(cloneFolderPath))
+            foreach (var cloneSubFolder in FileHandler.GetSubfolders(cloneFolderPath))
             {
                 //Get the information about the original subfolder.
                 var originalSubfolder = FileHandler.GetFolderInfo(originalFolderPath, cloneSubFolder.Name);
@@ -172,7 +172,7 @@ namespace FolderStructureAnalyser.Components
             }
 
             //Compare subfolders recursively
-            foreach (var originalSubfolder in FileHandler.GetDirectories(originalFolderPath))
+            foreach (var originalSubfolder in FileHandler.GetSubfolders(originalFolderPath))
             {
                 //Get the paths of the subfolders.
                 var originalSubfolderPath = originalSubfolder.FullName;

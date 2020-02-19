@@ -33,7 +33,7 @@ namespace FolderStructureAnalyser.Helpers
         }
 
         /// <summary>
-        /// Gives a list of files within a folder.
+        /// Gives a list of the files within a folder.
         /// </summary>
         /// <param name="folderPath">The full path to the folder containing the files.</param>
         /// <returns>A dictionary containing the file names and the files themselves.</returns>
@@ -44,11 +44,11 @@ namespace FolderStructureAnalyser.Helpers
         }
 
         /// <summary>
-        /// Gives a list of subfolders within a folder.
+        /// Gives a list of the subfolders within a folder.
         /// </summary>
         /// <param name="folderPath">The full path to the folder containing the subfolders.</param>
         /// <returns>A dictionary containing the folder names and the folders themselves.</returns>
-        public static List<DirectoryInfo> GetDirectories(string folderPath)
+        public static List<DirectoryInfo> GetSubfolders(string folderPath)
         {
             Func<DirectoryInfo, IEnumerable<FileSystemInfo>> getSubItems = delegate (DirectoryInfo folder) { return folder.GetDirectories(); };
             return getDiskItemList<DirectoryInfo>(folderPath, getSubItems);
