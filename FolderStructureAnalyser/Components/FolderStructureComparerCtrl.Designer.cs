@@ -40,10 +40,10 @@
             this.bandedGridColumnCloneParentFolderFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBandDifference = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnDescription = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnItemName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.backgroundWorkerCompareFolders = new System.ComponentModel.BackgroundWorker();
             this.xtraFolderBrowserDialogOriginalFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
             this.xtraFolderBrowserDialogCloneFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
-            this.bandedGridColumnItemName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +62,7 @@
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
+            this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
             // 
             // bandedGridView1
             // 
@@ -152,6 +153,15 @@
             this.bandedGridColumnDescription.Visible = true;
             this.bandedGridColumnDescription.Width = 300;
             // 
+            // bandedGridColumnItemName
+            // 
+            this.bandedGridColumnItemName.Caption = "Item";
+            this.bandedGridColumnItemName.FieldName = "ItemName";
+            this.bandedGridColumnItemName.Name = "bandedGridColumnItemName";
+            this.bandedGridColumnItemName.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumnItemName.Visible = true;
+            this.bandedGridColumnItemName.Width = 200;
+            // 
             // xtraFolderBrowserDialogOriginalFolder
             // 
             this.xtraFolderBrowserDialogOriginalFolder.Description = "Select the folder that should act as the original folder.";
@@ -165,15 +175,6 @@
             this.xtraFolderBrowserDialogCloneFolder.SelectedPath = "xtraFolderBrowserDialog1";
             this.xtraFolderBrowserDialogCloneFolder.ShowNewFolderButton = false;
             this.xtraFolderBrowserDialogCloneFolder.Title = "Select cloned folder";
-            // 
-            // bandedGridColumnItemName
-            // 
-            this.bandedGridColumnItemName.Caption = "Item";
-            this.bandedGridColumnItemName.FieldName = "ItemName";
-            this.bandedGridColumnItemName.Name = "bandedGridColumnItemName";
-            this.bandedGridColumnItemName.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumnItemName.Visible = true;
-            this.bandedGridColumnItemName.Width = 200;
             // 
             // FolderStructureComparerCtrl
             // 

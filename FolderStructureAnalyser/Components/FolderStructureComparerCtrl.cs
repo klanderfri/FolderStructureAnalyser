@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using FolderStructureAnalyser.DataObjects;
@@ -198,6 +199,11 @@ namespace FolderStructureAnalyser.Components
         private void updateDataSource(BindingList<StructureDifference> differences)
         {
             gridControl1.DataSource = differences;
+        }
+
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
+        {
+            
         }
     }
 }
