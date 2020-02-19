@@ -100,6 +100,7 @@
             this.treeListColumnOpen.ToolTip = "Double click the icon to open the folder in Windows Explorer.";
             this.treeListColumnOpen.Visible = true;
             this.treeListColumnOpen.VisibleIndex = 2;
+            this.treeListColumnOpen.Width = 50;
             // 
             // svgImageCollectionTreeIcons
             // 
