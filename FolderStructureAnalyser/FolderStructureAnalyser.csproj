@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\FolderStructureSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\FolderStructureSettingsCtrl.Designer.cs">
+      <DependentUpon>FolderStructureSettingsCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataObjects\FolderData.cs" />
     <Compile Include="Components\FolderStructureAnalyserCtrl.cs">
       <SubType>UserControl</SubType>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\FolderStructureComparerCtrl.resx">
       <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\FolderStructureSettingsCtrl.resx">
+      <DependentUpon>FolderStructureSettingsCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\WaitForStructureAnalyseForm.resx">
       <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>

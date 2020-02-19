@@ -30,6 +30,7 @@ namespace FolderStructureAnalyser.Components
             setBigFolderSize(Session.Settings.FolderStructureSettings.BigFolderInBytes);
             folderStructureAnalyserCtrl.SetSession(session);
             folderStructureComparerCtrl.SetSession(session);
+            folderStructureSettingsCtrl.SetSession(session);
         }
 
         /// <summary>

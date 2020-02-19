@@ -52,6 +52,8 @@
             this.folderStructureAnalyserCtrl = new FolderStructureAnalyser.Components.FolderStructureAnalyserCtrl();
             this.xtraTabPageCompareStructures = new DevExpress.XtraTab.XtraTabPage();
             this.folderStructureComparerCtrl = new FolderStructureAnalyser.Components.FolderStructureComparerCtrl();
+            this.xtraTabPageSettings = new DevExpress.XtraTab.XtraTabPage();
+            this.folderStructureSettingsCtrl = new FolderStructureAnalyser.Components.FolderStructureSettingsCtrl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSize)).BeginInit();
@@ -59,6 +61,7 @@
             this.xtraTabControlAnalyserPages.SuspendLayout();
             this.xtraTabPageAnalyseStructure.SuspendLayout();
             this.xtraTabPageCompareStructures.SuspendLayout();
+            this.xtraTabPageSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -259,7 +262,8 @@
             this.xtraTabControlAnalyserPages.TabIndex = 7;
             this.xtraTabControlAnalyserPages.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageAnalyseStructure,
-            this.xtraTabPageCompareStructures});
+            this.xtraTabPageCompareStructures,
+            this.xtraTabPageSettings});
             // 
             // xtraTabPageAnalyseStructure
             // 
@@ -301,6 +305,22 @@
             this.folderStructureComparerCtrl.FolderStructureAnalysisProgressChanged += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisProgressChangedHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisProgressChanged);
             this.folderStructureComparerCtrl.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisFinished);
             // 
+            // xtraTabPageSettings
+            // 
+            this.xtraTabPageSettings.Controls.Add(this.folderStructureSettingsCtrl);
+            this.xtraTabPageSettings.Name = "xtraTabPageSettings";
+            this.xtraTabPageSettings.Size = new System.Drawing.Size(1365, 545);
+            this.xtraTabPageSettings.Text = "Settings";
+            // 
+            // folderStructureSettingsCtrl
+            // 
+            this.folderStructureSettingsCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.folderStructureSettingsCtrl.Location = new System.Drawing.Point(0, 0);
+            this.folderStructureSettingsCtrl.Name = "folderStructureSettingsCtrl";
+            this.folderStructureSettingsCtrl.Session = null;
+            this.folderStructureSettingsCtrl.Size = new System.Drawing.Size(1365, 545);
+            this.folderStructureSettingsCtrl.TabIndex = 0;
+            // 
             // DiskAnalyserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -320,6 +340,7 @@
             this.xtraTabControlAnalyserPages.ResumeLayout(false);
             this.xtraTabPageAnalyseStructure.ResumeLayout(false);
             this.xtraTabPageCompareStructures.ResumeLayout(false);
+            this.xtraTabPageSettings.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,6 +370,8 @@
         private FolderStructureAnalyserCtrl folderStructureAnalyserCtrl;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageCompareStructures;
         private FolderStructureComparerCtrl folderStructureComparerCtrl;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPageSettings;
+        private FolderStructureSettingsCtrl folderStructureSettingsCtrl;
     }
 }
 
