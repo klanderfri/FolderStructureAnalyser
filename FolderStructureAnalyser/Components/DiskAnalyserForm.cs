@@ -43,7 +43,7 @@ namespace FolderStructureAnalyser.Components
 
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
         {
-            folderStructureAnalyserCtrl.LoadFolderStructure();
+            folderStructureAnalyserCtrl.AnalyseFolderStructure();
         }
 
         private void barButtonItemCancelAnalyse_ItemClick(object sender, ItemClickEventArgs e)

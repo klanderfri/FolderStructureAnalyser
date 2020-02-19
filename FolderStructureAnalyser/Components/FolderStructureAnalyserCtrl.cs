@@ -28,9 +28,9 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// Loads a folder structure the user selects.
+        /// Runs the analysis of the folder structure.
         /// </summary>
-        public void LoadFolderStructure()
+        public void AnalyseFolderStructure()
         {
             if (MayStartAnalysis())
             {
