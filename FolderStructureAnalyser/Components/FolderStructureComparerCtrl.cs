@@ -161,8 +161,7 @@ namespace FolderStructureAnalyser.Components
             foreach (var cloneSubFolder in FileHandler.GetDirectories(cloneFolderPath))
             {
                 //Get the information about the original subfolder.
-                var originalSubfolderPath = Path.Combine(originalFolderPath, cloneSubFolder.Name);
-                var originalSubfolder = new DirectoryInfo(originalSubfolderPath);
+                var originalSubfolder = getFolderInfo(originalFolderPath, cloneSubFolder.Name);
 
                 //Check if the clone has a folder the original does not.
                 if (!originalSubfolder.Exists)
@@ -250,6 +249,17 @@ namespace FolderStructureAnalyser.Components
         private static FileInfo getFileInfo(string parentFolderPath, string fileName)
         {
             return new FileInfo(Path.Combine(parentFolderPath, fileName));
+        }
+
+        /// <summary>
+        /// Gets the information of a folder.
+        /// </summary>
+        /// <param name="parentFolderPath">>The full path to the parent folder of the folder.</param>
+        /// <param name="folderName">The name of the folder.</param>
+        /// <returns>An object holding the information about the folder.</returns>
+        private static DirectoryInfo getFolderInfo(string parentFolderPath, string folderName)
+        {
+            return new DirectoryInfo(Path.Combine(parentFolderPath, folderName));
         }
 
         /// <summary>
