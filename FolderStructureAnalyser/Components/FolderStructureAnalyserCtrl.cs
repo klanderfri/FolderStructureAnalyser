@@ -272,8 +272,7 @@ namespace FolderStructureAnalyser.Components
 
         private void treeListFolderStructure_DoubleClick(object sender, EventArgs e)
         {
-            var tree = sender as TreeList;
-            var hitInfo = tree.CalcHitInfo(tree.PointToClient(MousePosition));
+            var hitInfo = GridHandler.GetHitInfo(sender as TreeList, MousePosition);
             if (hitInfo.Node != null && hitInfo.Column == treeListColumnOpen)
             {
                 //Open folder.
