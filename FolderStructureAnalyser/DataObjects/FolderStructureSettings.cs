@@ -12,14 +12,14 @@ namespace FolderStructureAnalyser.DataObjects
         /// </summary>
         public FolderStructureSettings()
         {
-            BigFolderInBytes = 10485760; //10 MB.
+            BigFolderInMB = 10;
             BigFolderColour = Color.Red;
         }
 
         /// <summary>
         /// The size in bytes of a folder that is to be considered big.
         /// </summary>
-        public long BigFolderInBytes { get; set; }
+        public int BigFolderInMB { get; set; }
 
         /// <summary>
         /// The colour used to indicate afolder that is to be considered big.

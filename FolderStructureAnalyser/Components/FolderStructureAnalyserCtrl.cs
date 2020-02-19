@@ -243,7 +243,9 @@ namespace FolderStructureAnalyser.Components
             {
                 //Use the specified colour to indicate big folders.
                 var sizeInBytes = Convert.ToInt64(e.CellValue);
-                if (sizeInBytes >= Session.Settings.FolderStructureSettings.BigFolderInBytes)
+                var sizeLimitInMB = Session.Settings.FolderStructureSettings.BigFolderInMB;
+                var sizeLimitInBytes = ByteSizeConverter.BytesFromMB(sizeLimitInMB);
+                if (sizeInBytes >= sizeLimitInBytes)
                 {
                     e.Appearance.ForeColor = Session.Settings.FolderStructureSettings.BigFolderColour;
                 }

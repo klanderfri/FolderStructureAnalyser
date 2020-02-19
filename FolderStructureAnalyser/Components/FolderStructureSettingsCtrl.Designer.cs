@@ -58,7 +58,7 @@
             this.repositoryItemSpinEditBigFolderSizeLimit.AutoHeight = false;
             this.repositoryItemSpinEditBigFolderSizeLimit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSpinEditBigFolderSizeLimit.Mask.EditMask = ",#######0 bytes";
+            this.repositoryItemSpinEditBigFolderSizeLimit.Mask.EditMask = ",#######0 MB";
             this.repositoryItemSpinEditBigFolderSizeLimit.Mask.UseMaskAsDisplayFormat = true;
             this.repositoryItemSpinEditBigFolderSizeLimit.MaxValue = new decimal(new int[] {
             1073741824,
@@ -92,7 +92,7 @@
             // 
             this.rowSize.Name = "rowSize";
             this.rowSize.Properties.Caption = "Size";
-            this.rowSize.Properties.FieldName = "BigFolderInBytes";
+            this.rowSize.Properties.FieldName = "BigFolderInMB";
             this.rowSize.Properties.RowEdit = this.repositoryItemSpinEditBigFolderSizeLimit;
             this.rowSize.Properties.ToolTip = "Defines the size at which a folder should be considered big.";
             // 
