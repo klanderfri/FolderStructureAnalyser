@@ -5,7 +5,7 @@ using System.Windows.Forms;
 namespace FolderStructureAnalyser.Helpers
 {
     /// <summary>
-    /// Class holding dialogs with messages for the user.
+    /// Class for handling user message dialogs.
     /// </summary>
     public static class MessageBoxes
     {
