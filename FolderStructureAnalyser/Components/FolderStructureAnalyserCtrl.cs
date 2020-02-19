@@ -115,7 +115,7 @@ namespace FolderStructureAnalyser.Components
             var worker = (sender as FolderStructureParentCtrl).AnalysisWorker;
 
             //Create the folder structure.
-            var root = new FolderData(Session, worker, rootPath);
+            var root = new FolderData(worker, rootPath);
 
             //Check if the process was cancelled.
             if (worker.CancellationPending)
@@ -230,6 +230,17 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
+        /// <summary>
+        /// Gets the colour to use for a folder.
+        /// </summary>
+        /// <param name="folderSizeInBytes">The size of the folder in bytes.</param>
+        /// <returns>The colour to use for the folder.</returns>
+        private Color getFolderColour(long folderSizeInBytes)
+        {
+            var isBigFolder = Session.Tools.IsBigFolder(folderSizeInBytes);
+            return isBigFolder ? Session.Settings.FolderStructureSettings.BigFolderColour : Color.Black;
+        }
+
         private void repositoryItemTextEditFileSizeEdit_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
         {
             //Show the size (in MB, GB, etc) instead of just the bytes.
@@ -241,18 +252,8 @@ namespace FolderStructureAnalyser.Components
         {
             if (e.Column == treeListColumnSize)
             {
-                //Use the specified colour to indicate big folders.
-                var sizeInBytes = Convert.ToInt64(e.CellValue);
-                var sizeLimitInMB = Session.Settings.FolderStructureSettings.BigFolderInMB;
-                var sizeLimitInBytes = ByteSizeConverter.BytesFromMB(sizeLimitInMB);
-                if (sizeInBytes >= sizeLimitInBytes)
-                {
-                    e.Appearance.ForeColor = Session.Settings.FolderStructureSettings.BigFolderColour;
-                }
-                else
-                {
-                    e.Appearance.ForeColor = Color.Black;
-                }
+                //Use the (in settings) specified colour to indicate big folders.
+                e.Appearance.ForeColor = getFolderColour(Convert.ToInt64(e.CellValue));
             }
             if (e.Column == treeListColumnOpen)
             {

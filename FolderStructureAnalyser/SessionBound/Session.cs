@@ -4,9 +4,11 @@
     {
         public Session()
         {
-            Settings = new Settings();
+            Settings = new Settings(this);
+            Tools = new Tools(this);
         }
 
         public Settings Settings { get; set; }
+        public Tools Tools { get; set; }
     }
 }

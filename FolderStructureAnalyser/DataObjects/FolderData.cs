@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.DataObjects
 {
     /// <summary>
     /// Class for object representing a folder in a file-folder tree structure.
     /// </summary>
-    public class FolderData : SessionBoundClass
+    public class FolderData
     {
         /// <summary>
         /// The information about the folder.
@@ -34,13 +33,10 @@ namespace FolderStructureAnalyser.DataObjects
         /// <summary>
         /// Creates an object representing a folder in a file-folder tree structure.
         /// </summary>
-        /// <param name="session">The application session.</param>
         /// <param name="worker">The background worker responsible for the folder object creation.</param>
         /// <param name="folderpath">The physical path to the folder.</param>
-        public FolderData(Session session, BackgroundWorker worker, string folderpath)
+        public FolderData(BackgroundWorker worker, string folderpath)
         {
-            SetSession(session);
-
             Info = new DirectoryInfo(folderpath);
             
             fillSubfolders(worker);
@@ -60,7 +56,7 @@ namespace FolderStructureAnalyser.DataObjects
                 try
                 {
                     //The recursion happens when the child folder is created.
-                    SubFolders.Add(new FolderData(Session, worker, child.FullName));
+                    SubFolders.Add(new FolderData(worker, child.FullName));
                 }
                 catch (UnauthorizedAccessException)
                 {

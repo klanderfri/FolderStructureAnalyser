@@ -2,9 +2,10 @@
 
 namespace FolderStructureAnalyser.SessionBound
 {
-    public class Settings
+    public class Settings : SessionBoundClass
     {
-        public Settings()
+        public Settings(Session session)
+            : base(session)
         {
             FolderStructureSettings = new FolderStructureSettings();
         }
