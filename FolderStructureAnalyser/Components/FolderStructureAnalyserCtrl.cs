@@ -238,7 +238,7 @@ namespace FolderStructureAnalyser.Components
         private Color getFolderColour(long folderSizeInBytes)
         {
             var isBigFolder = Session.Tools.IsBigFolder(folderSizeInBytes);
-            return isBigFolder ? Session.Settings.FolderStructureSettings.BigFolderColour : Color.Black;
+            return isBigFolder ? Session.Settings.BigFolderColour : Color.Black;
         }
 
         private void repositoryItemTextEditFileSizeEdit_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)

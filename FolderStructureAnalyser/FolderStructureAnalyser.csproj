@@ -106,7 +106,6 @@
     <Compile Include="Components\DiskAnalyserForm.Designer.cs">
       <DependentUpon>DiskAnalyserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataObjects\FolderStructureSettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionBound\SessionBoundClass.cs" />

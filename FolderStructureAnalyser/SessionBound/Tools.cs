@@ -12,7 +12,7 @@
         /// <returns>TRUE if the folder is big, else FALSE.</returns>
         public bool IsBigFolder(long sizeInBytes)
         {
-            var sizeLimitInMB = Session.Settings.FolderStructureSettings.BigFolderInMB;
+            var sizeLimitInMB = Session.Settings.BigFolderInMB;
             var sizeLimitInBytes = Helpers.ByteSizeConverter.BytesFromMB(sizeLimitInMB);
 
             return sizeInBytes >= sizeLimitInBytes;
