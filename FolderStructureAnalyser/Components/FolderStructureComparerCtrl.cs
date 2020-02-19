@@ -116,6 +116,13 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
+        /// <summary>
+        /// Compares two folders to see if the clone is identical to the original.
+        /// </summary>
+        /// <param name="originalFolderPath">The full path to the original folder.</param>
+        /// <param name="cloneFolderPath">The full path to the clone folder.</param>
+        /// <param name="differences">The data source holding any differences found.</param>
+        /// <param name="worker">The worker responsible for the comparision.</param>
         private void compareFolders(string originalFolderPath, string cloneFolderPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
         {
             //Check for cancellation.
@@ -143,6 +150,21 @@ namespace FolderStructureAnalyser.Components
             //Compare the files in the folders.
             compareFiles(originalFolderPath, cloneFolderPath, differences, worker);
 
+            //Check if the clone has any folders the original does not.
+            foreach (var cloneSubFolder in FileHandler.GetDirectories(cloneFolderPath))
+            {
+                //Get the information about the original subfolder.
+                var originalSubfolderPath = Path.Combine(originalFolderPath, cloneSubFolder.Name);
+                var originalSubfolder = new DirectoryInfo(originalSubfolderPath);
+
+                //Check if the clone has a folder the original does not.
+                if (!originalSubfolder.Exists)
+                {
+                    var format = "The clone has an additional folder.";
+                    addDifference(differences, originalSubfolder, cloneSubFolder, format);
+                }
+            }
+
             //Compare subfolders recursively
             foreach (var originalSubfolder in FileHandler.GetDirectories(originalFolderPath))
             {
@@ -157,7 +179,7 @@ namespace FolderStructureAnalyser.Components
 
         private void compareFiles(string originalFolderPath, string cloneFolderPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
         {
-            //Check that the clone has all the files the original has.
+            //Check if the clone has all the files the original has.
             foreach (var originalFile in FileHandler.GetFiles(originalFolderPath))
             {
                 //Check for cancellation.
@@ -187,7 +209,7 @@ namespace FolderStructureAnalyser.Components
                 }
             }
 
-            //Check that the clone doesn't have any additional files not present in the original.
+            //Check if the clone has any files the original does not.
             foreach (var cloneFile in FileHandler.GetFiles(cloneFolderPath))
             {
                 //Check for cancellation.
@@ -196,12 +218,11 @@ namespace FolderStructureAnalyser.Components
                 //Get the information about the original file.
                 var originalFile = getFileInfo(originalFolderPath, cloneFile.Name);
 
-                //Check if the clone has a file that the original doesn't have.
+                //Check if the clone has a file the original does not.
                 if (!originalFile.Exists)
                 {
                     var format = "The clone has an additional file.";
                     addDifference(differences, originalFile, cloneFile, format);
-                    continue;
                 }
             }
         }
