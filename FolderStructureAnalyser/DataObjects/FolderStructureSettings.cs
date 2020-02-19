@@ -22,7 +22,7 @@ namespace FolderStructureAnalyser.DataObjects
         public int BigFolderInMB { get; set; }
 
         /// <summary>
-        /// The colour used to indicate afolder that is to be considered big.
+        /// The colour used to indicate a folder that is to be considered big.
         /// </summary>
         public Color BigFolderColour { get; set; }
     }
