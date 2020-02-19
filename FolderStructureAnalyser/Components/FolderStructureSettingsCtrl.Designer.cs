@@ -28,32 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.propertyGridControlAnalysingSettings = new DevExpress.XtraVerticalGrid.PropertyGridControl();
+            this.categoryBigFolder = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
+            this.rowSize = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowColour = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControlAnalysingSettings)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // propertyGridControlAnalysingSettings
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(185, 111);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "FolderStructureSettingsCtrl";
+            this.propertyGridControlAnalysingSettings.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.propertyGridControlAnalysingSettings.Dock = System.Windows.Forms.DockStyle.Left;
+            this.propertyGridControlAnalysingSettings.Location = new System.Drawing.Point(0, 0);
+            this.propertyGridControlAnalysingSettings.Name = "propertyGridControlAnalysingSettings";
+            this.propertyGridControlAnalysingSettings.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.categoryBigFolder});
+            this.propertyGridControlAnalysingSettings.Size = new System.Drawing.Size(400, 336);
+            this.propertyGridControlAnalysingSettings.TabIndex = 0;
+            // 
+            // categoryBigFolder
+            // 
+            this.categoryBigFolder.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.rowSize,
+            this.rowColour});
+            this.categoryBigFolder.Name = "categoryBigFolder";
+            this.categoryBigFolder.Properties.Caption = "Big folder";
+            // 
+            // rowSize
+            // 
+            this.rowSize.Name = "rowSize";
+            this.rowSize.Properties.Caption = "Size";
+            // 
+            // rowColour
+            // 
+            this.rowColour.Name = "rowColour";
+            this.rowColour.Properties.Caption = "Colour";
             // 
             // FolderStructureSettingsCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.propertyGridControlAnalysingSettings);
             this.Name = "FolderStructureSettingsCtrl";
-            this.Size = new System.Drawing.Size(611, 380);
+            this.Size = new System.Drawing.Size(618, 336);
+            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControlAnalysingSettings)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraVerticalGrid.PropertyGridControl propertyGridControlAnalysingSettings;
+        private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryBigFolder;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSize;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowColour;
     }
 }
