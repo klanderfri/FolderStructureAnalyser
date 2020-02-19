@@ -23,6 +23,7 @@ namespace FolderStructureAnalyser.Components
         public void SetSession(Session session)
         {
             Session = session;
+            propertyGridControlAnalysingSettings.SelectedObject = Session.Settings.FolderStructureSettings;
         }
     }
 }
