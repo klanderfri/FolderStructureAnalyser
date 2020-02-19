@@ -177,25 +177,7 @@ namespace FolderStructureAnalyser.Components
 
         private void updateDataSource(BindingList<StructureDifference> differences)
         {
-            try
-            {
-                beginUpdate();
-                gridControl1.DataSource = differences;
-            }
-            finally
-            {
-                endUpdate();
-            }
-        }
-
-        private void beginUpdate()
-        {
-            gridControl1.BeginUpdate();
-        }
-
-        private void endUpdate()
-        {
-            gridControl1.EndUpdate();
+            gridControl1.DataSource = differences;
         }
     }
 }
