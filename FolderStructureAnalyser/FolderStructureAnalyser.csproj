@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="DataObjects\FolderNode.cs" />
     <Compile Include="Helpers\FileHandler.cs" />
+    <Compile Include="Helpers\GridHandler.cs" />
     <Compile Include="Helpers\MessageBoxes.cs" />
     <Compile Include="Helpers\ByteSizeConverter.cs" />
     <Compile Include="SessionBound\ISessionBound.cs" />
