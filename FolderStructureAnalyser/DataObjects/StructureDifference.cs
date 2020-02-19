@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace FolderStructureAnalyser.DataObjects
 {
@@ -11,52 +10,49 @@ namespace FolderStructureAnalyser.DataObjects
         /// <summary>
         /// The name of the original folder.
         /// </summary>
-        public string OriginalParentFolderName { get; private set; }
+        public string OriginalName { get { return Original.Name; } }
 
         /// <summary>
         /// The full path of the original folder.
         /// </summary>
-        public string OriginalParentFolderFullPath { get; private set; }
+        public string OriginalFullPath { get { return Original.FullName; } }
 
         /// <summary>
         /// The name of the clone folder.
         /// </summary>
-        public string CloneParentFolderName { get; private set; }
+        public string CloneName { get { return Clone.Name; } }
 
         /// <summary>
         /// The full path of the clone folder.
         /// </summary>
-        public string CloneParentFolderFullPath { get; private set; }
+        public string CloneFullPath { get { return Clone.FullName; } }
 
         /// <summary>
         /// The description of the difference.
         /// </summary>
         public string Description { get; private set; }
 
-        /// <summary>
-        /// The name of the item in question.
-        /// </summary>
-        public string ItemName { get; private set; }
 
-        /// <summary>
-        /// Creates an object holding data about a difference between two folder structures.
-        /// </summary>
-        /// <param name="originalFullPath">The full path of the original folder.</param>
-        /// <param name="cloneFullPath">The full path of the clone folder.</param>
-        /// <param name="description">The description of the difference.</param>
-        /// <param name="itemName">The name of the item in question.</param>
-        public StructureDifference(string originalFullPath, string cloneFullPath, string description, string itemName)
+        private FileSystemInfo Original { get; set; }
+
+
+        private FileSystemInfo Clone { get; set; }
+
+
+        public string ItemType
         {
-            var original = new DirectoryInfo(originalFullPath);
-            OriginalParentFolderName = original.Name;
-            OriginalParentFolderFullPath = original.FullName;
+            get
+            {
+                var isDirectory = (Original.Attributes & FileAttributes.Directory) == FileAttributes.Directory;
+                return isDirectory ? "Directory" : "File";
+            }
+        }
 
-            var clone = new DirectoryInfo(cloneFullPath);
-            CloneParentFolderName = clone.Name;
-            CloneParentFolderFullPath = clone.FullName;
-
+        public StructureDifference(FileSystemInfo original, FileSystemInfo clone, string description)
+        {
+            Original = original;
+            Clone = clone;
             Description = description;
-            ItemName = itemName;
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 
@@ -12,25 +11,25 @@ namespace FolderStructureAnalyser.Helpers
     public static class FileHandler
     {
         /// <summary>
-        /// Gives an index of the files within a folder.
+        /// Gives a list of files within a folder.
         /// </summary>
         /// <param name="folderPath">The full path to the folder containing the files.</param>
         /// <returns>A dictionary containing the file names and the files themselves.</returns>
-        public static Dictionary<string, FileInfo> GetFileIndex(string folderPath)
+        public static List<FileInfo> GetFiles(string folderPath)
         {
             Func<DirectoryInfo, IEnumerable<FileSystemInfo>> getSubItems = delegate (DirectoryInfo folder) { return folder.GetFiles(); };
-            return getDiskItemIndex<FileInfo>(folderPath, getSubItems);
+            return getDiskItemList<FileInfo>(folderPath, getSubItems);
         }
 
         /// <summary>
-        /// Gives an index of the subfolders within a folder.
+        /// Gives a list of subfolders within a folder.
         /// </summary>
         /// <param name="folderPath">The full path to the folder containing the subfolders.</param>
         /// <returns>A dictionary containing the folder names and the folders themselves.</returns>
-        public static Dictionary<string, DirectoryInfo> GetDirectoryIndex(string folderPath)
+        public static List<DirectoryInfo> GetDirectories(string folderPath)
         {
             Func<DirectoryInfo, IEnumerable<FileSystemInfo>> getSubItems = delegate (DirectoryInfo folder) { return folder.GetDirectories(); };
-            return getDiskItemIndex<DirectoryInfo>(folderPath, getSubItems);
+            return getDiskItemList<DirectoryInfo>(folderPath, getSubItems);
         }
 
         /// <summary>
@@ -40,10 +39,10 @@ namespace FolderStructureAnalyser.Helpers
         /// <param name="folderPath">The full path to the folder containing the subitems.</param>
         /// <param name="getSubItems">A method fetching the subitems from the folder.</param>
         /// <returns>A dictionary containing the subitem names and the subitems themselves.</returns>
-        private static Dictionary<string, T> getDiskItemIndex<T>(string folderPath, Func<DirectoryInfo, IEnumerable<FileSystemInfo>> getSubItems) where T : FileSystemInfo
+        private static List<T> getDiskItemList<T>(string folderPath, Func<DirectoryInfo, IEnumerable<FileSystemInfo>> getSubItems) where T : FileSystemInfo
         {
             var folder = new DirectoryInfo(folderPath);
-            var subItems = new Dictionary<string, T>();
+            var subItems = new List<T>();
 
             try
             {
@@ -55,7 +54,7 @@ namespace FolderStructureAnalyser.Helpers
                         throw new NullReferenceException("The subitem cannot be null");
                     }
 
-                    subItems.Add(subItem.Name, subItem as T);
+                    subItems.Add(subItem as T);
                 }
             }
             catch (UnauthorizedAccessException)
@@ -96,6 +95,16 @@ namespace FolderStructureAnalyser.Helpers
             {
                 MessageBoxes.ShowFolderDoesNotExistMessage();
             }
+        }
+
+        /// <summary>
+        /// Gets the information about the parent folder.
+        /// </summary>
+        /// <param name="fullPath">The full path to the item of whom we are to get the parent folder.</param>
+        /// <returns>The information about the parent folder.</returns>
+        public static DirectoryInfo GetParentFolder(string fullPath)
+        {
+            return (new FileInfo(fullPath)).Directory;
         }
     }
 }

@@ -116,81 +116,81 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
-        private void compareFolders(string originalRootPath, string cloneRootPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
+        private void compareFolders(string originalFolderPath, string cloneFolderPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
         {
-            //Check if the clone folder exists.
+            //Check for cancellation.
             if (worker.CancellationPending) { return; }
-            var clone = new DirectoryInfo(cloneRootPath);
-            if (!clone.Exists)
+
+            //Get the information about the folders.
+            var originalFolder = new DirectoryInfo(originalFolderPath);
+            var cloneFolder = new DirectoryInfo(cloneFolderPath);
+
+            //Check if the clone folder exists.
+            if (!cloneFolder.Exists)
             {
                 var format = "The clone is missing a folder.";
-                addDifference(differences, originalRootPath, cloneRootPath, format, clone.Name);
+                addDifference(differences, originalFolder, cloneFolder, format);
                 return;
             }
 
             //Compare the folders.
-            if (worker.CancellationPending) { return; }
-            var original = new DirectoryInfo(originalRootPath);
-            if (original.Attributes != clone.Attributes)
+            if (originalFolder.Attributes != cloneFolder.Attributes)
             {
                 var format = "The clone folder has different attributes.";
-                addDifference(differences, originalRootPath, cloneRootPath, format, clone.Name);
+                addDifference(differences, originalFolder, cloneFolder, format);
             }
 
             //Compare the files in the folders.
-            compareFiles(originalRootPath, cloneRootPath, differences, worker);
+            compareFiles(originalFolderPath, cloneFolderPath, differences, worker);
 
-            //Compare subfolders recursively.
-            if (worker.CancellationPending) { return; }
-            foreach (var indexOriginalSubfolder in FileHandler.GetDirectoryIndex(originalRootPath))
+            //Compare subfolders recursively
+            foreach (var originalSubfolder in FileHandler.GetDirectories(originalFolderPath))
             {
-                var originalSubfolder = indexOriginalSubfolder.Value;
+                //Get the paths of the subfolders.
+                var originalSubfolderPath = originalSubfolder.FullName;
+                var cloneSubfolderPath = Path.Combine(cloneFolderPath, originalSubfolder.Name);
 
-                var originalPath = originalSubfolder.FullName;
-                var clonePath = Path.Combine(cloneRootPath, originalSubfolder.Name);
-
-                compareFolders(originalPath, clonePath, differences, worker);
+                //Compare the folders.
+                compareFolders(originalSubfolderPath, cloneSubfolderPath, differences, worker);
             }
         }
 
-        private void compareFiles(string originalRootPath, string cloneRootPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
+        private void compareFiles(string originalFolderPath, string cloneFolderPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
         {
-            if (worker.CancellationPending) { return; }
-            var originalFiles = FileHandler.GetFileIndex(originalRootPath);
-            var cloneFiles = FileHandler.GetFileIndex(cloneRootPath);
-
-            foreach (var indexOriginalFile in originalFiles)
+            foreach (var originalFile in FileHandler.GetFiles(originalFolderPath))
             {
-                //Check if the clone file exists.
+                //Check for cancellation.
                 if (worker.CancellationPending) { return; }
-                var originalFile = indexOriginalFile.Value;
-                if (!cloneFiles.ContainsKey(originalFile.Name))
+
+                //Get the information about the clone file.
+                var cloneFile = new FileInfo(Path.Combine(cloneFolderPath, originalFile.Name));
+
+                //Check if the clone file exists.
+                if (!cloneFile.Exists)
                 {
                     var format = "The clone is missing a file.";
-                    addDifference(differences, originalRootPath, cloneRootPath, format, originalFile.Name);
+                    addDifference(differences, originalFile, cloneFile, format);
                     continue;
                 }
 
                 //Compare the files.
-                if (worker.CancellationPending) { return; }
-                var cloneFile = cloneFiles[originalFile.Name];
                 if (originalFile.Attributes != cloneFile.Attributes)
                 {
                     var format = "The clone file has different attributes.";
-                    addDifference(differences, originalRootPath, cloneRootPath, format, cloneFile.Name);
+                    addDifference(differences, originalFile, cloneFile, format);
                 }
                 if (originalFile.Length != cloneFile.Length)
                 {
                     var format = "The clone file has a different size.";
-                    addDifference(differences, originalRootPath, cloneRootPath, format, cloneFile.Name);
+                    addDifference(differences, originalFile, cloneFile, format);
                 }
             }
         }
 
-        private void addDifference(BindingList<StructureDifference> differences, string originalRootPath, string cloneRootPath, string description, string itemName)
+        private void addDifference(BindingList<StructureDifference> differences, FileSystemInfo original, FileSystemInfo clone, string description)
         {
             //Add the differences.
-            var diff = new StructureDifference(originalRootPath, cloneRootPath, description, itemName);
+            var diff = new StructureDifference(original, clone, description);
             differences.Add(diff);
 
             //Raise the event.
@@ -210,11 +210,13 @@ namespace FolderStructureAnalyser.Components
 
             if (hitInfo.Band == gridBandOriginal)
             {
-                FileHandler.OpenFolderInExplorer(row.OriginalParentFolderFullPath);
+                var parentFolder = FileHandler.GetParentFolder(row.OriginalFullPath);
+                FileHandler.OpenFolderInExplorer(parentFolder);
             }
             if (hitInfo.Band == gridBandClone)
             {
-                FileHandler.OpenFolderInExplorer(row.CloneParentFolderFullPath);
+                var parentFolder = FileHandler.GetParentFolder(row.CloneFullPath);
+                FileHandler.OpenFolderInExplorer(parentFolder);
             }
         }
     }
