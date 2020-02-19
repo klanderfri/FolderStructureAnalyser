@@ -247,6 +247,10 @@ namespace FolderStructureAnalyser.Components
                 {
                     e.Appearance.ForeColor = Session.Settings.FolderStructureSettings.BigFolderColour;
                 }
+                else
+                {
+                    e.Appearance.ForeColor = Color.Black;
+                }
             }
             if (e.Column == treeListColumnOpen)
             {
