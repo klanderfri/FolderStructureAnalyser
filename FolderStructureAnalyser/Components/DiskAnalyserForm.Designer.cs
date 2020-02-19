@@ -31,9 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiskAnalyserForm));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemAnalyseStructure = new DevExpress.XtraBars.BarButtonItem();
-            this.barEditItemBigFolderColour = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemColorPickEditBigFolderColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
-            this.barEditItemBigFolderSize = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemSpinEditBigFolderSize = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.barButtonItemCancelAnalyse = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSetAsRoot = new DevExpress.XtraBars.BarButtonItem();
@@ -43,7 +41,6 @@
             this.barStaticItemOperationTime = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPageAnalyseFolderStructure = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupBigFolderSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupCompare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupStopOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -71,8 +68,6 @@
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.barButtonItemAnalyseStructure,
-            this.barEditItemBigFolderColour,
-            this.barEditItemBigFolderSize,
             this.barButtonItemCancelAnalyse,
             this.barButtonItemSetAsRoot,
             this.barButtonItemResetTreeView,
@@ -102,15 +97,6 @@
             this.barButtonItemAnalyseStructure.Name = "barButtonItemAnalyseStructure";
             this.barButtonItemAnalyseStructure.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAnalyseStructure_ItemClick);
             // 
-            // barEditItemBigFolderColour
-            // 
-            this.barEditItemBigFolderColour.Caption = "Colour";
-            this.barEditItemBigFolderColour.Edit = this.repositoryItemColorPickEditBigFolderColour;
-            this.barEditItemBigFolderColour.Hint = "The colour used to indicate a big folder.";
-            this.barEditItemBigFolderColour.Id = 3;
-            this.barEditItemBigFolderColour.Name = "barEditItemBigFolderColour";
-            this.barEditItemBigFolderColour.EditValueChanged += new System.EventHandler(this.barEditItembigFolderColour_EditValueChanged);
-            // 
             // repositoryItemColorPickEditBigFolderColour
             // 
             this.repositoryItemColorPickEditBigFolderColour.AutoHeight = false;
@@ -118,17 +104,6 @@
             this.repositoryItemColorPickEditBigFolderColour.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemColorPickEditBigFolderColour.Name = "repositoryItemColorPickEditBigFolderColour";
-            // 
-            // barEditItemBigFolderSize
-            // 
-            this.barEditItemBigFolderSize.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barEditItemBigFolderSize.Caption = "Size";
-            this.barEditItemBigFolderSize.Edit = this.repositoryItemSpinEditBigFolderSize;
-            this.barEditItemBigFolderSize.EditWidth = 100;
-            this.barEditItemBigFolderSize.Hint = "Defines the size at which a folder should be considered big.";
-            this.barEditItemBigFolderSize.Id = 4;
-            this.barEditItemBigFolderSize.Name = "barEditItemBigFolderSize";
-            this.barEditItemBigFolderSize.EditValueChanged += new System.EventHandler(this.barEditItemBigFolderSize_EditValueChanged);
             // 
             // repositoryItemSpinEditBigFolderSize
             // 
@@ -206,7 +181,6 @@
             // 
             this.ribbonPageAnalyseFolderStructure.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroupAnalyse,
-            this.ribbonPageGroupBigFolderSettings,
             this.ribbonPageGroupCompare,
             this.ribbonPageGroupStopOperations});
             this.ribbonPageAnalyseFolderStructure.Name = "ribbonPageAnalyseFolderStructure";
@@ -220,14 +194,6 @@
             this.ribbonPageGroupAnalyse.Name = "ribbonPageGroupAnalyse";
             this.ribbonPageGroupAnalyse.ShowCaptionButton = false;
             this.ribbonPageGroupAnalyse.Text = "Analyse";
-            // 
-            // ribbonPageGroupBigFolderSettings
-            // 
-            this.ribbonPageGroupBigFolderSettings.ItemLinks.Add(this.barEditItemBigFolderColour);
-            this.ribbonPageGroupBigFolderSettings.ItemLinks.Add(this.barEditItemBigFolderSize);
-            this.ribbonPageGroupBigFolderSettings.Name = "ribbonPageGroupBigFolderSettings";
-            this.ribbonPageGroupBigFolderSettings.ShowCaptionButton = false;
-            this.ribbonPageGroupBigFolderSettings.Text = "Big Folder Settings";
             // 
             // ribbonPageGroupCompare
             // 
@@ -351,10 +317,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageAnalyseFolderStructure;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAnalyse;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAnalyseStructure;
-        private DevExpress.XtraBars.BarEditItem barEditItemBigFolderColour;
         private DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit repositoryItemColorPickEditBigFolderColour;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupBigFolderSettings;
-        private DevExpress.XtraBars.BarEditItem barEditItemBigFolderSize;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEditBigFolderSize;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCancelAnalyse;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSetAsRoot;

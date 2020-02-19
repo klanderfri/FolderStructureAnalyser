@@ -26,42 +26,9 @@ namespace FolderStructureAnalyser.Components
         public void SetSession(Session session)
         {
             Session = session;
-            setBigFolderColour(Session.Settings.FolderStructureSettings.BigFolderColour);
-            setBigFolderSize(Session.Settings.FolderStructureSettings.BigFolderInBytes);
             folderStructureAnalyserCtrl.SetSession(session);
             folderStructureComparerCtrl.SetSession(session);
             folderStructureSettingsCtrl.SetSession(session);
-        }
-
-        /// <summary>
-        /// Sets the colour used to indicate a big folder.
-        /// </summary>
-        /// <param name="bigFolderColour">The colour to use for big folders.</param>
-        private void setBigFolderColour(Color bigFolderColour)
-        {
-            barEditItemBigFolderColour.EditValue = bigFolderColour;
-            Session.Settings.FolderStructureSettings.BigFolderColour = bigFolderColour;
-        }
-
-        /// <summary>
-        /// Sets the size at which a folder is to be considered big.
-        /// </summary>
-        /// <param name="bigFolderInBytes">The size limit in bytes.</param>
-        private void setBigFolderSize(long bigFolderInBytes)
-        {
-            var bigFolderInMB = ByteSizeConverter.MbFromByte(bigFolderInBytes);
-            var bigFolderSize = (int)Math.Round(bigFolderInMB, 0);
-            setBigFolderSize(bigFolderSize);
-        }
-
-        /// <summary>
-        /// Sets the size at which a folder is to be considered big.
-        /// </summary>
-        /// <param name="bigFolderInMB">The size limit in MB.</param>
-        private void setBigFolderSize(int bigFolderInMB)
-        {
-            barEditItemBigFolderSize.EditValue = bigFolderInMB;
-            Session.Settings.FolderStructureSettings.BigFolderInBytes = ByteSizeConverter.BytesFromMB(bigFolderInMB);
         }
 
         /// <summary>
@@ -132,18 +99,6 @@ namespace FolderStructureAnalyser.Components
         private void folderStructureComparerCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
         {
             updateOperationTime(e.ElapsedMilliseconds);
-        }
-
-        private void barEditItembigFolderColour_EditValueChanged(object sender, EventArgs e)
-        {
-            var selectedColour = (Color)(sender as BarEditItem).EditValue;
-            setBigFolderColour(selectedColour);
-        }
-
-        private void barEditItemBigFolderSize_EditValueChanged(object sender, EventArgs e)
-        {
-            var bigFolderSizeInMB = Convert.ToInt32((sender as BarEditItem).EditValue);
-            setBigFolderSize(bigFolderSizeInMB);
         }
     }
 }
