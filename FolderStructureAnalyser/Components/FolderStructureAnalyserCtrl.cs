@@ -69,38 +69,12 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// Begins update of the visual content of the tree.
-        /// </summary>
-        private void beginUpdate()
-        {
-            treeListFolderStructure.BeginUpdate();
-            treeListFolderStructure.BeginUnboundLoad();
-        }
-
-        /// <summary>
-        /// Ends update of the visual content of the tree.
-        /// </summary>
-        private void endUpdate()
-        {
-            treeListFolderStructure.EndUnboundLoad();
-            treeListFolderStructure.EndUpdate();
-        }
-
-        /// <summary>
         /// Sets the data source of the analyser tree.
         /// </summary>
         /// <param name="folderStructure">The folder structer that are to be used as datasource.</param>
         private void updateDataSource(BindingList<FolderNode> folderStructure)
         {
-            try
-            {
-                beginUpdate();
-                treeListFolderStructure.DataSource = folderStructure;
-            }
-            finally
-            {
-                endUpdate();
-            }
+            treeListFolderStructure.DataSource = folderStructure;
 
             if (treeListFolderStructure.Nodes.Any())
             {
