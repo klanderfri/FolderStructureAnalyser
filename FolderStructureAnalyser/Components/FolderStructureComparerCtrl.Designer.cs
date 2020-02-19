@@ -67,9 +67,9 @@
             // bandedGridView1
             // 
             this.bandedGridView1.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBandDifference,
             this.gridBandOriginal,
-            this.gridBandClone,
-            this.gridBandDifference});
+            this.gridBandClone});
             this.bandedGridView1.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.bandedGridColumnOriginalName,
             this.bandedGridColumnOriginalFullPath,
@@ -87,8 +87,8 @@
             this.gridBandOriginal.Columns.Add(this.bandedGridColumnOriginalName);
             this.gridBandOriginal.Columns.Add(this.bandedGridColumnOriginalFullPath);
             this.gridBandOriginal.Name = "gridBandOriginal";
-            this.gridBandOriginal.VisibleIndex = 0;
-            this.gridBandOriginal.Width = 400;
+            this.gridBandOriginal.VisibleIndex = 1;
+            this.gridBandOriginal.Width = 670;
             // 
             // bandedGridColumnOriginalName
             // 
@@ -97,7 +97,7 @@
             this.bandedGridColumnOriginalName.Name = "bandedGridColumnOriginalName";
             this.bandedGridColumnOriginalName.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnOriginalName.Visible = true;
-            this.bandedGridColumnOriginalName.Width = 250;
+            this.bandedGridColumnOriginalName.Width = 150;
             // 
             // bandedGridColumnOriginalFullPath
             // 
@@ -106,7 +106,7 @@
             this.bandedGridColumnOriginalFullPath.Name = "bandedGridColumnOriginalFullPath";
             this.bandedGridColumnOriginalFullPath.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnOriginalFullPath.Visible = true;
-            this.bandedGridColumnOriginalFullPath.Width = 150;
+            this.bandedGridColumnOriginalFullPath.Width = 520;
             // 
             // gridBandClone
             // 
@@ -114,8 +114,8 @@
             this.gridBandClone.Columns.Add(this.bandedGridColumnCloneName);
             this.gridBandClone.Columns.Add(this.bandedGridColumnCloneFullPath);
             this.gridBandClone.Name = "gridBandClone";
-            this.gridBandClone.VisibleIndex = 1;
-            this.gridBandClone.Width = 400;
+            this.gridBandClone.VisibleIndex = 2;
+            this.gridBandClone.Width = 670;
             // 
             // bandedGridColumnCloneName
             // 
@@ -124,7 +124,7 @@
             this.bandedGridColumnCloneName.Name = "bandedGridColumnCloneName";
             this.bandedGridColumnCloneName.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnCloneName.Visible = true;
-            this.bandedGridColumnCloneName.Width = 250;
+            this.bandedGridColumnCloneName.Width = 150;
             // 
             // bandedGridColumnCloneFullPath
             // 
@@ -133,7 +133,7 @@
             this.bandedGridColumnCloneFullPath.Name = "bandedGridColumnCloneFullPath";
             this.bandedGridColumnCloneFullPath.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnCloneFullPath.Visible = true;
-            this.bandedGridColumnCloneFullPath.Width = 150;
+            this.bandedGridColumnCloneFullPath.Width = 520;
             // 
             // gridBandDifference
             // 
@@ -141,8 +141,8 @@
             this.gridBandDifference.Columns.Add(this.bandedGridColumnDescription);
             this.gridBandDifference.Columns.Add(this.bandedGridColumnItemType);
             this.gridBandDifference.Name = "gridBandDifference";
-            this.gridBandDifference.VisibleIndex = 2;
-            this.gridBandDifference.Width = 500;
+            this.gridBandDifference.VisibleIndex = 0;
+            this.gridBandDifference.Width = 280;
             // 
             // bandedGridColumnDescription
             // 
@@ -151,7 +151,7 @@
             this.bandedGridColumnDescription.Name = "bandedGridColumnDescription";
             this.bandedGridColumnDescription.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnDescription.Visible = true;
-            this.bandedGridColumnDescription.Width = 300;
+            this.bandedGridColumnDescription.Width = 220;
             // 
             // bandedGridColumnItemType
             // 
@@ -160,7 +160,7 @@
             this.bandedGridColumnItemType.Name = "bandedGridColumnItemType";
             this.bandedGridColumnItemType.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnItemType.Visible = true;
-            this.bandedGridColumnItemType.Width = 200;
+            this.bandedGridColumnItemType.Width = 60;
             // 
             // xtraFolderBrowserDialogOriginalFolder
             // 
