@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiskAnalyserForm));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemAnalyseStructure = new DevExpress.XtraBars.BarButtonItem();
-            this.repositoryItemColorPickEditBigFolderColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
-            this.repositoryItemSpinEditBigFolderSize = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.barButtonItemCancelAnalyse = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSetAsRoot = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemResetTreeView = new DevExpress.XtraBars.BarButtonItem();
@@ -43,6 +41,8 @@
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupCompare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupStopOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.repositoryItemColorPickEditBigFolderColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
+            this.repositoryItemSpinEditBigFolderSize = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabControlAnalyserPages = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageAnalyseStructure = new DevExpress.XtraTab.XtraTabPage();
@@ -85,7 +85,7 @@
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl1.Size = new System.Drawing.Size(1367, 154);
+            this.ribbonControl1.Size = new System.Drawing.Size(1278, 154);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // barButtonItemAnalyseStructure
@@ -96,33 +96,6 @@
             this.barButtonItemAnalyseStructure.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemAnalyseStructure.ImageOptions.SvgImage")));
             this.barButtonItemAnalyseStructure.Name = "barButtonItemAnalyseStructure";
             this.barButtonItemAnalyseStructure.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAnalyseStructure_ItemClick);
-            // 
-            // repositoryItemColorPickEditBigFolderColour
-            // 
-            this.repositoryItemColorPickEditBigFolderColour.AutoHeight = false;
-            this.repositoryItemColorPickEditBigFolderColour.AutomaticColor = System.Drawing.Color.Black;
-            this.repositoryItemColorPickEditBigFolderColour.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemColorPickEditBigFolderColour.Name = "repositoryItemColorPickEditBigFolderColour";
-            // 
-            // repositoryItemSpinEditBigFolderSize
-            // 
-            this.repositoryItemSpinEditBigFolderSize.AutoHeight = false;
-            this.repositoryItemSpinEditBigFolderSize.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSpinEditBigFolderSize.Mask.EditMask = ",#######0 MB";
-            this.repositoryItemSpinEditBigFolderSize.Mask.UseMaskAsDisplayFormat = true;
-            this.repositoryItemSpinEditBigFolderSize.MaxValue = new decimal(new int[] {
-            1073741824,
-            0,
-            0,
-            0});
-            this.repositoryItemSpinEditBigFolderSize.MinValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.repositoryItemSpinEditBigFolderSize.Name = "repositoryItemSpinEditBigFolderSize";
             // 
             // barButtonItemCancelAnalyse
             // 
@@ -209,14 +182,41 @@
             this.ribbonPageGroupStopOperations.ShowCaptionButton = false;
             this.ribbonPageGroupStopOperations.Text = "Stop";
             // 
+            // repositoryItemColorPickEditBigFolderColour
+            // 
+            this.repositoryItemColorPickEditBigFolderColour.AutoHeight = false;
+            this.repositoryItemColorPickEditBigFolderColour.AutomaticColor = System.Drawing.Color.Black;
+            this.repositoryItemColorPickEditBigFolderColour.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemColorPickEditBigFolderColour.Name = "repositoryItemColorPickEditBigFolderColour";
+            // 
+            // repositoryItemSpinEditBigFolderSize
+            // 
+            this.repositoryItemSpinEditBigFolderSize.AutoHeight = false;
+            this.repositoryItemSpinEditBigFolderSize.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEditBigFolderSize.Mask.EditMask = ",#######0 MB";
+            this.repositoryItemSpinEditBigFolderSize.Mask.UseMaskAsDisplayFormat = true;
+            this.repositoryItemSpinEditBigFolderSize.MaxValue = new decimal(new int[] {
+            1073741824,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEditBigFolderSize.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEditBigFolderSize.Name = "repositoryItemSpinEditBigFolderSize";
+            // 
             // ribbonStatusBar1
             // 
             this.ribbonStatusBar1.ItemLinks.Add(this.barHeaderItemOperationTime);
             this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItemOperationTime);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 722);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 697);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1367, 22);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1278, 22);
             // 
             // xtraTabControlAnalyserPages
             // 
@@ -224,7 +224,7 @@
             this.xtraTabControlAnalyserPages.Location = new System.Drawing.Point(0, 154);
             this.xtraTabControlAnalyserPages.Name = "xtraTabControlAnalyserPages";
             this.xtraTabControlAnalyserPages.SelectedTabPage = this.xtraTabPageAnalyseStructure;
-            this.xtraTabControlAnalyserPages.Size = new System.Drawing.Size(1367, 568);
+            this.xtraTabControlAnalyserPages.Size = new System.Drawing.Size(1278, 543);
             this.xtraTabControlAnalyserPages.TabIndex = 7;
             this.xtraTabControlAnalyserPages.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageAnalyseStructure,
@@ -235,7 +235,7 @@
             // 
             this.xtraTabPageAnalyseStructure.Controls.Add(this.folderStructureAnalyserCtrl);
             this.xtraTabPageAnalyseStructure.Name = "xtraTabPageAnalyseStructure";
-            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1365, 545);
+            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(648, 277);
             this.xtraTabPageAnalyseStructure.Text = "Analyse Structure";
             // 
             // folderStructureAnalyserCtrl
@@ -244,7 +244,7 @@
             this.folderStructureAnalyserCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureAnalyserCtrl.Name = "folderStructureAnalyserCtrl";
             this.folderStructureAnalyserCtrl.Session = null;
-            this.folderStructureAnalyserCtrl.Size = new System.Drawing.Size(1365, 545);
+            this.folderStructureAnalyserCtrl.Size = new System.Drawing.Size(648, 277);
             this.folderStructureAnalyserCtrl.TabIndex = 4;
             this.folderStructureAnalyserCtrl.WaitFormDescription = "Structure size analysis in progress...";
             this.folderStructureAnalyserCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureAnalyserCtrl_FolderStructureAnalysisStart);
@@ -255,7 +255,7 @@
             // 
             this.xtraTabPageCompareStructures.Controls.Add(this.folderStructureComparerCtrl);
             this.xtraTabPageCompareStructures.Name = "xtraTabPageCompareStructures";
-            this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(1365, 545);
+            this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(1276, 520);
             this.xtraTabPageCompareStructures.Text = "Compare Structures";
             // 
             // folderStructureComparerCtrl
@@ -264,7 +264,7 @@
             this.folderStructureComparerCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureComparerCtrl.Name = "folderStructureComparerCtrl";
             this.folderStructureComparerCtrl.Session = null;
-            this.folderStructureComparerCtrl.Size = new System.Drawing.Size(1365, 545);
+            this.folderStructureComparerCtrl.Size = new System.Drawing.Size(1276, 520);
             this.folderStructureComparerCtrl.TabIndex = 0;
             this.folderStructureComparerCtrl.WaitFormDescription = "Folder comparision in progress...";
             this.folderStructureComparerCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisStart);
@@ -275,7 +275,7 @@
             // 
             this.xtraTabPageSettings.Controls.Add(this.folderStructureSettingsCtrl);
             this.xtraTabPageSettings.Name = "xtraTabPageSettings";
-            this.xtraTabPageSettings.Size = new System.Drawing.Size(1365, 545);
+            this.xtraTabPageSettings.Size = new System.Drawing.Size(648, 277);
             this.xtraTabPageSettings.Text = "Settings";
             // 
             // folderStructureSettingsCtrl
@@ -284,17 +284,18 @@
             this.folderStructureSettingsCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureSettingsCtrl.Name = "folderStructureSettingsCtrl";
             this.folderStructureSettingsCtrl.Session = null;
-            this.folderStructureSettingsCtrl.Size = new System.Drawing.Size(1365, 545);
+            this.folderStructureSettingsCtrl.Size = new System.Drawing.Size(648, 277);
             this.folderStructureSettingsCtrl.TabIndex = 0;
             // 
             // DiskAnalyserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1367, 744);
+            this.ClientSize = new System.Drawing.Size(1278, 719);
             this.Controls.Add(this.xtraTabControlAnalyserPages);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
+            this.MinimumSize = new System.Drawing.Size(640, 400);
             this.Name = "DiskAnalyserForm";
             this.Ribbon = this.ribbonControl1;
             this.StatusBar = this.ribbonStatusBar1;
