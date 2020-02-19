@@ -32,6 +32,16 @@ namespace FolderStructureAnalyser.Components
             FolderStructureDifferenceAdded?.Invoke(this, e);
         }
 
+        /// <summary>
+        /// The path to the original folder the user last selected.
+        /// </summary>
+        private string LastSelectedOriginalPath { get; set; }
+
+        /// <summary>
+        /// The path to the clone folder the user last selected.
+        /// </summary>
+        private string LastSelectedClonePath { get; set; }
+
         public FolderStructureComparerCtrl()
         {
             InitializeComponent();
@@ -52,13 +62,15 @@ namespace FolderStructureAnalyser.Components
 
         private List<string> askUserForFoldersToCompare()
         {
-            var originalFolder = ShowSelectFolderDialog("Select original", "Select the folder that is to act as original.", false);
-            if (!PathIsValid(originalFolder)) { return null; }
+            var originalFolderPath = ShowSelectFolderDialog("Select original", "Select the folder that is to act as original.", LastSelectedOriginalPath);
+            if (!PathIsValid(originalFolderPath)) { return null; }
+            LastSelectedOriginalPath = originalFolderPath;
 
-            var clonedFolder = ShowSelectFolderDialog("Select clone", "Select the folder that is to act as clone.", false);
-            if (!PathIsValid(clonedFolder)) { return null; }
+            var cloneFolderPath = ShowSelectFolderDialog("Select clone", "Select the folder that is to act as clone.", LastSelectedClonePath);
+            if (!PathIsValid(cloneFolderPath)) { return null; }
+            LastSelectedClonePath = cloneFolderPath;
 
-            return new List<string>() { originalFolder, clonedFolder };
+            return new List<string>() { originalFolderPath, cloneFolderPath };
         }
 
         private void FolderStructureComparerCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)

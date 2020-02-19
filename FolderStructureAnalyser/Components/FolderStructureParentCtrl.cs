@@ -152,27 +152,35 @@ namespace FolderStructureAnalyser.Components
             LastKnownSize = Size;
             ParentForm.Move += ParentForm_Move;
         }
+        
+        /// <summary>
+        /// Lets the user select a folder.
+        /// </summary>
+        /// <param name="title">The title of the folder dialog.</param>
+        /// <param name="description">The description within the folder dialog.</param>
+        /// <returns>The full path to the selected folder, NULL if the user cancelled.</returns>
+        public string ShowSelectFolderDialog(string title, string description)
+        {
+            xtraFolderBrowserDialogSelectFolder.Title = title;
+            xtraFolderBrowserDialogSelectFolder.Description = description;
+
+            var result = xtraFolderBrowserDialogSelectFolder.ShowDialog();
+
+            return (result == DialogResult.OK) ? xtraFolderBrowserDialogSelectFolder.SelectedPath : null;
+        }
 
         /// <summary>
         /// Lets the user select a folder.
         /// </summary>
         /// <param name="title">The title of the folder dialog.</param>
         /// <param name="description">The description within the folder dialog.</param>
-        /// <param name="resetSelectedPath">TRUE if the control should remember the last path the user selected, FALSE if the path should be reset.</param>
+        /// <param name="selectedPath">The path to the folder that should be preselected.</param>
         /// <returns>The full path to the selected folder, NULL if the user cancelled.</returns>
-        public string ShowSelectFolderDialog(string title, string description, bool rememberSelectedPath = true)
+        public string ShowSelectFolderDialog(string title, string description, string selectedPath)
         {
-            xtraFolderBrowserDialogSelectFolder.Title = title;
-            xtraFolderBrowserDialogSelectFolder.Description = description;
+            xtraFolderBrowserDialogSelectFolder.SelectedPath = selectedPath;
 
-            if (!rememberSelectedPath)
-            {
-                xtraFolderBrowserDialogSelectFolder.SelectedPath = null;
-            }
-
-            var result = xtraFolderBrowserDialogSelectFolder.ShowDialog();
-
-            return (result == DialogResult.OK) ? xtraFolderBrowserDialogSelectFolder.SelectedPath : null;
+            return ShowSelectFolderDialog(title, description);
         }
 
         /// <summary>
