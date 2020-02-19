@@ -50,6 +50,9 @@ namespace FolderStructureAnalyser.Components
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Runs the comparison of the folder structures.
+        /// </summary>
         public void CompareFolderStructures()
         {
             if (MayStartAnalysis())
@@ -63,6 +66,10 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
+        /// <summary>
+        /// Asks the user for the two folders to compare.
+        /// </summary>
+        /// <returns>A list containing the full paths to the folders to compare. The first path is the original, the second is the clone.</returns>
         private List<string> askUserForFoldersToCompare()
         {
             var originalFolderPath = ShowSelectFolderDialog("Select original", "Select the folder that is to act as original.", LastSelectedOriginalPath);
@@ -177,6 +184,13 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
+        /// <summary>
+        /// Compares the files withing two folders to see if the clone has the same file content as the original.
+        /// </summary>
+        /// <param name="originalFolderPath">The full path to the original folder.</param>
+        /// <param name="cloneFolderPath">The full path to the clone folder.</param>
+        /// <param name="differences">The data source holding any differences found.</param>
+        /// <param name="worker">The worker responsible for the comparision.</param>
         private void compareFiles(string originalFolderPath, string cloneFolderPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
         {
             //Check if the clone has all the files the original has.
@@ -227,11 +241,24 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
+        /// <summary>
+        /// Gets the information of a file.
+        /// </summary>
+        /// <param name="parentFolderPath">The full path to the parent folder of the file.</param>
+        /// <param name="fileName">The name of the file.</param>
+        /// <returns>An object holding the information about the file.</returns>
         private static FileInfo getFileInfo(string parentFolderPath, string fileName)
         {
             return new FileInfo(Path.Combine(parentFolderPath, fileName));
         }
 
+        /// <summary>
+        /// Adds a difference to the list of differences to show the user.
+        /// </summary>
+        /// <param name="differences">The list of differences to show the user.</param>
+        /// <param name="original">The original item.</param>
+        /// <param name="clone">The clone item that differs from the original.</param>
+        /// <param name="description">A description of the difference.</param>
         private void addDifference(BindingList<StructureDifference> differences, FileSystemInfo original, FileSystemInfo clone, string description)
         {
             //Add the differences.
@@ -243,6 +270,10 @@ namespace FolderStructureAnalyser.Components
             OnFolderStructureDifferenceAdded(args);
         }
 
+        /// <summary>
+        /// Sets the data source of the grid.
+        /// </summary>
+        /// <param name="differences">The list of differences to show the user.</param>
         private void updateDataSource(BindingList<StructureDifference> differences)
         {
             gridControl1.DataSource = differences;
