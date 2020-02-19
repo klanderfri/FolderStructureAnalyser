@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.BandedGrid.ViewInfo;
 using FolderStructureAnalyser.DataObjects;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
@@ -203,7 +205,17 @@ namespace FolderStructureAnalyser.Components
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-            
+            var hitInfo = GridHandler.GetHitInfo(sender as GridControl, MousePosition) as BandedGridHitInfo;
+            var row = hitInfo.View.GetRow(hitInfo.RowHandle) as StructureDifference;
+
+            if (hitInfo.Band == gridBandOriginal)
+            {
+                FileHandler.OpenFolderInExplorer(row.OriginalParentFolderFullPath);
+            }
+            if (hitInfo.Band == gridBandClone)
+            {
+                FileHandler.OpenFolderInExplorer(row.CloneParentFolderFullPath);
+            }
         }
     }
 }
