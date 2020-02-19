@@ -35,8 +35,6 @@
             this.repositoryItemTextEditFileSize = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.svgImageCollectionTreeIcons = new DevExpress.Utils.SvgImageCollection(this.components);
-            this.backgroundWorkerStructureAnalyser = new System.ComponentModel.BackgroundWorker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).BeginInit();
@@ -109,10 +107,6 @@
             this.svgImageCollectionTreeIcons.Add("file", "image://svgimages/dashboards/new.svg");
             this.svgImageCollectionTreeIcons.Add("open", "image://svgimages/dashboards/imageload.svg");
             // 
-            // backgroundWorkerStructureAnalyser
-            // 
-            this.backgroundWorkerStructureAnalyser.WorkerSupportsCancellation = true;
-            // 
             // FolderStructureAnalyserCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,9 +130,7 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnName;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnSize;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSize;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerStructureAnalyser;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionTreeIcons;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
-        private System.Windows.Forms.Timer timer1;
     }
 }

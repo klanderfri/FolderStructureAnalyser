@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForStructureCompare = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true, typeof(System.Windows.Forms.UserControl));
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBandDifference = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -41,18 +40,11 @@
             this.gridBandClone = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnCloneName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCloneFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.backgroundWorkerCompareFolders = new System.ComponentModel.BackgroundWorker();
-            this.xtraFolderBrowserDialogOriginalFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
-            this.xtraFolderBrowserDialogCloneFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
             this.svgImageCollectionGridIcons = new DevExpress.Utils.SvgImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionGridIcons)).BeginInit();
             this.SuspendLayout();
-            // 
-            // splashScreenManagerWaitForStructureCompare
-            // 
-            splashScreenManagerWaitForStructureCompare.ClosingDelay = 500;
             // 
             // gridControl1
             // 
@@ -165,20 +157,6 @@
             this.bandedGridColumnCloneFullPath.Visible = true;
             this.bandedGridColumnCloneFullPath.Width = 520;
             // 
-            // xtraFolderBrowserDialogOriginalFolder
-            // 
-            this.xtraFolderBrowserDialogOriginalFolder.Description = "Select the folder that should act as the original folder.";
-            this.xtraFolderBrowserDialogOriginalFolder.SelectedPath = "xtraFolderBrowserDialog1";
-            this.xtraFolderBrowserDialogOriginalFolder.ShowNewFolderButton = false;
-            this.xtraFolderBrowserDialogOriginalFolder.Title = "Select original folder";
-            // 
-            // xtraFolderBrowserDialogCloneFolder
-            // 
-            this.xtraFolderBrowserDialogCloneFolder.Description = "Select the folder that should be considered a clone of the original folder.";
-            this.xtraFolderBrowserDialogCloneFolder.SelectedPath = "xtraFolderBrowserDialog1";
-            this.xtraFolderBrowserDialogCloneFolder.ShowNewFolderButton = false;
-            this.xtraFolderBrowserDialogCloneFolder.Title = "Select cloned folder";
-            // 
             // svgImageCollectionGridIcons
             // 
             this.svgImageCollectionGridIcons.Add("folder", "image://svgimages/actions/open.svg");
@@ -208,9 +186,6 @@
         #endregion
 
         private DevExpress.XtraGrid.GridControl gridControl1;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerCompareFolders;
-        private DevExpress.XtraEditors.XtraFolderBrowserDialog xtraFolderBrowserDialogOriginalFolder;
-        private DevExpress.XtraEditors.XtraFolderBrowserDialog xtraFolderBrowserDialogCloneFolder;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnOriginalName;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnDescription;
