@@ -18,7 +18,7 @@ namespace FolderStructureAnalyser.Helpers
         /// <returns>An object holding the information about the file.</returns>
         public static FileInfo GetFileInfo(string parentFolderPath, string fileName)
         {
-            return new FileInfo(Path.Combine(parentFolderPath, fileName));
+            return getDiskItemInfo<FileInfo>(parentFolderPath, fileName);
         }
 
         /// <summary>
@@ -29,7 +29,19 @@ namespace FolderStructureAnalyser.Helpers
         /// <returns>An object holding the information about the folder.</returns>
         public static DirectoryInfo GetFolderInfo(string parentFolderPath, string folderName)
         {
-            return new DirectoryInfo(Path.Combine(parentFolderPath, folderName));
+            return getDiskItemInfo<DirectoryInfo>(parentFolderPath, folderName);
+        }
+
+        /// <summary>
+        /// Gets the information of a disk item.
+        /// </summary>
+        /// <typeparam name="T">The type of information to get.</typeparam>
+        /// <param name="parentFolderPath">The full path to the parent folder of the disk item.</param>
+        /// <param name="folderName">The name of the disk item.</param>
+        /// <returns>An object holding the information about the disk item.</returns>
+        private static T getDiskItemInfo<T>(string parentFolderPath, string itemName)
+        {
+            return (T)Activator.CreateInstance(typeof(T), Path.Combine(parentFolderPath, itemName));
         }
 
         /// <summary>
