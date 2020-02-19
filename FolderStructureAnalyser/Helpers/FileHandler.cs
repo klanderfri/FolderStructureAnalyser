@@ -94,7 +94,7 @@ namespace FolderStructureAnalyser.Helpers
             }
             else
             {
-                MessageBoxes.ShowFolderNoLongerExistMessage();
+                MessageBoxes.ShowFolderDoesNotExistMessage();
             }
         }
     }

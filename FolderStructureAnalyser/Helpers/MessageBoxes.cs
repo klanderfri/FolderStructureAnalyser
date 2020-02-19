@@ -36,9 +36,9 @@ namespace FolderStructureAnalyser.Helpers
             MessageBox.Show(message, "Problem opening folder.", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static void ShowFolderNoLongerExistMessage()
+        public static void ShowFolderDoesNotExistMessage()
         {
-            var message = "The folder does no longer exist.";
+            var message = "The folder does not exist.";
             MessageBox.Show(message, "Non-existing folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
