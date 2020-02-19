@@ -22,5 +22,11 @@ namespace FolderStructureAnalyser.Helpers
             var message = String.Format(format, Environment.NewLine, folderName, folderPath);
             MessageBox.Show(message, "Folder does not exist", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        public static void ShowSameFolderSelectedForCompareMessage()
+        {
+            var message = "You have selected the same folder as both original and clone. Select different folders!";
+            MessageBox.Show(message, "Same folder selected twice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }

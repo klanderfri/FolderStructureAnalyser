@@ -70,7 +70,15 @@ namespace FolderStructureAnalyser.Components
             if (!PathIsValid(cloneFolderPath)) { return null; }
             LastSelectedClonePath = cloneFolderPath;
 
-            return new List<string>() { originalFolderPath, cloneFolderPath };
+            if (originalFolderPath == cloneFolderPath)
+            {
+                MessageBoxes.ShowSameFolderSelectedForCompareMessage();
+                return null;
+            }
+            else
+            {
+                return new List<string>() { originalFolderPath, cloneFolderPath };
+            }
         }
 
         private void FolderStructureComparerCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
