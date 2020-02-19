@@ -161,7 +161,7 @@ namespace FolderStructureAnalyser.Components
             foreach (var cloneSubFolder in FileHandler.GetDirectories(cloneFolderPath))
             {
                 //Get the information about the original subfolder.
-                var originalSubfolder = getFolderInfo(originalFolderPath, cloneSubFolder.Name);
+                var originalSubfolder = FileHandler.GetFolderInfo(originalFolderPath, cloneSubFolder.Name);
 
                 //Check if the clone has a folder the original does not.
                 if (!originalSubfolder.Exists)
@@ -199,7 +199,7 @@ namespace FolderStructureAnalyser.Components
                 if (worker.CancellationPending) { return; }
 
                 //Get the information about the clone file.
-                var cloneFile = getFileInfo(cloneFolderPath, originalFile.Name);
+                var cloneFile = FileHandler.GetFileInfo(cloneFolderPath, originalFile.Name);
 
                 //Check if the clone file exists.
                 if (!cloneFile.Exists)
@@ -229,7 +229,7 @@ namespace FolderStructureAnalyser.Components
                 if (worker.CancellationPending) { return; }
                 
                 //Get the information about the original file.
-                var originalFile = getFileInfo(originalFolderPath, cloneFile.Name);
+                var originalFile = FileHandler.GetFileInfo(originalFolderPath, cloneFile.Name);
 
                 //Check if the clone has a file the original does not.
                 if (!originalFile.Exists)
@@ -238,28 +238,6 @@ namespace FolderStructureAnalyser.Components
                     addDifference(differences, originalFile, cloneFile, format);
                 }
             }
-        }
-
-        /// <summary>
-        /// Gets the information of a file.
-        /// </summary>
-        /// <param name="parentFolderPath">The full path to the parent folder of the file.</param>
-        /// <param name="fileName">The name of the file.</param>
-        /// <returns>An object holding the information about the file.</returns>
-        private static FileInfo getFileInfo(string parentFolderPath, string fileName)
-        {
-            return new FileInfo(Path.Combine(parentFolderPath, fileName));
-        }
-
-        /// <summary>
-        /// Gets the information of a folder.
-        /// </summary>
-        /// <param name="parentFolderPath">>The full path to the parent folder of the folder.</param>
-        /// <param name="folderName">The name of the folder.</param>
-        /// <returns>An object holding the information about the folder.</returns>
-        private static DirectoryInfo getFolderInfo(string parentFolderPath, string folderName)
-        {
-            return new DirectoryInfo(Path.Combine(parentFolderPath, folderName));
         }
 
         /// <summary>

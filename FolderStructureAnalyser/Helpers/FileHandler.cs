@@ -11,6 +11,28 @@ namespace FolderStructureAnalyser.Helpers
     public static class FileHandler
     {
         /// <summary>
+        /// Gets the information of a file.
+        /// </summary>
+        /// <param name="parentFolderPath">The full path to the parent folder of the file.</param>
+        /// <param name="fileName">The name of the file.</param>
+        /// <returns>An object holding the information about the file.</returns>
+        public static FileInfo GetFileInfo(string parentFolderPath, string fileName)
+        {
+            return new FileInfo(Path.Combine(parentFolderPath, fileName));
+        }
+
+        /// <summary>
+        /// Gets the information of a folder.
+        /// </summary>
+        /// <param name="parentFolderPath">The full path to the parent folder of the folder.</param>
+        /// <param name="folderName">The name of the folder.</param>
+        /// <returns>An object holding the information about the folder.</returns>
+        public static DirectoryInfo GetFolderInfo(string parentFolderPath, string folderName)
+        {
+            return new DirectoryInfo(Path.Combine(parentFolderPath, folderName));
+        }
+
+        /// <summary>
         /// Gives a list of files within a folder.
         /// </summary>
         /// <param name="folderPath">The full path to the folder containing the files.</param>
