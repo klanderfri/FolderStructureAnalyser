@@ -157,13 +157,14 @@ namespace FolderStructureAnalyser.Components
 
         private void compareFiles(string originalFolderPath, string cloneFolderPath, BindingList<StructureDifference> differences, BackgroundWorker worker)
         {
+            //Check that the clone has all the files the original has.
             foreach (var originalFile in FileHandler.GetFiles(originalFolderPath))
             {
                 //Check for cancellation.
                 if (worker.CancellationPending) { return; }
 
                 //Get the information about the clone file.
-                var cloneFile = new FileInfo(Path.Combine(cloneFolderPath, originalFile.Name));
+                var cloneFile = getFileInfo(cloneFolderPath, originalFile.Name);
 
                 //Check if the clone file exists.
                 if (!cloneFile.Exists)
@@ -185,6 +186,29 @@ namespace FolderStructureAnalyser.Components
                     addDifference(differences, originalFile, cloneFile, format);
                 }
             }
+
+            //Check that the clone doesn't have any additional files not present in the original.
+            foreach (var cloneFile in FileHandler.GetFiles(cloneFolderPath))
+            {
+                //Check for cancellation.
+                if (worker.CancellationPending) { return; }
+                
+                //Get the information about the original file.
+                var originalFile = getFileInfo(originalFolderPath, cloneFile.Name);
+
+                //Check if the clone has a file that the original doesn't have.
+                if (!originalFile.Exists)
+                {
+                    var format = "The clone has an additional file.";
+                    addDifference(differences, originalFile, cloneFile, format);
+                    continue;
+                }
+            }
+        }
+
+        private static FileInfo getFileInfo(string parentFolderPath, string fileName)
+        {
+            return new FileInfo(Path.Combine(parentFolderPath, fileName));
         }
 
         private void addDifference(BindingList<StructureDifference> differences, FileSystemInfo original, FileSystemInfo clone, string description)
