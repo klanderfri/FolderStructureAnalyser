@@ -28,5 +28,18 @@ namespace FolderStructureAnalyser.Helpers
             var message = "You have selected the same folder as both original and clone. Select different folders!";
             MessageBox.Show(message, "Same folder selected twice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
+        public static void ShowProblemOpeningFolderMessage(DirectoryInfo folder, Exception ex)
+        {
+            var format = "Problem opening folder {1}.{0}Path: {2}{0}Error: {3}";
+            var message = String.Format(format, Environment.NewLine, folder.Name, folder.FullName, ex.Message);
+            MessageBox.Show(message, "Problem opening folder.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static void ShowFolderNoLongerExistMessage()
+        {
+            var message = "The folder does no longer exist.";
+            MessageBox.Show(message, "Non-existing folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
