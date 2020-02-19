@@ -97,7 +97,7 @@
             // repositoryItemColorPickEdit
             // 
             this.repositoryItemColorPickEdit.AutoHeight = false;
-            this.repositoryItemColorPickEdit.AutomaticColor = System.Drawing.Color.Black;
+            this.repositoryItemColorPickEdit.AutomaticColor = System.Drawing.Color.Red;
             this.repositoryItemColorPickEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemColorPickEdit.Name = "repositoryItemColorPickEdit";
