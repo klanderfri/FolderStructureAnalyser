@@ -204,33 +204,6 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// Opens a specific folder in the Windows Explorer.
-        /// </summary>
-        /// <param name="folder">The folder to open.</param>
-        private void openFolderInExplorer(FolderNode folder)
-        {
-            var path = folder.FolderData.Info.FullName;
-            if (Directory.Exists(path))
-            {
-                try
-                {
-                    Process.Start(path);
-                }
-                catch (Win32Exception ex)
-                {
-                    var format = "Problem opening folder {1}.{0}Path: {2}{0}Error: {3}";
-                    var message = String.Format(format, Environment.NewLine, folder.Name, path, ex.Message);
-                    MessageBox.Show(message, "Problem opening folder.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                var message = "The folder does no longer exist.";
-                MessageBox.Show(message, "Non-existing folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        /// <summary>
         /// Gets the colour to use for a folder.
         /// </summary>
         /// <param name="folderSizeInBytes">The size of the folder in bytes.</param>
@@ -276,8 +249,9 @@ namespace FolderStructureAnalyser.Components
             if (hitInfo.Node != null && hitInfo.Column == treeListColumnOpen)
             {
                 //Open folder.
-                var folder = getFolderFromNode(hitInfo.Node);
-                openFolderInExplorer(folder);
+                var folderData = getFolderFromNode(hitInfo.Node);
+                var folderInfo = folderData.FolderData.Info;
+                FileHandler.OpenFolderInExplorer(folderInfo);
             }
         }
 

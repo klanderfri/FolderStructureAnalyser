@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace FolderStructureAnalyser.Helpers
 {
@@ -62,6 +65,41 @@ namespace FolderStructureAnalyser.Helpers
             }
 
             return subItems;
+        }
+        /// <summary>
+        /// Opens a specific folder in the Windows Explorer.
+        /// </summary>
+        /// <param name="folderPath">The full path to the folder to open.</param>
+        public static void OpenFolderInExplorer(string folderPath)
+        {
+            var folder = new DirectoryInfo(folderPath);
+            OpenFolderInExplorer(folder);
+        }
+
+        /// <summary>
+        /// Opens a specific folder in the Windows Explorer.
+        /// </summary>
+        /// <param name="folder">The folder to open.</param>
+        public static void OpenFolderInExplorer(DirectoryInfo folder)
+        {
+            if (folder.Exists)
+            {
+                try
+                {
+                    Process.Start(folder.FullName);
+                }
+                catch (Win32Exception ex)
+                {
+                    var format = "Problem opening folder {1}.{0}Path: {2}{0}Error: {3}";
+                    var message = String.Format(format, Environment.NewLine, folder.Name, folder.FullName, ex.Message);
+                    MessageBox.Show(message, "Problem opening folder.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                var message = "The folder does no longer exist.";
+                MessageBox.Show(message, "Non-existing folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
