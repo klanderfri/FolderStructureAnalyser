@@ -1,4 +1,6 @@
-﻿namespace FolderStructureAnalyser.SessionBound
+﻿using FolderStructureAnalyser.Helpers;
+
+namespace FolderStructureAnalyser.SessionBound
 {
     public class Tools : SessionBoundClass
     {
@@ -13,7 +15,7 @@
         public bool IsBigFolder(long sizeInBytes)
         {
             var sizeLimitInMB = Session.Settings.BigFolderInMB;
-            var sizeLimitInBytes = Helpers.ByteSizeConverter.BytesFromMB(sizeLimitInMB);
+            var sizeLimitInBytes = ByteSizeConverter.BytesFromMB(sizeLimitInMB);
 
             return sizeInBytes >= sizeLimitInBytes;
         }
