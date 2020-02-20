@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FolderStructureAnalyser.Enums;
 
 namespace FolderStructureAnalyser.Helpers
 {
@@ -12,8 +13,9 @@ namespace FolderStructureAnalyser.Helpers
         /// Converts a size in bytes to a descriptive string.
         /// </summary>
         /// <param name="sizeInBytes">The size to convert.</param>
+        /// <param name="displayUnit">The unit to convert the size to.</param>
         /// <returns>A string describing the size.</returns>
-        public static string SizeStringFromByte(long sizeInBytes)
+        public static string SizeStringFromByte(long sizeInBytes, SizeDisplayUnit displayUnit)
         {
             var units = new List<string> { "B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
 

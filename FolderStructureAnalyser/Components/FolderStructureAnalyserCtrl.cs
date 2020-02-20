@@ -189,7 +189,7 @@ namespace FolderStructureAnalyser.Components
         {
             //Show the size (in MB, GB, etc) instead of just the bytes.
             var sizeInBytes = Convert.ToInt64(e.Value);
-            e.DisplayText = ByteSizeConverter.SizeStringFromByte(sizeInBytes);
+            e.DisplayText = Session.Tools.SizeStringFromByte(sizeInBytes);
         }
 
         private void treeListFolderStructure_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)

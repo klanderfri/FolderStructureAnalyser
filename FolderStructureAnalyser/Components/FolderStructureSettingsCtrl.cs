@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
+using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components
@@ -16,6 +18,21 @@ namespace FolderStructureAnalyser.Components
         {
             Session = session;
             propertyGridControlAnalysingSettings.SelectedObject = Session.Settings;
+            setupSizeUnitCombobox();
+        }
+
+        /// <summary>
+        /// Sets up the combobox selecting how sizes should be shown.
+        /// </summary>
+        private void setupSizeUnitCombobox()
+        {
+            var items = new List<SizeDisplayUnit>()
+            {
+                SizeDisplayUnit.Dynamic,
+                SizeDisplayUnit.OnlyMB,
+                SizeDisplayUnit.OnlyBytes
+            };
+            repositoryItemComboBoxSizeDisplayUnit.Items.AddRange(items);
         }
     }
 }

@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="DataObjects\StructureDifference.cs" />
     <Compile Include="Enums\DifferenceType.cs" />
+    <Compile Include="Enums\SizeDisplayUnit.cs" />
     <Compile Include="Events\FolderStructureAnalysisStartArgs.cs" />
     <Compile Include="Events\FolderStructureDifferenceAddedArgs.cs" />
     <Compile Include="Events\TimedProgressChangedEventArgs.cs" />

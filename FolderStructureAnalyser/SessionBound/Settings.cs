@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using FolderStructureAnalyser.Enums;
 
 namespace FolderStructureAnalyser.SessionBound
 {
@@ -28,6 +29,11 @@ namespace FolderStructureAnalyser.SessionBound
         public Color GridErrorColour { get; set; }
 
         /// <summary>
+        /// Tells which unit a size should be displayed as.
+        /// </summary>
+        public SizeDisplayUnit SizeDisplayUnit { get; set; }
+
+        /// <summary>
         /// Creates an object holding the settings for the application, using default values.
         /// </summary>
         /// <param name="session">The application session.</param>
@@ -38,6 +44,7 @@ namespace FolderStructureAnalyser.SessionBound
             BigFolderColour = Color.Red;
             CompareFileHashes = false;
             GridErrorColour = Color.Salmon;
+            SizeDisplayUnit = SizeDisplayUnit.Dynamic;
         }
     }
 }

@@ -19,5 +19,15 @@ namespace FolderStructureAnalyser.SessionBound
 
             return sizeInBytes >= sizeLimitInBytes;
         }
+
+        /// <summary>
+        /// Converts a size in bytes to a descriptive string.
+        /// </summary>
+        /// <param name="sizeInBytes">The size to convert.</param>
+        /// <returns>A string describing the size.</returns>
+        public string SizeStringFromByte(long sizeInBytes)
+        {
+            return ByteSizeConverter.SizeStringFromByte(sizeInBytes, Session.Settings.SizeDisplayUnit);
+        }
     }
 }
