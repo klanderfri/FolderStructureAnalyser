@@ -224,7 +224,7 @@ namespace FolderStructureAnalyser.Components
                 {
                     addDifference(differences, originalFile, cloneFile, DifferenceType.FileSizeDiffer);
                 }
-                if (Session.Settings.CompareFileHashes && !FileHandler.HasIdenticalHashes(originalFile.FullName, cloneFile.FullName))
+                else if (Session.Settings.CompareFileHashes && !FileHandler.HasIdenticalHashes(originalFile.FullName, cloneFile.FullName))
                 {
                     addDifference(differences, originalFile, cloneFile, DifferenceType.FileHashDiffer);
                 }
