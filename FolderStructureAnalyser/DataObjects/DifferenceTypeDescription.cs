@@ -73,6 +73,12 @@ namespace FolderStructureAnalyser.DataObjects
                     Description = "The clone file has a different size.";
                     break;
 
+                case DifferenceType.FileHashDiffer:
+                    ItemTypeImageIndex = 1;
+                    DifferenceTypeImageIndex = 6;
+                    Description = "The clone file has a different hash code.";
+                    break;
+
                 default:
                     var format = "Unhandled folder structure difference: {0}";
                     var message = String.Format(format, diffType);

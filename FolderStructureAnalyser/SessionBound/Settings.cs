@@ -14,11 +14,17 @@ namespace FolderStructureAnalyser.SessionBound
         /// </summary>
         public Color BigFolderColour { get; set; }
 
+        /// <summary>
+        /// Tells if the hashes should be compared when comparing two files.
+        /// </summary>
+        public bool CompareFileHashes { get; set; }
+
         public Settings(Session session)
             : base(session)
         {
             BigFolderInMB = 10;
             BigFolderColour = Color.Red;
+            CompareFileHashes = true;
         }
     }
 }

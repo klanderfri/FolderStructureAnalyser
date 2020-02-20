@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 
 namespace FolderStructureAnalyser.Helpers
 {
@@ -139,6 +141,36 @@ namespace FolderStructureAnalyser.Helpers
         public static DirectoryInfo GetParentFolder(string fullPath)
         {
             return (new FileInfo(fullPath)).Directory;
+        }
+
+        /// <summary>
+        /// Gives the hash code for a file
+        /// </summary>
+        /// <param name="file">The full path to the file to get the hash code for.</param>
+        /// <returns>The has code of the file.</returns>
+        public static byte[] GetHash(string fullFilePath)
+        {
+            using (var md5 = MD5.Create())
+            {
+                using (var stream = File.OpenRead(fullFilePath))
+                {
+                    return md5.ComputeHash(stream);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tells if two files has identical hashes.
+        /// </summary>
+        /// <param name="firstFilePath">The full path to the first file.</param>
+        /// <param name="secondFilePath">The full path to the second file.</param>
+        /// <returns>TRUE if the hashes are identical, else FALSE.</returns>
+        public static bool HasIdenticalHashes(string firstFilePath, string secondFilePath)
+        {
+            var firstHash = GetHash(firstFilePath);
+            var secondHash = GetHash(secondFilePath);
+
+            return firstHash.SequenceEqual(secondHash);
         }
     }
 }

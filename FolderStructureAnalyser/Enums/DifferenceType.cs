@@ -38,6 +38,11 @@
         /// <summary>
         /// The clone file has a different size than the original.
         /// </summary>
-        FileSizeDiffer
+        FileSizeDiffer,
+
+        /// <summary>
+        /// The clone file has a different hash than the original. 
+        /// </summary>
+        FileHashDiffer
     }
 }
