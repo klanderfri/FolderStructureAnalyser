@@ -12,6 +12,9 @@ Graphical updates
 	Colour (red) the grid cells that indicates a missing file/folder.
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
 	Movable panels.
+	Remove the wait forms and replace by a runnin marquee in the status bar so the forms don't hinder the user from keeping working.
 	
 Functionality
 	Make the BackgroundWorker report a difference back so the grid can be updated while the user is waiting.
+	Add files in the folder structure analyser.
+	Add update buttons.

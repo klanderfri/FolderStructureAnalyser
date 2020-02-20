@@ -91,13 +91,11 @@ namespace FolderStructureAnalyser.Components
         private void folderStructureAnalyserCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
             setOperationButtonStates(false);
-            xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageAnalyseStructure;
         }
 
         private void folderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
             setOperationButtonStates(false);
-            xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageCompareStructures;
         }
 
         private void folderStructureAnalyserCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
