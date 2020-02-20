@@ -1,5 +1,8 @@
 ﻿namespace FolderStructureAnalyser.Enums
 {
+    /// <summary>
+    /// Commands to use when directing a wait form.
+    /// </summary>
     public enum WaitFormCommand
     {
         /// <summary>
