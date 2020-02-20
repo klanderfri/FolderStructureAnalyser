@@ -41,19 +41,19 @@ namespace FolderStructureAnalyser.DataObjects
                 case DifferenceType.SubfolderMissing:
                     ItemTypeImageIndex = 0;
                     DifferenceTypeImageIndex = 4;
-                    Description = "The clone is missing a folder.";
+                    Description = "The clone is missing a subfolder.";
                     break;
 
                 case DifferenceType.SubfolderAdditional:
                     ItemTypeImageIndex = 0;
                     DifferenceTypeImageIndex = 3;
-                    Description = "The clone has an additional folder.";
+                    Description = "The clone has an additional subfolder.";
                     break;
 
                 case DifferenceType.SubfolderAttributesDiffer:
                     ItemTypeImageIndex = 0;
                     DifferenceTypeImageIndex = 6;
-                    Description = "The clone folder has different attributes.";
+                    Description = "The clone subfolder has different attributes.";
                     break;
 
                 case DifferenceType.FileMissing:

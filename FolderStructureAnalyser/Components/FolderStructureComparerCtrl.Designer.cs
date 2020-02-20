@@ -30,16 +30,16 @@
         {
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBandDifference = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnDescription = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnItemTypeIndex = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnProblemTypeIndex = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBandOriginal = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnOriginalName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnOriginalFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBandClone = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnCloneName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCloneFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBandDifference = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBandOriginal = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBandClone = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
             this.SuspendLayout();
@@ -75,6 +75,17 @@
             this.bandedGridView1.OptionsView.ColumnAutoWidth = false;
             this.bandedGridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.bandedGridView1_CustomDrawCell);
             // 
+            // gridBandDifference
+            // 
+            this.gridBandDifference.Caption = "Difference";
+            this.gridBandDifference.Columns.Add(this.bandedGridColumnDescription);
+            this.gridBandDifference.Columns.Add(this.bandedGridColumnProblemTypeIndex);
+            this.gridBandDifference.Columns.Add(this.bandedGridColumnItemTypeIndex);
+            this.gridBandDifference.Name = "gridBandDifference";
+            this.gridBandDifference.ToolTip = "Contains columns describing the difference between the original and the clone.";
+            this.gridBandDifference.VisibleIndex = 0;
+            this.gridBandDifference.Width = 320;
+            // 
             // bandedGridColumnDescription
             // 
             this.bandedGridColumnDescription.Caption = "Description";
@@ -105,6 +116,16 @@
             this.bandedGridColumnProblemTypeIndex.Visible = true;
             this.bandedGridColumnProblemTypeIndex.Width = 50;
             // 
+            // gridBandOriginal
+            // 
+            this.gridBandOriginal.Caption = "Original";
+            this.gridBandOriginal.Columns.Add(this.bandedGridColumnOriginalName);
+            this.gridBandOriginal.Columns.Add(this.bandedGridColumnOriginalFullPath);
+            this.gridBandOriginal.Name = "gridBandOriginal";
+            this.gridBandOriginal.ToolTip = "Contains columns holding information about the original.";
+            this.gridBandOriginal.VisibleIndex = 1;
+            this.gridBandOriginal.Width = 670;
+            // 
             // bandedGridColumnOriginalName
             // 
             this.bandedGridColumnOriginalName.Caption = "Name";
@@ -125,6 +146,16 @@
             this.bandedGridColumnOriginalFullPath.Visible = true;
             this.bandedGridColumnOriginalFullPath.Width = 520;
             // 
+            // gridBandClone
+            // 
+            this.gridBandClone.Caption = "Clone";
+            this.gridBandClone.Columns.Add(this.bandedGridColumnCloneName);
+            this.gridBandClone.Columns.Add(this.bandedGridColumnCloneFullPath);
+            this.gridBandClone.Name = "gridBandClone";
+            this.gridBandClone.ToolTip = "Contains columns holding information about the clone.";
+            this.gridBandClone.VisibleIndex = 2;
+            this.gridBandClone.Width = 670;
+            // 
             // bandedGridColumnCloneName
             // 
             this.bandedGridColumnCloneName.Caption = "Name";
@@ -144,37 +175,6 @@
             this.bandedGridColumnCloneFullPath.ToolTip = "The path to the cloned item.";
             this.bandedGridColumnCloneFullPath.Visible = true;
             this.bandedGridColumnCloneFullPath.Width = 520;
-            // 
-            // gridBandDifference
-            // 
-            this.gridBandDifference.Caption = "Difference";
-            this.gridBandDifference.Columns.Add(this.bandedGridColumnDescription);
-            this.gridBandDifference.Columns.Add(this.bandedGridColumnItemTypeIndex);
-            this.gridBandDifference.Columns.Add(this.bandedGridColumnProblemTypeIndex);
-            this.gridBandDifference.Name = "gridBandDifference";
-            this.gridBandDifference.ToolTip = "Contains columns describing the difference between the original and the clone.";
-            this.gridBandDifference.VisibleIndex = 0;
-            this.gridBandDifference.Width = 320;
-            // 
-            // gridBandOriginal
-            // 
-            this.gridBandOriginal.Caption = "Original";
-            this.gridBandOriginal.Columns.Add(this.bandedGridColumnOriginalName);
-            this.gridBandOriginal.Columns.Add(this.bandedGridColumnOriginalFullPath);
-            this.gridBandOriginal.Name = "gridBandOriginal";
-            this.gridBandOriginal.ToolTip = "Contains columns holding information about the original.";
-            this.gridBandOriginal.VisibleIndex = 1;
-            this.gridBandOriginal.Width = 670;
-            // 
-            // gridBandClone
-            // 
-            this.gridBandClone.Caption = "Clone";
-            this.gridBandClone.Columns.Add(this.bandedGridColumnCloneName);
-            this.gridBandClone.Columns.Add(this.bandedGridColumnCloneFullPath);
-            this.gridBandClone.Name = "gridBandClone";
-            this.gridBandClone.ToolTip = "Contains columns holding information about the clone.";
-            this.gridBandClone.VisibleIndex = 2;
-            this.gridBandClone.Width = 670;
             // 
             // FolderStructureComparerCtrl
             // 
