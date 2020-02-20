@@ -45,7 +45,7 @@
             // 
             // propertyGridControlAnalysingSettings
             // 
-            this.propertyGridControlAnalysingSettings.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.propertyGridControlAnalysingSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.propertyGridControlAnalysingSettings.Dock = System.Windows.Forms.DockStyle.Left;
             this.propertyGridControlAnalysingSettings.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControlAnalysingSettings.Name = "propertyGridControlAnalysingSettings";
@@ -92,7 +92,7 @@
             this.rowColour});
             this.categoryBigFolder.Name = "categoryBigFolder";
             this.categoryBigFolder.Properties.Caption = "Big folder";
-            this.categoryBigFolder.Properties.ToolTip = "Settings related to how big folders are done.";
+            this.categoryBigFolder.Properties.ToolTip = "Settings related to how big folders are shown.";
             // 
             // rowSize
             // 
