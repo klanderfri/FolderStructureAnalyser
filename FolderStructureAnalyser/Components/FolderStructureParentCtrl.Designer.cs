@@ -64,6 +64,7 @@
             this.svgImageCollectionIcons.Add("missing", "image://svgimages/icon builder/actions_deletecircled.svg");
             this.svgImageCollectionIcons.Add("size", "image://svgimages/outlook inspired/fittopage.svg");
             this.svgImageCollectionIcons.Add("attributes", "image://svgimages/setup/properties.svg");
+            this.svgImageCollectionIcons.Add("hash", "image://svgimages/reports/barcodeshowtext.svg");
             // 
             // FolderStructureParentCtrl
             // 

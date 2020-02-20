@@ -75,7 +75,7 @@ namespace FolderStructureAnalyser.DataObjects
 
                 case DifferenceType.FileHashDiffer:
                     ItemTypeImageIndex = 1;
-                    DifferenceTypeImageIndex = 6;
+                    DifferenceTypeImageIndex = 7;
                     Description = "The clone file has a different hash code.";
                     break;
 
