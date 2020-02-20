@@ -235,8 +235,10 @@
             // 
             this.xtraTabPageAnalyseStructure.Controls.Add(this.folderStructureAnalyserCtrl);
             this.xtraTabPageAnalyseStructure.Name = "xtraTabPageAnalyseStructure";
-            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(648, 277);
+            this.xtraTabPageAnalyseStructure.Size = new System.Drawing.Size(1276, 520);
             this.xtraTabPageAnalyseStructure.Text = "Analyse Structure";
+            this.xtraTabPageAnalyseStructure.Tooltip = "Holds the result from the last folder structure analysis.";
+            this.xtraTabPageAnalyseStructure.TooltipTitle = "Analyse Structure";
             // 
             // folderStructureAnalyserCtrl
             // 
@@ -244,7 +246,7 @@
             this.folderStructureAnalyserCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureAnalyserCtrl.Name = "folderStructureAnalyserCtrl";
             this.folderStructureAnalyserCtrl.Session = null;
-            this.folderStructureAnalyserCtrl.Size = new System.Drawing.Size(648, 277);
+            this.folderStructureAnalyserCtrl.Size = new System.Drawing.Size(1276, 520);
             this.folderStructureAnalyserCtrl.TabIndex = 4;
             this.folderStructureAnalyserCtrl.WaitFormDescription = "Structure size analysis in progress...";
             this.folderStructureAnalyserCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureAnalyserCtrl_FolderStructureAnalysisStart);
@@ -257,6 +259,8 @@
             this.xtraTabPageCompareStructures.Name = "xtraTabPageCompareStructures";
             this.xtraTabPageCompareStructures.Size = new System.Drawing.Size(1276, 520);
             this.xtraTabPageCompareStructures.Text = "Compare Structures";
+            this.xtraTabPageCompareStructures.Tooltip = "Holds the result from the last folder structure comparison.";
+            this.xtraTabPageCompareStructures.TooltipTitle = "Compare Structures";
             // 
             // folderStructureComparerCtrl
             // 
@@ -275,8 +279,10 @@
             // 
             this.xtraTabPageSettings.Controls.Add(this.folderStructureSettingsCtrl);
             this.xtraTabPageSettings.Name = "xtraTabPageSettings";
-            this.xtraTabPageSettings.Size = new System.Drawing.Size(648, 277);
+            this.xtraTabPageSettings.Size = new System.Drawing.Size(1276, 520);
             this.xtraTabPageSettings.Text = "Settings";
+            this.xtraTabPageSettings.Tooltip = "Holds the settings used when analysing the disk.";
+            this.xtraTabPageSettings.TooltipTitle = "Settings";
             // 
             // folderStructureSettingsCtrl
             // 
@@ -284,7 +290,7 @@
             this.folderStructureSettingsCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureSettingsCtrl.Name = "folderStructureSettingsCtrl";
             this.folderStructureSettingsCtrl.Session = null;
-            this.folderStructureSettingsCtrl.Size = new System.Drawing.Size(648, 277);
+            this.folderStructureSettingsCtrl.Size = new System.Drawing.Size(1276, 520);
             this.folderStructureSettingsCtrl.TabIndex = 0;
             // 
             // DiskAnalyserForm
