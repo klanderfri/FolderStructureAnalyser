@@ -10,9 +10,10 @@ Graphical updates
 	Create own application icon (in SVG-format).
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
 	Movable panels.
-	Remove the wait forms and replace by a runnin marquee in the status bar so the forms don't hinder the user from keeping working.
+	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
 	
 Functionality
 	Make the BackgroundWorker report a difference object back so the grid can be updated while the user is waiting.
 	Add files in the folder structure analyser.
 	Add update buttons.
+	Add more information columns in the comparer grid (for example what attributes differ and the sizes of the files).
