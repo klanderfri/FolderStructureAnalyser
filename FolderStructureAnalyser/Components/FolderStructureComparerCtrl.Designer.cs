@@ -32,13 +32,14 @@
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBandDifference = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnDescription = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumnItemType = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnItemTypeIndex = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBandOriginal = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnOriginalName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnOriginalFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBandClone = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnCloneName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCloneFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnProblemTypeIndex = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +68,8 @@
             this.bandedGridColumnCloneName,
             this.bandedGridColumnCloneFullPath,
             this.bandedGridColumnDescription,
-            this.bandedGridColumnItemType});
+            this.bandedGridColumnItemTypeIndex,
+            this.bandedGridColumnProblemTypeIndex});
             this.bandedGridView1.GridControl = this.gridControl1;
             this.bandedGridView1.Name = "bandedGridView1";
             this.bandedGridView1.OptionsView.ColumnAutoWidth = false;
@@ -77,10 +79,11 @@
             // 
             this.gridBandDifference.Caption = "Difference";
             this.gridBandDifference.Columns.Add(this.bandedGridColumnDescription);
-            this.gridBandDifference.Columns.Add(this.bandedGridColumnItemType);
+            this.gridBandDifference.Columns.Add(this.bandedGridColumnItemTypeIndex);
+            this.gridBandDifference.Columns.Add(this.bandedGridColumnProblemTypeIndex);
             this.gridBandDifference.Name = "gridBandDifference";
             this.gridBandDifference.VisibleIndex = 0;
-            this.gridBandDifference.Width = 270;
+            this.gridBandDifference.Width = 320;
             // 
             // bandedGridColumnDescription
             // 
@@ -91,14 +94,14 @@
             this.bandedGridColumnDescription.Visible = true;
             this.bandedGridColumnDescription.Width = 220;
             // 
-            // bandedGridColumnItemType
+            // bandedGridColumnItemTypeIndex
             // 
-            this.bandedGridColumnItemType.Caption = "Type";
-            this.bandedGridColumnItemType.FieldName = "ItemType";
-            this.bandedGridColumnItemType.Name = "bandedGridColumnItemType";
-            this.bandedGridColumnItemType.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumnItemType.Visible = true;
-            this.bandedGridColumnItemType.Width = 50;
+            this.bandedGridColumnItemTypeIndex.Caption = "Item";
+            this.bandedGridColumnItemTypeIndex.FieldName = "ItemTypeIndex";
+            this.bandedGridColumnItemTypeIndex.Name = "bandedGridColumnItemTypeIndex";
+            this.bandedGridColumnItemTypeIndex.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumnItemTypeIndex.Visible = true;
+            this.bandedGridColumnItemTypeIndex.Width = 50;
             // 
             // gridBandOriginal
             // 
@@ -154,6 +157,15 @@
             this.bandedGridColumnCloneFullPath.Visible = true;
             this.bandedGridColumnCloneFullPath.Width = 520;
             // 
+            // bandedGridColumnProblemTypeIndex
+            // 
+            this.bandedGridColumnProblemTypeIndex.Caption = "Problem";
+            this.bandedGridColumnProblemTypeIndex.FieldName = "ProblemTypeIndex";
+            this.bandedGridColumnProblemTypeIndex.Name = "bandedGridColumnProblemTypeIndex";
+            this.bandedGridColumnProblemTypeIndex.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumnProblemTypeIndex.Visible = true;
+            this.bandedGridColumnProblemTypeIndex.Width = 50;
+            // 
             // FolderStructureComparerCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +194,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandOriginal;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandClone;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandDifference;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnItemType;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnItemTypeIndex;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnProblemTypeIndex;
     }
 }
