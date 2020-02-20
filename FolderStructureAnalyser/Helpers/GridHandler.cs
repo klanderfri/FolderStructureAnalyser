@@ -3,6 +3,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Columns;
 
 namespace FolderStructureAnalyser.Helpers
 {
@@ -34,6 +35,18 @@ namespace FolderStructureAnalyser.Helpers
         {
             var treeHitLocation = tree.PointToClient(screenHitLocation);
             return tree.CalcHitInfo(treeHitLocation);
+        }
+
+        /// <summary>
+        /// Tells if something has hit a certain column.
+        /// </summary>
+        /// <param name="column">The column that may or may not be hit.</param>
+        /// <param name="position">The position of the hit in screen coordinates.</param>
+        /// <returns>TRUE if the column is hit, else FALSE.</returns>
+        public static bool HitColumn(TreeListColumn column, Point position)
+        {
+            var hitInfo = GetHitInfo(column.TreeList, position);
+            return hitInfo.Node != null && hitInfo.Column == column;
         }
     }
 }

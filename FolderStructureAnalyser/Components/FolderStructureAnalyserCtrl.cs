@@ -207,10 +207,10 @@ namespace FolderStructureAnalyser.Components
 
         private void treeListFolderStructure_DoubleClick(object sender, EventArgs e)
         {
-            var hitInfo = GridHandler.GetHitInfo(sender as TreeList, MousePosition);
-            if (hitInfo.Node != null && hitInfo.Column == treeListColumnOpen)
+            if (GridHandler.HitColumn(treeListColumnOpen, MousePosition))
             {
                 //Open folder.
+                var hitInfo = GridHandler.GetHitInfo(sender as TreeList, MousePosition);
                 var folderData = getFolderFromNode(hitInfo.Node);
                 var folderInfo = folderData.FolderData.Info;
                 FileHandler.OpenFolderInExplorer(folderInfo);
@@ -221,6 +221,22 @@ namespace FolderStructureAnalyser.Components
         {
             var folder = getFolderFromNode(e.Node);
             e.NodeImageIndex = folder.StateImageIndex;
+        }
+
+        private void treeListFolderStructure_BeforeExpand(object sender, BeforeExpandEventArgs e)
+        {
+            if (GridHandler.HitColumn(treeListColumnOpen, MousePosition))
+            {
+                e.CanExpand = false;
+            }
+        }
+
+        private void treeListFolderStructure_BeforeCollapse(object sender, BeforeCollapseEventArgs e)
+        {
+            if (GridHandler.HitColumn(treeListColumnOpen, MousePosition))
+            {
+                e.CanCollapse = false;
+            }
         }
     }
 }
