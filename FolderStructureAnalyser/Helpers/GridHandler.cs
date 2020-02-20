@@ -44,10 +44,10 @@ namespace FolderStructureAnalyser.Helpers
         /// <param name="column">The column that may or may not be hit.</param>
         /// <param name="position">The position of the hit in screen coordinates.</param>
         /// <returns>TRUE if the column is hit, else FALSE.</returns>
-        public static bool HasHitColumn(TreeListColumn column, Point position)
+        public static bool HasHitColumn(GridColumn column, Point position)
         {
-            var hitInfo = GetHitInfo(column.TreeList, position);
-            return hitInfo.Node != null && hitInfo.Column == column;
+            var hitInfo = GetHitInfo(column.View.GridControl, position);
+            return hitInfo.Column != null && hitInfo.Column == column;
         }
 
         /// <summary>
@@ -56,10 +56,10 @@ namespace FolderStructureAnalyser.Helpers
         /// <param name="column">The column that may or may not be hit.</param>
         /// <param name="position">The position of the hit in screen coordinates.</param>
         /// <returns>TRUE if the column is hit, else FALSE.</returns>
-        public static bool HasHitColumn(GridColumn column, Point position)
+        public static bool HasHitColumn(TreeListColumn column, Point position)
         {
-            var hitInfo = GetHitInfo(column.View.GridControl, position);
-            return hitInfo.Column != null && hitInfo.Column == column;
+            var hitInfo = GetHitInfo(column.TreeList, position);
+            return hitInfo.Node != null && hitInfo.Column == column;
         }
     }
 }
