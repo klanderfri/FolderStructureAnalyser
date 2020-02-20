@@ -16,3 +16,4 @@ Graphical updates
 	
 Functionality
 	Compare file hashes when comparing structures.
+	Make the BackgroundWorker report a difference back so the grid can be updated while the user is waiting.
