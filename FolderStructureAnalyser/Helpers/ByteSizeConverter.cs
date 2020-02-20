@@ -17,6 +17,26 @@ namespace FolderStructureAnalyser.Helpers
         /// <returns>A string describing the size.</returns>
         public static string SizeStringFromByte(long sizeInBytes, SizeDisplayUnit displayUnit)
         {
+            switch (displayUnit)
+            {
+                case SizeDisplayUnit.Dynamic:
+                    return sizeStringFromByteDynamicUnit(sizeInBytes);
+                case SizeDisplayUnit.OnlyBytes:
+                    return sizeStringFromByteAsBytes(sizeInBytes);
+                case SizeDisplayUnit.OnlyMB:
+                    return sizeStringFromByteAsMB(sizeInBytes);
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        /// <summary>
+        /// Converts a size in bytes to a descriptive string with unit selected based on the size.
+        /// </summary>
+        /// <param name="sizeInBytes">The size to convert.</param>
+        /// <returns>A string describing the size.</returns>
+        private static string sizeStringFromByteDynamicUnit(long sizeInBytes)
+        {
             var units = new List<string> { "B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
 
             for (int power = 0; power < units.Count; power++)
@@ -30,7 +50,28 @@ namespace FolderStructureAnalyser.Helpers
             //Really? The size was so big even yottabytes couldn't do it?
             var format = "Unhandled size, {0} bytes.";
             var message = String.Format(format, sizeInBytes);
-            throw new InvalidOperationException(message);
+            throw new NotImplementedException(message);
+        }
+
+        /// <summary>
+        /// Converts a size in bytes to a descriptive string with bytes as unit.
+        /// </summary>
+        /// <param name="sizeInBytes">The size to convert.</param>
+        /// <returns>A string describing the size.</returns>
+        private static string sizeStringFromByteAsBytes(long sizeInBytes)
+        {
+            return getSizeText(sizeInBytes, "bytes");
+        }
+
+        /// <summary>
+        /// Converts a size in bytes to a descriptive string with MB as unit.
+        /// </summary>
+        /// <param name="sizeInBytes">The size to convert.</param>
+        /// <returns>A string describing the size.</returns>
+        private static string sizeStringFromByteAsMB(long sizeInBytes)
+        {
+            var sizeInMB = sizeInBytes / Math.Pow(1024, 2);
+            return getSizeText(sizeInMB, "MB");
         }
 
         /// <summary>
