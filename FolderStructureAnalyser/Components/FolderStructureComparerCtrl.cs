@@ -289,7 +289,7 @@ namespace FolderStructureAnalyser.Components
         {
             if (e.Column == bandedGridColumnItemType)
             {
-                DrawCellNodeIcon(e, e.Column.Width, getImageIndex(e), svgImageCollectionGridIcons);
+                DrawCellNodeIcon(e, e.Column.Width, getImageIndex(e));
             }
         }
 

@@ -34,10 +34,8 @@
             this.treeListColumnSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEditFileSize = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.svgImageCollectionTreeIcons = new DevExpress.Utils.SvgImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).BeginInit();
             this.SuspendLayout();
             // 
             // treeListFolderStructure
@@ -56,7 +54,7 @@
             this.treeListFolderStructure.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEditFileSize});
             this.treeListFolderStructure.Size = new System.Drawing.Size(570, 266);
-            this.treeListFolderStructure.StateImageList = this.svgImageCollectionTreeIcons;
+            this.treeListFolderStructure.StateImageList = this.IconCollection;
             this.treeListFolderStructure.TabIndex = 0;
             this.treeListFolderStructure.ViewStyle = DevExpress.XtraTreeList.TreeListViewStyle.TreeView;
             this.treeListFolderStructure.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.treeListFolderStructure_GetStateImage);
@@ -102,12 +100,6 @@
             this.treeListColumnOpen.VisibleIndex = 2;
             this.treeListColumnOpen.Width = 50;
             // 
-            // svgImageCollectionTreeIcons
-            // 
-            this.svgImageCollectionTreeIcons.Add("folder", "image://svgimages/actions/open.svg");
-            this.svgImageCollectionTreeIcons.Add("file", "image://svgimages/dashboards/new.svg");
-            this.svgImageCollectionTreeIcons.Add("open", "image://svgimages/dashboards/imageload.svg");
-            // 
             // FolderStructureAnalyserCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,7 +112,6 @@
             this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureAnalyserCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionTreeIcons)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -131,7 +122,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnName;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnSize;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSize;
-        private DevExpress.Utils.SvgImageCollection svgImageCollectionTreeIcons;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
     }
 }

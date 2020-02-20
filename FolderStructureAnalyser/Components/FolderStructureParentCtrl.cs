@@ -32,6 +32,11 @@ namespace FolderStructureAnalyser.Components
         public BackgroundWorker AnalysisWorker { get { return backgroundWorkerTimeHeavyAnalysis; } }
 
         /// <summary>
+        /// The collection of icons to use in components.
+        /// </summary>
+        public SvgImageCollection IconCollection { get { return svgImageCollectionIcons; } }
+
+        /// <summary>
         /// Keeps the last known position of the parent of the control.
         /// </summary>
         private Point LastKnownParentPosition { get; set; }
@@ -302,37 +307,37 @@ namespace FolderStructureAnalyser.Components
             return true;
         }
 
-        public void DrawCellNodeIcon(CustomDrawNodeCellEventArgs e, int columnWidth, int imageIndex, SvgImageCollection imageCollection)
+        public void DrawCellNodeIcon(CustomDrawNodeCellEventArgs e, int columnWidth, int imageIndex)
         {
             if (imageIndex >= 0)
             {
                 e.CellText = null;
-                drawCellNodeIcon(e.DefaultDraw, e.Bounds, e.Graphics, columnWidth, imageIndex, imageCollection);
+                drawCellNodeIcon(e.DefaultDraw, e.Bounds, e.Graphics, columnWidth, imageIndex);
                 e.Handled = true;
             }
         }
 
-        public void DrawCellNodeIcon(RowCellCustomDrawEventArgs e, int columnWidth, int imageIndex, SvgImageCollection imageCollection)
+        public void DrawCellNodeIcon(RowCellCustomDrawEventArgs e, int columnWidth, int imageIndex)
         {
             if (imageIndex >= 0)
             {
                 e.DisplayText = null;
-                drawCellNodeIcon(e.DefaultDraw, e.Bounds, e.Graphics, columnWidth, imageIndex, imageCollection);
+                drawCellNodeIcon(e.DefaultDraw, e.Bounds, e.Graphics, columnWidth, imageIndex);
                 e.Handled = true;
             }
         }
 
-        private void drawCellNodeIcon(Action defaultDraw, Rectangle bounds, Graphics graphics, int columnWidth, int imageIndex, SvgImageCollection imageCollection)
+        private void drawCellNodeIcon(Action defaultDraw, Rectangle bounds, Graphics graphics, int columnWidth, int imageIndex)
         {
             defaultDraw();
 
-            var openIcon = imageCollection.GetImage(imageIndex);
+            var cellIcon = svgImageCollectionIcons.GetImage(imageIndex);
 
             var location = bounds.Location;
-            int middleX = (columnWidth - openIcon.Width) / 2;
+            int middleX = (columnWidth - cellIcon.Width) / 2;
             location.Offset(middleX, 1);
 
-            graphics.DrawImage(openIcon, location);
+            graphics.DrawImage(cellIcon, location);
         }
 
         private void ParentForm_Move(object sender, EventArgs e)

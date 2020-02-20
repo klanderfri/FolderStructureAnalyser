@@ -196,12 +196,12 @@ namespace FolderStructureAnalyser.Components
         {
             if (e.Column == treeListColumnSize)
             {
-                //Use the (in settings) specified colour to indicate big folders.
+                //Use the (in the settings) specified colour to indicate big folders.
                 e.Appearance.ForeColor = getFolderColour(Convert.ToInt64(e.CellValue));
             }
             if (e.Column == treeListColumnOpen)
             {
-                DrawCellNodeIcon(e, e.Column.Width, 2, svgImageCollectionTreeIcons);
+                DrawCellNodeIcon(e, e.Column.Width, 2);
             }
         }
 

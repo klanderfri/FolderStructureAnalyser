@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBandDifference = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -40,10 +39,8 @@
             this.gridBandClone = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnCloneName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCloneFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.svgImageCollectionGridIcons = new DevExpress.Utils.SvgImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionGridIcons)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -157,15 +154,6 @@
             this.bandedGridColumnCloneFullPath.Visible = true;
             this.bandedGridColumnCloneFullPath.Width = 520;
             // 
-            // svgImageCollectionGridIcons
-            // 
-            this.svgImageCollectionGridIcons.Add("folder", "image://svgimages/actions/open.svg");
-            this.svgImageCollectionGridIcons.Add("file", "image://svgimages/outlook inspired/new.svg");
-            this.svgImageCollectionGridIcons.Add("additionalFile", "image://svgimages/outlook inspired/addfile.svg");
-            this.svgImageCollectionGridIcons.Add("attributesFile", "image://svgimages/dashboards/parameters.svg");
-            this.svgImageCollectionGridIcons.Add("missingFile", "image://svgimages/snap/snapdeletelist.svg");
-            this.svgImageCollectionGridIcons.Add("sizeFile", "image://svgimages/richedit/richeditpapersize.svg");
-            // 
             // FolderStructureComparerCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,7 +166,6 @@
             this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureComparerCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionGridIcons)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,6 +183,5 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandClone;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandDifference;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnItemType;
-        private DevExpress.Utils.SvgImageCollection svgImageCollectionGridIcons;
     }
 }
