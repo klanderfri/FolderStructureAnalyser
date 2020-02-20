@@ -17,3 +17,4 @@ Functionality
 	Make the BackgroundWorker report a difference object back so the grid can be updated while the user is waiting.
 	Add files in the folder structure analyser.
 	Add update buttons.
+	Create a UnhandledEnumException-class inheriting NotImplementedException.
