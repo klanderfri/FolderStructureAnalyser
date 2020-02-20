@@ -281,22 +281,15 @@ namespace FolderStructureAnalyser.Components
 
         private void bandedGridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
+            var row = bandedGridView1.GetRow(e.RowHandle) as StructureDifference;
+
             if (e.Column == bandedGridColumnItemTypeIndex)
             {
-                DrawCellNodeIcon(e, e.Column.Width, getImageIndex(e));
+                DrawCellNodeIcon(e, e.Column.Width, row.ItemTypeIndex);
             }
-        }
-
-        private static int getImageIndex(RowCellCustomDrawEventArgs e)
-        {
-            switch (e.CellValue as string)
+            if (e.Column == bandedGridColumnProblemTypeIndex)
             {
-                case "Directory":
-                    return 0;
-                case "File":
-                    return 1;
-                default:
-                    return -1;
+                DrawCellNodeIcon(e, e.Column.Width, row.ProblemTypeIndex);
             }
         }
     }
