@@ -32,6 +32,7 @@
             this.repositoryItemSpinEditBigFolderSizeLimit = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.repositoryItemColorPickEditBigFolderColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
             this.repositoryItemCheckEditCompareHashes = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemColorPickEditGridErrorColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
             this.categoryBigFolder = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowSize = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowColour = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -39,7 +40,7 @@
             this.rowCompareHashes = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.categoryApplication = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowErrorColour = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.repositoryItemColorPickEditGridErrorColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
+            this.categoryAnalysis = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             ((System.ComponentModel.ISupportInitialize)(this.propertyGridControlAnalysingSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSizeLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
@@ -49,19 +50,20 @@
             // 
             // propertyGridControlAnalysingSettings
             // 
-            this.propertyGridControlAnalysingSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.propertyGridControlAnalysingSettings.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.propertyGridControlAnalysingSettings.Dock = System.Windows.Forms.DockStyle.Left;
             this.propertyGridControlAnalysingSettings.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControlAnalysingSettings.Name = "propertyGridControlAnalysingSettings";
+            this.propertyGridControlAnalysingSettings.OptionsBehavior.PropertySort = DevExpress.XtraVerticalGrid.PropertySort.NoSort;
             this.propertyGridControlAnalysingSettings.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSpinEditBigFolderSizeLimit,
             this.repositoryItemColorPickEditBigFolderColour,
             this.repositoryItemCheckEditCompareHashes,
             this.repositoryItemColorPickEditGridErrorColour});
             this.propertyGridControlAnalysingSettings.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.categoryBigFolder,
-            this.categoryComparison,
-            this.categoryApplication});
+            this.categoryApplication,
+            this.categoryAnalysis,
+            this.categoryComparison});
             this.propertyGridControlAnalysingSettings.Size = new System.Drawing.Size(400, 336);
             this.propertyGridControlAnalysingSettings.TabIndex = 0;
             // 
@@ -87,7 +89,6 @@
             // repositoryItemColorPickEditBigFolderColour
             // 
             this.repositoryItemColorPickEditBigFolderColour.AutoHeight = false;
-            this.repositoryItemColorPickEditBigFolderColour.AutomaticColor = System.Drawing.Color.Red;
             this.repositoryItemColorPickEditBigFolderColour.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemColorPickEditBigFolderColour.Name = "repositoryItemColorPickEditBigFolderColour";
@@ -97,11 +98,18 @@
             this.repositoryItemCheckEditCompareHashes.AutoHeight = false;
             this.repositoryItemCheckEditCompareHashes.Name = "repositoryItemCheckEditCompareHashes";
             // 
+            // repositoryItemColorPickEditGridErrorColour
+            // 
+            this.repositoryItemColorPickEditGridErrorColour.AutoHeight = false;
+            this.repositoryItemColorPickEditGridErrorColour.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemColorPickEditGridErrorColour.Name = "repositoryItemColorPickEditGridErrorColour";
+            // 
             // categoryBigFolder
             // 
             this.categoryBigFolder.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.rowSize,
-            this.rowColour});
+            this.rowColour,
+            this.rowSize});
             this.categoryBigFolder.Name = "categoryBigFolder";
             this.categoryBigFolder.Properties.Caption = "Big folder";
             this.categoryBigFolder.Properties.ToolTip = "Settings related to how big folders are shown.";
@@ -155,13 +163,13 @@
             this.rowErrorColour.Properties.RowEdit = this.repositoryItemColorPickEditGridErrorColour;
             this.rowErrorColour.Properties.ToolTip = "The colour used to indicate an error within a grid.";
             // 
-            // repositoryItemColorPickEditErrorColour
+            // categoryAnalysis
             // 
-            this.repositoryItemColorPickEditGridErrorColour.AutoHeight = false;
-            this.repositoryItemColorPickEditGridErrorColour.AutomaticColor = System.Drawing.Color.Salmon;
-            this.repositoryItemColorPickEditGridErrorColour.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemColorPickEditGridErrorColour.Name = "repositoryItemColorPickEditGridErrorColour";
+            this.categoryAnalysis.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.categoryBigFolder});
+            this.categoryAnalysis.Name = "categoryAnalysis";
+            this.categoryAnalysis.Properties.Caption = "Analysis";
+            this.categoryAnalysis.Properties.ToolTip = "Settings related to how analysis are done.";
             // 
             // FolderStructureSettingsCtrl
             // 
@@ -193,5 +201,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit repositoryItemColorPickEditGridErrorColour;
         private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryApplication;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow rowErrorColour;
+        private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryAnalysis;
     }
 }
