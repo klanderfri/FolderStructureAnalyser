@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FolderStructureAnalyser.Enums;
+using FolderStructureAnalyser.Exceptions;
 
 namespace FolderStructureAnalyser.Helpers
 {
@@ -26,7 +27,7 @@ namespace FolderStructureAnalyser.Helpers
                 case SizeDisplayUnit.OnlyMB:
                     return sizeStringFromByteAsMB(sizeInBytes);
                 default:
-                    throw new NotImplementedException();
+                    throw new UnhandledEnumException(typeof(SizeDisplayUnit), displayUnit);
             }
         }
 

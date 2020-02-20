@@ -1,5 +1,6 @@
 ﻿using System;
 using FolderStructureAnalyser.Enums;
+using FolderStructureAnalyser.Exceptions;
 
 namespace FolderStructureAnalyser.DataObjects
 {
@@ -89,7 +90,7 @@ namespace FolderStructureAnalyser.DataObjects
                 default:
                     var format = "Unhandled folder structure difference: {0}";
                     var message = String.Format(format, diffType);
-                    throw new NotImplementedException(message);
+                    throw new UnhandledEnumException(typeof(DifferenceType), message);
             }
         }
     }
