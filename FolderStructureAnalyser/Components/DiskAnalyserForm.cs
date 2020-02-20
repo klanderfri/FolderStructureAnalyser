@@ -41,6 +41,17 @@ namespace FolderStructureAnalyser.Components
             barStaticItemOperationTime.Caption = text;
         }
 
+        /// <summary>
+        /// Updates the enable state for the buttons starting analysis operations.
+        /// </summary>
+        /// <param name="operationStarted">TRUE if an analysis just started, FALSE if an analysis just finished.</param>
+        private void setOperationButtonStates(bool operationStarted)
+        {
+            barButtonItemCancelAnalyse.Enabled = operationStarted;
+            barButtonItemAnalyseStructure.Enabled = !operationStarted;
+            barButtonItemCompareStructures.Enabled = !operationStarted;
+        }
+
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
         {
             folderStructureAnalyserCtrl.AnalyseFolderStructure();
@@ -69,23 +80,23 @@ namespace FolderStructureAnalyser.Components
 
         private void folderStructureAnalyserCtrl_FolderStructureAnalysisStart(object sender, FolderStructureAnalysisStartArgs e)
         {
-            barButtonItemCancelAnalyse.Enabled = true;
+            setOperationButtonStates(true);
         }
 
         private void folderStructureComparerCtrl_FolderStructureAnalysisStart(object sender, FolderStructureAnalysisStartArgs e)
         {
-            barButtonItemCancelAnalyse.Enabled = true;
+            setOperationButtonStates(true);
         }
 
         private void folderStructureAnalyserCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
-            barButtonItemCancelAnalyse.Enabled = false;
+            setOperationButtonStates(false);
             xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageAnalyseStructure;
         }
 
         private void folderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
-            barButtonItemCancelAnalyse.Enabled = false;
+            setOperationButtonStates(false);
             xtraTabControlAnalyserPages.SelectedTabPage = xtraTabPageCompareStructures;
         }
 
