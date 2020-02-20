@@ -2,6 +2,9 @@
 
 namespace FolderStructureAnalyser.SessionBound
 {
+    /// <summary>
+    /// Class for object holding the settings for the application.
+    /// </summary>
     public class Settings : SessionBoundClass
     {
         /// <summary>
@@ -19,12 +22,16 @@ namespace FolderStructureAnalyser.SessionBound
         /// </summary>
         public bool CompareFileHashes { get; set; }
 
+        /// <summary>
+        /// Creates an object holding the settings for the application, using default values.
+        /// </summary>
+        /// <param name="session">The application session.</param>
         public Settings(Session session)
             : base(session)
         {
             BigFolderInMB = 10;
             BigFolderColour = Color.Red;
-            CompareFileHashes = true;
+            CompareFileHashes = false;
         }
     }
 }
