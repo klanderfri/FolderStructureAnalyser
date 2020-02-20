@@ -23,7 +23,7 @@ namespace FolderStructureAnalyser.SessionBound
         public bool CompareFileHashes { get; set; }
 
         /// <summary>
-        /// The colour used to indicate an error in a grid.
+        /// The colour used to indicate an error within a grid.
         /// </summary>
         public Color GridErrorColour { get; set; }
 
