@@ -64,6 +64,7 @@
     <Compile Include="Components\FolderStructureSettingsCtrl.Designer.cs">
       <DependentUpon>FolderStructureSettingsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataObjects\DifferenceTypeDescription.cs" />
     <Compile Include="DataObjects\FolderData.cs" />
     <Compile Include="Components\FolderStructureAnalyserCtrl.cs">
       <SubType>UserControl</SubType>
@@ -84,6 +85,7 @@
       <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="DataObjects\StructureDifference.cs" />
+    <Compile Include="Enums\DifferenceType.cs" />
     <Compile Include="Events\FolderStructureAnalysisStartArgs.cs" />
     <Compile Include="Events\FolderStructureDifferenceAddedArgs.cs" />
     <Compile Include="Events\TimedProgressChangedEventArgs.cs" />

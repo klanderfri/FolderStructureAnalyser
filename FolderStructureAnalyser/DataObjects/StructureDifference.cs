@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using FolderStructureAnalyser.Enums;
 
 namespace FolderStructureAnalyser.DataObjects
 {
@@ -30,29 +31,44 @@ namespace FolderStructureAnalyser.DataObjects
         /// <summary>
         /// The description of the difference.
         /// </summary>
-        public string Description { get; private set; }
+        public string Description { get { return DiffInfo.Description; } }
 
+        /// <summary>
+        /// The index indicating the type of item the difference is about (i.e folder or file).
+        /// </summary>
+        public int ItemTypeIndex { get { return DiffInfo.ItemTypeImageIndex; } }
 
+        /// <summary>
+        /// The index indicating the type of difference encountered.
+        /// </summary>
+        public int ProblemTypeIndex { get { return DiffInfo.DifferenceTypeImageIndex; } }
+
+        /// <summary>
+        /// The original item.
+        /// </summary>
         private FileSystemInfo Original { get; set; }
 
-
+        /// <summary>
+        /// The item that is supposed to be a clone of the original.
+        /// </summary>
         private FileSystemInfo Clone { get; set; }
 
+        /// <summary>
+        /// Information about the difference between the original and the clone.
+        /// </summary>
+        private DifferenceTypeDescription DiffInfo { get; set; }
 
-        public string ItemType
-        {
-            get
-            {
-                var isDirectory = (Original.Attributes & FileAttributes.Directory) == FileAttributes.Directory;
-                return isDirectory ? "Directory" : "File";
-            }
-        }
-
-        public StructureDifference(FileSystemInfo original, FileSystemInfo clone, string description)
+        /// <summary>
+        /// Creates an object holding data about a difference between two folder structures.
+        /// </summary>
+        /// <param name="original">The original item.</param>
+        /// <param name="clone">The item that is supposed to be a clone of the original.</param>
+        /// <param name="type">The type of difference.</param>
+        public StructureDifference(FileSystemInfo original, FileSystemInfo clone, DifferenceType type)
         {
             Original = original;
             Clone = clone;
-            Description = description;
+            DiffInfo = new DifferenceTypeDescription(type);
         }
     }
 }

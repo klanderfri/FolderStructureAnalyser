@@ -6,6 +6,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.BandedGrid.ViewInfo;
 using DevExpress.XtraGrid.Views.Base;
 using FolderStructureAnalyser.DataObjects;
+using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
 
@@ -143,16 +144,14 @@ namespace FolderStructureAnalyser.Components
             //Check if the clone folder exists.
             if (!cloneFolder.Exists)
             {
-                var format = "The clone is missing a folder.";
-                addDifference(differences, originalFolder, cloneFolder, format);
+                addDifference(differences, originalFolder, cloneFolder, DifferenceType.SubfolderMissing);
                 return;
             }
 
             //Compare the folders.
             if (originalFolder.Attributes != cloneFolder.Attributes)
             {
-                var format = "The clone folder has different attributes.";
-                addDifference(differences, originalFolder, cloneFolder, format);
+                addDifference(differences, originalFolder, cloneFolder, DifferenceType.SubfolderAttributesDiffer);
             }
 
             //Compare the files in the folders.
@@ -167,8 +166,7 @@ namespace FolderStructureAnalyser.Components
                 //Check if the clone has a folder the original does not.
                 if (!originalSubfolder.Exists)
                 {
-                    var format = "The clone has an additional folder.";
-                    addDifference(differences, originalSubfolder, cloneSubFolder, format);
+                    addDifference(differences, originalSubfolder, cloneSubFolder, DifferenceType.SubfolderAdditional);
                 }
             }
 
@@ -205,21 +203,18 @@ namespace FolderStructureAnalyser.Components
                 //Check if the clone file exists.
                 if (!cloneFile.Exists)
                 {
-                    var format = "The clone is missing a file.";
-                    addDifference(differences, originalFile, cloneFile, format);
+                    addDifference(differences, originalFile, cloneFile, DifferenceType.FileMissing);
                     continue;
                 }
 
                 //Compare the files.
                 if (originalFile.Attributes != cloneFile.Attributes)
                 {
-                    var format = "The clone file has different attributes.";
-                    addDifference(differences, originalFile, cloneFile, format);
+                    addDifference(differences, originalFile, cloneFile, DifferenceType.FileAttributesDiffer);
                 }
                 if (originalFile.Length != cloneFile.Length)
                 {
-                    var format = "The clone file has a different size.";
-                    addDifference(differences, originalFile, cloneFile, format);
+                    addDifference(differences, originalFile, cloneFile, DifferenceType.FileSizeDiffer);
                 }
             }
 
@@ -235,8 +230,7 @@ namespace FolderStructureAnalyser.Components
                 //Check if the clone has a file the original does not.
                 if (!originalFile.Exists)
                 {
-                    var format = "The clone has an additional file.";
-                    addDifference(differences, originalFile, cloneFile, format);
+                    addDifference(differences, originalFile, cloneFile, DifferenceType.FileAdditional);
                 }
             }
         }
@@ -247,11 +241,11 @@ namespace FolderStructureAnalyser.Components
         /// <param name="differences">The list of differences to show the user.</param>
         /// <param name="original">The original item.</param>
         /// <param name="clone">The clone item that differs from the original.</param>
-        /// <param name="description">A description of the difference.</param>
-        private void addDifference(BindingList<StructureDifference> differences, FileSystemInfo original, FileSystemInfo clone, string description)
+        /// <param name="type">The type of difference difference.</param>
+        private void addDifference(BindingList<StructureDifference> differences, FileSystemInfo original, FileSystemInfo clone, DifferenceType type)
         {
             //Add the differences.
-            var diff = new StructureDifference(original, clone, description);
+            var diff = new StructureDifference(original, clone, type);
             differences.Add(diff);
 
             //Raise the event.
@@ -287,7 +281,7 @@ namespace FolderStructureAnalyser.Components
 
         private void bandedGridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
-            if (e.Column == bandedGridColumnItemType)
+            if (e.Column == bandedGridColumnItemTypeIndex)
             {
                 DrawCellNodeIcon(e, e.Column.Width, getImageIndex(e));
             }
