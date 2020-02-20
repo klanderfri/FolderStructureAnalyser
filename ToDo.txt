@@ -5,7 +5,6 @@ Session
 Settings
 	Make the application store changes in ribbon/grid/tree layout.
 	Save settings between runs.
-	Setting for how the sizes are shown (dynamic, static as MB, or static as byte).
 	
 Graphical updates
 	Create own application icon (in SVG-format).
