@@ -41,5 +41,11 @@ namespace FolderStructureAnalyser.Helpers
             var message = "The folder does not exist.";
             MessageBox.Show(message, "Non-existing folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        public static void ShowNoStructureDifferencesFoundMessage()
+        {
+            var message = "There are no found differences between the two selected folder structures.";
+            MessageBox.Show(message, "No differences found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.BandedGrid.ViewInfo;
 using DevExpress.XtraGrid.Views.Base;
@@ -120,8 +121,15 @@ namespace FolderStructureAnalyser.Components
         {
             if (!e.Cancelled)
             {
+                //Update the grid.
                 var differences = e.Result as BindingList<StructureDifference>;
                 updateDataSource(differences);
+
+                //Check if the structures are identical.
+                if (!differences.Any())
+                {
+                    MessageBoxes.ShowNoStructureDifferencesFoundMessage();
+                }
             }
         }
 
