@@ -44,6 +44,11 @@ namespace FolderStructureAnalyser.DataObjects
         public int ProblemTypeIndex { get { return DiffInfo.DifferenceTypeImageIndex; } }
 
         /// <summary>
+        /// The type of difference.
+        /// </summary>
+        public DifferenceType DifferenceType { get { return DiffInfo.DifferenceType; } }
+
+        /// <summary>
         /// The original item.
         /// </summary>
         private FileSystemInfo Original { get; set; }

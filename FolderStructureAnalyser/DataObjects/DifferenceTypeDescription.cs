@@ -24,11 +24,18 @@ namespace FolderStructureAnalyser.DataObjects
         public string Description { get; private set; }
 
         /// <summary>
+        /// The type of difference.
+        /// </summary>
+        public DifferenceType DifferenceType { get; private set; }
+
+        /// <summary>
         /// Creates an object describing a type of difference between two folders.
         /// </summary>
         /// <param name="diffType">The type of difference.</param>
         public DifferenceTypeDescription(DifferenceType diffType)
         {
+            DifferenceType = diffType;
+
             switch (diffType)
             {
                 case DifferenceType.SubfolderMissing:

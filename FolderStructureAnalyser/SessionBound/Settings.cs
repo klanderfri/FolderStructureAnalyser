@@ -23,6 +23,11 @@ namespace FolderStructureAnalyser.SessionBound
         public bool CompareFileHashes { get; set; }
 
         /// <summary>
+        /// The colour used to indicate an error in a grid.
+        /// </summary>
+        public Color GridErrorColour { get; set; }
+
+        /// <summary>
         /// Creates an object holding the settings for the application, using default values.
         /// </summary>
         /// <param name="session">The application session.</param>
@@ -32,6 +37,7 @@ namespace FolderStructureAnalyser.SessionBound
             BigFolderInMB = 10;
             BigFolderColour = Color.Red;
             CompareFileHashes = false;
+            GridErrorColour = Color.Salmon;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.BandedGrid;
 using DevExpress.XtraGrid.Views.BandedGrid.ViewInfo;
 using DevExpress.XtraGrid.Views.Base;
 using FolderStructureAnalyser.DataObjects;
@@ -293,15 +294,32 @@ namespace FolderStructureAnalyser.Components
 
         private void bandedGridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
+            var column = e.Column as BandedGridColumn;
             var row = bandedGridView1.GetRow(e.RowHandle) as StructureDifference;
 
-            if (e.Column == bandedGridColumnItemTypeIndex)
+            if (column == bandedGridColumnItemTypeIndex)
             {
                 DrawCellNodeIcon(e, e.Column.Width, row.ItemTypeIndex);
             }
-            if (e.Column == bandedGridColumnProblemTypeIndex)
+            if (column == bandedGridColumnProblemTypeIndex)
             {
                 DrawCellNodeIcon(e, e.Column.Width, row.ProblemTypeIndex);
+            }
+            if (column.OwnerBand == gridBandClone)
+            {
+                if (row.DifferenceType == DifferenceType.FileMissing
+                    || row.DifferenceType == DifferenceType.SubfolderMissing)
+                {
+                    e.Appearance.BackColor = Session.Settings.GridErrorColour;
+                }
+            }
+            if (column.OwnerBand == gridBandOriginal)
+            {
+                if (row.DifferenceType == DifferenceType.FileAdditional
+                   || row.DifferenceType == DifferenceType.SubfolderAdditional)
+                {
+                    e.Appearance.BackColor = Session.Settings.GridErrorColour;
+                }
             }
         }
     }
