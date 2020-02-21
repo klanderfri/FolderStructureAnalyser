@@ -9,6 +9,11 @@ namespace FolderStructureAnalyser.DataObjects
     public class LogMessage
     {
         /// <summary>
+        /// The unique identifier of the log message.
+        /// </summary>
+        public int ID { get; set; }
+
+        /// <summary>
         /// The time for the log message.
         /// </summary>
         public DateTime Timestamp { get; set; }

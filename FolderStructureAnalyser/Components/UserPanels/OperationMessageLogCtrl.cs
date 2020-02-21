@@ -12,6 +12,11 @@ namespace FolderStructureAnalyser.Components.UserPanels
         public Session Session { get; set; }
 
         /// <summary>
+        /// The ID that will be assigned the next log message.
+        /// </summary>
+        private int NextLogID { get; set; }
+
+        /// <summary>
         /// The data source holding the log messages to show in the grid.
         /// </summary>
         private BindingList<LogMessage> LogMessages { get; set; } = new BindingList<LogMessage>();
@@ -36,10 +41,12 @@ namespace FolderStructureAnalyser.Components.UserPanels
             //Find the amount of seconds.
             var runtimeInSeconds = (long)Math.Floor((decimal)runtimeInMilliseconds / 1000);
 
-            //Update the label.
+            //Create message text..
             var format = "Last operation time: {0} sec";
             var message = String.Format(format, runtimeInSeconds);
-            labelLastOperationTime.Text = message;
+
+            //Add the log message.
+            addLogMessage(LogMessageType.OperationTime, message);
         }
 
         /// <summary>
@@ -48,10 +55,21 @@ namespace FolderStructureAnalyser.Components.UserPanels
         /// <param name="message">The human readable log message.</param>
         public void AddLogMessage(string message)
         {
+            addLogMessage(LogMessageType.Miscellaneous, message);
+        }
+
+        /// <summary>
+        /// Adds a log message to the grid.
+        /// </summary>
+        /// <param name="type">The type of the log message.</param>
+        /// <param name="message">The human readable log message.</param>
+        private void addLogMessage(LogMessageType type, string message)
+        {
             var log = new LogMessage()
             {
+                ID = NextLogID++,
                 Timestamp = DateTime.Now,
-                Type = LogMessageType.Miscellaneous,
+                Type = type,
                 Message = message
             };
             LogMessages.Add(log);
