@@ -69,17 +69,6 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// Refreshes the data in the tree.
-        /// </summary>
-        public void RefreshData()
-        {
-            if (LastPathsAnalysed.HasSingleItem())
-            {
-                StartAnalysis(LastPathsAnalysed.First());
-            }
-        }
-
-        /// <summary>
         /// Sets the data source of the analyser tree.
         /// </summary>
         /// <param name="folderStructure">The folder structer that are to be used as datasource.</param>

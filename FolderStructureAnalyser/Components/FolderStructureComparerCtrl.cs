@@ -71,14 +71,6 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// Refreshes the data in the grid.
-        /// </summary>
-        public void RefreshData()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Asks the user for the two folders to compare.
         /// </summary>
         /// <returns>A list containing the full paths to the folders to compare. The first path is the original, the second is the clone.</returns>

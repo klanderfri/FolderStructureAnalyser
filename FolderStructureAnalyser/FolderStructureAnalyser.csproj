@@ -99,7 +99,6 @@
     </Compile>
     <Compile Include="DataObjects\FolderNode.cs" />
     <Compile Include="Exceptions\UnhandledEnumException.cs" />
-    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\FileHandler.cs" />
     <Compile Include="Helpers\GridHandler.cs" />
     <Compile Include="Helpers\MessageBoxes.cs" />

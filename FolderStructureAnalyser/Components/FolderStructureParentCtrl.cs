@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using DevExpress.Utils;
 using DevExpress.XtraGrid.Views.Base;
@@ -44,7 +45,7 @@ namespace FolderStructureAnalyser.Components
         /// <summary>
         /// The paths involved in the last finished analysis.
         /// </summary>
-        public IEnumerable<string> LastPathsAnalysed { get; private set; } = new List<string>();
+        private IEnumerable<string> LastPathsAnalysed { get; set; } = new List<string>();
 
         /// <summary>
         /// Keeps the last known position of the parent of the control.
@@ -261,6 +262,17 @@ namespace FolderStructureAnalyser.Components
         public void CancelAnalysis()
         {
             backgroundWorkerTimeHeavyAnalysis.CancelAsync();
+        }
+
+        /// <summary>
+        /// Refreshes the data in the control.
+        /// </summary>
+        public void RefreshData()
+        {
+            if (LastPathsAnalysed.Any())
+            {
+                StartAnalysis(LastPathsAnalysed);
+            }
         }
 
         /// <summary>
