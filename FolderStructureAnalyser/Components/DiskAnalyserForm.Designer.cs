@@ -157,6 +157,7 @@
             // barButtonItemUpdateComparerData
             // 
             this.barButtonItemUpdateComparerData.Caption = "Update";
+            this.barButtonItemUpdateComparerData.Enabled = false;
             this.barButtonItemUpdateComparerData.Id = 11;
             this.barButtonItemUpdateComparerData.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemUpdateComparer.ImageOptions.SvgImage")));
             this.barButtonItemUpdateComparerData.Name = "barButtonItemUpdateComparerData";
@@ -166,6 +167,7 @@
             // barButtonItemUpdateAnalyserData
             // 
             this.barButtonItemUpdateAnalyserData.Caption = "Update";
+            this.barButtonItemUpdateAnalyserData.Enabled = false;
             this.barButtonItemUpdateAnalyserData.Id = 12;
             this.barButtonItemUpdateAnalyserData.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemUpdateTreeList.ImageOptions.SvgImage")));
             this.barButtonItemUpdateAnalyserData.Name = "barButtonItemUpdateAnalyserData";

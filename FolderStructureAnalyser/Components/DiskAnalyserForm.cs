@@ -52,6 +52,19 @@ namespace FolderStructureAnalyser.Components
             barButtonItemCompareStructures.Enabled = !operationStarted;
         }
 
+        /// <summary>
+        /// Enables the update data button.
+        /// </summary>
+        /// <param name="updateDataButton">The button to enable.</param>
+        /// <param name="analysisWasCancelled">TRUE if the last analysis was cancelled, else FALSE.</param>
+        private void enableUpdateDataButton(BarButtonItem updateDataButton, bool analysisWasCancelled)
+        {
+            if (!analysisWasCancelled)
+            {
+                updateDataButton.Enabled = true;
+            }
+        }
+
         private void barButtonItemAnalyseStructure_ItemClick(object sender, ItemClickEventArgs e)
         {
             folderStructureAnalyserCtrl.AnalyseFolderStructure();
@@ -91,11 +104,13 @@ namespace FolderStructureAnalyser.Components
         private void folderStructureAnalyserCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
             setOperationButtonStates(false);
+            enableUpdateDataButton(barButtonItemUpdateAnalyserData, e.Cancelled);
         }
 
         private void folderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
         {
             setOperationButtonStates(false);
+            enableUpdateDataButton(barButtonItemUpdateComparerData, e.Cancelled);
         }
 
         private void folderStructureAnalyserCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
