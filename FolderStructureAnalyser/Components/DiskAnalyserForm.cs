@@ -30,16 +30,6 @@ namespace FolderStructureAnalyser.Components
         }
 
         /// <summary>
-        /// Updates the label telling the user how long the folder structure analysis has run.
-        /// </summary>
-        /// <param name="elapsedMilliseconds">The amount of milliseconds that has passed since the analysis started.</param>
-        private void updateOperationTime(long elapsedMilliseconds)
-        {
-            //Update the information panel.
-            operationMessageLogCtrl.UpdateOperationRuntime(elapsedMilliseconds);
-        }
-
-        /// <summary>
         /// Updates the enable state for the buttons starting analysis operations.
         /// </summary>
         /// <param name="operationStarted">TRUE if an analysis just started, FALSE if an analysis just finished.</param>
@@ -113,12 +103,12 @@ namespace FolderStructureAnalyser.Components
 
         private void folderStructureAnalyserCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
         {
-            updateOperationTime(e.ElapsedMilliseconds);
+            operationMessageLogCtrl.UpdateOperationRuntime(e.ElapsedMilliseconds);
         }
 
         private void folderStructureComparerCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
         {
-            updateOperationTime(e.ElapsedMilliseconds);
+            operationMessageLogCtrl.UpdateOperationRuntime(e.ElapsedMilliseconds);
         }
 
         private void barButtonItemUpdateTreeList_ItemClick(object sender, ItemClickEventArgs e)
