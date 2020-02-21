@@ -107,5 +107,15 @@ namespace FolderStructureAnalyser.Components
         {
             updateOperationTime(e.ElapsedMilliseconds);
         }
+
+        private void barButtonItemUpdateTreeList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            folderStructureAnalyserCtrl.RefreshData();
+        }
+
+        private void barButtonItemUpdateComparer_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            folderStructureComparerCtrl.RefreshData();
+        }
     }
 }

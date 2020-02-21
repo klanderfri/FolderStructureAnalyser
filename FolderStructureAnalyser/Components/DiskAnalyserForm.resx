@@ -205,4 +205,38 @@
         IiMxMTc3RDciIGNsYXNzPSJCbHVlIiAvPg0KICA8L2c+DQo8L3N2Zz4L
 </value>
   </data>
+  <data name="barButtonItemUpdateComparer.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjIsIFZlcnNpb249MTguMi42
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAFECAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBlbmFibGUt
+        YmFja2dyb3VuZD0ibmV3IDAgMCAzMiAzMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgaWQ9IkxheWVyXzEi
+        Pg0KICA8ZyBpZD0iQ2hhbmdlVmlldyI+DQogICAgPHBhdGggZD0iTTI0LjUsNy41QzIyLjMsNS4zLDE5
+        LjMsNCwxNiw0QzEwLjEsNCw1LjEsOC4zLDQuMiwxNGg0LjFjMC45LTMuNCw0LTYsNy43LTZjMi4yLDAs
+        NC4yLDAuOSw1LjYsMi40TDE4LDE0ICAgaDUuN2g0LjFIMjhWNEwyNC41LDcuNXogTTE2LDI0Yy0yLjIs
+        MC00LjItMC45LTUuNi0yLjRMMTQsMThIOC4yaC00SDR2MTBsMy41LTMuNUM5LjcsMjYuNywxMi43LDI4
+        LDE2LDI4YzUuOSwwLDEwLjgtNC4zLDExLjgtMTAgICBoLTQuMUMyMi44LDIxLjQsMTkuNywyNCwxNiwy
+        NHoiIGZpbGw9IiMxMTc3RDciIGNsYXNzPSJCbHVlIiAvPg0KICA8L2c+DQo8L3N2Zz4L
+</value>
+  </data>
+  <data name="barButtonItemUpdateTreeList.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjIsIFZlcnNpb249MTguMi42
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAFECAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBlbmFibGUt
+        YmFja2dyb3VuZD0ibmV3IDAgMCAzMiAzMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgaWQ9IkxheWVyXzEi
+        Pg0KICA8ZyBpZD0iQ2hhbmdlVmlldyI+DQogICAgPHBhdGggZD0iTTI0LjUsNy41QzIyLjMsNS4zLDE5
+        LjMsNCwxNiw0QzEwLjEsNCw1LjEsOC4zLDQuMiwxNGg0LjFjMC45LTMuNCw0LTYsNy43LTZjMi4yLDAs
+        NC4yLDAuOSw1LjYsMi40TDE4LDE0ICAgaDUuN2g0LjFIMjhWNEwyNC41LDcuNXogTTE2LDI0Yy0yLjIs
+        MC00LjItMC45LTUuNi0yLjRMMTQsMThIOC4yaC00SDR2MTBsMy41LTMuNUM5LjcsMjYuNywxMi43LDI4
+        LDE2LDI4YzUuOSwwLDEwLjgtNC4zLDExLjgtMTAgICBoLTQuMUMyMi44LDIxLjQsMTkuNywyNCwxNiwy
+        NHoiIGZpbGw9IiMxMTc3RDciIGNsYXNzPSJCbHVlIiAvPg0KICA8L2c+DQo8L3N2Zz4L
+</value>
+  </data>
 </root>

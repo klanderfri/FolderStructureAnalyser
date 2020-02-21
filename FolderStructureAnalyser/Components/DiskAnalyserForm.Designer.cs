@@ -51,6 +51,8 @@
             this.folderStructureComparerCtrl = new FolderStructureAnalyser.Components.FolderStructureComparerCtrl();
             this.xtraTabPageSettings = new DevExpress.XtraTab.XtraTabPage();
             this.folderStructureSettingsCtrl = new FolderStructureAnalyser.Components.FolderStructureSettingsCtrl();
+            this.barButtonItemUpdateComparer = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemUpdateTreeList = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSize)).BeginInit();
@@ -73,9 +75,11 @@
             this.barButtonItemResetTreeView,
             this.barButtonItemCompareStructures,
             this.barHeaderItemOperationTime,
-            this.barStaticItemOperationTime});
+            this.barStaticItemOperationTime,
+            this.barButtonItemUpdateComparer,
+            this.barButtonItemUpdateTreeList});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 11;
+            this.ribbonControl1.MaxItemId = 13;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageAnalyseFolderStructure});
@@ -164,6 +168,7 @@
             this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemAnalyseStructure);
             this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemSetAsRoot);
             this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemResetTreeView);
+            this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemUpdateTreeList);
             this.ribbonPageGroupAnalyse.Name = "ribbonPageGroupAnalyse";
             this.ribbonPageGroupAnalyse.ShowCaptionButton = false;
             this.ribbonPageGroupAnalyse.Text = "Analyse";
@@ -171,6 +176,7 @@
             // ribbonPageGroupCompare
             // 
             this.ribbonPageGroupCompare.ItemLinks.Add(this.barButtonItemCompareStructures);
+            this.ribbonPageGroupCompare.ItemLinks.Add(this.barButtonItemUpdateComparer);
             this.ribbonPageGroupCompare.Name = "ribbonPageGroupCompare";
             this.ribbonPageGroupCompare.ShowCaptionButton = false;
             this.ribbonPageGroupCompare.Text = "Compare";
@@ -293,6 +299,24 @@
             this.folderStructureSettingsCtrl.Size = new System.Drawing.Size(1276, 520);
             this.folderStructureSettingsCtrl.TabIndex = 0;
             // 
+            // barButtonItemUpdateComparer
+            // 
+            this.barButtonItemUpdateComparer.Caption = "Update";
+            this.barButtonItemUpdateComparer.Id = 11;
+            this.barButtonItemUpdateComparer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemUpdateComparer.ImageOptions.SvgImage")));
+            this.barButtonItemUpdateComparer.Name = "barButtonItemUpdateComparer";
+            this.barButtonItemUpdateComparer.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.barButtonItemUpdateComparer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUpdateComparer_ItemClick);
+            // 
+            // barButtonItemUpdateTreeList
+            // 
+            this.barButtonItemUpdateTreeList.Caption = "Update";
+            this.barButtonItemUpdateTreeList.Id = 12;
+            this.barButtonItemUpdateTreeList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemUpdateTreeList.ImageOptions.SvgImage")));
+            this.barButtonItemUpdateTreeList.Name = "barButtonItemUpdateTreeList";
+            this.barButtonItemUpdateTreeList.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.barButtonItemUpdateTreeList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUpdateTreeList_ItemClick);
+            // 
             // DiskAnalyserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +366,8 @@
         private FolderStructureComparerCtrl folderStructureComparerCtrl;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageSettings;
         private FolderStructureSettingsCtrl folderStructureSettingsCtrl;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemUpdateComparer;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemUpdateTreeList;
     }
 }
 

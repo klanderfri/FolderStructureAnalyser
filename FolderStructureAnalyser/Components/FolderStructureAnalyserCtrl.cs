@@ -60,9 +60,20 @@ namespace FolderStructureAnalyser.Components
             }
         }
 
+        /// <summary>
+        /// Resets the tree to show the structure from the last analysis.
+        /// </summary>
         public void ResetTreeToLastAnalyse()
         {
             updateDataSource(LastAnalysedStructure);
+        }
+
+        /// <summary>
+        /// Refreshes the data in the tree.
+        /// </summary>
+        public void RefreshData()
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
