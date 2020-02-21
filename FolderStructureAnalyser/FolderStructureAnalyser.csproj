@@ -64,6 +64,12 @@
     <Compile Include="Components\FolderStructureSettingsCtrl.Designer.cs">
       <DependentUpon>FolderStructureSettingsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\OperationMessageLogCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\OperationMessageLogCtrl.Designer.cs">
+      <DependentUpon>OperationMessageLogCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataObjects\DifferenceTypeDescription.cs" />
     <Compile Include="DataObjects\DiskItemNode.cs" />
     <Compile Include="DataObjects\FolderData.cs" />
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\FolderStructureSettingsCtrl.resx">
       <DependentUpon>FolderStructureSettingsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\OperationMessageLogCtrl.resx">
+      <DependentUpon>OperationMessageLogCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\WaitForStructureAnalyseForm.resx">
       <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>
