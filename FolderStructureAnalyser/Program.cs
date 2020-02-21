@@ -18,7 +18,8 @@ namespace FolderStructureAnalyser
 
             //Run application.
             var form = new DiskAnalyserForm();
-            form.SetSession(new Session());
+            var session = new Session(form);
+            form.SetSession(session);
             Application.Run(form);
         }
     }

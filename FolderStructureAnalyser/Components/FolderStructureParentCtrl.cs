@@ -167,9 +167,9 @@ namespace FolderStructureAnalyser.Components
         public virtual void SetSession(Session session)
         {
             Session = session;
-            LastKnownParentPosition = ParentForm.Location;
+            LastKnownParentPosition = Session.RootForm.Location;
             LastKnownSize = Size;
-            ParentForm.Move += ParentForm_Move;
+            Session.RootForm.Move += ParentForm_Move;
         }
         
         /// <summary>
