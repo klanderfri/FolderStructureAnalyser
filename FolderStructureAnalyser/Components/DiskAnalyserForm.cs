@@ -35,16 +35,8 @@ namespace FolderStructureAnalyser.Components
         /// <param name="elapsedMilliseconds">The amount of milliseconds that has passed since the analysis started.</param>
         private void updateOperationTime(long elapsedMilliseconds)
         {
-            //Find the amount of seconds.
-            var seconds = (long)Math.Floor((decimal)elapsedMilliseconds / 1000);
-
             //Update the information panel.
-            operationMessageLogCtrl.UpdateOperationRuntime(seconds);
-
-            //Update the status bar label.
-            var format = "{0} sec";
-            var text = String.Format(format, seconds);
-            barStaticItemOperationTime.Caption = text;
+            operationMessageLogCtrl.UpdateOperationRuntime(elapsedMilliseconds);
         }
 
         /// <summary>

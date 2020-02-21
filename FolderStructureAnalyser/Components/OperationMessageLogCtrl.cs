@@ -28,9 +28,13 @@ namespace FolderStructureAnalyser.Components
         /// <summary>
         /// Updates the information about how long the current operation has run.
         /// </summary>
-        /// <param name="runtimeInSeconds">The amount of seconds the current operation has run.</param>
-        public void UpdateOperationRuntime(long runtimeInSeconds)
+        /// <param name="runtimeInMilliseconds">The amount of milliseconds the current operation has run.</param>
+        public void UpdateOperationRuntime(long runtimeInMilliseconds)
         {
+            //Find the amount of seconds.
+            var runtimeInSeconds = (long)Math.Floor((decimal)runtimeInMilliseconds / 1000);
+
+            //Update the label.
             var format = "Last operation time: {0} sec";
             var message = String.Format(format, runtimeInSeconds);
             labelLastOperationTime.Text = message;

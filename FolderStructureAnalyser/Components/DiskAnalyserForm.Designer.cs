@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiskAnalyserForm));
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroupAnalyses = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentAnalyseStructure = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.documentCompareStructures = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
@@ -40,8 +40,6 @@
             this.barButtonItemSetAsRoot = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemResetTreeView = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCompareStructures = new DevExpress.XtraBars.BarButtonItem();
-            this.barHeaderItemOperationTime = new DevExpress.XtraBars.BarHeaderItem();
-            this.barStaticItemOperationTime = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItemUpdateComparerData = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemUpdateAnalyserData = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageAnalyseFolderStructure = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -50,7 +48,6 @@
             this.ribbonPageGroupStopOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemColorPickEditBigFolderColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
             this.repositoryItemSpinEditBigFolderSize = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
-            this.ribbonStatusBarAnalysisInformation = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.folderStructureAnalyserCtrl = new FolderStructureAnalyser.Components.FolderStructureAnalyserCtrl();
             this.folderStructureComparerCtrl = new FolderStructureAnalyser.Components.FolderStructureComparerCtrl();
             this.folderStructureSettingsCtrl = new FolderStructureAnalyser.Components.FolderStructureSettingsCtrl();
@@ -58,13 +55,13 @@
             this.hideContainerRight = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockPanelSettings = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelSettings_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanelInformation = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.operationMessageLogCtrl = new FolderStructureAnalyser.Components.OperationMessageLogCtrl();
             this.dockPanelCompareStructures = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelCompareStructures_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelAnalyseStructure = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelAnalyseStructure_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.dockPanelInformation = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.operationMessageLogCtrl = new FolderStructureAnalyser.Components.OperationMessageLogCtrl();
             this.documentManagerAnalyses = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedViewAnalyses = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroupAnalyses)).BeginInit();
@@ -77,12 +74,12 @@
             this.hideContainerRight.SuspendLayout();
             this.dockPanelSettings.SuspendLayout();
             this.dockPanelSettings_Container.SuspendLayout();
-            this.dockPanelInformation.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
             this.dockPanelCompareStructures.SuspendLayout();
             this.dockPanelCompareStructures_Container.SuspendLayout();
             this.dockPanelAnalyseStructure.SuspendLayout();
             this.dockPanelAnalyseStructure_Container.SuspendLayout();
+            this.dockPanelInformation.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentManagerAnalyses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedViewAnalyses)).BeginInit();
             this.SuspendLayout();
@@ -124,8 +121,6 @@
             this.barButtonItemSetAsRoot,
             this.barButtonItemResetTreeView,
             this.barButtonItemCompareStructures,
-            this.barHeaderItemOperationTime,
-            this.barStaticItemOperationTime,
             this.barButtonItemUpdateComparerData,
             this.barButtonItemUpdateAnalyserData});
             this.ribbonControlAnalyserApplication.Location = new System.Drawing.Point(0, 0);
@@ -140,7 +135,6 @@
             this.ribbonControlAnalyserApplication.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControlAnalyserApplication.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControlAnalyserApplication.Size = new System.Drawing.Size(1278, 154);
-            this.ribbonControlAnalyserApplication.StatusBar = this.ribbonStatusBarAnalysisInformation;
             // 
             // barButtonItemAnalyseStructure
             // 
@@ -189,20 +183,6 @@
             this.barButtonItemCompareStructures.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCompareStructures.ImageOptions.SvgImage")));
             this.barButtonItemCompareStructures.Name = "barButtonItemCompareStructures";
             this.barButtonItemCompareStructures.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCompareStructures_ItemClick);
-            // 
-            // barHeaderItemOperationTime
-            // 
-            this.barHeaderItemOperationTime.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.barHeaderItemOperationTime.Appearance.Options.UseFont = true;
-            this.barHeaderItemOperationTime.Caption = "Last operation time:";
-            this.barHeaderItemOperationTime.Id = 9;
-            this.barHeaderItemOperationTime.Name = "barHeaderItemOperationTime";
-            // 
-            // barStaticItemOperationTime
-            // 
-            this.barStaticItemOperationTime.Caption = "0 sec";
-            this.barStaticItemOperationTime.Id = 10;
-            this.barStaticItemOperationTime.Name = "barStaticItemOperationTime";
             // 
             // barButtonItemUpdateComparerData
             // 
@@ -285,22 +265,13 @@
             0});
             this.repositoryItemSpinEditBigFolderSize.Name = "repositoryItemSpinEditBigFolderSize";
             // 
-            // ribbonStatusBarAnalysisInformation
-            // 
-            this.ribbonStatusBarAnalysisInformation.ItemLinks.Add(this.barHeaderItemOperationTime);
-            this.ribbonStatusBarAnalysisInformation.ItemLinks.Add(this.barStaticItemOperationTime);
-            this.ribbonStatusBarAnalysisInformation.Location = new System.Drawing.Point(0, 697);
-            this.ribbonStatusBarAnalysisInformation.Name = "ribbonStatusBarAnalysisInformation";
-            this.ribbonStatusBarAnalysisInformation.Ribbon = this.ribbonControlAnalyserApplication;
-            this.ribbonStatusBarAnalysisInformation.Size = new System.Drawing.Size(1278, 22);
-            // 
             // folderStructureAnalyserCtrl
             // 
             this.folderStructureAnalyserCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.folderStructureAnalyserCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureAnalyserCtrl.Name = "folderStructureAnalyserCtrl";
             this.folderStructureAnalyserCtrl.Session = null;
-            this.folderStructureAnalyserCtrl.Size = new System.Drawing.Size(1244, 312);
+            this.folderStructureAnalyserCtrl.Size = new System.Drawing.Size(1244, 334);
             this.folderStructureAnalyserCtrl.TabIndex = 1;
             this.folderStructureAnalyserCtrl.WaitFormDescription = "Structure size analysis in progress...";
             this.folderStructureAnalyserCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureAnalyserCtrl_FolderStructureAnalysisStart);
@@ -313,7 +284,7 @@
             this.folderStructureComparerCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureComparerCtrl.Name = "folderStructureComparerCtrl";
             this.folderStructureComparerCtrl.Session = null;
-            this.folderStructureComparerCtrl.Size = new System.Drawing.Size(1244, 485);
+            this.folderStructureComparerCtrl.Size = new System.Drawing.Size(1244, 312);
             this.folderStructureComparerCtrl.TabIndex = 0;
             this.folderStructureComparerCtrl.WaitFormDescription = "Folder comparision in progress...";
             this.folderStructureComparerCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisStart);
@@ -358,7 +329,7 @@
             this.hideContainerRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.hideContainerRight.Location = new System.Drawing.Point(1250, 154);
             this.hideContainerRight.Name = "hideContainerRight";
-            this.hideContainerRight.Size = new System.Drawing.Size(28, 543);
+            this.hideContainerRight.Size = new System.Drawing.Size(28, 565);
             // 
             // dockPanelSettings
             // 
@@ -383,13 +354,57 @@
             this.dockPanelSettings_Container.Size = new System.Drawing.Size(276, 494);
             this.dockPanelSettings_Container.TabIndex = 0;
             // 
+            // dockPanelCompareStructures
+            // 
+            this.dockPanelCompareStructures.Controls.Add(this.dockPanelCompareStructures_Container);
+            this.dockPanelCompareStructures.DockedAsTabbedDocument = true;
+            this.dockPanelCompareStructures.FloatLocation = new System.Drawing.Point(254, 276);
+            this.dockPanelCompareStructures.Hint = "Holds the result from the last folder structure comparison.";
+            this.dockPanelCompareStructures.ID = new System.Guid("6062c61d-09ad-4a67-9aa7-9fff4d3058e6");
+            this.dockPanelCompareStructures.Name = "dockPanelCompareStructures";
+            this.dockPanelCompareStructures.Options.ShowCloseButton = false;
+            this.dockPanelCompareStructures.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanelCompareStructures.SavedIndex = 1;
+            this.dockPanelCompareStructures.SavedMdiDocument = true;
+            this.dockPanelCompareStructures.Text = "Compare Structures";
+            // 
+            // dockPanelCompareStructures_Container
+            // 
+            this.dockPanelCompareStructures_Container.Controls.Add(this.folderStructureComparerCtrl);
+            this.dockPanelCompareStructures_Container.Location = new System.Drawing.Point(0, 0);
+            this.dockPanelCompareStructures_Container.Name = "dockPanelCompareStructures_Container";
+            this.dockPanelCompareStructures_Container.Size = new System.Drawing.Size(1244, 312);
+            this.dockPanelCompareStructures_Container.TabIndex = 0;
+            // 
+            // dockPanelAnalyseStructure
+            // 
+            this.dockPanelAnalyseStructure.Controls.Add(this.dockPanelAnalyseStructure_Container);
+            this.dockPanelAnalyseStructure.DockedAsTabbedDocument = true;
+            this.dockPanelAnalyseStructure.FloatLocation = new System.Drawing.Point(51, 282);
+            this.dockPanelAnalyseStructure.Hint = "Holds the result from the last folder structure analysis.";
+            this.dockPanelAnalyseStructure.ID = new System.Guid("1f51260b-7412-4d37-98c0-bba58130fbd5");
+            this.dockPanelAnalyseStructure.Name = "dockPanelAnalyseStructure";
+            this.dockPanelAnalyseStructure.Options.ShowCloseButton = false;
+            this.dockPanelAnalyseStructure.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanelAnalyseStructure.SavedIndex = 2;
+            this.dockPanelAnalyseStructure.SavedMdiDocument = true;
+            this.dockPanelAnalyseStructure.Text = "Analyse Structure";
+            // 
+            // dockPanelAnalyseStructure_Container
+            // 
+            this.dockPanelAnalyseStructure_Container.Controls.Add(this.folderStructureAnalyserCtrl);
+            this.dockPanelAnalyseStructure_Container.Location = new System.Drawing.Point(0, 0);
+            this.dockPanelAnalyseStructure_Container.Name = "dockPanelAnalyseStructure_Container";
+            this.dockPanelAnalyseStructure_Container.Size = new System.Drawing.Size(1244, 334);
+            this.dockPanelAnalyseStructure_Container.TabIndex = 0;
+            // 
             // dockPanelInformation
             // 
             this.dockPanelInformation.Controls.Add(this.dockPanel1_Container);
             this.dockPanelInformation.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
             this.dockPanelInformation.Hint = "Information messages raised during operations.";
             this.dockPanelInformation.ID = new System.Guid("e0d2d156-9a3e-42e5-b82b-62464aed10d8");
-            this.dockPanelInformation.Location = new System.Drawing.Point(0, 497);
+            this.dockPanelInformation.Location = new System.Drawing.Point(0, 519);
             this.dockPanelInformation.Name = "dockPanelInformation";
             this.dockPanelInformation.OriginalSize = new System.Drawing.Size(200, 200);
             this.dockPanelInformation.Size = new System.Drawing.Size(1250, 200);
@@ -412,50 +427,6 @@
             this.operationMessageLogCtrl.Size = new System.Drawing.Size(1244, 150);
             this.operationMessageLogCtrl.TabIndex = 0;
             // 
-            // dockPanelCompareStructures
-            // 
-            this.dockPanelCompareStructures.Controls.Add(this.dockPanelCompareStructures_Container);
-            this.dockPanelCompareStructures.DockedAsTabbedDocument = true;
-            this.dockPanelCompareStructures.FloatLocation = new System.Drawing.Point(254, 276);
-            this.dockPanelCompareStructures.Hint = "Holds the result from the last folder structure comparison.";
-            this.dockPanelCompareStructures.ID = new System.Guid("6062c61d-09ad-4a67-9aa7-9fff4d3058e6");
-            this.dockPanelCompareStructures.Name = "dockPanelCompareStructures";
-            this.dockPanelCompareStructures.Options.ShowCloseButton = false;
-            this.dockPanelCompareStructures.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanelCompareStructures.SavedIndex = 1;
-            this.dockPanelCompareStructures.SavedMdiDocument = true;
-            this.dockPanelCompareStructures.Text = "Compare Structures";
-            // 
-            // dockPanelCompareStructures_Container
-            // 
-            this.dockPanelCompareStructures_Container.Controls.Add(this.folderStructureComparerCtrl);
-            this.dockPanelCompareStructures_Container.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelCompareStructures_Container.Name = "dockPanelCompareStructures_Container";
-            this.dockPanelCompareStructures_Container.Size = new System.Drawing.Size(1244, 485);
-            this.dockPanelCompareStructures_Container.TabIndex = 0;
-            // 
-            // dockPanelAnalyseStructure
-            // 
-            this.dockPanelAnalyseStructure.Controls.Add(this.dockPanelAnalyseStructure_Container);
-            this.dockPanelAnalyseStructure.DockedAsTabbedDocument = true;
-            this.dockPanelAnalyseStructure.FloatLocation = new System.Drawing.Point(51, 282);
-            this.dockPanelAnalyseStructure.Hint = "Holds the result from the last folder structure analysis.";
-            this.dockPanelAnalyseStructure.ID = new System.Guid("1f51260b-7412-4d37-98c0-bba58130fbd5");
-            this.dockPanelAnalyseStructure.Name = "dockPanelAnalyseStructure";
-            this.dockPanelAnalyseStructure.Options.ShowCloseButton = false;
-            this.dockPanelAnalyseStructure.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanelAnalyseStructure.SavedIndex = 2;
-            this.dockPanelAnalyseStructure.SavedMdiDocument = true;
-            this.dockPanelAnalyseStructure.Text = "Analyse Structure";
-            // 
-            // dockPanelAnalyseStructure_Container
-            // 
-            this.dockPanelAnalyseStructure_Container.Controls.Add(this.folderStructureAnalyserCtrl);
-            this.dockPanelAnalyseStructure_Container.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelAnalyseStructure_Container.Name = "dockPanelAnalyseStructure_Container";
-            this.dockPanelAnalyseStructure_Container.Size = new System.Drawing.Size(1244, 312);
-            this.dockPanelAnalyseStructure_Container.TabIndex = 0;
-            // 
             // documentManagerAnalyses
             // 
             this.documentManagerAnalyses.ContainerControl = this;
@@ -470,9 +441,9 @@
             this.tabbedViewAnalyses.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.documentAnalyseStructure,
             this.documentCompareStructures});
-            dockingContainer1.Element = this.documentGroupAnalyses;
+            dockingContainer2.Element = this.documentGroupAnalyses;
             this.tabbedViewAnalyses.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer1});
+            dockingContainer2});
             // 
             // DiskAnalyserForm
             // 
@@ -481,12 +452,10 @@
             this.ClientSize = new System.Drawing.Size(1278, 719);
             this.Controls.Add(this.dockPanelInformation);
             this.Controls.Add(this.hideContainerRight);
-            this.Controls.Add(this.ribbonStatusBarAnalysisInformation);
             this.Controls.Add(this.ribbonControlAnalyserApplication);
             this.MinimumSize = new System.Drawing.Size(640, 400);
             this.Name = "DiskAnalyserForm";
             this.Ribbon = this.ribbonControlAnalyserApplication;
-            this.StatusBar = this.ribbonStatusBarAnalysisInformation;
             this.Text = "Disk Analyser";
             ((System.ComponentModel.ISupportInitialize)(this.documentGroupAnalyses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentAnalyseStructure)).EndInit();
@@ -498,12 +467,12 @@
             this.hideContainerRight.ResumeLayout(false);
             this.dockPanelSettings.ResumeLayout(false);
             this.dockPanelSettings_Container.ResumeLayout(false);
-            this.dockPanelInformation.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
             this.dockPanelCompareStructures.ResumeLayout(false);
             this.dockPanelCompareStructures_Container.ResumeLayout(false);
             this.dockPanelAnalyseStructure.ResumeLayout(false);
             this.dockPanelAnalyseStructure_Container.ResumeLayout(false);
+            this.dockPanelInformation.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.documentManagerAnalyses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedViewAnalyses)).EndInit();
             this.ResumeLayout(false);
@@ -524,9 +493,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemResetTreeView;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCompareStructures;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupCompare;
-        private DevExpress.XtraBars.BarHeaderItem barHeaderItemOperationTime;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemOperationTime;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBarAnalysisInformation;
         private FolderStructureAnalyserCtrl folderStructureAnalyserCtrl;
         private FolderStructureComparerCtrl folderStructureComparerCtrl;
         private FolderStructureSettingsCtrl folderStructureSettingsCtrl;
