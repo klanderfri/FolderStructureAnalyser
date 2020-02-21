@@ -61,6 +61,8 @@
             // gridColumnTimestamp
             // 
             this.gridColumnTimestamp.Caption = "Timestamp";
+            this.gridColumnTimestamp.DisplayFormat.FormatString = "yyyy-MM-dd hh:mm:ss";
+            this.gridColumnTimestamp.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumnTimestamp.FieldName = "Timestamp";
             this.gridColumnTimestamp.Name = "gridColumnTimestamp";
             this.gridColumnTimestamp.OptionsColumn.AllowEdit = false;
