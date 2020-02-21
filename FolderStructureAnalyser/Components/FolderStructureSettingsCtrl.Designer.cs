@@ -33,16 +33,16 @@
             this.repositoryItemColorPickEditBigFolderColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
             this.repositoryItemCheckEditCompareHashes = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemColorPickEditGridErrorColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
+            this.repositoryItemImageComboBoxSizeDisplayUnit = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.categoryApplication = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowErrorColour = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.rowSizeDisplayUnit = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.categoryAnalysis = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.categoryBigFolder = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowColour = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.rowSize = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.categoryComparison = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.rowCompareHashes = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowSizeDisplayUnit = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.repositoryItemImageComboBoxSizeDisplayUnit = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.propertyGridControlAnalysingSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSizeLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
@@ -53,8 +53,8 @@
             // 
             // propertyGridControlAnalysingSettings
             // 
-            this.propertyGridControlAnalysingSettings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.propertyGridControlAnalysingSettings.Dock = System.Windows.Forms.DockStyle.Left;
+            this.propertyGridControlAnalysingSettings.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.propertyGridControlAnalysingSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGridControlAnalysingSettings.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControlAnalysingSettings.Name = "propertyGridControlAnalysingSettings";
             this.propertyGridControlAnalysingSettings.OptionsBehavior.PropertySort = DevExpress.XtraVerticalGrid.PropertySort.NoSort;
@@ -68,7 +68,7 @@
             this.categoryApplication,
             this.categoryAnalysis,
             this.categoryComparison});
-            this.propertyGridControlAnalysingSettings.Size = new System.Drawing.Size(400, 336);
+            this.propertyGridControlAnalysingSettings.Size = new System.Drawing.Size(346, 439);
             this.propertyGridControlAnalysingSettings.TabIndex = 0;
             // 
             // repositoryItemSpinEditBigFolderSizeLimit
@@ -111,6 +111,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemColorPickEditGridErrorColour.Name = "repositoryItemColorPickEditGridErrorColour";
             // 
+            // repositoryItemImageComboBoxSizeDisplayUnit
+            // 
+            this.repositoryItemImageComboBoxSizeDisplayUnit.AutoHeight = false;
+            this.repositoryItemImageComboBoxSizeDisplayUnit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBoxSizeDisplayUnit.Name = "repositoryItemImageComboBoxSizeDisplayUnit";
+            // 
             // categoryApplication
             // 
             this.categoryApplication.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
@@ -127,6 +134,14 @@
             this.rowErrorColour.Properties.FieldName = "GridErrorColour";
             this.rowErrorColour.Properties.RowEdit = this.repositoryItemColorPickEditGridErrorColour;
             this.rowErrorColour.Properties.ToolTip = "The colour used to indicate an error within a grid.";
+            // 
+            // rowSizeDisplayUnit
+            // 
+            this.rowSizeDisplayUnit.Name = "rowSizeDisplayUnit";
+            this.rowSizeDisplayUnit.Properties.Caption = "Size Unit";
+            this.rowSizeDisplayUnit.Properties.FieldName = "SizeDisplayUnit";
+            this.rowSizeDisplayUnit.Properties.RowEdit = this.repositoryItemImageComboBoxSizeDisplayUnit;
+            this.rowSizeDisplayUnit.Properties.ToolTip = "Tells how sizes should be shown within the application.";
             // 
             // categoryAnalysis
             // 
@@ -178,28 +193,13 @@
             this.rowCompareHashes.Properties.ToolTip = "Tells if the folder structure comparison should compare file hashes. Activating t" +
     "his results in more precise, but slower, comparisons.";
             // 
-            // rowSizeDisplayUnit
-            // 
-            this.rowSizeDisplayUnit.Name = "rowSizeDisplayUnit";
-            this.rowSizeDisplayUnit.Properties.Caption = "Size Unit";
-            this.rowSizeDisplayUnit.Properties.FieldName = "SizeDisplayUnit";
-            this.rowSizeDisplayUnit.Properties.RowEdit = this.repositoryItemImageComboBoxSizeDisplayUnit;
-            this.rowSizeDisplayUnit.Properties.ToolTip = "Tells how sizes should be shown within the application.";
-            // 
-            // repositoryItemImageComboBoxSizeDisplayUnit
-            // 
-            this.repositoryItemImageComboBoxSizeDisplayUnit.AutoHeight = false;
-            this.repositoryItemImageComboBoxSizeDisplayUnit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBoxSizeDisplayUnit.Name = "repositoryItemImageComboBoxSizeDisplayUnit";
-            // 
             // FolderStructureSettingsCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.propertyGridControlAnalysingSettings);
             this.Name = "FolderStructureSettingsCtrl";
-            this.Size = new System.Drawing.Size(618, 336);
+            this.Size = new System.Drawing.Size(346, 439);
             ((System.ComponentModel.ISupportInitialize)(this.propertyGridControlAnalysingSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSizeLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).EndInit();
