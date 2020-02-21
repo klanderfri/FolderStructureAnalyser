@@ -21,7 +21,7 @@ namespace FolderStructureAnalyser.DataObjects
         public long SizeInBytes { get; private set; }
 
         /// <summary>
-        /// The subfolders of the folder.
+        /// The subfolders within the folder.
         /// </summary>
         public List<FolderData> SubFolders { get; private set; } = new List<FolderData>();
 
