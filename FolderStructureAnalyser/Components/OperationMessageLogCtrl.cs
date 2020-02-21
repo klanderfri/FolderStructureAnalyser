@@ -24,5 +24,16 @@ namespace FolderStructureAnalyser.Components
         {
             Session = session;
         }
+
+        /// <summary>
+        /// Updates the information about how long the current operation has run.
+        /// </summary>
+        /// <param name="runtimeInSeconds">The amount of seconds the current operation has run.</param>
+        public void UpdateOperationRuntime(long runtimeInSeconds)
+        {
+            var format = "Last operation time: {0} sec";
+            var message = String.Format(format, runtimeInSeconds);
+            labelLastOperationTime.Text = message;
+        }
     }
 }
