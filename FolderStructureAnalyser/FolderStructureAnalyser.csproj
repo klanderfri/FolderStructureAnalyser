@@ -73,22 +73,22 @@
     <Compile Include="DataObjects\DifferenceTypeDescription.cs" />
     <Compile Include="DataObjects\DiskItemNode.cs" />
     <Compile Include="DataObjects\FolderData.cs" />
-    <Compile Include="Components\FolderStructureAnalyserCtrl.cs">
+    <Compile Include="Components\Analysers\FolderStructureAnalyserCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\FolderStructureAnalyserCtrl.Designer.cs">
+    <Compile Include="Components\Analysers\FolderStructureAnalyserCtrl.Designer.cs">
       <DependentUpon>FolderStructureAnalyserCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\FolderStructureParentCtrl.cs">
+    <Compile Include="Components\Analysers\FolderStructureParentCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\FolderStructureParentCtrl.Designer.cs">
+    <Compile Include="Components\Analysers\FolderStructureParentCtrl.Designer.cs">
       <DependentUpon>FolderStructureParentCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\FolderStructureComparerCtrl.cs">
+    <Compile Include="Components\Analysers\FolderStructureComparerCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\FolderStructureComparerCtrl.Designer.cs">
+    <Compile Include="Components\Analysers\FolderStructureComparerCtrl.Designer.cs">
       <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="DataObjects\StructureDifference.cs" />
@@ -122,13 +122,13 @@
     <Compile Include="SessionBound\SessionBoundClass.cs" />
     <Compile Include="SessionBound\Settings.cs" />
     <Compile Include="SessionBound\Tools.cs" />
-    <EmbeddedResource Include="Components\FolderStructureAnalyserCtrl.resx">
+    <EmbeddedResource Include="Components\Analysers\FolderStructureAnalyserCtrl.resx">
       <DependentUpon>FolderStructureAnalyserCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\FolderStructureParentCtrl.resx">
+    <EmbeddedResource Include="Components\Analysers\FolderStructureParentCtrl.resx">
       <DependentUpon>FolderStructureParentCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\FolderStructureComparerCtrl.resx">
+    <EmbeddedResource Include="Components\Analysers\FolderStructureComparerCtrl.resx">
       <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\FolderStructureSettingsCtrl.resx">
