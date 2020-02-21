@@ -37,6 +37,8 @@
             this.barButtonItemCompareStructures = new DevExpress.XtraBars.BarButtonItem();
             this.barHeaderItemOperationTime = new DevExpress.XtraBars.BarHeaderItem();
             this.barStaticItemOperationTime = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemUpdateComparerData = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemUpdateAnalyserData = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageAnalyseFolderStructure = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalyse = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupCompare = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -51,8 +53,6 @@
             this.folderStructureComparerCtrl = new FolderStructureAnalyser.Components.FolderStructureComparerCtrl();
             this.xtraTabPageSettings = new DevExpress.XtraTab.XtraTabPage();
             this.folderStructureSettingsCtrl = new FolderStructureAnalyser.Components.FolderStructureSettingsCtrl();
-            this.barButtonItemUpdateComparer = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemUpdateTreeList = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEditBigFolderColour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEditBigFolderSize)).BeginInit();
@@ -76,8 +76,8 @@
             this.barButtonItemCompareStructures,
             this.barHeaderItemOperationTime,
             this.barStaticItemOperationTime,
-            this.barButtonItemUpdateComparer,
-            this.barButtonItemUpdateTreeList});
+            this.barButtonItemUpdateComparerData,
+            this.barButtonItemUpdateAnalyserData});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 13;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -154,6 +154,24 @@
             this.barStaticItemOperationTime.Id = 10;
             this.barStaticItemOperationTime.Name = "barStaticItemOperationTime";
             // 
+            // barButtonItemUpdateComparerData
+            // 
+            this.barButtonItemUpdateComparerData.Caption = "Update";
+            this.barButtonItemUpdateComparerData.Id = 11;
+            this.barButtonItemUpdateComparerData.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemUpdateComparer.ImageOptions.SvgImage")));
+            this.barButtonItemUpdateComparerData.Name = "barButtonItemUpdateComparerData";
+            this.barButtonItemUpdateComparerData.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.barButtonItemUpdateComparerData.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUpdateComparer_ItemClick);
+            // 
+            // barButtonItemUpdateAnalyserData
+            // 
+            this.barButtonItemUpdateAnalyserData.Caption = "Update";
+            this.barButtonItemUpdateAnalyserData.Id = 12;
+            this.barButtonItemUpdateAnalyserData.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemUpdateTreeList.ImageOptions.SvgImage")));
+            this.barButtonItemUpdateAnalyserData.Name = "barButtonItemUpdateAnalyserData";
+            this.barButtonItemUpdateAnalyserData.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.barButtonItemUpdateAnalyserData.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUpdateTreeList_ItemClick);
+            // 
             // ribbonPageAnalyseFolderStructure
             // 
             this.ribbonPageAnalyseFolderStructure.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -168,7 +186,7 @@
             this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemAnalyseStructure);
             this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemSetAsRoot);
             this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemResetTreeView);
-            this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemUpdateTreeList);
+            this.ribbonPageGroupAnalyse.ItemLinks.Add(this.barButtonItemUpdateAnalyserData);
             this.ribbonPageGroupAnalyse.Name = "ribbonPageGroupAnalyse";
             this.ribbonPageGroupAnalyse.ShowCaptionButton = false;
             this.ribbonPageGroupAnalyse.Text = "Analyse";
@@ -176,7 +194,7 @@
             // ribbonPageGroupCompare
             // 
             this.ribbonPageGroupCompare.ItemLinks.Add(this.barButtonItemCompareStructures);
-            this.ribbonPageGroupCompare.ItemLinks.Add(this.barButtonItemUpdateComparer);
+            this.ribbonPageGroupCompare.ItemLinks.Add(this.barButtonItemUpdateComparerData);
             this.ribbonPageGroupCompare.Name = "ribbonPageGroupCompare";
             this.ribbonPageGroupCompare.ShowCaptionButton = false;
             this.ribbonPageGroupCompare.Text = "Compare";
@@ -299,24 +317,6 @@
             this.folderStructureSettingsCtrl.Size = new System.Drawing.Size(1276, 520);
             this.folderStructureSettingsCtrl.TabIndex = 0;
             // 
-            // barButtonItemUpdateComparer
-            // 
-            this.barButtonItemUpdateComparer.Caption = "Update";
-            this.barButtonItemUpdateComparer.Id = 11;
-            this.barButtonItemUpdateComparer.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemUpdateComparer.ImageOptions.SvgImage")));
-            this.barButtonItemUpdateComparer.Name = "barButtonItemUpdateComparer";
-            this.barButtonItemUpdateComparer.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-            this.barButtonItemUpdateComparer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUpdateComparer_ItemClick);
-            // 
-            // barButtonItemUpdateTreeList
-            // 
-            this.barButtonItemUpdateTreeList.Caption = "Update";
-            this.barButtonItemUpdateTreeList.Id = 12;
-            this.barButtonItemUpdateTreeList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemUpdateTreeList.ImageOptions.SvgImage")));
-            this.barButtonItemUpdateTreeList.Name = "barButtonItemUpdateTreeList";
-            this.barButtonItemUpdateTreeList.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-            this.barButtonItemUpdateTreeList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUpdateTreeList_ItemClick);
-            // 
             // DiskAnalyserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,8 +366,8 @@
         private FolderStructureComparerCtrl folderStructureComparerCtrl;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageSettings;
         private FolderStructureSettingsCtrl folderStructureSettingsCtrl;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemUpdateComparer;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemUpdateTreeList;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemUpdateComparerData;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemUpdateAnalyserData;
     }
 }
 
