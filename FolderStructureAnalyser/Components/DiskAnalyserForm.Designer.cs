@@ -330,8 +330,8 @@
             this.hideContainerRight});
             this.dockManagerApplicationContent.Form = this;
             this.dockManagerApplicationContent.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanelCompareStructures,
-            this.dockPanelAnalyseStructure});
+            this.dockPanelAnalyseStructure,
+            this.dockPanelCompareStructures});
             this.dockManagerApplicationContent.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
