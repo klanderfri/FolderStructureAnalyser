@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FolderStructureAnalyser.SessionBound;
 
-namespace FolderStructureAnalyser.Components
+namespace FolderStructureAnalyser.Components.Panels
 {
     public partial class OperationMessageLogCtrl : UserControl, ISessionBound
     {

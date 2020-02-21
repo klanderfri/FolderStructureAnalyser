@@ -1,4 +1,4 @@
-﻿namespace FolderStructureAnalyser.Components
+﻿namespace FolderStructureAnalyser.Components.Panels
 {
     partial class FolderStructureSettingsCtrl
     {

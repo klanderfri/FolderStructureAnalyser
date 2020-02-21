@@ -3,7 +3,7 @@ using System.Drawing;
 using DevExpress.XtraWaitForm;
 using FolderStructureAnalyser.Enums;
 
-namespace FolderStructureAnalyser.Components
+namespace FolderStructureAnalyser.Components.Support
 {
     public partial class WaitForStructureAnalyseForm : WaitForm
     {

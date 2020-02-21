@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.SessionBound;
 
-namespace FolderStructureAnalyser.Components
+namespace FolderStructureAnalyser.Components.Panels
 {
     public partial class FolderStructureSettingsCtrl : UserControl, ISessionBound
     {

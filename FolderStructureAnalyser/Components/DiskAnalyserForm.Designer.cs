@@ -50,7 +50,7 @@
             this.repositoryItemSpinEditBigFolderSize = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.folderStructureAnalyserCtrl = new FolderStructureAnalyser.Components.Analysers.FolderStructureAnalyserCtrl();
             this.folderStructureComparerCtrl = new FolderStructureAnalyser.Components.Analysers.FolderStructureComparerCtrl();
-            this.folderStructureSettingsCtrl = new FolderStructureAnalyser.Components.FolderStructureSettingsCtrl();
+            this.folderStructureSettingsCtrl = new FolderStructureAnalyser.Components.Panels.FolderStructureSettingsCtrl();
             this.dockManagerApplicationContent = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.hideContainerRight = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockPanelSettings = new DevExpress.XtraBars.Docking.DockPanel();
@@ -61,7 +61,7 @@
             this.dockPanelAnalyseStructure_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelInformation = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.operationMessageLogCtrl = new FolderStructureAnalyser.Components.OperationMessageLogCtrl();
+            this.operationMessageLogCtrl = new FolderStructureAnalyser.Components.Panels.OperationMessageLogCtrl();
             this.documentManagerAnalyses = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedViewAnalyses = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.hideContainerBottom = new DevExpress.XtraBars.Docking.AutoHideContainer();
@@ -510,7 +510,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupCompare;
         private Analysers.FolderStructureAnalyserCtrl folderStructureAnalyserCtrl;
         private Analysers.FolderStructureComparerCtrl folderStructureComparerCtrl;
-        private FolderStructureSettingsCtrl folderStructureSettingsCtrl;
+        private Panels.FolderStructureSettingsCtrl folderStructureSettingsCtrl;
         private DevExpress.XtraBars.BarButtonItem barButtonItemUpdateComparerData;
         private DevExpress.XtraBars.BarButtonItem barButtonItemUpdateAnalyserData;
         private DevExpress.XtraBars.Docking.DockManager dockManagerApplicationContent;
@@ -528,7 +528,7 @@
         private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerRight;
         private DevExpress.XtraBars.Docking.DockPanel dockPanelInformation;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
-        private OperationMessageLogCtrl operationMessageLogCtrl;
+        private Panels.OperationMessageLogCtrl operationMessageLogCtrl;
         private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerBottom;
     }
 }

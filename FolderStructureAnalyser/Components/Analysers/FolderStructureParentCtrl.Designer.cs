@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.xtraFolderBrowserDialogSelectFolder = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
-            this.splashScreenManagerWaitForm = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
+            this.splashScreenManagerWaitForm = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.Support.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
             this.backgroundWorkerTimeHeavyAnalysis = new System.ComponentModel.BackgroundWorker();
             this.timerAnalysisProgress = new System.Windows.Forms.Timer(this.components);
             this.svgImageCollectionIcons = new DevExpress.Utils.SvgImageCollection(this.components);
