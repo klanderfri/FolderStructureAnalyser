@@ -26,6 +26,11 @@ namespace FolderStructureAnalyser.DataObjects
         public List<FolderData> SubFolders { get; private set; } = new List<FolderData>();
 
         /// <summary>
+        /// The files within the folder.
+        /// </summary>
+        public List<FileInfo> Files { get; private set; } = new List<FileInfo>();
+
+        /// <summary>
         /// The subfolders that are not available for the application.
         /// </summary>
         public List<string> UnavailableFolders { get; private set; } = new List<string>();
@@ -38,16 +43,26 @@ namespace FolderStructureAnalyser.DataObjects
         public FolderData(BackgroundWorker worker, string folderpath)
         {
             Info = new DirectoryInfo(folderpath);
-            
-            fillSubfolders(worker);
+
+            findFiles(worker);
+            findSubfolders(worker);
             calculateSize(worker);
+        }
+
+        /// <summary>
+        /// Adds the files within the folder to the structure.
+        /// </summary>
+        /// <param name="worker">The background worker responsible for the folder object creation.</param>
+        private void findFiles(BackgroundWorker worker)
+        {
+            Files.AddRange(Info.GetFiles());
         }
 
         /// <summary>
         /// Adds the subfolder structure to the subfolder list.
         /// </summary>
         /// <param name="worker">The background worker responsible for the folder object creation.</param>
-        private void fillSubfolders(BackgroundWorker worker)
+        private void findSubfolders(BackgroundWorker worker)
         {
             foreach (var child in Info.GetDirectories())
             {
