@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using FolderStructureAnalyser.DataObjects;
+using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components.UserPanels
@@ -14,6 +10,11 @@ namespace FolderStructureAnalyser.Components.UserPanels
     public partial class OperationMessageLogCtrl : UserControl, ISessionBound
     {
         public Session Session { get; set; }
+
+        /// <summary>
+        /// The data source holding the log messages to show in the grid.
+        /// </summary>
+        private BindingList<LogMessage> LogMessages { get; set; } = new BindingList<LogMessage>();
 
         public OperationMessageLogCtrl()
         {
@@ -23,6 +24,7 @@ namespace FolderStructureAnalyser.Components.UserPanels
         public void SetSession(Session session)
         {
             Session = session;
+            gridControlLogMessages.DataSource = LogMessages;
         }
 
         /// <summary>
@@ -38,6 +40,21 @@ namespace FolderStructureAnalyser.Components.UserPanels
             var format = "Last operation time: {0} sec";
             var message = String.Format(format, runtimeInSeconds);
             labelLastOperationTime.Text = message;
+        }
+
+        /// <summary>
+        /// Adds a log message to the control.
+        /// </summary>
+        /// <param name="message">The human readable log message.</param>
+        public void AddLogMessage(string message)
+        {
+            var log = new LogMessage()
+            {
+                Timestamp = DateTime.Now,
+                Type = LogMessageType.Miscellaneous,
+                Message = message
+            };
+            LogMessages.Add(log);
         }
     }
 }

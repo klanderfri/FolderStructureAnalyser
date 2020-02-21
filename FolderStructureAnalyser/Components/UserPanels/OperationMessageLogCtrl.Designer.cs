@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.labelLastOperationTime = new System.Windows.Forms.Label();
+            this.gridControlLogMessages = new DevExpress.XtraGrid.GridControl();
+            this.gridViewLogMessages = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.gridColumnTimestamp = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnMessage = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlLogMessages)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLogMessages)).BeginInit();
             this.SuspendLayout();
             // 
             // labelLastOperationTime
@@ -40,13 +48,63 @@
             this.labelLastOperationTime.TabIndex = 0;
             this.labelLastOperationTime.Text = "Last operation time: 0 sec";
             // 
+            // gridControlLogMessages
+            // 
+            this.gridControlLogMessages.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridControlLogMessages.Location = new System.Drawing.Point(0, 59);
+            this.gridControlLogMessages.MainView = this.gridViewLogMessages;
+            this.gridControlLogMessages.Name = "gridControlLogMessages";
+            this.gridControlLogMessages.Size = new System.Drawing.Size(922, 246);
+            this.gridControlLogMessages.TabIndex = 1;
+            this.gridControlLogMessages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewLogMessages});
+            // 
+            // gridViewLogMessages
+            // 
+            this.gridViewLogMessages.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumnTimestamp,
+            this.gridColumnType,
+            this.gridColumnMessage});
+            this.gridViewLogMessages.GridControl = this.gridControlLogMessages;
+            this.gridViewLogMessages.Name = "gridViewLogMessages";
+            this.gridViewLogMessages.OptionsView.ColumnAutoWidth = false;
+            // 
+            // gridColumnTimestamp
+            // 
+            this.gridColumnTimestamp.Caption = "Timestamp";
+            this.gridColumnTimestamp.FieldName = "Timestamp";
+            this.gridColumnTimestamp.Name = "gridColumnTimestamp";
+            this.gridColumnTimestamp.Visible = true;
+            this.gridColumnTimestamp.VisibleIndex = 0;
+            this.gridColumnTimestamp.Width = 140;
+            // 
+            // gridColumnType
+            // 
+            this.gridColumnType.Caption = "Type";
+            this.gridColumnType.FieldName = "Type";
+            this.gridColumnType.Name = "gridColumnType";
+            this.gridColumnType.Visible = true;
+            this.gridColumnType.VisibleIndex = 1;
+            // 
+            // gridColumnMessage
+            // 
+            this.gridColumnMessage.Caption = "Message";
+            this.gridColumnMessage.FieldName = "Message";
+            this.gridColumnMessage.Name = "gridColumnMessage";
+            this.gridColumnMessage.Visible = true;
+            this.gridColumnMessage.VisibleIndex = 2;
+            this.gridColumnMessage.Width = 500;
+            // 
             // OperationMessageLogCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gridControlLogMessages);
             this.Controls.Add(this.labelLastOperationTime);
             this.Name = "OperationMessageLogCtrl";
-            this.Size = new System.Drawing.Size(403, 250);
+            this.Size = new System.Drawing.Size(922, 305);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlLogMessages)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLogMessages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -55,5 +113,11 @@
         #endregion
 
         private System.Windows.Forms.Label labelLastOperationTime;
+        private DevExpress.XtraGrid.GridControl gridControlLogMessages;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewLogMessages;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnTimestamp;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnType;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnMessage;
     }
 }

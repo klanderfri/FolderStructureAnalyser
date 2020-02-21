@@ -91,8 +91,10 @@
     <Compile Include="Components\AnalyserPanels\FolderStructureComparerCtrl.Designer.cs">
       <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataObjects\LogMessage.cs" />
     <Compile Include="DataObjects\StructureDifference.cs" />
     <Compile Include="Enums\DifferenceType.cs" />
+    <Compile Include="Enums\LogMessageType.cs" />
     <Compile Include="Enums\SizeDisplayUnit.cs" />
     <Compile Include="Events\FolderStructureAnalysisStartArgs.cs" />
     <Compile Include="Events\FolderStructureDifferenceAddedArgs.cs" />

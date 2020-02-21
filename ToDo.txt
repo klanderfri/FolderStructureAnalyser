@@ -14,7 +14,6 @@ Graphical updates
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
 	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
 	Add information to the comparer about how many difference was found.
-	Replace status bar with information panel.
 	Change folder icon depending on the node being expanded or collapsed.
 	Update the tree list hints now when there are files in the tree.
 	
@@ -23,3 +22,4 @@ Functionality
 	Add more information columns in the comparer grid (for example what attributes differ and the sizes of the files).
 	Add right-click/context menu for the tree list with options to remove the folder/file.
 	Add unavailable folders to the information panel.
+	Add log message by calling method in the session.
