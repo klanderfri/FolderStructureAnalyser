@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiskAnalyserForm));
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroupAnalyses = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentAnalyseStructure = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.documentCompareStructures = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
@@ -63,6 +63,7 @@
             this.dockPanelCompareStructures_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.documentManagerAnalyses = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.hideContainerRight = new DevExpress.XtraBars.Docking.AutoHideContainer();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroupAnalyses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentAnalyseStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentCompareStructures)).BeginInit();
@@ -78,6 +79,7 @@
             this.dockPanelCompareStructures_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentManagerAnalyses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
+            this.hideContainerRight.SuspendLayout();
             this.SuspendLayout();
             // 
             // documentGroupAnalyses
@@ -92,7 +94,7 @@
             this.documentAnalyseStructure.ControlName = "dockPanelAnalyseStructure";
             this.documentAnalyseStructure.FloatLocation = new System.Drawing.Point(0, 0);
             this.documentAnalyseStructure.FloatSize = new System.Drawing.Size(200, 200);
-            this.documentAnalyseStructure.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.True;
+            this.documentAnalyseStructure.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.False;
             this.documentAnalyseStructure.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
             this.documentAnalyseStructure.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             // 
@@ -102,7 +104,7 @@
             this.documentCompareStructures.ControlName = "dockPanelCompareStructures";
             this.documentCompareStructures.FloatLocation = new System.Drawing.Point(180, 277);
             this.documentCompareStructures.FloatSize = new System.Drawing.Size(200, 200);
-            this.documentCompareStructures.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.True;
+            this.documentCompareStructures.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.False;
             this.documentCompareStructures.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
             this.documentCompareStructures.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             // 
@@ -306,7 +308,7 @@
             this.folderStructureComparerCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureComparerCtrl.Name = "folderStructureComparerCtrl";
             this.folderStructureComparerCtrl.Session = null;
-            this.folderStructureComparerCtrl.Size = new System.Drawing.Size(989, 512);
+            this.folderStructureComparerCtrl.Size = new System.Drawing.Size(1244, 512);
             this.folderStructureComparerCtrl.TabIndex = 0;
             this.folderStructureComparerCtrl.WaitFormDescription = "Folder comparision in progress...";
             this.folderStructureComparerCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisStart);
@@ -324,9 +326,10 @@
             // 
             // dockManagerApplicationContent
             // 
+            this.dockManagerApplicationContent.AutoHideContainers.AddRange(new DevExpress.XtraBars.Docking.AutoHideContainer[] {
+            this.hideContainerRight});
             this.dockManagerApplicationContent.Form = this;
             this.dockManagerApplicationContent.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanelSettings,
             this.dockPanelAnalyseStructure,
             this.dockPanelCompareStructures});
             this.dockManagerApplicationContent.TopZIndexControls.AddRange(new string[] {
@@ -348,11 +351,15 @@
             this.dockPanelSettings.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.dockPanelSettings.Hint = "Holds the settings used when analysing the disk.";
             this.dockPanelSettings.ID = new System.Guid("5b7bcb22-569b-4160-baef-020e1fea176a");
-            this.dockPanelSettings.Location = new System.Drawing.Point(995, 154);
+            this.dockPanelSettings.Location = new System.Drawing.Point(0, 0);
             this.dockPanelSettings.Name = "dockPanelSettings";
+            this.dockPanelSettings.Options.ShowCloseButton = false;
             this.dockPanelSettings.OriginalSize = new System.Drawing.Size(283, 291);
+            this.dockPanelSettings.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanelSettings.SavedIndex = 0;
             this.dockPanelSettings.Size = new System.Drawing.Size(283, 543);
             this.dockPanelSettings.Text = "Settings";
+            this.dockPanelSettings.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
             // 
             // dockPanelSettings_Container
             // 
@@ -369,6 +376,7 @@
             this.dockPanelAnalyseStructure.Hint = "Holds the result from the last folder structure analysis.";
             this.dockPanelAnalyseStructure.ID = new System.Guid("232f3c55-45b1-4583-ba23-2308df83004b");
             this.dockPanelAnalyseStructure.Name = "dockPanelAnalyseStructure";
+            this.dockPanelAnalyseStructure.Options.ShowCloseButton = false;
             this.dockPanelAnalyseStructure.OriginalSize = new System.Drawing.Size(200, 200);
             this.dockPanelAnalyseStructure.Text = "Analyse Structure";
             // 
@@ -388,6 +396,7 @@
             this.dockPanelCompareStructures.Hint = "Holds the result from the last folder structure comparison.";
             this.dockPanelCompareStructures.ID = new System.Guid("6062c61d-09ad-4a67-9aa7-9fff4d3058e6");
             this.dockPanelCompareStructures.Name = "dockPanelCompareStructures";
+            this.dockPanelCompareStructures.Options.ShowCloseButton = false;
             this.dockPanelCompareStructures.OriginalSize = new System.Drawing.Size(200, 200);
             this.dockPanelCompareStructures.SavedIndex = 2;
             this.dockPanelCompareStructures.SavedMdiDocument = true;
@@ -398,7 +407,7 @@
             this.dockPanelCompareStructures_Container.Controls.Add(this.folderStructureComparerCtrl);
             this.dockPanelCompareStructures_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanelCompareStructures_Container.Name = "dockPanelCompareStructures_Container";
-            this.dockPanelCompareStructures_Container.Size = new System.Drawing.Size(989, 512);
+            this.dockPanelCompareStructures_Container.Size = new System.Drawing.Size(1244, 512);
             this.dockPanelCompareStructures_Container.TabIndex = 0;
             // 
             // documentManagerAnalyses
@@ -415,16 +424,25 @@
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.documentAnalyseStructure,
             this.documentCompareStructures});
-            dockingContainer1.Element = this.documentGroupAnalyses;
+            dockingContainer2.Element = this.documentGroupAnalyses;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer1});
+            dockingContainer2});
+            // 
+            // hideContainerRight
+            // 
+            this.hideContainerRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.hideContainerRight.Controls.Add(this.dockPanelSettings);
+            this.hideContainerRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.hideContainerRight.Location = new System.Drawing.Point(1250, 154);
+            this.hideContainerRight.Name = "hideContainerRight";
+            this.hideContainerRight.Size = new System.Drawing.Size(28, 543);
             // 
             // DiskAnalyserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1278, 719);
-            this.Controls.Add(this.dockPanelSettings);
+            this.Controls.Add(this.hideContainerRight);
             this.Controls.Add(this.ribbonStatusBarAnalysisInformation);
             this.Controls.Add(this.ribbonControlAnalyserApplication);
             this.MinimumSize = new System.Drawing.Size(640, 400);
@@ -447,6 +465,7 @@
             this.dockPanelCompareStructures_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.documentManagerAnalyses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
+            this.hideContainerRight.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,6 +504,7 @@
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup documentGroupAnalyses;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document documentAnalyseStructure;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document documentCompareStructures;
+        private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerRight;
     }
 }
 
