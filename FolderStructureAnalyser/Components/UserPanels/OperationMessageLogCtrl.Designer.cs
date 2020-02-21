@@ -63,6 +63,7 @@
             this.gridColumnTimestamp.Caption = "Timestamp";
             this.gridColumnTimestamp.FieldName = "Timestamp";
             this.gridColumnTimestamp.Name = "gridColumnTimestamp";
+            this.gridColumnTimestamp.OptionsColumn.AllowEdit = false;
             this.gridColumnTimestamp.Visible = true;
             this.gridColumnTimestamp.VisibleIndex = 0;
             this.gridColumnTimestamp.Width = 140;
@@ -72,6 +73,7 @@
             this.gridColumnType.Caption = "Type";
             this.gridColumnType.FieldName = "Type";
             this.gridColumnType.Name = "gridColumnType";
+            this.gridColumnType.OptionsColumn.AllowEdit = false;
             this.gridColumnType.Visible = true;
             this.gridColumnType.VisibleIndex = 1;
             this.gridColumnType.Width = 90;
@@ -81,6 +83,7 @@
             this.gridColumnMessage.Caption = "Message";
             this.gridColumnMessage.FieldName = "Message";
             this.gridColumnMessage.Name = "gridColumnMessage";
+            this.gridColumnMessage.OptionsColumn.AllowEdit = false;
             this.gridColumnMessage.Visible = true;
             this.gridColumnMessage.VisibleIndex = 2;
             this.gridColumnMessage.Width = 500;
