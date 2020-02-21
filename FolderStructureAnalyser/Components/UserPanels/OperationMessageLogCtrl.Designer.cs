@@ -30,7 +30,6 @@
         {
             this.gridControlLogMessages = new DevExpress.XtraGrid.GridControl();
             this.gridViewLogMessages = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.gridColumnTimestamp = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnMessage = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -102,7 +101,6 @@
         #endregion
         private DevExpress.XtraGrid.GridControl gridControlLogMessages;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewLogMessages;
-        private System.Windows.Forms.ColorDialog colorDialog1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnTimestamp;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnType;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnMessage;
