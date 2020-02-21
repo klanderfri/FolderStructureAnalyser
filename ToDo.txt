@@ -16,6 +16,7 @@ Graphical updates
 	Add information to the comparer about how many difference was found.
 	Replace status bar with information panel.
 	Change folder icon depending on the node being expanded or collapsed.
+	Update the tree list hints now when there are files in the tree.
 	
 Functionality
 	Make the BackgroundWorker report a difference object back so the grid can be updated while the user is waiting.

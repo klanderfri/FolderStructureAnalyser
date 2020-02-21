@@ -222,17 +222,13 @@ namespace FolderStructureAnalyser.Components
         {
             if (GridHandler.HasHitColumn(treeListColumnOpen, MousePosition))
             {
-                //Open folder or file parent folder.
+                //Fetch the disk item node.
                 var hitInfo = GridHandler.GetHitInfo(sender as TreeList, MousePosition);
                 var diskItem = getDiskItemFromNode(hitInfo.Node);
-                if (diskItem.IsFolder)
-                {
-                    FileHandler.OpenFolderInExplorer(diskItem.FolderData.Info);
-                }
-                else
-                {
-                    FileHandler.OpenFolderInExplorer(diskItem.FileData.DirectoryName);
-                }
+
+                //Open the folder or the file parent folder.
+                var folderToOpen = diskItem.IsFolder ? diskItem.FolderData.Info : diskItem.FileData.Directory;
+                FileHandler.OpenFolderInExplorer(folderToOpen);
             }
         }
 
