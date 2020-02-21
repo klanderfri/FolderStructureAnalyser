@@ -48,9 +48,9 @@
             this.ribbonPageGroupStopOperations = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemColorPickEditBigFolderColour = new DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit();
             this.repositoryItemSpinEditBigFolderSize = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
-            this.folderStructureAnalyserCtrl = new FolderStructureAnalyser.Components.Analysers.FolderStructureAnalyserCtrl();
-            this.folderStructureComparerCtrl = new FolderStructureAnalyser.Components.Analysers.FolderStructureComparerCtrl();
-            this.folderStructureSettingsCtrl = new FolderStructureAnalyser.Components.Panels.FolderStructureSettingsCtrl();
+            this.folderStructureAnalyserCtrl = new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureAnalyserCtrl();
+            this.folderStructureComparerCtrl = new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureComparerCtrl();
+            this.folderStructureSettingsCtrl = new FolderStructureAnalyser.Components.UserPanels.FolderStructureSettingsCtrl();
             this.dockManagerApplicationContent = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.hideContainerRight = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockPanelSettings = new DevExpress.XtraBars.Docking.DockPanel();
@@ -61,7 +61,7 @@
             this.dockPanelAnalyseStructure_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanelInformation = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.operationMessageLogCtrl = new FolderStructureAnalyser.Components.Panels.OperationMessageLogCtrl();
+            this.operationMessageLogCtrl = new FolderStructureAnalyser.Components.UserPanels.OperationMessageLogCtrl();
             this.documentManagerAnalyses = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedViewAnalyses = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.hideContainerBottom = new DevExpress.XtraBars.Docking.AutoHideContainer();
@@ -276,9 +276,9 @@
             this.folderStructureAnalyserCtrl.Size = new System.Drawing.Size(1244, 507);
             this.folderStructureAnalyserCtrl.TabIndex = 1;
             this.folderStructureAnalyserCtrl.WaitFormDescription = "Structure size analysis in progress...";
-            this.folderStructureAnalyserCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.Analysers.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureAnalyserCtrl_FolderStructureAnalysisStart);
-            this.folderStructureAnalyserCtrl.FolderStructureAnalysisProgressChanged += new FolderStructureAnalyser.Components.Analysers.FolderStructureParentCtrl.FolderStructureAnalysisProgressChangedHandler(this.folderStructureAnalyserCtrl_FolderStructureAnalysisProgressChanged);
-            this.folderStructureAnalyserCtrl.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.Analysers.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.folderStructureAnalyserCtrl_FolderStructureAnalysisFinished);
+            this.folderStructureAnalyserCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureAnalyserCtrl_FolderStructureAnalysisStart);
+            this.folderStructureAnalyserCtrl.FolderStructureAnalysisProgressChanged += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.FolderStructureAnalysisProgressChangedHandler(this.folderStructureAnalyserCtrl_FolderStructureAnalysisProgressChanged);
+            this.folderStructureAnalyserCtrl.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.folderStructureAnalyserCtrl_FolderStructureAnalysisFinished);
             // 
             // folderStructureComparerCtrl
             // 
@@ -289,9 +289,9 @@
             this.folderStructureComparerCtrl.Size = new System.Drawing.Size(1244, 334);
             this.folderStructureComparerCtrl.TabIndex = 0;
             this.folderStructureComparerCtrl.WaitFormDescription = "Folder comparision in progress...";
-            this.folderStructureComparerCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.Analysers.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisStart);
-            this.folderStructureComparerCtrl.FolderStructureAnalysisProgressChanged += new FolderStructureAnalyser.Components.Analysers.FolderStructureParentCtrl.FolderStructureAnalysisProgressChangedHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisProgressChanged);
-            this.folderStructureComparerCtrl.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.Analysers.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisFinished);
+            this.folderStructureComparerCtrl.FolderStructureAnalysisStart += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.FolderStructureAnalysisStartHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisStart);
+            this.folderStructureComparerCtrl.FolderStructureAnalysisProgressChanged += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.FolderStructureAnalysisProgressChangedHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisProgressChanged);
+            this.folderStructureComparerCtrl.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.folderStructureComparerCtrl_FolderStructureAnalysisFinished);
             // 
             // folderStructureSettingsCtrl
             // 
@@ -508,9 +508,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemResetTreeView;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCompareStructures;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupCompare;
-        private Analysers.FolderStructureAnalyserCtrl folderStructureAnalyserCtrl;
-        private Analysers.FolderStructureComparerCtrl folderStructureComparerCtrl;
-        private Panels.FolderStructureSettingsCtrl folderStructureSettingsCtrl;
+        private AnalyserPanels.FolderStructureAnalyserCtrl folderStructureAnalyserCtrl;
+        private AnalyserPanels.FolderStructureComparerCtrl folderStructureComparerCtrl;
+        private UserPanels.FolderStructureSettingsCtrl folderStructureSettingsCtrl;
         private DevExpress.XtraBars.BarButtonItem barButtonItemUpdateComparerData;
         private DevExpress.XtraBars.BarButtonItem barButtonItemUpdateAnalyserData;
         private DevExpress.XtraBars.Docking.DockManager dockManagerApplicationContent;
@@ -528,7 +528,7 @@
         private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerRight;
         private DevExpress.XtraBars.Docking.DockPanel dockPanelInformation;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
-        private Panels.OperationMessageLogCtrl operationMessageLogCtrl;
+        private UserPanels.OperationMessageLogCtrl operationMessageLogCtrl;
         private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerBottom;
     }
 }

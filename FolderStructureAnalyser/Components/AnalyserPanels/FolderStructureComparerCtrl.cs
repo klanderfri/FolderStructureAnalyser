@@ -12,7 +12,7 @@ using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
 
-namespace FolderStructureAnalyser.Components.Analysers
+namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
     public partial class FolderStructureComparerCtrl : FolderStructureParentCtrl
     {

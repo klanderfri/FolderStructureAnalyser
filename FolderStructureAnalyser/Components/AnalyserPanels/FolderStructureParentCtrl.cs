@@ -14,7 +14,7 @@ using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
 
-namespace FolderStructureAnalyser.Components.Analysers
+namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
     public partial class FolderStructureParentCtrl : UserControl, ISessionBound
     {

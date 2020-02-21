@@ -58,37 +58,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\Panels\FolderStructureSettingsCtrl.cs">
+    <Compile Include="Components\UserPanels\FolderStructureSettingsCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Panels\FolderStructureSettingsCtrl.Designer.cs">
+    <Compile Include="Components\UserPanels\FolderStructureSettingsCtrl.Designer.cs">
       <DependentUpon>FolderStructureSettingsCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Panels\OperationMessageLogCtrl.cs">
+    <Compile Include="Components\UserPanels\OperationMessageLogCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Panels\OperationMessageLogCtrl.Designer.cs">
+    <Compile Include="Components\UserPanels\OperationMessageLogCtrl.Designer.cs">
       <DependentUpon>OperationMessageLogCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="DataObjects\DifferenceTypeDescription.cs" />
     <Compile Include="DataObjects\DiskItemNode.cs" />
     <Compile Include="DataObjects\FolderData.cs" />
-    <Compile Include="Components\Analysers\FolderStructureAnalyserCtrl.cs">
+    <Compile Include="Components\AnalyserPanels\FolderStructureAnalyserCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Analysers\FolderStructureAnalyserCtrl.Designer.cs">
+    <Compile Include="Components\AnalyserPanels\FolderStructureAnalyserCtrl.Designer.cs">
       <DependentUpon>FolderStructureAnalyserCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Analysers\FolderStructureParentCtrl.cs">
+    <Compile Include="Components\AnalyserPanels\FolderStructureParentCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Analysers\FolderStructureParentCtrl.Designer.cs">
+    <Compile Include="Components\AnalyserPanels\FolderStructureParentCtrl.Designer.cs">
       <DependentUpon>FolderStructureParentCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Analysers\FolderStructureComparerCtrl.cs">
+    <Compile Include="Components\AnalyserPanels\FolderStructureComparerCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Analysers\FolderStructureComparerCtrl.Designer.cs">
+    <Compile Include="Components\AnalyserPanels\FolderStructureComparerCtrl.Designer.cs">
       <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="DataObjects\StructureDifference.cs" />
@@ -122,19 +122,19 @@
     <Compile Include="SessionBound\SessionBoundClass.cs" />
     <Compile Include="SessionBound\Settings.cs" />
     <Compile Include="SessionBound\Tools.cs" />
-    <EmbeddedResource Include="Components\Analysers\FolderStructureAnalyserCtrl.resx">
+    <EmbeddedResource Include="Components\AnalyserPanels\FolderStructureAnalyserCtrl.resx">
       <DependentUpon>FolderStructureAnalyserCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Analysers\FolderStructureParentCtrl.resx">
+    <EmbeddedResource Include="Components\AnalyserPanels\FolderStructureParentCtrl.resx">
       <DependentUpon>FolderStructureParentCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Analysers\FolderStructureComparerCtrl.resx">
+    <EmbeddedResource Include="Components\AnalyserPanels\FolderStructureComparerCtrl.resx">
       <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Panels\FolderStructureSettingsCtrl.resx">
+    <EmbeddedResource Include="Components\UserPanels\FolderStructureSettingsCtrl.resx">
       <DependentUpon>FolderStructureSettingsCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Panels\OperationMessageLogCtrl.resx">
+    <EmbeddedResource Include="Components\UserPanels\OperationMessageLogCtrl.resx">
       <DependentUpon>OperationMessageLogCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Support\WaitForStructureAnalyseForm.resx">

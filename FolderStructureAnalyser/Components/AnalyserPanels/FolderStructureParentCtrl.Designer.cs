@@ -1,4 +1,4 @@
-﻿namespace FolderStructureAnalyser.Components.Analysers
+﻿namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
     partial class FolderStructureParentCtrl
     {

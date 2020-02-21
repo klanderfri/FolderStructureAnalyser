@@ -1,4 +1,4 @@
-﻿namespace FolderStructureAnalyser.Components.Analysers
+﻿namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
     partial class FolderStructureAnalyserCtrl
     {
@@ -109,8 +109,8 @@
             this.Name = "FolderStructureAnalyserCtrl";
             this.Size = new System.Drawing.Size(570, 266);
             this.WaitFormDescription = "Structure size analysis in progress...";
-            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.Analysers.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.FolderStructureAnalyserCtrl_FolderStructureAnalysisFinished);
-            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.Analysers.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureAnalyserCtrl_DoFolderStructureAnalysis);
+            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.FolderStructureAnalyserCtrl_FolderStructureAnalysisFinished);
+            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureAnalyserCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).EndInit();
             this.ResumeLayout(false);

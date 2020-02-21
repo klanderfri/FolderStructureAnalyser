@@ -1,4 +1,4 @@
-﻿namespace FolderStructureAnalyser.Components.Analysers
+﻿namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
     partial class FolderStructureComparerCtrl
     {
@@ -184,8 +184,8 @@
             this.Name = "FolderStructureComparerCtrl";
             this.Size = new System.Drawing.Size(1512, 676);
             this.WaitFormDescription = "Folder comparision in progress...";
-            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.Analysers.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.FolderStructureComparerCtrl_FolderStructureAnalysisFinished);
-            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.Analysers.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureComparerCtrl_DoFolderStructureAnalysis);
+            this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.FolderStructureComparerCtrl_FolderStructureAnalysisFinished);
+            this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureComparerCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).EndInit();
             this.ResumeLayout(false);

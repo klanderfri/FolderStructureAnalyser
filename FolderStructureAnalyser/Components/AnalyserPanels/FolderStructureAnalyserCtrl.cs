@@ -10,7 +10,7 @@ using FolderStructureAnalyser.DataObjects;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
 
-namespace FolderStructureAnalyser.Components.Analysers
+namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
     public partial class FolderStructureAnalyserCtrl : FolderStructureParentCtrl
     {
