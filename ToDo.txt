@@ -11,9 +11,10 @@ Graphical updates
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
 	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
 	Add information to the comparer about how many difference was found.
-	Replace status bar with information panel
+	Replace status bar with information panel.
 	
 Functionality
 	Make the BackgroundWorker report a difference object back so the grid can be updated while the user is waiting.
 	Add files in the folder structure analyser.
 	Add more information columns in the comparer grid (for example what attributes differ and the sizes of the files).
+	Add right-click/context menu for the tree list with options to remove the folder/file.
