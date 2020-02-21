@@ -37,6 +37,16 @@ namespace FolderStructureAnalyser.Components
         public SvgImageCollection IconCollection { get { return svgImageCollectionIcons; } }
 
         /// <summary>
+        /// The path the user last requested to be analysed. May or may not have finished the analysis.
+        /// </summary>
+        private IEnumerable<string> LastPathsRequestedForAnalysis { get; set; } = new List<string>();
+
+        /// <summary>
+        /// The paths involved in the last finished analysis.
+        /// </summary>
+        public IEnumerable<string> LastPathsAnalysed { get; private set; } = new List<string>();
+
+        /// <summary>
         /// Keeps the last known position of the parent of the control.
         /// </summary>
         private Point LastKnownParentPosition { get; set; }
@@ -223,8 +233,11 @@ namespace FolderStructureAnalyser.Components
         /// <param name="paths">The paths that are to be included in the analysis.</param>
         public void StartAnalysis(IEnumerable<string> paths)
         {
-            //Tell the user that the loading has started.
+            //Tell the user that the analysis has started.
             OnFolderStructureAnalysisStart(new FolderStructureAnalysisStartArgs());
+
+            //Store the paths requested for analysis.
+            LastPathsRequestedForAnalysis = paths;
 
             //Send a first progress update to indicate 0 seconds progressed.
             var progressArgs = new TimedProgressChangedEventArgs(0);
@@ -389,6 +402,12 @@ namespace FolderStructureAnalyser.Components
 
         private void backgroundWorkerTimeHeavyAnalysis_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (!e.Cancelled)
+            {
+                //Store the paths used in the analysis.
+                LastPathsAnalysed = LastPathsRequestedForAnalysis;
+            }
+
             //Stop components needed to handle the operation.
             closeWaitForm();
             timerAnalysisProgress.Stop();

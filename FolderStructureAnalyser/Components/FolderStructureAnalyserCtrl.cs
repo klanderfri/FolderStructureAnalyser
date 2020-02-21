@@ -73,7 +73,10 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         public void RefreshData()
         {
-            throw new NotImplementedException();
+            if (LastPathsAnalysed.HasSingleItem())
+            {
+                StartAnalysis(LastPathsAnalysed.First());
+            }
         }
 
         /// <summary>
