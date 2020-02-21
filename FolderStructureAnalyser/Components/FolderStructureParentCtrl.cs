@@ -50,7 +50,7 @@ namespace FolderStructureAnalyser.Components
         /// <summary>
         /// Keeps the last known position of the parent of the control.
         /// </summary>
-        private Point LastKnownParentPosition { get; set; }
+        private Point LastKnownRootFormPosition { get; set; }
 
         /// <summary>
         /// Keeps the last known size of the control.
@@ -167,9 +167,9 @@ namespace FolderStructureAnalyser.Components
         public virtual void SetSession(Session session)
         {
             Session = session;
-            LastKnownParentPosition = Session.RootForm.Location;
+            LastKnownRootFormPosition = Session.RootForm.Location;
             LastKnownSize = Size;
-            Session.RootForm.Move += ParentForm_Move;
+            Session.RootForm.Move += RootForm_Move;
         }
         
         /// <summary>
@@ -365,21 +365,21 @@ namespace FolderStructureAnalyser.Components
             graphics.DrawImage(cellIcon, location);
         }
 
-        private void ParentForm_Move(object sender, EventArgs e)
+        private void RootForm_Move(object sender, EventArgs e)
         {
             if (splashScreenManagerWaitForm.IsSplashFormVisible)
             {
                 //Find out how the wait form should be moved.
-                int diffX = ParentForm.Location.X - LastKnownParentPosition.X;
-                int diffY = ParentForm.Location.Y - LastKnownParentPosition.Y;
+                int diffX = ParentForm.Location.X - LastKnownRootFormPosition.X;
+                int diffY = ParentForm.Location.Y - LastKnownRootFormPosition.Y;
                 var vector = new int[] { diffX, diffY };
 
-                //Move the waitform.
+                //Move the wait form.
                 splashScreenManagerWaitForm.SendCommand(WaitFormCommand.Move, vector);
             }
 
             //Update the known parent position.
-            LastKnownParentPosition = ParentForm.Location;
+            LastKnownRootFormPosition = Session.RootForm.Location;
         }
 
         private void FolderStructureParentCtrl_Resize(object sender, EventArgs e)
