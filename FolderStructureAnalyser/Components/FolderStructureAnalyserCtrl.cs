@@ -17,7 +17,7 @@ namespace FolderStructureAnalyser.Components
         /// <summary>
         /// The folder structure from the last finished analysis.
         /// </summary>
-        private BindingList<FolderNode> LastAnalysedStructure { get; set; }
+        private BindingList<DiskItemNode> LastAnalysedStructure { get; set; }
 
         public FolderStructureAnalyserCtrl()
         {
@@ -47,10 +47,16 @@ namespace FolderStructureAnalyser.Components
         /// </summary>
         public void SetFocusedNodeAsRoot()
         {
-            if (treeListFolderStructure.FocusedNode != null)
+            //Find the node.
+            var node = getDiskItemFromNode(treeListFolderStructure.FocusedNode);
+
+            //Check if the node represent a folder.
+            if (node?.IsFolder ?? false)
             {
-                var newRoot = getFolderFromNode(treeListFolderStructure.FocusedNode).FolderData;
-                var newStructure = new BindingList<FolderNode>();
+                //OK, set the node as root.
+
+                var newRoot = node.FolderData;
+                var newStructure = new BindingList<DiskItemNode>();
                 var folderID = 0;
                 var worker = new BackgroundWorker();
 
@@ -72,7 +78,7 @@ namespace FolderStructureAnalyser.Components
         /// Sets the data source of the analyser tree.
         /// </summary>
         /// <param name="folderStructure">The folder structer that are to be used as datasource.</param>
-        private void updateDataSource(BindingList<FolderNode> folderStructure)
+        private void updateDataSource(BindingList<DiskItemNode> folderStructure)
         {
             treeListFolderStructure.DataSource = folderStructure;
 
@@ -85,7 +91,7 @@ namespace FolderStructureAnalyser.Components
         private void FolderStructureAnalyserCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
         {
             var rootPath = (e.Argument as IEnumerable<string>).First();
-            var structure = new BindingList<FolderNode>();
+            var structure = new BindingList<DiskItemNode>();
             var worker = (sender as FolderStructureParentCtrl).AnalysisWorker;
 
             //Create the folder structure.
@@ -99,8 +105,8 @@ namespace FolderStructureAnalyser.Components
             }
 
             //Add the structure to the data source.
-            var folderID = 0;
-            addFolderToDataSource(worker, structure, root, ref folderID, null);
+            var nodeID = 0;
+            addFolderToDataSource(worker, structure, root, ref nodeID, null);
 
             //Check if the process was cancelled.
             if (worker.CancellationPending)
@@ -118,7 +124,7 @@ namespace FolderStructureAnalyser.Components
             if (!e.Cancelled)
             {
                 //Update the structure shown.
-                var structure = e.Result as BindingList<FolderNode>;
+                var structure = e.Result as BindingList<DiskItemNode>;
                 updateDataSource(structure);
                 LastAnalysedStructure = structure;
             }
@@ -130,51 +136,55 @@ namespace FolderStructureAnalyser.Components
         /// <param name="worker">The backgroundWorker worker responsible for process.</param>
         /// <param name="structure">The folder structure containing the folder nodes.</param>
         /// <param name="folder">The folder to add.</param>
-        /// <param name="folderID">The ID that should be assigned the node.</param>
+        /// <param name="nodeID">The ID that should be assigned the node.</param>
         /// <param name="parentID">The ID of the node representing the folder parent.</param>
-        private void addFolderToDataSource(BackgroundWorker worker, BindingList<FolderNode> structure, FolderData folder, ref int folderID, int? parentID)
+        private void addFolderToDataSource(BackgroundWorker worker, BindingList<DiskItemNode> structure, FolderData folder, ref int nodeID, int? parentID)
         {
             //Add the node representing the folder.
-            var node = new FolderNode()
+            var folderNode = new DiskItemNode()
             {
-                ID = folderID++,
+                ID = nodeID++,
                 ParentID = parentID,
                 Name = folder.Info.Name,
                 SizeInBytes = folder.SizeInBytes,
                 StateImageIndex = 0,
                 FolderData = folder
             };
-            structure.Add(node);
+            structure.Add(folderNode);
 
-            //Add the nodes representing all the children.
-            foreach (var child in folder.SubFolders)
+            //Add the nodes representing all the subfolders.
+            foreach (var subfolder in folder.SubFolders)
             {
                 //Check if the process is to be cancelled.
                 if (worker.CancellationPending) { return; }
 
-                addFolderToDataSource(worker, structure, child, ref folderID, node.ID);
+                addFolderToDataSource(worker, structure, subfolder, ref nodeID, folderNode.ID);
+            }
+
+            //Add the nodes representing all the subfolders.
+            foreach (var file in folder.Files)
+            {
+                var fileNode = new DiskItemNode()
+                {
+                    ID = nodeID++,
+                    ParentID = folderNode.ID,
+                    Name = file.Name,
+                    SizeInBytes = file.Length,
+                    StateImageIndex = 1,
+                    FileData = file
+                };
+                structure.Add(fileNode);
             }
         }
-
+        
         /// <summary>
-        /// Extracts the folder from a tree node.
+        /// Extracts the disk item from a tree node.
         /// </summary>
-        /// <param name="node">The node representing the folder.</param>
-        /// <returns>The folder.</returns>
-        private FolderNode getFolderFromNode(TreeListNode node)
+        /// <param name="node">The node representing the disk item.</param>
+        /// <returns>The disk item.</returns>
+        private DiskItemNode getDiskItemFromNode(TreeListNode node)
         {
-            return treeListFolderStructure.GetDataRecordByNode(node) as FolderNode;
-        }
-
-        /// <summary>
-        /// Extracts the folder at a specific location.
-        /// </summary>
-        /// <param name="location">The point specifying the folder to get.</param>
-        /// <returns>The folder.</returns>
-        private FolderNode getFolderFromLocation(Point location)
-        {
-            var node = treeListFolderStructure.GetNodeAt(location);
-            return getFolderFromNode(node);
+            return treeListFolderStructure.GetDataRecordByNode(node) as DiskItemNode;
         }
 
         /// <summary>
@@ -212,18 +222,24 @@ namespace FolderStructureAnalyser.Components
         {
             if (GridHandler.HasHitColumn(treeListColumnOpen, MousePosition))
             {
-                //Open folder.
+                //Open folder or file parent folder.
                 var hitInfo = GridHandler.GetHitInfo(sender as TreeList, MousePosition);
-                var folderData = getFolderFromNode(hitInfo.Node);
-                var folderInfo = folderData.FolderData.Info;
-                FileHandler.OpenFolderInExplorer(folderInfo);
+                var diskItem = getDiskItemFromNode(hitInfo.Node);
+                if (diskItem.IsFolder)
+                {
+                    FileHandler.OpenFolderInExplorer(diskItem.FolderData.Info);
+                }
+                else
+                {
+                    FileHandler.OpenFolderInExplorer(diskItem.FileData.DirectoryName);
+                }
             }
         }
 
         private void treeListFolderStructure_GetStateImage(object sender, GetStateImageEventArgs e)
         {
-            var folder = getFolderFromNode(e.Node);
-            e.NodeImageIndex = folder.StateImageIndex;
+            var diskItem = getDiskItemFromNode(e.Node);
+            e.NodeImageIndex = diskItem.StateImageIndex;
         }
 
         private void treeListFolderStructure_BeforeExpand(object sender, BeforeExpandEventArgs e)

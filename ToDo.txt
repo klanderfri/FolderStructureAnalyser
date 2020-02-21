@@ -2,6 +2,9 @@ Session
 	Create SessionUserControl to inherit.
 	Better handling of Session (subscribing to session set event?).
 
+Code smell
+	It doesnt look good that DiskItemNode is validating its state in the IsFolder and not in a constructor.
+
 Settings
 	Make the application store changes in ribbon/grid/tree layout.
 	Save settings between runs.
@@ -12,9 +15,10 @@ Graphical updates
 	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
 	Add information to the comparer about how many difference was found.
 	Replace status bar with information panel.
+	Change folder icon depending on the node being expanded or collapsed.
 	
 Functionality
 	Make the BackgroundWorker report a difference object back so the grid can be updated while the user is waiting.
-	Add files in the folder structure analyser.
 	Add more information columns in the comparer grid (for example what attributes differ and the sizes of the files).
 	Add right-click/context menu for the tree list with options to remove the folder/file.
+	Add unavailable folders to the information panel.

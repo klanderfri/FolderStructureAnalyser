@@ -65,6 +65,7 @@
       <DependentUpon>FolderStructureSettingsCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="DataObjects\DifferenceTypeDescription.cs" />
+    <Compile Include="DataObjects\DiskItemNode.cs" />
     <Compile Include="DataObjects\FolderData.cs" />
     <Compile Include="Components\FolderStructureAnalyserCtrl.cs">
       <SubType>UserControl</SubType>
@@ -97,7 +98,6 @@
     <Compile Include="Components\WaitForStructureAnalyseForm.Designer.cs">
       <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataObjects\FolderNode.cs" />
     <Compile Include="Exceptions\UnhandledEnumException.cs" />
     <Compile Include="Helpers\FileHandler.cs" />
     <Compile Include="Helpers\GridHandler.cs" />
