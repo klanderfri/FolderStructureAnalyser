@@ -97,7 +97,7 @@
     <Compile Include="Enums\LogMessageType.cs" />
     <Compile Include="Enums\SizeDisplayUnit.cs" />
     <Compile Include="Events\LogMessageAddedArgs.cs" />
-    <Compile Include="Events\FolderStructureAnalysisStartArgs.cs" />
+    <Compile Include="Events\FolderStructureAnalysisStartingArgs.cs" />
     <Compile Include="Events\FolderStructureDifferenceAddedArgs.cs" />
     <Compile Include="Events\NewOperationStartingArgs.cs" />
     <Compile Include="Events\OperationRuntimeChangedArgs.cs" />

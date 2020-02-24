@@ -100,7 +100,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// </summary>
         /// <param name="sender">The user control raising the event.</param>
         /// <param name="e">The arguments for the event.</param>
-        public delegate void FolderStructureAnalysisStartingHandler(object sender, FolderStructureAnalysisStartArgs e);
+        public delegate void FolderStructureAnalysisStartingHandler(object sender, FolderStructureAnalysisStartingArgs e);
 
         /// <summary>
         /// Eventhandler for the event used when the analysis of a folder structure has progressed.
@@ -127,7 +127,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// Method raising the event used when the folder structure analysis is about to start.
         /// </summary>
         /// <param name="e">The arguments for the event.</param>
-        protected virtual void OnFolderStructureAnalysisStart(FolderStructureAnalysisStartArgs e)
+        protected virtual void OnFolderStructureAnalysisStarting(FolderStructureAnalysisStartingArgs e)
         {
             FolderStructureAnalysisStarting?.Invoke(this, e);
         }
@@ -235,7 +235,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         public void StartAnalysis(IEnumerable<string> paths)
         {
             //Tell the user that the analysis has started.
-            OnFolderStructureAnalysisStart(new FolderStructureAnalysisStartArgs());
+            OnFolderStructureAnalysisStarting(new FolderStructureAnalysisStartingArgs());
 
             //Store the paths requested for analysis.
             LastPathsRequestedForAnalysis = paths;
