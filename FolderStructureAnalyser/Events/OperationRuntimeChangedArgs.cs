@@ -5,7 +5,7 @@ namespace FolderStructureAnalyser.Events
     /// <summary>
     /// Class for object holding the arguments for the event used when the runtime of an operation has been updated.
     /// </summary>
-    public class OperationRuntimeChangedArgs : EventArgs
+    public class OperationRuntimeChangedArgs : OperationEventArgs
     {
         /// <summary>
         /// The current runtime of the operation.
@@ -15,8 +15,10 @@ namespace FolderStructureAnalyser.Events
         /// <summary>
         /// Creates an object holding the arguments for the event used when the runtime of an operation has been updated.
         /// </summary>
+        /// <param name="operationID">The ID for the operation.</param>
         /// <param name="runtimeInMilliseconds">The current runtime of the operation.</param>
-        public OperationRuntimeChangedArgs(long runtimeInMilliseconds)
+        public OperationRuntimeChangedArgs(int operationID, long runtimeInMilliseconds)
+            : base(operationID)
         {
             RuntimeInMilliseconds = runtimeInMilliseconds;
         }

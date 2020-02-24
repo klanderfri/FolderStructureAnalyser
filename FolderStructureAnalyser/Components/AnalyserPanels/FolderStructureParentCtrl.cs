@@ -68,6 +68,11 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         private Stopwatch AnalysisRunningTime { get; set; } = new Stopwatch();
 
         /// <summary>
+        /// The ID of the operation that was last started by the control.
+        /// </summary>
+        private int LastStartedOperationID { get; set; }
+
+        /// <summary>
         /// Event raised when the control is about to start analysing a folder structure.
         /// </summary>
         [Category("Analyse")]
@@ -100,21 +105,21 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// </summary>
         /// <param name="sender">The user control raising the event.</param>
         /// <param name="e">The arguments for the event.</param>
-        public delegate void FolderStructureAnalysisStartingHandler(object sender, FolderStructureAnalysisStartingArgs e);
+        public delegate void FolderStructureAnalysisStartingHandler(object sender, OperationStartingArgs e);
 
         /// <summary>
         /// Eventhandler for the event used when the analysis of a folder structure has progressed.
         /// </summary>
         /// <param name="sender">The user control raising the event.</param>
         /// <param name="e">The arguments for the event.</param>
-        public delegate void FolderStructureAnalysisProgressChangedHandler(object sender, TimedProgressChangedEventArgs e);
+        public delegate void FolderStructureAnalysisProgressChangedHandler(object sender, OperationRuntimeChangedArgs e);
 
         /// <summary>
         /// Eventhandler for the event used when the control has finished analysing the folder structure.
         /// </summary>
         /// <param name="sender">The user control raising the event.</param>
         /// <param name="e">The arguments for the event.</param>
-        public delegate void FolderStructureAnalysisFinishedHandler(object sender, RunWorkerCompletedEventArgs e);
+        public delegate void FolderStructureAnalysisFinishedHandler(object sender, OperationFinishedArgs e);
 
         /// <summary>
         /// Eventhandler for the event used when the analysis is called to be done.
@@ -126,27 +131,62 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <summary>
         /// Method raising the event used when the folder structure analysis is about to start.
         /// </summary>
-        /// <param name="e">The arguments for the event.</param>
-        protected virtual void OnFolderStructureAnalysisStarting(FolderStructureAnalysisStartingArgs e)
+        protected virtual void OnFolderStructureAnalysisStarting()
         {
+            LastStartedOperationID = Session.MessageLog.CreateNewOperationID();
+
+            var startingArgs = new OperationStartingArgs(LastStartedOperationID);
+            OnFolderStructureAnalysisStarting(startingArgs);
+        }
+
+        /// <summary>
+        /// Method raising the event used when the folder structure analysis is about to start.
+        /// </summary>
+        /// <param name="e">The arguments for the event.</param>
+        protected virtual void OnFolderStructureAnalysisStarting(OperationStartingArgs e)
+        {
+            Session.MessageLog.StartingNewOperation(e.OperationID);
             FolderStructureAnalysisStarting?.Invoke(this, e);
         }
 
         /// <summary>
         /// Method raising the event used when the analysis of a folder structure has progressed.
         /// </summary>
-        /// <param name="e">The arguments for the event.</param>
-        protected virtual void OnFolderStructureAnalysisProgressChanged(TimedProgressChangedEventArgs e)
+        /// <param name="runtimeInMilliseconds">The current runtime of the operation.</param>
+        protected virtual void OnFolderStructureAnalysisProgressChanged(long runtimeInMilliseconds)
         {
+            var progressArgs = new OperationRuntimeChangedArgs(LastStartedOperationID, runtimeInMilliseconds);
+            OnFolderStructureAnalysisProgressChanged(progressArgs);
+        }
+
+        /// <summary>
+        /// Method raising the event used when the analysis of a folder structure has progressed.
+        /// </summary>
+        /// <param name="e">The arguments for the event.</param>
+        protected virtual void OnFolderStructureAnalysisProgressChanged(OperationRuntimeChangedArgs e)
+        {
+            Session.MessageLog.UpdateOperationRuntime(e.OperationID, e.RuntimeInMilliseconds);
             FolderStructureAnalysisProgressChanged?.Invoke(this, e);
         }
 
         /// <summary>
         /// Method raising the event used when the folder structure analysis has finished.
         /// </summary>
-        /// <param name="e">The arguments for the event.</param>
-        protected virtual void OnFolderStructureAnalysisFinished(RunWorkerCompletedEventArgs e)
+        /// <param name="cancelled">Tells if the operation was cancelled.</param>
+        /// <param name="result">The result from the operation.</param>
+        protected virtual void OnFolderStructureAnalysisFinished(bool cancelled, object result)
         {
+            var finishedArgs = new OperationFinishedArgs(LastStartedOperationID, cancelled, result);
+            OnFolderStructureAnalysisFinished(finishedArgs);
+        }
+
+        /// <summary>
+        /// Method raising the event used when the folder structure analysis has finished.
+        /// </summary>
+        /// <param name="e">The arguments for the event.</param>
+        protected virtual void OnFolderStructureAnalysisFinished(OperationFinishedArgs e)
+        {
+            Session.MessageLog.OperationHasFinished(e.OperationID, e.Cancelled, e.Result);
             FolderStructureAnalysisFinished?.Invoke(this, e);
         }
 
@@ -158,7 +198,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         {
             DoFolderStructureAnalysis?.Invoke(this, e);
         }
-
+        
         public FolderStructureParentCtrl()
         {
             InitializeComponent();
@@ -235,15 +275,13 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         public void StartAnalysis(IEnumerable<string> paths)
         {
             //Tell the user that the analysis is about to start.
-            var operationID = Session.MessageLog.StartingNewOperation();
-            OnFolderStructureAnalysisStarting(new FolderStructureAnalysisStartingArgs(operationID));
+            OnFolderStructureAnalysisStarting();
 
             //Store the paths requested for analysis.
             LastPathsRequestedForAnalysis = paths;
 
             //Send a first progress update to indicate 0 seconds progressed.
-            var progressArgs = new TimedProgressChangedEventArgs(0);
-            OnFolderStructureAnalysisProgressChanged(progressArgs);
+            OnFolderStructureAnalysisProgressChanged(0);
 
             //Start the timer keeping track of the progress.
             ElapsedTicks = 0;
@@ -409,8 +447,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         private void timerAnalysisProgress_Tick(object sender, EventArgs e)
         {
             //Tell the subscriber that the operation has progressed.
-            var args = new TimedProgressChangedEventArgs(AnalysisRunningTime.ElapsedMilliseconds);
-            OnFolderStructureAnalysisProgressChanged(args);
+            OnFolderStructureAnalysisProgressChanged(AnalysisRunningTime.ElapsedMilliseconds);
         }
 
         private void backgroundWorkerTimeHeavyAnalysis_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -425,13 +462,12 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             closeWaitForm();
             timerAnalysisProgress.Stop();
             AnalysisRunningTime.Stop();
-            
+
             //Make a last progress update.
-            var progressArgs = new TimedProgressChangedEventArgs(AnalysisRunningTime.ElapsedMilliseconds);
-            OnFolderStructureAnalysisProgressChanged(progressArgs);
+            OnFolderStructureAnalysisProgressChanged(AnalysisRunningTime.ElapsedMilliseconds);
 
             //Tell the subscriber that the loading finished.
-            OnFolderStructureAnalysisFinished(e);
+            OnFolderStructureAnalysisFinished(e.Cancelled, e.Result);
         }
     }
 }

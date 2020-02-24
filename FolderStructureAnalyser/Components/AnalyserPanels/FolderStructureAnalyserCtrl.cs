@@ -7,6 +7,7 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using FolderStructureAnalyser.DataObjects;
+using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
 
@@ -119,7 +120,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             e.Result = structure;
         }
 
-        private void FolderStructureAnalyserCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        private void FolderStructureAnalyserCtrl_FolderStructureAnalysisFinished(object sender, OperationFinishedArgs e)
         {
             if (!e.Cancelled)
             {

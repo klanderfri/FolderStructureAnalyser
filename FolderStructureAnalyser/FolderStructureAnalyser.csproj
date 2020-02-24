@@ -97,11 +97,11 @@
     <Compile Include="Enums\LogMessageType.cs" />
     <Compile Include="Enums\SizeDisplayUnit.cs" />
     <Compile Include="Events\LogMessageAddedArgs.cs" />
-    <Compile Include="Events\FolderStructureAnalysisStartingArgs.cs" />
     <Compile Include="Events\FolderStructureDifferenceAddedArgs.cs" />
-    <Compile Include="Events\NewOperationStartingArgs.cs" />
+    <Compile Include="Events\OperationStartingArgs.cs" />
+    <Compile Include="Events\OperationEventArgs.cs" />
+    <Compile Include="Events\OperationFinishedArgs.cs" />
     <Compile Include="Events\OperationRuntimeChangedArgs.cs" />
-    <Compile Include="Events\TimedProgressChangedEventArgs.cs" />
     <Compile Include="Enums\WaitFormCommand.cs" />
     <Compile Include="Components\Support\WaitForStructureAnalyseForm.cs">
       <SubType>Form</SubType>

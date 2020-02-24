@@ -80,38 +80,28 @@ namespace FolderStructureAnalyser.Components
             folderStructureComparerCtrl.CompareFolderStructures();
         }
 
-        private void folderStructureAnalyserCtrl_FolderStructureAnalysisStarting(object sender, FolderStructureAnalysisStartingArgs e)
+        private void folderStructureAnalyserCtrl_FolderStructureAnalysisStarting(object sender, OperationStartingArgs e)
         {
             setOperationButtonStates(true);
         }
 
-        private void folderStructureComparerCtrl_FolderStructureAnalysisStarting(object sender, FolderStructureAnalysisStartingArgs e)
+        private void folderStructureComparerCtrl_FolderStructureAnalysisStarting(object sender, OperationStartingArgs e)
         {
             setOperationButtonStates(true);
         }
 
-        private void folderStructureAnalyserCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        private void folderStructureAnalyserCtrl_FolderStructureAnalysisFinished(object sender, OperationFinishedArgs e)
         {
             setOperationButtonStates(false);
             enableUpdateDataButton(barButtonItemUpdateAnalyserData, e.Cancelled);
             Session.MessageLog.AddLogMessage("The structure analyser finished an anlysis.");
         }
 
-        private void folderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        private void folderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, OperationFinishedArgs e)
         {
             setOperationButtonStates(false);
             enableUpdateDataButton(barButtonItemUpdateComparerData, e.Cancelled);
             Session.MessageLog.AddLogMessage("The structure comparer finished an anlysis.");
-        }
-
-        private void folderStructureAnalyserCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
-        {
-            Session.MessageLog.UpdateOperationRuntime(e.ElapsedMilliseconds);
-        }
-
-        private void folderStructureComparerCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
-        {
-            Session.MessageLog.UpdateOperationRuntime(e.ElapsedMilliseconds);
         }
 
         private void barButtonItemUpdateTreeList_ItemClick(object sender, ItemClickEventArgs e)

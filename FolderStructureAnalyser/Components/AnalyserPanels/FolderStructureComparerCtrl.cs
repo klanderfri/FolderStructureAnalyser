@@ -117,8 +117,8 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             //Pass the comparison result back.
             e.Result = differences;
         }
-
-        private void FolderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, RunWorkerCompletedEventArgs e)
+        
+        private void FolderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, OperationFinishedArgs e)
         {
             if (!e.Cancelled)
             {
