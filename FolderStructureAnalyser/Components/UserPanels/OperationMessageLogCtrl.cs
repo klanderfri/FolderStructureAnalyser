@@ -38,6 +38,7 @@ namespace FolderStructureAnalyser.Components.UserPanels
             Session = session;
             gridControlLogMessages.DataSource = LogMessages;
             Session.Messenger.OperationRuntimeChanged += Messenger_OperationRuntimeChanged;
+            Session.Messenger.AddLogMessageRequested += Messenger_AddLogMessageRequested;
         }
 
         private void Messenger_OperationRuntimeChanged(object sender, OperationRuntimeChangedArgs e)
@@ -59,13 +60,9 @@ namespace FolderStructureAnalyser.Components.UserPanels
             addLogMessage(LogMessageType.OperationTime, message);
         }
 
-        /// <summary>
-        /// Adds a log message to the control.
-        /// </summary>
-        /// <param name="message">The human readable log message.</param>
-        public void AddLogMessage(string message)
+        private void Messenger_AddLogMessageRequested(object sender, AddLogMessageRequestedArgs e)
         {
-            addLogMessage(LogMessageType.Miscellaneous, message);
+            addLogMessage(e.Type, e.Message);
         }
 
         /// <summary>
