@@ -2,6 +2,9 @@
 
 namespace FolderStructureAnalyser.SessionBound
 {
+    /// <summary>
+    /// Class for object containing state based tool methods.
+    /// </summary>
     public class Tools : SessionBoundClass
     {
         public Tools(Session session)
