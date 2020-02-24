@@ -8,11 +8,13 @@ namespace FolderStructureAnalyser.SessionBound
         {
             Settings = new Settings(this);
             Tools = new Tools(this);
+            Messenger = new Messenger(this);
             RootForm = rootForm;
         }
 
         public Settings Settings { get; set; }
         public Tools Tools { get; set; }
+        public Messenger Messenger { get; set; }
         public Form RootForm { get; set; }
     }
 }

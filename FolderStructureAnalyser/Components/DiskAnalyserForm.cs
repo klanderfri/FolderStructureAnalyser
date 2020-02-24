@@ -106,12 +106,12 @@ namespace FolderStructureAnalyser.Components
 
         private void folderStructureAnalyserCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
         {
-            operationMessageLogCtrl.UpdateOperationRuntime(e.ElapsedMilliseconds);
+            Session.Messenger.UpdateOperationRuntime(e.ElapsedMilliseconds);
         }
 
         private void folderStructureComparerCtrl_FolderStructureAnalysisProgressChanged(object sender, TimedProgressChangedEventArgs e)
         {
-            operationMessageLogCtrl.UpdateOperationRuntime(e.ElapsedMilliseconds);
+            Session.Messenger.UpdateOperationRuntime(e.ElapsedMilliseconds);
         }
 
         private void barButtonItemUpdateTreeList_ItemClick(object sender, ItemClickEventArgs e)

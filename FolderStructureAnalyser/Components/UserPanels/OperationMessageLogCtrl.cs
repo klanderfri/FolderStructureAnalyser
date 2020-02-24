@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using FolderStructureAnalyser.DataObjects;
 using FolderStructureAnalyser.Enums;
+using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components.UserPanels
@@ -36,16 +37,13 @@ namespace FolderStructureAnalyser.Components.UserPanels
         {
             Session = session;
             gridControlLogMessages.DataSource = LogMessages;
+            Session.Messenger.OperationRuntimeChanged += Messenger_OperationRuntimeChanged;
         }
 
-        /// <summary>
-        /// Updates the information about how long the current operation has run.
-        /// </summary>
-        /// <param name="runtimeInMilliseconds">The amount of milliseconds the current operation has run.</param>
-        public void UpdateOperationRuntime(long runtimeInMilliseconds)
+        private void Messenger_OperationRuntimeChanged(object sender, OperationRuntimeChangedArgs e)
         {
             //Find the amount of seconds.
-            var runtimeInSeconds = (long)Math.Floor((decimal)runtimeInMilliseconds / 1000);
+            var runtimeInSeconds = (long)Math.Floor((decimal)e.RuntimeInMilliseconds / 1000);
 
             //Create message text..
             var format = "Last operation time: {0} sec";
