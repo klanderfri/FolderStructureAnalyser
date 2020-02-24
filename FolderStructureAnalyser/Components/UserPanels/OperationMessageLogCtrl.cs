@@ -37,8 +37,8 @@ namespace FolderStructureAnalyser.Components.UserPanels
         {
             Session = session;
             gridControlLogMessages.DataSource = LogMessages;
-            Session.Messenger.OperationRuntimeChanged += Messenger_OperationRuntimeChanged;
-            Session.Messenger.AddLogMessageRequested += Messenger_AddLogMessageRequested;
+            Session.MessageLog.OperationRuntimeChanged += Messenger_OperationRuntimeChanged;
+            Session.MessageLog.LogMessageAdded += Messenger_LogMessageAdded;
         }
 
         private void Messenger_OperationRuntimeChanged(object sender, OperationRuntimeChangedArgs e)
@@ -60,7 +60,7 @@ namespace FolderStructureAnalyser.Components.UserPanels
             addLogMessage(LogMessageType.OperationTime, message);
         }
 
-        private void Messenger_AddLogMessageRequested(object sender, AddLogMessageRequestedArgs e)
+        private void Messenger_LogMessageAdded(object sender, LogMessageAddedArgs e)
         {
             addLogMessage(e.Type, e.Message);
         }

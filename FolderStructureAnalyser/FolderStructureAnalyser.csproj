@@ -96,7 +96,7 @@
     <Compile Include="Enums\DifferenceType.cs" />
     <Compile Include="Enums\LogMessageType.cs" />
     <Compile Include="Enums\SizeDisplayUnit.cs" />
-    <Compile Include="Events\AddLogMessageRequestedArgs.cs" />
+    <Compile Include="Events\LogMessageAddedArgs.cs" />
     <Compile Include="Events\FolderStructureAnalysisStartArgs.cs" />
     <Compile Include="Events\FolderStructureDifferenceAddedArgs.cs" />
     <Compile Include="Events\OperationRuntimeChangedArgs.cs" />
@@ -114,7 +114,7 @@
     <Compile Include="Helpers\MessageBoxes.cs" />
     <Compile Include="Helpers\ByteSizeConverter.cs" />
     <Compile Include="SessionBound\ISessionBound.cs" />
-    <Compile Include="SessionBound\Messenger.cs" />
+    <Compile Include="SessionBound\MessageLog.cs" />
     <Compile Include="SessionBound\Session.cs" />
     <Compile Include="Components\DiskAnalyserForm.cs">
       <SubType>Form</SubType>

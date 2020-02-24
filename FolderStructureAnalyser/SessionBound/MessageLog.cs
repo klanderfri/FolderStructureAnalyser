@@ -5,11 +5,11 @@ using FolderStructureAnalyser.Events;
 namespace FolderStructureAnalyser.SessionBound
 {
     /// <summary>
-    /// Class for object handling messages between components within the application.
+    /// Class for object handling a message log in the application.
     /// </summary>
-    public class Messenger : SessionBoundClass
+    public class MessageLog : SessionBoundClass
     {
-        public Messenger(Session session)
+        public MessageLog(Session session)
             : base(session) { }
 
         /// <summary>
@@ -20,11 +20,11 @@ namespace FolderStructureAnalyser.SessionBound
         public event OperationRuntimeChangedHandler OperationRuntimeChanged;
 
         /// <summary>
-        /// Event raised when a control has requested a log message to be added.
+        /// Event raised when a log message has been added to the log.
         /// </summary>
         [Category("Messages")]
         [Description("Occurs when a request to add a log message has been done.")]
-        public event AddLogMessageRequestedHandler AddLogMessageRequested;
+        public event LogMessageAddedHandler LogMessageAdded;
 
         /// <summary>
         /// Eventhandler for the event used when the runtime of an operation has been updated.
@@ -34,11 +34,11 @@ namespace FolderStructureAnalyser.SessionBound
         public delegate void OperationRuntimeChangedHandler(object sender, OperationRuntimeChangedArgs e);
 
         /// <summary>
-        /// Eventhandler for the event used when a control has requested a log message to be added.
+        /// Eventhandler for the event used when a log message has been added to the log.
         /// </summary>
         /// <param name="sender">The mediator mediating the event.</param>
         /// <param name="e">The arguments for the event.</param>
-        public delegate void AddLogMessageRequestedHandler(object sender, AddLogMessageRequestedArgs e);
+        public delegate void LogMessageAddedHandler(object sender, LogMessageAddedArgs e);
         
         /// <summary>
         /// Updates the information about how long the current operation has run.
@@ -56,8 +56,8 @@ namespace FolderStructureAnalyser.SessionBound
         /// <param name="message">The human readable log message.</param>
         public void AddLogMessage(string message)
         {
-            var args = new AddLogMessageRequestedArgs(message, LogMessageType.Miscellaneous);
-            AddLogMessageRequested?.Invoke(this, args);
+            var args = new LogMessageAddedArgs(message, LogMessageType.Miscellaneous);
+            LogMessageAdded?.Invoke(this, args);
         }
     }
 }
