@@ -84,12 +84,15 @@ namespace FolderStructureAnalyser.SessionBound
         }
 
         /// <summary>
-        /// Informs the log that a new operation has started.
+        /// Informs the log that a new operation is about to start.
         /// </summary>
-        public void StartingNewOperation()
+        /// <returns>The ID of the operation about to start.</returns>
+        public int StartingNewOperation()
         {
-            var args = new NewOperationStartingArgs(NextOperationID++);
+            var operationID = NextOperationID++;
+            var args = new NewOperationStartingArgs(operationID);
             NewOperationStarting?.Invoke(this, args);
+            return operationID;
         }
     }
 }

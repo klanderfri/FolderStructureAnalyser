@@ -234,8 +234,9 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <param name="paths">The paths that are to be included in the analysis.</param>
         public void StartAnalysis(IEnumerable<string> paths)
         {
-            //Tell the user that the analysis has started.
-            OnFolderStructureAnalysisStarting(new FolderStructureAnalysisStartingArgs());
+            //Tell the user that the analysis is about to start.
+            var operationID = Session.MessageLog.StartingNewOperation();
+            OnFolderStructureAnalysisStarting(new FolderStructureAnalysisStartingArgs(operationID));
 
             //Store the paths requested for analysis.
             LastPathsRequestedForAnalysis = paths;
