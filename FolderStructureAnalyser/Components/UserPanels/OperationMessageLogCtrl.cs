@@ -37,11 +37,11 @@ namespace FolderStructureAnalyser.Components.UserPanels
         {
             Session = session;
             gridControlLogMessages.DataSource = LogMessages;
-            Session.MessageLog.OperationRuntimeChanged += Messenger_OperationRuntimeChanged;
-            Session.MessageLog.LogMessageAdded += Messenger_LogMessageAdded;
+            Session.MessageLog.OperationRuntimeChanged += MessageLog_OperationRuntimeChanged;
+            Session.MessageLog.LogMessageAdded += MessageLog_LogMessageAdded;
         }
 
-        private void Messenger_OperationRuntimeChanged(object sender, OperationRuntimeChangedArgs e)
+        private void MessageLog_OperationRuntimeChanged(object sender, OperationRuntimeChangedArgs e)
         {
             //Find the amount of seconds.
             var runtimeInSeconds = (long)Math.Floor((decimal)e.RuntimeInMilliseconds / 1000);
@@ -60,7 +60,7 @@ namespace FolderStructureAnalyser.Components.UserPanels
             addLogMessage(LogMessageType.OperationTime, message);
         }
 
-        private void Messenger_LogMessageAdded(object sender, LogMessageAddedArgs e)
+        private void MessageLog_LogMessageAdded(object sender, LogMessageAddedArgs e)
         {
             addLogMessage(e.Type, e.Message);
         }
