@@ -56,7 +56,7 @@
             this.dockPanelSettings = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelSettings_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.hideContainerBottom = new DevExpress.XtraBars.Docking.AutoHideContainer();
-            this.dockPanelInformation = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanelMessageLog = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.operationMessageLogCtrl = new FolderStructureAnalyser.Components.UserPanels.OperationMessageLogCtrl();
             this.dockPanelCompareStructures = new DevExpress.XtraBars.Docking.DockPanel();
@@ -76,7 +76,7 @@
             this.dockPanelSettings.SuspendLayout();
             this.dockPanelSettings_Container.SuspendLayout();
             this.hideContainerBottom.SuspendLayout();
-            this.dockPanelInformation.SuspendLayout();
+            this.dockPanelMessageLog.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             this.dockPanelCompareStructures.SuspendLayout();
             this.dockPanelCompareStructures_Container.SuspendLayout();
@@ -359,27 +359,27 @@
             // hideContainerBottom
             // 
             this.hideContainerBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.hideContainerBottom.Controls.Add(this.dockPanelInformation);
+            this.hideContainerBottom.Controls.Add(this.dockPanelMessageLog);
             this.hideContainerBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.hideContainerBottom.Location = new System.Drawing.Point(0, 692);
             this.hideContainerBottom.Name = "hideContainerBottom";
             this.hideContainerBottom.Size = new System.Drawing.Size(1250, 27);
             // 
-            // dockPanelInformation
+            // dockPanelMessageLog
             // 
-            this.dockPanelInformation.Controls.Add(this.dockPanel1_Container);
-            this.dockPanelInformation.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
-            this.dockPanelInformation.Hint = "Information messages raised during operations.";
-            this.dockPanelInformation.ID = new System.Guid("e0d2d156-9a3e-42e5-b82b-62464aed10d8");
-            this.dockPanelInformation.Location = new System.Drawing.Point(0, 0);
-            this.dockPanelInformation.Name = "dockPanelInformation";
-            this.dockPanelInformation.Options.ShowCloseButton = false;
-            this.dockPanelInformation.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanelInformation.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
-            this.dockPanelInformation.SavedIndex = 2;
-            this.dockPanelInformation.Size = new System.Drawing.Size(1250, 200);
-            this.dockPanelInformation.Text = "Information";
-            this.dockPanelInformation.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
+            this.dockPanelMessageLog.Controls.Add(this.dockPanel1_Container);
+            this.dockPanelMessageLog.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
+            this.dockPanelMessageLog.Hint = "Information messages raised during operations.";
+            this.dockPanelMessageLog.ID = new System.Guid("e0d2d156-9a3e-42e5-b82b-62464aed10d8");
+            this.dockPanelMessageLog.Location = new System.Drawing.Point(0, 0);
+            this.dockPanelMessageLog.Name = "dockPanelMessageLog";
+            this.dockPanelMessageLog.Options.ShowCloseButton = false;
+            this.dockPanelMessageLog.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanelMessageLog.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
+            this.dockPanelMessageLog.SavedIndex = 2;
+            this.dockPanelMessageLog.Size = new System.Drawing.Size(1250, 200);
+            this.dockPanelMessageLog.Text = "Message Log";
+            this.dockPanelMessageLog.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
             // 
             // dockPanel1_Container
             // 
@@ -483,7 +483,7 @@
             this.dockPanelSettings.ResumeLayout(false);
             this.dockPanelSettings_Container.ResumeLayout(false);
             this.hideContainerBottom.ResumeLayout(false);
-            this.dockPanelInformation.ResumeLayout(false);
+            this.dockPanelMessageLog.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             this.dockPanelCompareStructures.ResumeLayout(false);
             this.dockPanelCompareStructures_Container.ResumeLayout(false);
@@ -527,7 +527,7 @@
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document documentAnalyseStructure;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document documentCompareStructures;
         private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerRight;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanelInformation;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanelMessageLog;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private UserPanels.OperationMessageLogCtrl operationMessageLogCtrl;
         private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerBottom;
