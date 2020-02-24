@@ -80,12 +80,12 @@ namespace FolderStructureAnalyser.Components
             folderStructureComparerCtrl.CompareFolderStructures();
         }
 
-        private void folderStructureAnalyserCtrl_FolderStructureAnalysisStart(object sender, FolderStructureAnalysisStartArgs e)
+        private void folderStructureAnalyserCtrl_FolderStructureAnalysisStarting(object sender, FolderStructureAnalysisStartArgs e)
         {
             setOperationButtonStates(true);
         }
 
-        private void folderStructureComparerCtrl_FolderStructureAnalysisStart(object sender, FolderStructureAnalysisStartArgs e)
+        private void folderStructureComparerCtrl_FolderStructureAnalysisStarting(object sender, FolderStructureAnalysisStartArgs e)
         {
             setOperationButtonStates(true);
         }
