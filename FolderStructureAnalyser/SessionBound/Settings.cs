@@ -6,7 +6,7 @@ namespace FolderStructureAnalyser.SessionBound
     /// <summary>
     /// Class for object holding the settings for the application.
     /// </summary>
-    public class Settings : SessionBoundClass
+    public class Settings
     {
         /// <summary>
         /// The size in bytes of a folder that is to be considered big.
@@ -37,8 +37,7 @@ namespace FolderStructureAnalyser.SessionBound
         /// Creates an object holding the settings for the application, using default values.
         /// </summary>
         /// <param name="session">The application session.</param>
-        public Settings(Session session)
-            : base(session)
+        public Settings()
         {
             BigFolderInMB = 10;
             BigFolderColour = Color.Red;

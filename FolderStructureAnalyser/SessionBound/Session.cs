@@ -6,15 +6,18 @@ namespace FolderStructureAnalyser.SessionBound
     {
         public Session(Form rootForm)
         {
-            Settings = new Settings(this);
+            //Operation helpers.
             Tools = new Tools(this);
             MessageLog = new MessageLog(this);
+
+            //Data holders.
+            Settings = new Settings();
             RootForm = rootForm;
         }
 
-        public Settings Settings { get; set; }
         public Tools Tools { get; set; }
         public MessageLog MessageLog { get; set; }
+        public Settings Settings { get; set; }
         public Form RootForm { get; set; }
     }
 }
