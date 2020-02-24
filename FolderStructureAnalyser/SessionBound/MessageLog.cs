@@ -9,6 +9,15 @@ namespace FolderStructureAnalyser.SessionBound
     /// </summary>
     public class MessageLog : SessionBoundClass
     {
+        /// <summary>
+        /// Holds the ID for the next operation to be started.
+        /// </summary>
+        private int NextOperationID { get; set; }
+
+        /// <summary>
+        /// Creates an object handling a message log in the application.
+        /// </summary>
+        /// <param name="session">The application session.</param>
         public MessageLog(Session session)
             : base(session) { }
 
@@ -23,8 +32,15 @@ namespace FolderStructureAnalyser.SessionBound
         /// Event raised when a log message has been added to the log.
         /// </summary>
         [Category("Messages")]
-        [Description("Occurs when a request to add a log message has been done.")]
+        [Description("Occurs when a log message has been added to the log.")]
         public event LogMessageAddedHandler LogMessageAdded;
+
+        /// <summary>
+        /// Event raised when a new operation is about to start.
+        /// </summary>
+        [Category("Messages")]
+        [Description("Occurs when a new operation is about to start.")]
+        public event NewOperationStartingHandler NewOperationStarting;
 
         /// <summary>
         /// Eventhandler for the event used when the runtime of an operation has been updated.
@@ -39,7 +55,14 @@ namespace FolderStructureAnalyser.SessionBound
         /// <param name="sender">The mediator mediating the event.</param>
         /// <param name="e">The arguments for the event.</param>
         public delegate void LogMessageAddedHandler(object sender, LogMessageAddedArgs e);
-        
+
+        /// <summary>
+        /// Eventhandler for the event used when a new operation is about to start.
+        /// </summary>
+        /// <param name="sender">The mediator mediating the event.</param>
+        /// <param name="e">The arguments for the event.</param>
+        public delegate void NewOperationStartingHandler(object sender, NewOperationStartingArgs e);
+
         /// <summary>
         /// Updates the information about how long the current operation has run.
         /// </summary>
@@ -58,6 +81,15 @@ namespace FolderStructureAnalyser.SessionBound
         {
             var args = new LogMessageAddedArgs(message, LogMessageType.Miscellaneous);
             LogMessageAdded?.Invoke(this, args);
+        }
+
+        /// <summary>
+        /// Informs the log that a new operation has started.
+        /// </summary>
+        public void StartingNewOperation()
+        {
+            var args = new NewOperationStartingArgs(NextOperationID++);
+            NewOperationStarting?.Invoke(this, args);
         }
     }
 }

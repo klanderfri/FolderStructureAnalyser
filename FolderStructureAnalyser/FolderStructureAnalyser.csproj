@@ -99,6 +99,7 @@
     <Compile Include="Events\LogMessageAddedArgs.cs" />
     <Compile Include="Events\FolderStructureAnalysisStartArgs.cs" />
     <Compile Include="Events\FolderStructureDifferenceAddedArgs.cs" />
+    <Compile Include="Events\NewOperationStartingArgs.cs" />
     <Compile Include="Events\OperationRuntimeChangedArgs.cs" />
     <Compile Include="Events\TimedProgressChangedEventArgs.cs" />
     <Compile Include="Enums\WaitFormCommand.cs" />
