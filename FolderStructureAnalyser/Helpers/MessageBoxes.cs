@@ -23,6 +23,13 @@ namespace FolderStructureAnalyser.Helpers
             MessageBox.Show(message, "Folder does not exist", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public static void ShowUnhandledApplicationErrorMessage(Exception ex)
+        {
+            var format = "An unhandled error occured:{0}Message: {1}{0}Source: {2}{0}Stack trace:{0}{3}";
+            var message = String.Format(format, Environment.NewLine, ex.Message, ex.Source, ex.StackTrace);
+            MessageBox.Show(message, "Unhandled error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         public static void ShowSameFolderSelectedForCompareMessage()
         {
             var message = "You have selected the same folder as both original and clone. Select different folders!";
