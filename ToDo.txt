@@ -26,3 +26,4 @@ Functionality
 	Is it possible to add shortcut commands for certain functionalities? Like Ctrl+A to run an analysis of the folder structure?
 	The analyser controls shouldn't subscribe events from parent control but use the On-methods, and the DoFolderStructureAnalysis shouldn't be public.
 	Move log messages to the session.
+	Update operate runtime log message based on operation ID instead of using the last message with the right type in the log
