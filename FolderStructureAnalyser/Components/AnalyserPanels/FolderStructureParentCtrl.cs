@@ -152,7 +152,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <param name="e">The arguments for the event.</param>
         protected virtual void OnFolderStructureAnalysisStarting(OperationStartingArgs e)
         {
-            var format = "A new {0} operation was started.";
+            var format = "A new {0} was started.";
             Session.MessageLog.AddLogMessage(LogMessageType.OperationStarting, format, e);
             FolderStructureAnalysisStarting?.Invoke(this, e);
         }
@@ -173,7 +173,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <param name="e">The arguments for the event.</param>
         protected virtual void OnFolderStructureAnalysisProgressChanged(OperationRuntimeChangedArgs e)
         {
-            var format = "Current elapsed operation runtime: {0} seconds.";
+            var format = "Current elapsed {0} runtime: {1} seconds.";
             Session.MessageLog.AddLogMessage(LogMessageType.OperationRuntimeUpdate, format, e);
             FolderStructureAnalysisProgressChanged?.Invoke(this, e);
         }
@@ -195,7 +195,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <param name="e">The arguments for the event.</param>
         protected virtual void OnFolderStructureAnalysisFinished(OperationFinishedArgs e)
         {
-            var format = "The structure analyser finished an anlysis.";
+            var format = "The {0} was finished.";
             Session.MessageLog.AddLogMessage(LogMessageType.OperationFinished, format, e);
             FolderStructureAnalysisFinished?.Invoke(this, e);
         }
