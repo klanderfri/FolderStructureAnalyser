@@ -11,25 +11,11 @@ namespace FolderStructureAnalyser.SessionBound
     public class MessageLog : SessionBoundClass
     {
         /// <summary>
-        /// Holds the ID for the next operation to be started.
-        /// </summary>
-        private int NextOperationID { get; set; }
-
-        /// <summary>
         /// Creates an object handling a message log in the application.
         /// </summary>
         /// <param name="session">The application session.</param>
         public MessageLog(Session session)
             : base(session) { }
-
-        /// <summary>
-        /// Creates an operation ID for a new operation.
-        /// </summary>
-        /// <returns>The ID for the new operation.</returns>
-        public int CreateNewOperationID()
-        {
-            return NextOperationID++;
-        }
 
         /// <summary>
         /// Event raised when a log message has been added to the log.

@@ -133,7 +133,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// </summary>
         protected virtual void OnFolderStructureAnalysisStarting()
         {
-            LastStartedOperationID = Session.MessageLog.CreateNewOperationID();
+            LastStartedOperationID = Session.Tools.CreateNewOperationID();
 
             var startingArgs = new OperationStartingArgs(LastStartedOperationID);
             OnFolderStructureAnalysisStarting(startingArgs);

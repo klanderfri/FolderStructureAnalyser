@@ -7,6 +7,15 @@ namespace FolderStructureAnalyser.SessionBound
     /// </summary>
     public class Tools : SessionBoundClass
     {
+        /// <summary>
+        /// Holds the ID for the next operation to be started.
+        /// </summary>
+        private int NextOperationID { get; set; }
+
+        /// <summary>
+        /// Creates an object containing state based tool methods.
+        /// </summary>
+        /// <param name="session">The application session.</param>
         public Tools(Session session)
             : base(session) { }
 
@@ -31,6 +40,15 @@ namespace FolderStructureAnalyser.SessionBound
         public string SizeStringFromByte(long sizeInBytes)
         {
             return ByteSizeConverter.SizeStringFromByte(sizeInBytes, Session.Settings.SizeDisplayUnit);
+        }
+        
+        /// <summary>
+        /// Creates an operation ID for a new operation.
+        /// </summary>
+        /// <returns>The ID for the new operation.</returns>
+        public int CreateNewOperationID()
+        {
+            return NextOperationID++;
         }
     }
 }
