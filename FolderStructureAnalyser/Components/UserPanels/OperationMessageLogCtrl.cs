@@ -60,13 +60,15 @@ namespace FolderStructureAnalyser.Components.UserPanels
             {
                 //Use the information from the original event to fill the missing parts in the message format.
                 var originalArgs = e.OriginalEventArgs as OperationEventArgs;
-                var message = String.Format(e.MessageFormat, originalArgs.OperationTypeDescription.ToLower());
+                var format = MessageLog.GetMessageFormatFromType(e.Type);
+                var message = String.Format(format, originalArgs.OperationTypeDescription.ToLower());
                 addLogMessage(e, message);
             }
             else
             {
-                //Just add the message to the grid.
-                addLogMessage(e, e.MessageFormat);
+                //Just use the format as message and add to the grid.
+                var message = MessageLog.GetMessageFormatFromType(e.Type);
+                addLogMessage(e, message);
             }
         }
 

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
+using FolderStructureAnalyser.Exceptions;
 
 namespace FolderStructureAnalyser.SessionBound
 {
@@ -35,12 +36,31 @@ namespace FolderStructureAnalyser.SessionBound
         /// Adds a log message to the log.
         /// </summary>
         /// <param name="type">The type of log message.</param>
-        /// <param name="messageFormat">The format for the human readable log message.</param>
         /// <param name="e">The args for the event that caused the log message to be added.</param>
-        public void AddLogMessage(LogMessageType type, string messageFormat, EventArgs e = null)
+        public void AddLogMessage(LogMessageType type, EventArgs e = null)
         {
-            var args = new LogMessageAddedArgs(type, messageFormat, e);
+            var args = new LogMessageAddedArgs(type, e);
             LogMessageAdded?.Invoke(this, args);
+        }
+
+        /// <summary>
+        /// Gets the message format for a log message type.
+        /// </summary>
+        /// <param name="type">The type of log message to get the message format for.</param>
+        /// <returns>The message format.</returns>
+        public static string GetMessageFormatFromType(LogMessageType type)
+        {
+            switch (type)
+            {
+                case LogMessageType.OperationStarting:
+                    return "A new {0} was started.";
+                case LogMessageType.OperationRuntimeUpdate:
+                    return "Current {0} runtime: {1} seconds.";
+                case LogMessageType.OperationFinished:
+                    return "The {0} was finished.";
+                default:
+                    throw new UnhandledEnumException(typeof(LogMessageType), type);
+            }
         }
     }
 }
