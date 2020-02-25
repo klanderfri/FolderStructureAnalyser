@@ -16,9 +16,10 @@ namespace FolderStructureAnalyser.Events
         /// Creates an object holding the arguments for the event used when the runtime of an operation has been updated.
         /// </summary>
         /// <param name="operationID">The ID for the operation.</param>
+        /// <param name="operationTypeDescription">A short description of the type of the operation.</param>
         /// <param name="runtimeInMilliseconds">The current runtime of the operation.</param>
-        public OperationRuntimeChangedArgs(int operationID, long runtimeInMilliseconds)
-            : base(operationID)
+        public OperationRuntimeChangedArgs(int operationID, string operationTypeDescription, long runtimeInMilliseconds)
+            : base(operationID, operationTypeDescription)
         {
             RuntimeInMilliseconds = runtimeInMilliseconds;
         }

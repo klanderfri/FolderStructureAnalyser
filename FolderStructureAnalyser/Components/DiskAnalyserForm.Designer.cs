@@ -269,6 +269,7 @@
             // 
             // folderStructureAnalyserCtrl
             // 
+            this.folderStructureAnalyserCtrl.AnalysisType = "Folder structure analysis";
             this.folderStructureAnalyserCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.folderStructureAnalyserCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureAnalyserCtrl.Name = "folderStructureAnalyserCtrl";
@@ -281,6 +282,7 @@
             // 
             // folderStructureComparerCtrl
             // 
+            this.folderStructureComparerCtrl.AnalysisType = "Folder comparision analysis";
             this.folderStructureComparerCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.folderStructureComparerCtrl.Location = new System.Drawing.Point(0, 0);
             this.folderStructureComparerCtrl.Name = "folderStructureComparerCtrl";

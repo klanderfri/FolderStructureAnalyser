@@ -21,11 +21,18 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         public Session Session { get; set; }
 
         /// <summary>
-        /// The description used for the analysis handled by the control.
+        /// The description used by the wait form to describe the analysis in progress.
         /// </summary>
         [Category("Analyse")]
-        [Description("The description used for the analysis handled by the control.")]
+        [Description("The description used by the wait form to describe the analysis in progress.")]
         public string WaitFormDescription { get; set; }
+
+        /// <summary>
+        /// A short text telling what kind of analysis the control performs.
+        /// </summary>
+        [Category("Analyse")]
+        [Description("A short text telling what kind of analysis the control performs.")]
+        public string AnalysisType { get; set; }
 
         /// <summary>
         /// The background worker responsible for performing the analysis.
@@ -135,7 +142,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         {
             LastStartedOperationID = Session.Tools.CreateNewOperationID();
 
-            var startingArgs = new OperationStartingArgs(LastStartedOperationID);
+            var startingArgs = new OperationStartingArgs(LastStartedOperationID, AnalysisType);
             OnFolderStructureAnalysisStarting(startingArgs);
         }
 
@@ -145,7 +152,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <param name="e">The arguments for the event.</param>
         protected virtual void OnFolderStructureAnalysisStarting(OperationStartingArgs e)
         {
-            var format = "A new analysis operation was started.";
+            var format = "A new {0} operation was started.";
             Session.MessageLog.AddLogMessage(LogMessageType.OperationStarting, format, e);
             FolderStructureAnalysisStarting?.Invoke(this, e);
         }
@@ -156,7 +163,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <param name="runtimeInMilliseconds">The current runtime of the operation.</param>
         protected virtual void OnFolderStructureAnalysisProgressChanged(long runtimeInMilliseconds)
         {
-            var progressArgs = new OperationRuntimeChangedArgs(LastStartedOperationID, runtimeInMilliseconds);
+            var progressArgs = new OperationRuntimeChangedArgs(LastStartedOperationID, AnalysisType, runtimeInMilliseconds);
             OnFolderStructureAnalysisProgressChanged(progressArgs);
         }
 
@@ -178,7 +185,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <param name="result">The result from the operation.</param>
         protected virtual void OnFolderStructureAnalysisFinished(bool cancelled, object result)
         {
-            var finishedArgs = new OperationFinishedArgs(LastStartedOperationID, cancelled, result);
+            var finishedArgs = new OperationFinishedArgs(LastStartedOperationID, AnalysisType, cancelled, result);
             OnFolderStructureAnalysisFinished(finishedArgs);
         }
 
