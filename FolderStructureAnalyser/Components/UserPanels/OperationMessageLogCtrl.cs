@@ -51,13 +51,13 @@ namespace FolderStructureAnalyser.Components.UserPanels
             var message = String.Format(format, runtimeInSeconds);
 
             //Remove the previous time log of the operation.
-            if (LastLog?.Type == LogMessageType.OperationTime)
+            if (LastLog?.Type == LogMessageType.OperationRuntimeUpdate)
             {
                 removeLogMessage(LastLog.ID);
             }
 
             //Add the new operation time log.
-            addLogMessage(LogMessageType.OperationTime, message);
+            addLogMessage(LogMessageType.OperationRuntimeUpdate, message);
         }
 
         private void MessageLog_LogMessageAdded(object sender, LogMessageAddedArgs e)
