@@ -22,23 +22,7 @@ namespace FolderStructureAnalyser.Events
         /// <summary>
         /// The message format to use when creating a log message.
         /// </summary>
-        public string MessageFormat
-        {
-            get
-            {
-                switch (Type)
-                {
-                    case LogMessageType.OperationStarting:
-                        return "A new {0} was started.";
-                    case LogMessageType.OperationRuntimeUpdate:
-                        return "Current {0} runtime: {1} seconds.";
-                    case LogMessageType.OperationFinished:
-                        return "The {0} was finished.";
-                    default:
-                        throw new UnhandledEnumException(typeof(LogMessageType), Type);
-                }
-            }
-        }
+        public string MessageFormat { get; set; }
 
         /// <summary>
         /// Creates an object holding the arguments for the event used when a control has requested a log message to be added.
@@ -50,6 +34,27 @@ namespace FolderStructureAnalyser.Events
             //Store message log information.
             Type = type;
             OriginalEventArgs = e;
+            MessageFormat = getMessageFormat(type);
+        }
+
+        /// <summary>
+        /// Gets the message format for a log type.
+        /// </summary>
+        /// <param name="type">The message log type to get the message format for.</param>
+        /// <returns>The message format for the log type.</returns>
+        private static string getMessageFormat(LogMessageType type)
+        {
+            switch (type)
+            {
+                case LogMessageType.OperationStarting:
+                    return "A new {0} was started.";
+                case LogMessageType.OperationRuntimeUpdate:
+                    return "Current {0} runtime: {1} seconds.";
+                case LogMessageType.OperationFinished:
+                    return "The {0} was finished.";
+                default:
+                    throw new UnhandledEnumException(typeof(LogMessageType), type);
+            }
         }
     }
 }
