@@ -78,7 +78,7 @@
             this.gridColumnType.OptionsColumn.AllowEdit = false;
             this.gridColumnType.Visible = true;
             this.gridColumnType.VisibleIndex = 1;
-            this.gridColumnType.Width = 90;
+            this.gridColumnType.Width = 140;
             // 
             // gridColumnMessage
             // 
