@@ -51,17 +51,22 @@ namespace FolderStructureAnalyser.Components.UserPanels
         /// <param name="e">Information about the new log message to add.</param>
         private void addLogMessage(LogMessageAddedArgs e)
         {
-            switch (e.Type)
+            if (e.Type == LogMessageType.OperationRuntimeUpdate)
             {
-                case LogMessageType.OperationRuntimeUpdate:
-                    //Update the last runtime log instead of adding a new each time the runtime changes.
-                    updateOperationRuntime(e);
-                    break;
-
-                default:
-                    //Just add the message to the grid.
-                    addLogMessage(e, e.MessageFormat);
-                    break;
+                //Update the last runtime log instead of adding a new each time the runtime changes.
+                updateOperationRuntime(e);
+            }
+            else if (e.OriginalEventArgs is OperationEventArgs)
+            {
+                //Use the information from the original event to fill the missing parts in the message format.
+                var originalArgs = e.OriginalEventArgs as OperationEventArgs;
+                var message = String.Format(e.MessageFormat, originalArgs.OperationTypeDescription);
+                addLogMessage(e, message);
+            }
+            else
+            {
+                //Just add the message to the grid.
+                addLogMessage(e, e.MessageFormat);
             }
         }
 
@@ -94,9 +99,10 @@ namespace FolderStructureAnalyser.Components.UserPanels
         private void updateOperationRuntime(LogMessageAddedArgs e)
         {
             //Create message text.
-            var runtimeInMilliseconds = (e.OriginalEventArgs as OperationRuntimeChangedArgs).RuntimeInMilliseconds;
+            var originalArgs = (e.OriginalEventArgs as OperationRuntimeChangedArgs);
+            var runtimeInMilliseconds = originalArgs.RuntimeInMilliseconds;
             var runtimeInSeconds = (long)Math.Floor((decimal)runtimeInMilliseconds / 1000);
-            var message = String.Format(e.MessageFormat, runtimeInSeconds);
+            var message = String.Format(e.MessageFormat, originalArgs.OperationTypeDescription, runtimeInSeconds);
 
             //Find the last operation time log for the operation.
             var lastOperationTimeLog = LogMessages.LastOrDefault(m => isGridRuntimeLogNeedingUpdate(m, e));
