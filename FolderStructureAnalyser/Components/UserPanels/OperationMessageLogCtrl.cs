@@ -60,7 +60,7 @@ namespace FolderStructureAnalyser.Components.UserPanels
             {
                 //Use the information from the original event to fill the missing parts in the message format.
                 var originalArgs = e.OriginalEventArgs as OperationEventArgs;
-                var message = String.Format(e.MessageFormat, originalArgs.OperationTypeDescription);
+                var message = String.Format(e.MessageFormat, originalArgs.OperationTypeDescription.ToLower());
                 addLogMessage(e, message);
             }
             else
@@ -102,7 +102,7 @@ namespace FolderStructureAnalyser.Components.UserPanels
             var originalArgs = (e.OriginalEventArgs as OperationRuntimeChangedArgs);
             var runtimeInMilliseconds = originalArgs.RuntimeInMilliseconds;
             var runtimeInSeconds = (long)Math.Floor((decimal)runtimeInMilliseconds / 1000);
-            var message = String.Format(e.MessageFormat, originalArgs.OperationTypeDescription, runtimeInSeconds);
+            var message = String.Format(e.MessageFormat, originalArgs.OperationTypeDescription.ToLower(), runtimeInSeconds);
 
             //Find the last operation time log for the operation.
             var lastOperationTimeLog = LogMessages.LastOrDefault(m => isGridRuntimeLogNeedingUpdate(m, e));

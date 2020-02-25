@@ -173,7 +173,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <param name="e">The arguments for the event.</param>
         protected virtual void OnFolderStructureAnalysisProgressChanged(OperationRuntimeChangedArgs e)
         {
-            var format = "Current elapsed {0} runtime: {1} seconds.";
+            var format = "Current {0} runtime: {1} seconds.";
             Session.MessageLog.AddLogMessage(LogMessageType.OperationRuntimeUpdate, format, e);
             FolderStructureAnalysisProgressChanged?.Invoke(this, e);
         }
