@@ -14,7 +14,6 @@ Graphical updates
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
 	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
 	Add information to the comparer about how many difference was found.
-	Change folder icon depending on the node being expanded or collapsed.
 	Update the tree list when a big folder setting has been changed.
 	
 Functionality
@@ -24,6 +23,5 @@ Functionality
 	Add unavailable folders to the information panel.
 	Find out how to make FirstOrDefault search most efficently when the item most likely is in the end (method: OperationMessageLogCtrl.removeLogMessage).
 	Is it possible to add shortcut commands for certain functionalities? Like Ctrl+A to run an analysis of the folder structure?
-	Move message formats from FolderStructureParentCtrl to separate class and remove from call to MessageLog.
 	Add log message for cancelled operation.
 	Add the original sender to log messages.
