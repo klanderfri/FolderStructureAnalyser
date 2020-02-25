@@ -141,7 +141,7 @@ namespace FolderStructureAnalyser.Components.UserPanels
             if (logID >= NextLogID) { return false; }
 
             //Try finding the old log.
-            var oldLog = LogMessages.FirstOrDefault(l => l.ID == logID);
+            var oldLog = LogMessages.LastOrDefault(l => l.ID == logID);
 
             //Check if the old log was found.
             if (oldLog == null) { return false; }
