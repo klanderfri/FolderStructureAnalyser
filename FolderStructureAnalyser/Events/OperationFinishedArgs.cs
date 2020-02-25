@@ -1,4 +1,6 @@
-﻿namespace FolderStructureAnalyser.Events
+﻿using System;
+
+namespace FolderStructureAnalyser.Events
 {
     /// <summary>
     /// Class for object holding the arguments for the event used when an operation has finished.
@@ -6,14 +8,32 @@
     public class OperationFinishedArgs : OperationEventArgs
     {
         /// <summary>
+        /// The internal holder for the result from the operation.
+        /// </summary>
+        private object result;
+
+        /// <summary>
         /// Tells if the operation was cancelled.
         /// </summary>
         public bool Cancelled { get; private set; }
-
+        
         /// <summary>
         /// The result from the operation.
         /// </summary>
-        public object Result { get; private set; }
+        public object Result
+        {
+            get
+            {
+                if (Cancelled)
+                {
+                    var message = "No result can be fetched when the operation was cancelled.";
+                    throw new InvalidOperationException(message);
+                }
+                return result;
+            }
+
+            set { result = value; }
+        }
 
         /// <summary>
         /// Creates an object holding the arguments for the event used when an operation has finished.

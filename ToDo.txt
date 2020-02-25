@@ -25,3 +25,5 @@ Functionality
 	Find out how to make FirstOrDefault search most efficently when the item most likely is in the end (method: OperationMessageLogCtrl.removeLogMessage).
 	Is it possible to add shortcut commands for certain functionalities? Like Ctrl+A to run an analysis of the folder structure?
 	Move message formats from FolderStructureParentCtrl to separate class and remove from call to MessageLog.
+	Add log message for cancelled operation.
+	Add the original sender to log messages.

@@ -477,7 +477,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             OnFolderStructureAnalysisProgressChanged(AnalysisRunningTime.ElapsedMilliseconds);
 
             //Tell the subscriber that the loading finished.
-            OnFolderStructureAnalysisFinished(e.Cancelled, e.Result);
+            OnFolderStructureAnalysisFinished(e.Cancelled, (e.Cancelled ? null : e.Result));
         }
     }
 }
