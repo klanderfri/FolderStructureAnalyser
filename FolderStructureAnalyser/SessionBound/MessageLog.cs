@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
 
@@ -35,10 +36,10 @@ namespace FolderStructureAnalyser.SessionBound
         /// </summary>
         /// <param name="type">The type of log message.</param>
         /// <param name="messageFormat">The format for the human readable log message.</param>
-        /// <param name="data">Any data related to the log message.</param>
-        public void AddLogMessage(LogMessageType type, string messageFormat, object data = null)
+        /// <param name="e">The args for the event that caused the log message to be added.</param>
+        public void AddLogMessage(LogMessageType type, string messageFormat, EventArgs e = null)
         {
-            var args = new LogMessageAddedArgs(type, messageFormat, data);
+            var args = new LogMessageAddedArgs(type, messageFormat, e);
             LogMessageAdded?.Invoke(this, args);
         }
     }

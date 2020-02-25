@@ -79,7 +79,7 @@ namespace FolderStructureAnalyser.Components.UserPanels
                 Timestamp = DateTime.Now,
                 Type = e.Type,
                 Message = message,
-                Data = e.Data
+                EventArgs = e.OriginalEventArgs
             };
             
             //Add the log message to the grid.
@@ -94,7 +94,7 @@ namespace FolderStructureAnalyser.Components.UserPanels
         private void updateOperationRuntime(LogMessageAddedArgs e)
         {
             //Create message text.
-            var runtimeInMilliseconds = (e.Data as OperationRuntimeChangedArgs).RuntimeInMilliseconds;
+            var runtimeInMilliseconds = (e.OriginalEventArgs as OperationRuntimeChangedArgs).RuntimeInMilliseconds;
             var runtimeInSeconds = (long)Math.Floor((decimal)runtimeInMilliseconds / 1000);
             var message = String.Format(e.MessageFormat, runtimeInSeconds);
 
@@ -122,8 +122,8 @@ namespace FolderStructureAnalyser.Components.UserPanels
             if (gridLog.Type != receivedLogUpdate.Type) { return false; }
 
             //If the grid log operation differs then the new message log is about another operation.
-            var operationToUpdate = (receivedLogUpdate.Data as OperationEventArgs).OperationID;
-            var logOperation = (gridLog.Data as OperationEventArgs)?.OperationID;
+            var operationToUpdate = (receivedLogUpdate.OriginalEventArgs as OperationEventArgs).OperationID;
+            var logOperation = (gridLog.EventArgs as OperationEventArgs)?.OperationID;
             if (logOperation != operationToUpdate) { return false; }
 
             //The grid log is affected by the new message log.

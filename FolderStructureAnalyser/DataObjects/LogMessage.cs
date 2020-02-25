@@ -29,8 +29,8 @@ namespace FolderStructureAnalyser.DataObjects
         public string Message { get; set; }
 
         /// <summary>
-        /// Any data related to the log message.
+        /// The args for the event that caused the log message to be added.
         /// </summary>
-        public object Data { get; set; }
+        public EventArgs EventArgs { get; set; }
     }
 }
