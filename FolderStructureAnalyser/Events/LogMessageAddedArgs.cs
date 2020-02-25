@@ -9,24 +9,32 @@ namespace FolderStructureAnalyser.Events
     public class LogMessageAddedArgs : EventArgs
     {
         /// <summary>
-        /// The human readable log message.
+        /// The format for the human readable log message.
         /// </summary>
-        public string Message { get; set; }
+        public string MessageFormat { get; private set; }
 
         /// <summary>
-        /// The type of the log message.
+        /// The type of log message.
         /// </summary>
-        public LogMessageType Type;
+        public LogMessageType Type { get; private set; }
+
+        /// <summary>
+        /// Any data related to the log message.
+        /// </summary>
+        public object Data { get; private set; }
 
         /// <summary>
         /// Creates an object holding the arguments for the event used when a control has requested a log message to be added.
         /// </summary>
-        /// <param name="message">The human readable log message.</param>
-        /// <param name="type">The type of the log message.</param>
-        public LogMessageAddedArgs(string message, LogMessageType type)
+        /// <param name="type">The type of log message.</param>
+        /// <param name="messageFormat">The format for the human readable log message.</param>
+        /// <param name="data">Any data related to the log message.</param>
+        public LogMessageAddedArgs(LogMessageType type, string messageFormat, object data = null)
         {
-            Message = message;
+            //Store message log information.
             Type = type;
+            MessageFormat = messageFormat;
+            Data = data;
         }
     }
 }

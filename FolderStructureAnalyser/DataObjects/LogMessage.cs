@@ -27,5 +27,10 @@ namespace FolderStructureAnalyser.DataObjects
         /// The actual (human readable) log message.
         /// </summary>
         public string Message { get; set; }
+
+        /// <summary>
+        /// Any data related to the log message.
+        /// </summary>
+        public object Data { get; set; }
     }
 }

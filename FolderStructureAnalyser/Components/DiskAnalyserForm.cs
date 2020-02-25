@@ -94,14 +94,12 @@ namespace FolderStructureAnalyser.Components
         {
             setOperationButtonStates(false);
             enableUpdateDataButton(barButtonItemUpdateAnalyserData, e.Cancelled);
-            Session.MessageLog.AddLogMessage("The structure analyser finished an anlysis.");
         }
 
         private void folderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, OperationFinishedArgs e)
         {
             setOperationButtonStates(false);
             enableUpdateDataButton(barButtonItemUpdateComparerData, e.Cancelled);
-            Session.MessageLog.AddLogMessage("The structure comparer finished an anlysis.");
         }
 
         private void barButtonItemUpdateTreeList_ItemClick(object sender, ItemClickEventArgs e)
