@@ -99,7 +99,7 @@ namespace FolderStructureAnalyser.Components.UserPanels
             var message = String.Format(e.MessageFormat, runtimeInSeconds);
 
             //Find the last operation time log for the operation.
-            var lastOperationTimeLog = LogMessages.FirstOrDefault(m => gridLogNeedsUpdate(m, e));
+            var lastOperationTimeLog = LogMessages.LastOrDefault(m => isGridRuntimeLogNeedingUpdate(m, e));
             if (lastOperationTimeLog != null)
             {
                 //Remove the previous time log of the operation.
@@ -111,19 +111,19 @@ namespace FolderStructureAnalyser.Components.UserPanels
         }
 
         /// <summary>
-        /// Checks if a grid log needs updating due to a new message log.
+        /// Checks if a grid log is a runtime log which needs updating due to a new message log.
         /// </summary>
         /// <param name="gridLog">The grid log to test.</param>
-        /// <param name="receivedLogUpdate">The new message log recieved.</param>
+        /// <param name="runtimeUpdateLog">The new runtime message log recieved.</param>
         /// <returns>TRUE if the grid log needs update, else FALSE.</returns>
-        private static bool gridLogNeedsUpdate(LogMessage gridLog, LogMessageAddedArgs receivedLogUpdate)
+        private static bool isGridRuntimeLogNeedingUpdate(LogMessage gridLog, LogMessageAddedArgs runtimeUpdateLog)
         {
-            //If the grid log type differs then the new message log is about something else.
-            if (gridLog.Type != receivedLogUpdate.Type) { return false; }
+            //Check if the grid log is about operation runtime.
+            if (gridLog.Type != LogMessageType.OperationRuntimeUpdate) { return false; }
 
             //If the grid log operation differs then the new message log is about another operation.
-            var operationToUpdate = (receivedLogUpdate.OriginalEventArgs as OperationEventArgs).OperationID;
-            var logOperation = (gridLog.EventArgs as OperationEventArgs)?.OperationID;
+            var operationToUpdate = (runtimeUpdateLog.OriginalEventArgs as OperationEventArgs).OperationID;
+            var logOperation = (gridLog.EventArgs as OperationEventArgs).OperationID;
             if (logOperation != operationToUpdate) { return false; }
 
             //The grid log is affected by the new message log.
