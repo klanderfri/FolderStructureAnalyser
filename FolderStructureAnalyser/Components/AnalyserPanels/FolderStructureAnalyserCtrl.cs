@@ -148,7 +148,8 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 ParentID = parentID,
                 Name = folder.Info.Name,
                 SizeInBytes = folder.SizeInBytes,
-                StateImageIndex = 0,
+                CollapsedStateImageIndex = 8,
+                ExpandedStateImageIndex = 0,
                 FolderData = folder
             };
             structure.Add(folderNode);
@@ -171,7 +172,8 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                     ParentID = folderNode.ID,
                     Name = file.Name,
                     SizeInBytes = file.Length,
-                    StateImageIndex = 1,
+                    CollapsedStateImageIndex = 1,
+                    ExpandedStateImageIndex = 1,
                     FileData = file
                 };
                 structure.Add(fileNode);
@@ -236,7 +238,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         private void treeListFolderStructure_GetStateImage(object sender, GetStateImageEventArgs e)
         {
             var diskItem = getDiskItemFromNode(e.Node);
-            e.NodeImageIndex = diskItem.StateImageIndex;
+            e.NodeImageIndex = e.Node.Expanded ? diskItem.ExpandedStateImageIndex : diskItem.CollapsedStateImageIndex;
         }
 
         private void treeListFolderStructure_BeforeExpand(object sender, BeforeExpandEventArgs e)
