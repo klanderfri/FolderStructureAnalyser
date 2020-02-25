@@ -98,7 +98,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// </summary>
         [Category("Analyse")]
         [Description("Occurs when the analysis is called to be done.")]
-        public event DoFolderStructureAnalysisHandler DoFolderStructureAnalysis;
+        protected event DoFolderStructureAnalysisHandler DoFolderStructureAnalysis;
 
         /// <summary>
         /// Eventhandler for the event used when the control is about to start analysing a folder structure.
@@ -126,7 +126,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// </summary>
         /// <param name="sender">The user control raising the event.</param>
         /// <param name="e">The arguments for the event.</param>
-        public delegate void DoFolderStructureAnalysisHandler(object sender, DoWorkEventArgs e);
+        protected delegate void DoFolderStructureAnalysisHandler(object sender, DoWorkEventArgs e);
 
         /// <summary>
         /// Method raising the event used when the folder structure analysis is about to start.

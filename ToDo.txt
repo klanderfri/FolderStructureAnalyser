@@ -24,4 +24,3 @@ Functionality
 	Add unavailable folders to the information panel.
 	Find out how to make FirstOrDefault search most efficently when the item most likely is in the end (method: OperationMessageLogCtrl.removeLogMessage).
 	Is it possible to add shortcut commands for certain functionalities? Like Ctrl+A to run an analysis of the folder structure?
-	The analyser controls shouldn't subscribe events from parent control but use the On-methods, and the DoFolderStructureAnalysis shouldn't be public.
