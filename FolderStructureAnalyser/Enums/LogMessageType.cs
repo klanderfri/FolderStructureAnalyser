@@ -9,11 +9,25 @@ namespace FolderStructureAnalyser.Enums
     public enum LogMessageType
     {
         /// <summary>
-        /// Log message telling that the runtime of an operation was updatedd.
+        /// Log message telling that an operation is about to start.
+        /// </summary>
+        [Display(Name = "Operation starting")]
+        [Description("Log message telling that an operation is about to start.")]
+        OperationStarting,
+
+        /// <summary>
+        /// Log message telling that the runtime of an operation has been updated.
         /// </summary>
         [Display(Name = "Operation runtime update")]
-        [Description("Log message telling that the runtime of an operation was updatedd.")]
+        [Description("Log message telling that the runtime of an operation has been updated.")]
         OperationRuntimeUpdate,
+
+        /// <summary>
+        /// Log message telling that an operation has finished.
+        /// </summary>
+        [Display(Name = "Operation finished")]
+        [Description("Log message telling that an operation has finished.")]
+        OperationFinished,
 
         /// <summary>
         /// Any other log message.
