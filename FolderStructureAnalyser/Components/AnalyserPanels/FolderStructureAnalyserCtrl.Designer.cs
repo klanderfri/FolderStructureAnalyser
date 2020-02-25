@@ -68,7 +68,7 @@
             this.treeListColumnName.FieldName = "Name";
             this.treeListColumnName.Name = "treeListColumnName";
             this.treeListColumnName.OptionsColumn.AllowEdit = false;
-            this.treeListColumnName.ToolTip = "The name of the folder.";
+            this.treeListColumnName.ToolTip = "The name of the file/folder.";
             this.treeListColumnName.Visible = true;
             this.treeListColumnName.VisibleIndex = 0;
             this.treeListColumnName.Width = 300;
@@ -80,7 +80,8 @@
             this.treeListColumnSize.FieldName = "SizeInBytes";
             this.treeListColumnSize.Name = "treeListColumnSize";
             this.treeListColumnSize.OptionsColumn.AllowEdit = false;
-            this.treeListColumnSize.ToolTip = "The total size of the folder, including files and subfolders.";
+            this.treeListColumnSize.ToolTip = "The size of the file or the total size of the folder, including files and subfold" +
+    "ers.";
             this.treeListColumnSize.Visible = true;
             this.treeListColumnSize.VisibleIndex = 1;
             // 
@@ -96,7 +97,7 @@
             this.treeListColumnOpen.FieldName = "Open";
             this.treeListColumnOpen.Name = "treeListColumnOpen";
             this.treeListColumnOpen.OptionsColumn.AllowEdit = false;
-            this.treeListColumnOpen.ToolTip = "Double click the icon to open the folder in Windows Explorer.";
+            this.treeListColumnOpen.ToolTip = "Double click the icon to open the file/folder in Windows Explorer.";
             this.treeListColumnOpen.Visible = true;
             this.treeListColumnOpen.VisibleIndex = 2;
             this.treeListColumnOpen.Width = 50;
