@@ -40,50 +40,50 @@ namespace FolderStructureAnalyser.DataObjects
             switch (diffType)
             {
                 case DifferenceType.SubfolderMissing:
-                    ItemTypeImageIndex = 0;
-                    DifferenceTypeImageIndex = 4;
+                    ItemTypeImageIndex = 1;
+                    DifferenceTypeImageIndex = 5;
                     Description = "The clone is missing a subfolder.";
                     break;
 
                 case DifferenceType.SubfolderAdditional:
-                    ItemTypeImageIndex = 0;
-                    DifferenceTypeImageIndex = 3;
+                    ItemTypeImageIndex = 1;
+                    DifferenceTypeImageIndex = 4;
                     Description = "The clone has an additional subfolder.";
                     break;
 
                 case DifferenceType.SubfolderAttributesDiffer:
-                    ItemTypeImageIndex = 0;
-                    DifferenceTypeImageIndex = 6;
+                    ItemTypeImageIndex = 1;
+                    DifferenceTypeImageIndex = 7;
                     Description = "The clone subfolder has different attributes.";
                     break;
 
                 case DifferenceType.FileMissing:
-                    ItemTypeImageIndex = 1;
-                    DifferenceTypeImageIndex = 4;
+                    ItemTypeImageIndex = 2;
+                    DifferenceTypeImageIndex = 5;
                     Description = "The clone is missing a file.";
                     break;
 
                 case DifferenceType.FileAdditional:
-                    ItemTypeImageIndex = 1;
-                    DifferenceTypeImageIndex = 3;
+                    ItemTypeImageIndex = 2;
+                    DifferenceTypeImageIndex = 4;
                     Description = "The clone has an additional file.";
                     break;
 
                 case DifferenceType.FileAttributesDiffer:
-                    ItemTypeImageIndex = 1;
-                    DifferenceTypeImageIndex = 6;
+                    ItemTypeImageIndex = 2;
+                    DifferenceTypeImageIndex = 7;
                     Description = "The clone file has different attributes.";
                     break;
 
                 case DifferenceType.FileSizeDiffer:
-                    ItemTypeImageIndex = 1;
-                    DifferenceTypeImageIndex = 5;
+                    ItemTypeImageIndex = 2;
+                    DifferenceTypeImageIndex = 6;
                     Description = "The clone file has a different size.";
                     break;
 
                 case DifferenceType.FileHashDiffer:
-                    ItemTypeImageIndex = 1;
-                    DifferenceTypeImageIndex = 7;
+                    ItemTypeImageIndex = 2;
+                    DifferenceTypeImageIndex = 8;
                     Description = "The clone file has a different hash code.";
                     break;
 

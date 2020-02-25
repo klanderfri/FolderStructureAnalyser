@@ -57,6 +57,7 @@
             // 
             // svgImageCollectionIcons
             // 
+            this.svgImageCollectionIcons.Add("collapsedFolder", "image://svgimages/icon builder/actions_folderclose.svg");
             this.svgImageCollectionIcons.Add("expandedFolder", "image://svgimages/actions/open.svg");
             this.svgImageCollectionIcons.Add("file", "image://svgimages/actions/new.svg");
             this.svgImageCollectionIcons.Add("open", "image://svgimages/actions/open2.svg");
@@ -65,7 +66,6 @@
             this.svgImageCollectionIcons.Add("size", "image://svgimages/outlook inspired/fittopage.svg");
             this.svgImageCollectionIcons.Add("attributes", "image://svgimages/setup/properties.svg");
             this.svgImageCollectionIcons.Add("hash", "image://svgimages/reports/barcodeshowtext.svg");
-            this.svgImageCollectionIcons.Add("collapsedFolder", "image://svgimages/icon builder/actions_folderclose.svg");
             // 
             // FolderStructureParentCtrl
             // 

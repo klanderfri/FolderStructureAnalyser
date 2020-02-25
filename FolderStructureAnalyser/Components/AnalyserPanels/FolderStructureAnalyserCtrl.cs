@@ -148,8 +148,8 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 ParentID = parentID,
                 Name = folder.Info.Name,
                 SizeInBytes = folder.SizeInBytes,
-                CollapsedStateImageIndex = 8,
-                ExpandedStateImageIndex = 0,
+                CollapsedStateImageIndex = 0,
+                ExpandedStateImageIndex = 1,
                 FolderData = folder
             };
             structure.Add(folderNode);
@@ -172,8 +172,8 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                     ParentID = folderNode.ID,
                     Name = file.Name,
                     SizeInBytes = file.Length,
-                    CollapsedStateImageIndex = 1,
-                    ExpandedStateImageIndex = 1,
+                    CollapsedStateImageIndex = 2,
+                    ExpandedStateImageIndex = 2,
                     FileData = file
                 };
                 structure.Add(fileNode);
@@ -217,7 +217,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             }
             if (e.Column == treeListColumnOpen)
             {
-                DrawCellNodeIcon(e, e.Column.Width, 2);
+                DrawCellNodeIcon(e, e.Column.Width, 3);
             }
         }
 
