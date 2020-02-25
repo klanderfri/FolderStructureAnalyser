@@ -15,7 +15,7 @@ Graphical updates
 	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
 	Add information to the comparer about how many difference was found.
 	Change folder icon depending on the node being expanded or collapsed.
-	Update the tree list hints now when there are files in the tree.
+	Update the tree list when a big folder setting has been changed.
 	
 Functionality
 	Make the BackgroundWorker report a difference object back so the grid can be updated while the user is waiting.
