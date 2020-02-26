@@ -14,7 +14,6 @@ Graphical updates
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
 	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
 	Add information to the comparer about how many difference was found.
-	Update the tree list when a big folder setting has been changed.
 	
 Functionality
 	Make the BackgroundWorker report a difference object back so the grid can be updated while the user is waiting.

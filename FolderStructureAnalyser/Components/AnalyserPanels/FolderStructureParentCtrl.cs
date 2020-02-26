@@ -217,8 +217,9 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             LastKnownRootFormPosition = Session.RootForm.Location;
             LastKnownSize = Size;
             Session.RootForm.Move += RootForm_Move;
+            Session.MessageLog.LogMessageAdded += MessageLog_LogMessageAdded;
         }
-        
+
         /// <summary>
         /// Lets the user select a folder.
         /// </summary>
@@ -426,6 +427,17 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
 
             //Update the known parent position.
             LastKnownRootFormPosition = Session.RootForm.Location;
+        }
+
+        private void MessageLog_LogMessageAdded(object sender, LogMessageAddedArgs e)
+        {
+            if (e.Type == LogMessageType.SettingChanged)
+            {
+                foreach (var child in Controls)
+                {
+                    (child as Control).Refresh();
+                }
+            }
         }
 
         private void FolderStructureParentCtrl_Resize(object sender, EventArgs e)

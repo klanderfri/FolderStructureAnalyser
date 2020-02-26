@@ -55,20 +55,6 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             InitializeComponent();
         }
 
-        public override void SetSession(Session session)
-        {
-            base.SetSession(session);
-            Session.MessageLog.LogMessageAdded += MessageLog_LogMessageAdded;
-        }
-
-        private void MessageLog_LogMessageAdded(object sender, LogMessageAddedArgs e)
-        {
-            if (e.Type == LogMessageType.SettingChanged)
-            {
-                gridControl1.Refresh();
-            }
-        }
-
         /// <summary>
         /// Runs the comparison of the folder structures.
         /// </summary>
