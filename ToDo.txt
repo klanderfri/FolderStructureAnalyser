@@ -24,3 +24,4 @@ Functionality
 	Is it possible to add shortcut commands for certain functionalities? Like Ctrl+A to run an analysis of the folder structure?
 	Add log message for cancelled operation.
 	Add the original sender to log messages.
+	Add more information to the log messages about changed settings.
