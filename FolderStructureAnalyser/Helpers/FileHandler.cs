@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Xml.Serialization;
 
 namespace FolderStructureAnalyser.Helpers
 {
@@ -171,6 +172,60 @@ namespace FolderStructureAnalyser.Helpers
             var secondHash = GetHash(secondFilePath);
 
             return firstHash.SequenceEqual(secondHash);
+        }
+
+        /// <summary>
+        /// Stores an object as a XML file on disk.
+        /// </summary>
+        /// <typeparam name="T">The type of the object.</typeparam>
+        /// <param name="objectToStore">The object to store on disk.</param>
+        /// <param name="xmlFileName">The name of the file to store the object in.</param>
+        public static void SaveObjectAsXML<T>(object objectToStore, string xmlFileName)
+        {
+            var serializer = new XmlSerializer(typeof(T));
+            using (var writer = new StreamWriter(xmlFileName))
+            {
+                serializer.Serialize(writer, objectToStore);
+            }
+        }
+
+        /// <summary>
+        /// Loads an object from a XML file on disk.
+        /// </summary>
+        /// <typeparam name="T">The type of the object.</typeparam>
+        /// <param name="xmlFileName">The name of the file to fetch the object from.</param>
+        /// <returns>The object loaded from disk.</returns>
+        public static T LoadObjectFromXML<T>(string xmlFileName)
+        {
+            if (!File.Exists(xmlFileName)) { return default(T); }
+
+            var serializer = new XmlSerializer(typeof(T));
+            using (var reader = new StreamReader(xmlFileName))
+            {
+                return (T)serializer.Deserialize(reader);
+            }
+        }
+
+        /// <summary>
+        /// Checks if a file has a valid file name.
+        /// </summary>
+        /// <param name="fileInfo">The file to check.</param>
+        /// <param name="targetExtension">The extension the file should have.</param>
+        /// <returns>TRUE if the file has a valid file name, else FALSE.</returns>
+        public static bool HasValidFileName(this FileInfo fileInfo, string targetExtension = null)
+        {
+            //Verify that we got a file name.
+            if (String.IsNullOrWhiteSpace(fileInfo.Name)) { return false; }
+
+            //Verify that the file name can be used for an XML file.
+            if (targetExtension != null)
+            {
+                var extension = fileInfo.Extension.ToLowerInvariant();
+                if (extension != targetExtension) { return false; }
+            }
+
+            //Everything seems OK.
+            return true;
         }
     }
 }
