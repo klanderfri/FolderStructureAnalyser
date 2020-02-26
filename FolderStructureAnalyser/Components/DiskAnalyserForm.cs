@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using DevExpress.XtraBars;
+﻿using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.SessionBound;
