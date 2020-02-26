@@ -205,27 +205,5 @@ namespace FolderStructureAnalyser.Helpers
                 return (T)serializer.Deserialize(reader);
             }
         }
-
-        /// <summary>
-        /// Checks if a file has a valid file name.
-        /// </summary>
-        /// <param name="fileInfo">The file to check.</param>
-        /// <param name="targetExtension">The extension the file should have.</param>
-        /// <returns>TRUE if the file has a valid file name, else FALSE.</returns>
-        public static bool HasValidFileName(this FileInfo fileInfo, string targetExtension = null)
-        {
-            //Verify that we got a file name.
-            if (String.IsNullOrWhiteSpace(fileInfo.Name)) { return false; }
-
-            //Verify that the file name can be used for an XML file.
-            if (targetExtension != null)
-            {
-                var extension = fileInfo.Extension.ToLowerInvariant();
-                if (extension != targetExtension) { return false; }
-            }
-
-            //Everything seems OK.
-            return true;
-        }
     }
 }
