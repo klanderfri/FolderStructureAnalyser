@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiskAnalyserForm));
             DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.documentGroupAnalyses = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             this.documentAnalyseStructure = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.documentCompareStructures = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
@@ -65,6 +66,7 @@
             this.dockPanelAnalyseStructure_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.documentManagerAnalyses = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedViewAnalyses = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroupAnalyses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentAnalyseStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentCompareStructures)).BeginInit();
@@ -460,6 +462,13 @@
             this.tabbedViewAnalyses.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
             dockingContainer1});
             // 
+            // workspaceManager1
+            // 
+            this.workspaceManager1.AllowTransitionAnimation = DevExpress.Utils.DefaultBoolean.False;
+            this.workspaceManager1.SaveTargetControlSettings = true;
+            this.workspaceManager1.TargetControl = this;
+            this.workspaceManager1.TransitionType = pushTransition1;
+            // 
             // DiskAnalyserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -472,6 +481,8 @@
             this.Name = "DiskAnalyserForm";
             this.Ribbon = this.ribbonControlAnalyserApplication;
             this.Text = "Disk Analyser";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DiskAnalyserForm_FormClosed);
+            this.Load += new System.EventHandler(this.DiskAnalyserForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroupAnalyses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentAnalyseStructure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentCompareStructures)).EndInit();
@@ -531,6 +542,7 @@
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private UserPanels.OperationMessageLogCtrl operationMessageLogCtrl;
         private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerBottom;
+        private DevExpress.Utils.WorkspaceManager workspaceManager1;
     }
 }
 

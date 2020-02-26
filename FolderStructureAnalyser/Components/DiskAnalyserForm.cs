@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraBars;
+﻿using System;
+using System.Windows.Forms;
+using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.SessionBound;
@@ -8,6 +10,16 @@ namespace FolderStructureAnalyser.Components
     public partial class DiskAnalyserForm : RibbonForm, ISessionBound
     {
         public Session Session { get; set; }
+
+        /// <summary>
+        /// The name of the last layout the user had.
+        /// </summary>
+        private string LastUserLayoutName { get; } = "LastUserLayout";
+
+        /// <summary>
+        /// The name of the file containing the last layout the user had.
+        /// </summary>
+        private string LastUserLayoutFile { get; } = "LastUserLayout.xml";
 
         /// <summary>
         /// The root path selected before the current one.
@@ -108,6 +120,20 @@ namespace FolderStructureAnalyser.Components
         private void barButtonItemUpdateComparer_ItemClick(object sender, ItemClickEventArgs e)
         {
             folderStructureComparerCtrl.RefreshData();
+        }
+
+        private void DiskAnalyserForm_Load(object sender, EventArgs e)
+        {
+            if (workspaceManager1.LoadWorkspace(LastUserLayoutName, LastUserLayoutFile, true))
+            {
+                workspaceManager1.ApplyWorkspace(LastUserLayoutName);
+            }
+        }
+
+        private void DiskAnalyserForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            workspaceManager1.CaptureWorkspace(LastUserLayoutName, true);
+            workspaceManager1.SaveWorkspace(LastUserLayoutName, LastUserLayoutFile, true);
         }
     }
 }
