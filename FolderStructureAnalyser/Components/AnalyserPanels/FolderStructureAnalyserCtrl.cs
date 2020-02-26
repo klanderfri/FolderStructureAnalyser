@@ -201,7 +201,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             return isBigFolder ? Session.Settings.BigFolderColour : Color.Black;
         }
 
-        private void repositoryItemTextEditFileSizeEdit_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        private void repositoryItemTextEditFileSize_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
         {
             //Show the size (in MB, GB, etc) instead of just the bytes.
             var sizeInBytes = Convert.ToInt64(e.Value);

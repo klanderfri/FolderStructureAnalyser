@@ -89,7 +89,7 @@
             // 
             this.repositoryItemTextEditFileSize.AutoHeight = false;
             this.repositoryItemTextEditFileSize.Name = "repositoryItemTextEditFileSize";
-            this.repositoryItemTextEditFileSize.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.repositoryItemTextEditFileSizeEdit_CustomDisplayText);
+            this.repositoryItemTextEditFileSize.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.repositoryItemTextEditFileSize_CustomDisplayText);
             // 
             // treeListColumnOpen
             // 
