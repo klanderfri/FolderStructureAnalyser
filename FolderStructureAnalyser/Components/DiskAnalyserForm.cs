@@ -124,16 +124,16 @@ namespace FolderStructureAnalyser.Components
 
         private void DiskAnalyserForm_Load(object sender, EventArgs e)
         {
-            if (workspaceManager1.LoadWorkspace(LastUserLayoutName, LastUserLayoutFile, true))
+            if (workspaceManager.LoadWorkspace(LastUserLayoutName, LastUserLayoutFile, true))
             {
-                workspaceManager1.ApplyWorkspace(LastUserLayoutName);
+                workspaceManager.ApplyWorkspace(LastUserLayoutName);
             }
         }
 
         private void DiskAnalyserForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            workspaceManager1.CaptureWorkspace(LastUserLayoutName, true);
-            workspaceManager1.SaveWorkspace(LastUserLayoutName, LastUserLayoutFile, true);
+            workspaceManager.CaptureWorkspace(LastUserLayoutName, true);
+            workspaceManager.SaveWorkspace(LastUserLayoutName, LastUserLayoutFile, true);
         }
     }
 }

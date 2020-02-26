@@ -66,7 +66,7 @@
             this.dockPanelAnalyseStructure_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.documentManagerAnalyses = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedViewAnalyses = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
-            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager(this.components);
+            this.workspaceManager = new DevExpress.Utils.WorkspaceManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroupAnalyses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentAnalyseStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentCompareStructures)).BeginInit();
@@ -462,12 +462,12 @@
             this.tabbedViewAnalyses.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
             dockingContainer1});
             // 
-            // workspaceManager1
+            // workspaceManager
             // 
-            this.workspaceManager1.AllowTransitionAnimation = DevExpress.Utils.DefaultBoolean.False;
-            this.workspaceManager1.SaveTargetControlSettings = true;
-            this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager.AllowTransitionAnimation = DevExpress.Utils.DefaultBoolean.False;
+            this.workspaceManager.SaveTargetControlSettings = true;
+            this.workspaceManager.TargetControl = this;
+            this.workspaceManager.TransitionType = pushTransition1;
             // 
             // DiskAnalyserForm
             // 
@@ -542,7 +542,7 @@
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private UserPanels.OperationMessageLogCtrl operationMessageLogCtrl;
         private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerBottom;
-        private DevExpress.Utils.WorkspaceManager workspaceManager1;
+        private DevExpress.Utils.WorkspaceManager workspaceManager;
     }
 }
 
