@@ -27,6 +27,13 @@ namespace FolderStructureAnalyser.Enums
         /// </summary>
         [Display(Name = "Operation finished")]
         [Description("Log message telling that an operation has finished.")]
-        OperationFinished
+        OperationFinished,
+
+        /// <summary>
+        /// Log message telling that an application setting has been changed.
+        /// </summary>
+        [Display(Name = "Setting changed")]
+        [Description("Log message telling that an application setting has been changed.")]
+        SettingChanged
     }
 }

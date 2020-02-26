@@ -52,6 +52,8 @@ namespace FolderStructureAnalyser.Events
                     return "Current {0} runtime: {1} seconds.";
                 case LogMessageType.OperationFinished:
                     return "The {0} was finished.";
+                case LogMessageType.SettingChanged:
+                    return "The application settings were changed.";
                 default:
                     throw new UnhandledEnumException(typeof(LogMessageType), type);
             }
