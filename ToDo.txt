@@ -4,6 +4,7 @@ Session
 
 Code smell
 	It doesnt look good that DiskItemNode is validating its state in the IsFolder and not in a constructor.
+	Create better handling of colour settings. Right know there need to be 5 rows of duplicated code for each colour settings.
 
 Graphical updates
 	Create own application icon (in SVG-format).
