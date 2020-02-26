@@ -7,6 +7,7 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using FolderStructureAnalyser.DataObjects;
+using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
@@ -23,6 +24,12 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         public FolderStructureAnalyserCtrl()
         {
             InitializeComponent();
+        }
+
+        public override void SetSession(Session session)
+        {
+            base.SetSession(session);
+            Session.MessageLog.LogMessageAdded += MessageLog_LogMessageAdded;
         }
 
         /// <summary>
@@ -199,6 +206,14 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         {
             var isBigFolder = Session.Tools.IsBigFolder(folderSizeInBytes);
             return isBigFolder ? Session.Settings.BigFolderColour : Color.Black;
+        }
+
+        private void MessageLog_LogMessageAdded(object sender, LogMessageAddedArgs e)
+        {
+            if (e.Type == LogMessageType.SettingChanged)
+            {
+                treeListFolderStructure.Refresh();
+            }
         }
 
         private void repositoryItemTextEditFileSize_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)

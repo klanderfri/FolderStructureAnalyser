@@ -53,7 +53,6 @@
             // 
             // propertyGridControlAnalysingSettings
             // 
-            this.propertyGridControlAnalysingSettings.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.propertyGridControlAnalysingSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGridControlAnalysingSettings.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControlAnalysingSettings.Name = "propertyGridControlAnalysingSettings";
@@ -70,6 +69,7 @@
             this.categoryComparison});
             this.propertyGridControlAnalysingSettings.Size = new System.Drawing.Size(346, 439);
             this.propertyGridControlAnalysingSettings.TabIndex = 0;
+            this.propertyGridControlAnalysingSettings.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.propertyGridControlAnalysingSettings_CellValueChanged);
             // 
             // repositoryItemSpinEditBigFolderSizeLimit
             // 

@@ -19,5 +19,10 @@ namespace FolderStructureAnalyser.Components.UserPanels
             propertyGridControlAnalysingSettings.SelectedObject = Session.Settings;
             repositoryItemImageComboBoxSizeDisplayUnit.Items.AddEnum(typeof(SizeDisplayUnit));
         }
+
+        private void propertyGridControlAnalysingSettings_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
+        {
+            Session.MessageLog.AddLogMessage(LogMessageType.SettingChanged);
+        }
     }
 }
