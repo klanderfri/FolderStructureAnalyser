@@ -110,6 +110,7 @@
       <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Exceptions\UnhandledEnumException.cs" />
+    <Compile Include="Helpers\ColourHandler.cs" />
     <Compile Include="Helpers\FileHandler.cs" />
     <Compile Include="Helpers\GridHandler.cs" />
     <Compile Include="Helpers\MessageBoxes.cs" />

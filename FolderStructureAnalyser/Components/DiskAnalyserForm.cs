@@ -134,6 +134,7 @@ namespace FolderStructureAnalyser.Components
         {
             workspaceManager.CaptureWorkspace(LastUserLayoutName, true);
             workspaceManager.SaveWorkspace(LastUserLayoutName, LastUserLayoutFile, true);
+            Session.Settings.SaveSettings();
         }
     }
 }

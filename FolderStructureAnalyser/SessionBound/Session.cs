@@ -12,6 +12,7 @@ namespace FolderStructureAnalyser.SessionBound
 
             //Data holders.
             Settings = new Settings();
+            Settings.LoadSettings();
             RootForm = rootForm;
         }
 

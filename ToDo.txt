@@ -5,9 +5,6 @@ Session
 Code smell
 	It doesnt look good that DiskItemNode is validating its state in the IsFolder and not in a constructor.
 
-Settings
-	Save settings between runs.
-	
 Graphical updates
 	Create own application icon (in SVG-format).
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
@@ -24,4 +21,4 @@ Functionality
 	Add log message for cancelled operation.
 	Add the original sender to log messages.
 	Add more information to the log messages about changed settings.
-	Create better form/handling for application level exceptions (user input, sen-in functionality).
+	Create better form/handling for application level exceptions (user input, send-in functionality).
