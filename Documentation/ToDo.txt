@@ -8,21 +8,22 @@ Code smell
 
 Graphical updates
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
+
+User interactions
+	Add buttons for resetting settings and layout.
+	Create better form/handling for application level exceptions (user input, send-in functionality).
+	Add right-click/context menu for the tree list with options to remove the folder/file.
+	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
+	
+More grid information
 	Add unavailable folders to the information panel.
 	Add log message for cancelled operation.
 	Add more information to the log messages about changed settings.
-	Add information to the comparer about how many difference was found.
-	Add buttons for resetting settings and layout.
 	Add more information columns in the comparer grid (for example what attributes differ and the sizes of the files).
-	Create better form/handling for application level exceptions (user input, send-in functionality).
-	Add right-click/context menu for the tree list with options to remove the folder/file.
-	
-Functionality
-	Make the BackgroundWorker report a difference object back so the grid can be updated while the user is waiting.
-	Find out how to make FirstOrDefault search most efficently when the item most likely is in the end (method: OperationMessageLogCtrl.removeLogMessage).
 	Is it possible to add shortcut commands for certain functionalities? Like Ctrl+A to run an analysis of the folder structure?
-	Add the original sender to log messages.
 
-For version 1.0:
-	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
+Under the hood
+	Make the BackgroundWorker report a difference object back so the grid can be updated while the user is waiting
+	Find out how to make FirstOrDefault search most efficently when the item most likely is in the end (method: OperationMessageLogCtrl.removeLogMessage).
+	Add the original sender to log messages.
 	
