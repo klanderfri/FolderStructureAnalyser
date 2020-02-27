@@ -477,6 +477,7 @@
             this.Controls.Add(this.hideContainerBottom);
             this.Controls.Add(this.hideContainerRight);
             this.Controls.Add(this.ribbonControlAnalyserApplication);
+            this.Icon = Properties.Resources.FolderStructureAnalyserIcon_White;
             this.MinimumSize = new System.Drawing.Size(640, 400);
             this.Name = "DiskAnalyserForm";
             this.Ribbon = this.ribbonControlAnalyserApplication;
