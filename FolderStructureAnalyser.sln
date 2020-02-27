@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderStructureAnalyser", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{19164BA6-3C76-4FD4-AF0F-BB21532B8B5E}"
 	ProjectSection(SolutionItems) = preProject
+		Documentation\FolderStructureAnalyserIcon.svg = Documentation\FolderStructureAnalyserIcon.svg
 		Documentation\ToDo.txt = Documentation\ToDo.txt
 	EndProjectSection
 EndProject
