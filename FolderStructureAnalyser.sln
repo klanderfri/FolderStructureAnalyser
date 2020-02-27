@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderStructureAnalyser", "FolderStructureAnalyser\FolderStructureAnalyser.csproj", "{1E323868-72CE-439B-8CEA-E8BC6B9549D5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{80BF373B-555E-4C1E-B2E1-265CE0616CB2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{19164BA6-3C76-4FD4-AF0F-BB21532B8B5E}"
 	ProjectSection(SolutionItems) = preProject
-		ToDo.txt = ToDo.txt
+		Documentation\ToDo.txt = Documentation\ToDo.txt
 	EndProjectSection
 EndProject
 Global
