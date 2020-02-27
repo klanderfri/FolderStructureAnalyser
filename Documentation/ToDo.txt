@@ -24,6 +24,5 @@ Functionality
 	Add the original sender to log messages.
 
 For version 1.0:
-	Create own application icon (in SVG-format).
 	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
 	
