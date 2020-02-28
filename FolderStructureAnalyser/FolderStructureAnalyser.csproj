@@ -7,7 +7,7 @@
     <ProjectGuid>{1E323868-72CE-439B-8CEA-E8BC6B9549D5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FolderStructureAnalyser</RootNamespace>
-    <AssemblyName>FolderStructureAnalyser</AssemblyName>
+    <AssemblyName>Folder Structure Analyser</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

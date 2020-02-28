@@ -477,11 +477,11 @@
             this.Controls.Add(this.hideContainerBottom);
             this.Controls.Add(this.hideContainerRight);
             this.Controls.Add(this.ribbonControlAnalyserApplication);
-            this.Icon = Properties.Resources.FolderStructureAnalyserIcon_White;
+            this.Icon = global::FolderStructureAnalyser.Properties.Resources.FolderStructureAnalyserIcon_White;
             this.MinimumSize = new System.Drawing.Size(640, 400);
             this.Name = "DiskAnalyserForm";
             this.Ribbon = this.ribbonControlAnalyserApplication;
-            this.Text = "Disk Analyser";
+            this.Text = "Folder Structure Analyser";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DiskAnalyserForm_FormClosed);
             this.Load += new System.EventHandler(this.DiskAnalyserForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroupAnalyses)).EndInit();
