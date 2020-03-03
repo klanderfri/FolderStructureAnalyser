@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using FolderStructureAnalyser.Components;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
@@ -14,6 +15,7 @@ namespace FolderStructureAnalyser
         [STAThread]
         static void Main()
         {
+            WindowsFormsSettings.ScrollUIMode = ScrollUIMode.Fluent;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
