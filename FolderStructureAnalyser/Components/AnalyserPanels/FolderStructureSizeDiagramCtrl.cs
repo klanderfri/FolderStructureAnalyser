@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FolderStructureAnalyser.Helpers;
+using FolderStructureAnalyser.DataObjects;
 
 namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
@@ -18,9 +19,9 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             InitializeComponent();
         }
 
-        public void UpdateData(string rootPath)
+        public void UpdateData(FolderData root)
         {
-            SunburstDiagramHelper.SetupSunburstCtrl(sunburstControl1, rootPath);
+            SunburstDiagramHelper.SetupSunburstCtrl(sunburstControl1, root);
         }
     }
 }

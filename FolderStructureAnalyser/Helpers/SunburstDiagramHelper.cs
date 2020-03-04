@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using DevExpress.TreeMap;
 using DevExpress.Utils;
 using DevExpress.XtraTreeMap;
@@ -9,7 +8,7 @@ namespace FolderStructureAnalyser.Helpers
 {
     public static class SunburstDiagramHelper
     {
-        public static void SetupSunburstCtrl(SunburstControl sunburstCtrl, string rootPath)
+        public static void SetupSunburstCtrl(SunburstControl sunburstCtrl, FolderData root)
         {
             sunburstCtrl.BorderOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(160)))), ((int)(((byte)(170)))));
             sunburstCtrl.CenterLabel.TextPattern = "Root: {TV}";
@@ -22,7 +21,7 @@ namespace FolderStructureAnalyser.Helpers
             sunburstCtrl.TabIndex = 0;
             sunburstCtrl.ToolTipController = new ToolTipController();
 
-            setupDataAdapter(sunburstCtrl, rootPath);
+            setupDataAdapter(sunburstCtrl, root);
             setupColorizer(sunburstCtrl);
             setupToolTip(sunburstCtrl);
         }
@@ -51,10 +50,10 @@ namespace FolderStructureAnalyser.Helpers
             colorizer.Palette = Palette.BlueGreenPalette;
         }
 
-        private static void setupDataAdapter(SunburstControl sunburstCtrl, string rootPath)
+        private static void setupDataAdapter(SunburstControl sunburstCtrl, FolderData root)
         {
             var adapter = (SunburstHierarchicalDataAdapter)sunburstCtrl.DataAdapter;
-            loadData(adapter, rootPath);
+            loadData(adapter, root);
             addMappings(adapter);
         }
 
@@ -70,10 +69,8 @@ namespace FolderStructureAnalyser.Helpers
             adapter.Mappings.Add(mapping);
         }
 
-        private static void loadData(SunburstHierarchicalDataAdapter adapter, string rootPath)
+        private static void loadData(SunburstHierarchicalDataAdapter adapter, FolderData root)
         {
-            var root = new FolderData(new BackgroundWorker(), rootPath);
-
             var datas = new List<FolderData>();
             datas.AddRange(root.SubFolders);
 
