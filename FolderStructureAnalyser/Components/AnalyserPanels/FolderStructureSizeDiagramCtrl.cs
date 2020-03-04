@@ -13,6 +13,9 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
     {
         public Session Session { get; set; }
 
+        /// <summary>
+        /// The data adapter of the diagram control.
+        /// </summary>
         private SunburstHierarchicalDataAdapter DataAdapter
         {
             get { return sunburstControl1.DataAdapter as SunburstHierarchicalDataAdapter; }
@@ -29,9 +32,12 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             Session = session;
         }
 
+        /// <summary>
+        /// Updates the diagram and its data.
+        /// </summary>
+        /// <param name="root">The folder the diagram should use as root.</param>
         public void UpdateData(FolderData root)
         {
-            //Update data.
             var diskItems = new List<FolderData>();
             diskItems.AddRange(root.SubFolders);
             DataAdapter.DataSource = diskItems;
