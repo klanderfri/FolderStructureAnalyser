@@ -55,7 +55,7 @@
             this.treeListColumnName,
             this.treeListColumnSize,
             this.treeListColumnOpen});
-            this.treeListFolderStructure.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.treeListFolderStructure.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeListFolderStructure.CustomizationFormBounds = new System.Drawing.Rectangle(654, 155, 260, 232);
             this.treeListFolderStructure.Location = new System.Drawing.Point(12, 12);
             this.treeListFolderStructure.Name = "treeListFolderStructure";
