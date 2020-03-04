@@ -128,6 +128,10 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 var structure = e.Result as BindingList<DiskItemNode>;
                 updateDataSource(structure);
                 LastAnalysedStructure = structure;
+
+                //Update the sunburst diagram.
+                var root = LastAnalysedStructure.FirstOrDefault(i => i.ParentID == null).FolderData;
+                SunburstDiagramHelper.SetupSunburstCtrl(sunburstControl1, root.Info.FullName);
             }
         }
 

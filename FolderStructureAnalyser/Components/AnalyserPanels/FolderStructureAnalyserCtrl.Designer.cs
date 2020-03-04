@@ -33,8 +33,19 @@
             this.treeListColumnSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEditFileSize = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.sunburstControl1 = new DevExpress.XtraTreeMap.SunburstControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sunburstControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // treeListFolderStructure
@@ -45,14 +56,13 @@
             this.treeListColumnOpen});
             this.treeListFolderStructure.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeListFolderStructure.CustomizationFormBounds = new System.Drawing.Rectangle(654, 155, 260, 232);
-            this.treeListFolderStructure.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeListFolderStructure.Location = new System.Drawing.Point(0, 0);
+            this.treeListFolderStructure.Location = new System.Drawing.Point(12, 12);
             this.treeListFolderStructure.Name = "treeListFolderStructure";
             this.treeListFolderStructure.OptionsView.AutoWidth = false;
             this.treeListFolderStructure.OptionsView.ShowColumns = true;
             this.treeListFolderStructure.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEditFileSize});
-            this.treeListFolderStructure.Size = new System.Drawing.Size(570, 266);
+            this.treeListFolderStructure.Size = new System.Drawing.Size(747, 617);
             this.treeListFolderStructure.StateImageList = this.IconCollection;
             this.treeListFolderStructure.TabIndex = 0;
             this.treeListFolderStructure.ViewStyle = DevExpress.XtraTreeList.TreeListViewStyle.TreeView;
@@ -102,18 +112,73 @@
             this.treeListColumnOpen.VisibleIndex = 2;
             this.treeListColumnOpen.Width = 50;
             // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.sunburstControl1);
+            this.layoutControl1.Controls.Add(this.treeListFolderStructure);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(704, 362, 650, 400);
+            this.layoutControl1.Root = this.Root;
+            this.layoutControl1.Size = new System.Drawing.Size(1307, 641);
+            this.layoutControl1.TabIndex = 1;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // sunburstControl1
+            // 
+            this.sunburstControl1.Location = new System.Drawing.Point(763, 12);
+            this.sunburstControl1.Name = "sunburstControl1";
+            this.sunburstControl1.Size = new System.Drawing.Size(532, 617);
+            this.sunburstControl1.TabIndex = 4;
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(1307, 641);
+            this.Root.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.treeListFolderStructure;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(751, 621);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.sunburstControl1;
+            this.layoutControlItem2.Location = new System.Drawing.Point(751, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(536, 621);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
             // FolderStructureAnalyserCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.treeListFolderStructure);
+            this.Controls.Add(this.layoutControl1);
             this.Name = "FolderStructureAnalyserCtrl";
-            this.Size = new System.Drawing.Size(570, 266);
+            this.Size = new System.Drawing.Size(1307, 641);
             this.WaitFormDescription = "Structure size analysis in progress...";
             this.FolderStructureAnalysisFinished += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.FolderStructureAnalysisFinishedHandler(this.FolderStructureAnalyserCtrl_FolderStructureAnalysisFinished);
             this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureAnalyserCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sunburstControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,5 +190,10 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnSize;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSize;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraTreeMap.SunburstControl sunburstControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }

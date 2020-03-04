@@ -11,6 +11,11 @@ namespace FolderStructureAnalyser.DataObjects
     public class FolderData
     {
         /// <summary>
+        /// The name of the folder.
+        /// </summary>
+        public string Name { get { return Info.Name; } }
+
+        /// <summary>
         /// The information about the folder.
         /// </summary>
         public DirectoryInfo Info { get; private set; }
