@@ -25,6 +25,12 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             InitializeComponent();
         }
 
+        public override void SetSession(Session session)
+        {
+            base.SetSession(session);
+            folderStructureSizeDiagramCtrl.SetSession(session);
+        }
+
         /// <summary>
         /// Runs the analysis of the folder structure.
         /// </summary>

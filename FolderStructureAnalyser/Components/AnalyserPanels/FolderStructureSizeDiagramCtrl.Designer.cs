@@ -50,6 +50,7 @@
             this.sunburstControl1.HoleRadiusPercent = 25;
             this.sunburstControl1.Location = new System.Drawing.Point(0, 0);
             this.sunburstControl1.Name = "sunburstControl1";
+            this.sunburstControl1.ShowCenterLabel = false;
             this.sunburstControl1.Size = new System.Drawing.Size(527, 391);
             this.sunburstControl1.TabIndex = 0;
             this.sunburstControl1.ToolTipController = this.toolTipController1;
