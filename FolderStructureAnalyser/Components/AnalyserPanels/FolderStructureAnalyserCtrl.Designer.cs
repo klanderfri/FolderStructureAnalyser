@@ -33,6 +33,7 @@
             this.treeListColumnSize = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEditFileSize = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumnBytes = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.folderStructureSizeDiagramCtrl = new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureSizeDiagramCtrl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -54,11 +55,13 @@
             this.treeListFolderStructure.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumnName,
             this.treeListColumnSize,
-            this.treeListColumnOpen});
+            this.treeListColumnOpen,
+            this.treeListColumnBytes});
             this.treeListFolderStructure.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeListFolderStructure.CustomizationFormBounds = new System.Drawing.Rectangle(654, 155, 260, 232);
             this.treeListFolderStructure.Location = new System.Drawing.Point(12, 12);
             this.treeListFolderStructure.Name = "treeListFolderStructure";
+            this.treeListFolderStructure.OptionsBehavior.PopulateServiceColumns = true;
             this.treeListFolderStructure.OptionsView.AutoWidth = false;
             this.treeListFolderStructure.OptionsView.ShowColumns = true;
             this.treeListFolderStructure.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -113,10 +116,17 @@
             this.treeListColumnOpen.VisibleIndex = 2;
             this.treeListColumnOpen.Width = 50;
             // 
+            // treeListColumnBytes
+            // 
+            this.treeListColumnBytes.Caption = "Bytes";
+            this.treeListColumnBytes.FieldName = "SizeInBytes";
+            this.treeListColumnBytes.Name = "treeListColumnBytes";
+            this.treeListColumnBytes.OptionsColumn.AllowEdit = false;
+            this.treeListColumnBytes.ToolTip = "The total size in bytes.";
+            this.treeListColumnBytes.Width = 90;
+            // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.folderStructureSizeDiagramCtrl);
-            this.layoutControl1.Controls.Add(this.treeListFolderStructure);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -205,5 +215,6 @@
         private FolderStructureSizeDiagramCtrl folderStructureSizeDiagramCtrl;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.SplitterItem splitterItem1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnBytes;
     }
 }

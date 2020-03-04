@@ -189,7 +189,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 structure.Add(fileNode);
             }
         }
-        
+
         /// <summary>
         /// Extracts the disk item from a tree node.
         /// </summary>
