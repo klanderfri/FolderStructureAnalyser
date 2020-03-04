@@ -5,15 +5,18 @@ Session
 Code smell
 	It doesnt look good that DiskItemNode is validating its state in the IsFolder and not in a constructor.
 	Create better handling of colour settings. Right know there need to be 5 rows of duplicated code for each colour settings.
+	Could FolderData be replaced by something handling both folders and files, and could that class be used instead of DiskItemNode?
 
 Graphical updates
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
+	The sunbrust diagram should include files.
 
 User interactions
 	Add buttons for resetting settings and layout.
 	Create better form/handling for application level exceptions (user input, send-in functionality).
 	Add right-click/context menu for the tree list with options to remove the folder/file.
 	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
+	Make the sunburst diagram open the folder when double clicked.
 	
 More grid information
 	Add unavailable folders to the information panel.
