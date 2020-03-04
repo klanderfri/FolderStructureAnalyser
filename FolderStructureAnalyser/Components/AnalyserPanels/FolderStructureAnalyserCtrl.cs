@@ -131,7 +131,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
 
                 //Update the sunburst diagram.
                 var root = LastAnalysedStructure.FirstOrDefault(i => i.ParentID == null).FolderData;
-                SunburstDiagramHelper.SetupSunburstCtrl(sunburstControl1, root.Info.FullName);
+                folderStructureSizeDiagramCtrl.UpdateData(root.Info.FullName);
             }
         }
 

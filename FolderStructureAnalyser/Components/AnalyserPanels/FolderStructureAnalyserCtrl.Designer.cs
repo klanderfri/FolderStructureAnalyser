@@ -34,15 +34,14 @@
             this.repositoryItemTextEditFileSize = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.treeListColumnOpen = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.sunburstControl1 = new DevExpress.XtraTreeMap.SunburstControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.folderStructureSizeDiagramCtrl = new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureSizeDiagramCtrl();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sunburstControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -62,7 +61,7 @@
             this.treeListFolderStructure.OptionsView.ShowColumns = true;
             this.treeListFolderStructure.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEditFileSize});
-            this.treeListFolderStructure.Size = new System.Drawing.Size(747, 617);
+            this.treeListFolderStructure.Size = new System.Drawing.Size(709, 617);
             this.treeListFolderStructure.StateImageList = this.IconCollection;
             this.treeListFolderStructure.TabIndex = 0;
             this.treeListFolderStructure.ViewStyle = DevExpress.XtraTreeList.TreeListViewStyle.TreeView;
@@ -114,7 +113,7 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.sunburstControl1);
+            this.layoutControl1.Controls.Add(this.folderStructureSizeDiagramCtrl);
             this.layoutControl1.Controls.Add(this.treeListFolderStructure);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
@@ -124,13 +123,6 @@
             this.layoutControl1.Size = new System.Drawing.Size(1307, 641);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // sunburstControl1
-            // 
-            this.sunburstControl1.Location = new System.Drawing.Point(763, 12);
-            this.sunburstControl1.Name = "sunburstControl1";
-            this.sunburstControl1.Size = new System.Drawing.Size(532, 617);
-            this.sunburstControl1.TabIndex = 4;
             // 
             // Root
             // 
@@ -148,16 +140,23 @@
             this.layoutControlItem1.Control = this.treeListFolderStructure;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(751, 621);
+            this.layoutControlItem1.Size = new System.Drawing.Size(713, 621);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
+            // folderStructureSizeDiagramCtrl
+            // 
+            this.folderStructureSizeDiagramCtrl.Location = new System.Drawing.Point(725, 12);
+            this.folderStructureSizeDiagramCtrl.Name = "folderStructureSizeDiagramCtrl";
+            this.folderStructureSizeDiagramCtrl.Size = new System.Drawing.Size(570, 617);
+            this.folderStructureSizeDiagramCtrl.TabIndex = 4;
+            // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.sunburstControl1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(751, 0);
+            this.layoutControlItem2.Control = this.folderStructureSizeDiagramCtrl;
+            this.layoutControlItem2.Location = new System.Drawing.Point(713, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(536, 621);
+            this.layoutControlItem2.Size = new System.Drawing.Size(574, 621);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -175,7 +174,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sunburstControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -191,9 +189,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditFileSize;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumnOpen;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraTreeMap.SunburstControl sunburstControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private FolderStructureSizeDiagramCtrl folderStructureSizeDiagramCtrl;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }
