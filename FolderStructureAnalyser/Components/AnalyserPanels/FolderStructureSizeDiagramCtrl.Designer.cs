@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraTreeMap.SunburstPaletteColorizer sunburstPaletteColorizer1 = new DevExpress.XtraTreeMap.SunburstPaletteColorizer();
             DevExpress.XtraTreeMap.SunburstHierarchicalDataAdapter sunburstHierarchicalDataAdapter1 = new DevExpress.XtraTreeMap.SunburstHierarchicalDataAdapter();
             DevExpress.XtraTreeMap.SunburstHierarchicalDataMapping sunburstHierarchicalDataMapping1 = new DevExpress.XtraTreeMap.SunburstHierarchicalDataMapping();
             this.sunburstControl1 = new DevExpress.XtraTreeMap.SunburstControl();
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.sunburstControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             this.sunburstControl1.CenterLabel.TextPattern = "Root: {TV}";
             sunburstPaletteColorizer1.Palette = DevExpress.XtraTreeMap.Palette.GreenPalette;
             this.sunburstControl1.Colorizer = sunburstPaletteColorizer1;
-            sunburstHierarchicalDataMapping1.ChildrenDataMember = "SubFolders";
+            sunburstHierarchicalDataMapping1.ChildrenDataMember = "SubItems";
             sunburstHierarchicalDataMapping1.LabelDataMember = "Name";
             sunburstHierarchicalDataMapping1.ValueDataMember = "SizeInBytes";
             sunburstHierarchicalDataAdapter1.Mappings.Add(sunburstHierarchicalDataMapping1);
