@@ -9,8 +9,7 @@ Code smell
 
 Graphical updates
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
-	The sunbrust diagram should include files.
-	The sunburst diagram should update when teh user sets a new root in the tree.
+	The sunburst diagram should update when the user sets a new root in the tree.
 
 User interactions
 	Add buttons for resetting settings and layout.

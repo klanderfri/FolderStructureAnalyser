@@ -46,10 +46,11 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         private void toolTipController1_BeforeShow(object sender, ToolTipControllerShowEventArgs e)
         {
             var sunburstItem = (ISunburstItem)e.SelectedObject;
-            var folder = sunburstItem.Tag as DiskItemData;
+            var diskItem = sunburstItem.Tag as DiskItemData;
             var superToolTip = new SuperToolTip() { MaxWidth = 400 };
-            superToolTip.Items.Add(new ToolTipTitleItem() { Text = folder.Name });
+            superToolTip.Items.Add(new ToolTipTitleItem() { Text = diskItem.Name });
             superToolTip.Items.Add(new ToolTipSeparatorItem());
+            superToolTip.Items.Add(new ToolTipItem() { Text = diskItem.IsFolder ? "Folder" : "File" });
             superToolTip.Items.Add(new ToolTipItem() { Text = "Size: " + ByteSizeConverter.SizeStringFromByte((long)sunburstItem.Value, Session.Settings.SizeDisplayUnit) });
 
             e.SuperTip = superToolTip;
