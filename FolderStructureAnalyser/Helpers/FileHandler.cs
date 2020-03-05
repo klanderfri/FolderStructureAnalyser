@@ -118,15 +118,6 @@ namespace FolderStructureAnalyser.Helpers
         /// Opens, in the Windows Explorer, the folder for the specified disk item.
         /// </summary>
         /// <param name="diskItem">The disk item for which the folder is to be opened.</param>
-        public static void OpenDiskItemInExplorer(DiskItemData diskItem)
-        {
-            OpenDiskItemInExplorer(diskItem.Info);
-        }
-
-        /// <summary>
-        /// Opens, in the Windows Explorer, the folder for the specified disk item.
-        /// </summary>
-        /// <param name="diskItem">The disk item for which the folder is to be opened.</param>
         public static void OpenDiskItemInExplorer(FileSystemInfo diskItem)
         {
             if (diskItem is DirectoryInfo)

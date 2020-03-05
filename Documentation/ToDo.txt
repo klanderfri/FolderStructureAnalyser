@@ -9,7 +9,6 @@ Code smell
 
 Graphical updates
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
-	The sunburst diagram should update when the user sets a new root in the tree.
 	Change the orientation of the sunburst labels to a more readable one.
 
 User interactions
@@ -17,7 +16,6 @@ User interactions
 	Create better form/handling for application level exceptions (user input, send-in functionality).
 	Add right-click/context menu for the tree list with options to remove the folder/file.
 	Remove the wait forms and replace by a running marquee in the status bar so the forms don't hinder the user from keeping working.
-	Make the sunburst diagram open the folder when double clicked.
 	
 More grid information
 	Add unavailable folders to the information panel.

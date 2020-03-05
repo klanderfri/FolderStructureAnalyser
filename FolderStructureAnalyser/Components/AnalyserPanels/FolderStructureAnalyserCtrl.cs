@@ -227,7 +227,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 var node = getDiskItemNodeFromTreeNode(hitInfo.Node);
 
                 //Open the folder or the file parent folder.
-                FileHandler.OpenDiskItemInExplorer(node.DiskItem);
+                FileHandler.OpenDiskItemInExplorer(node.DiskItem.Info);
             }
         }
 
