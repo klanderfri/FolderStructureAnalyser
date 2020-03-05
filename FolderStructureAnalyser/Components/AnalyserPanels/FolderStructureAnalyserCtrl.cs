@@ -83,17 +83,23 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         }
 
         /// <summary>
-        /// Sets the data source of the analyser tree.
+        /// Sets the data source of the analyser.
         /// </summary>
         /// <param name="folderStructure">The folder structer that are to be used as datasource.</param>
         private void updateDataSource(BindingList<DiskItemNode> folderStructure)
         {
+            //Update data source of the tree.
             treeListFolderStructure.DataSource = folderStructure;
 
+            //Expand the first node.
             if (treeListFolderStructure.Nodes.Any())
             {
                 treeListFolderStructure.Nodes[0].Expand();
             }
+
+            //Update the data source for the sunburst diagram.
+            var root = folderStructure.First(i => i.ParentID == null).DiskItem;
+            folderStructureSizeDiagramCtrl.UpdateData(root);
         }
 
         private void FolderStructureAnalyserCtrl_DoFolderStructureAnalysis(object sender, DoWorkEventArgs e)
@@ -135,10 +141,6 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 var structure = e.Result as BindingList<DiskItemNode>;
                 updateDataSource(structure);
                 LastAnalysedStructure = structure;
-
-                //Update the sunburst diagram.
-                var root = LastAnalysedStructure.FirstOrDefault(i => i.ParentID == null).DiskItem;
-                folderStructureSizeDiagramCtrl.UpdateData(root);
             }
         }
 
