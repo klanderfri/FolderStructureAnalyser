@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Drawing;
 using DevExpress.TreeMap;
 using DevExpress.Utils;
 using DevExpress.XtraTreeMap;
@@ -44,10 +44,33 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             var superToolTip = new SuperToolTip() { MaxWidth = 400 };
             superToolTip.Items.Add(new ToolTipTitleItem() { Text = diskItem.Name });
             superToolTip.Items.Add(new ToolTipSeparatorItem());
-            superToolTip.Items.Add(new ToolTipItem() { Text = diskItem.IsFolder ? "Folder" : "File" });
-            superToolTip.Items.Add(new ToolTipItem() { Text = "Size: " + ByteSizeConverter.SizeStringFromByte((long)sunburstItem.Value, Session.Settings.SizeDisplayUnit) });
+            superToolTip.Items.Add(new ToolTipItem() { Icon = getDiskItemIcon(diskItem.IsFolder), Text = getSizeText(sunburstItem) });
 
             e.SuperTip = superToolTip;
+        }
+
+        /// <summary>
+        /// Gets the text describing the size of a disk item.
+        /// </summary>
+        /// <param name="sunburstItem">The sunburst item representing the disk item.</param>
+        /// <returns>The text describing the size of a disk item.</returns>
+        private string getSizeText(ISunburstItem sunburstItem)
+        {
+            var size = (long)sunburstItem.Value;
+            var unit = Session.Settings.SizeDisplayUnit;
+            return ByteSizeConverter.SizeStringFromByte(size, unit);
+        }
+
+        /// <summary>
+        /// Gets the icon representing a disk item.
+        /// </summary>
+        /// <param name="isFolder">Tells if the disk item is a folder.</param>
+        /// <returns>The icon representing a disk item.</returns>
+        private Icon getDiskItemIcon(bool isFolder)
+        {
+            var index = isFolder ? 1 : 2;
+            var image = new Bitmap(IconCollection.GetImage(index));
+            return Icon.FromHandle(image.GetHicon());
         }
     }
 }
