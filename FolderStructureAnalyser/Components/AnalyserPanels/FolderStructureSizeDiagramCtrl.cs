@@ -18,7 +18,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// </summary>
         private SunburstHierarchicalDataAdapter DataAdapter
         {
-            get { return sunburstControl1.DataAdapter as SunburstHierarchicalDataAdapter; }
+            get { return sunburstControl.DataAdapter as SunburstHierarchicalDataAdapter; }
         }
         
         public FolderStructureSizeDiagramCtrl()
@@ -38,7 +38,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             DataAdapter.DataSource = diskItems;
         }
 
-        private void toolTipController1_BeforeShow(object sender, ToolTipControllerShowEventArgs e)
+        private void toolTipController_BeforeShow(object sender, ToolTipControllerShowEventArgs e)
         {
             var sunburstItem = (ISunburstItem)e.SelectedObject;
             var diskItem = sunburstItem.Tag as DiskItemData;
@@ -74,7 +74,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             return Icon.FromHandle(image.GetHicon());
         }
 
-        private void sunburstControl1_DoubleClick(object sender, EventArgs e)
+        private void sunburstControl_DoubleClick(object sender, EventArgs e)
         {
             var hitInfo = GridHandler.GetHitInfo(sender as SunburstControl, MousePosition);
 
