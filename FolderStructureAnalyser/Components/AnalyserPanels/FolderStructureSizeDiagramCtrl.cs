@@ -3,16 +3,15 @@ using System.Windows.Forms;
 using DevExpress.TreeMap;
 using DevExpress.Utils;
 using DevExpress.XtraTreeMap;
+using FolderStructureAnalyser.Components.Support;
 using FolderStructureAnalyser.DataObjects;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
-    public partial class FolderStructureSizeDiagramCtrl : UserControl, ISessionBound
+    public partial class FolderStructureSizeDiagramCtrl : AnalyserUserControl
     {
-        public Session Session { get; set; }
-
         /// <summary>
         /// The data adapter of the diagram control.
         /// </summary>
@@ -25,11 +24,6 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         {
             InitializeComponent();
             DataAdapter.Mappings[0].Type = typeof(DiskItemData);
-        }
-
-        public void SetSession(Session session)
-        {
-            Session = session;
         }
 
         /// <summary>

@@ -97,6 +97,12 @@
     <Compile Include="Components\AnalyserPanels\FolderStructureSizeDiagramCtrl.Designer.cs">
       <DependentUpon>FolderStructureSizeDiagramCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Support\AnalyserUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Support\AnalyserUserControl.Designer.cs">
+      <DependentUpon>AnalyserUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\UserPanels\FolderStructureSettingsCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\AnalyserPanels\FolderStructureSizeDiagramCtrl.resx">
       <DependentUpon>FolderStructureSizeDiagramCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Support\AnalyserUserControl.resx">
+      <DependentUpon>AnalyserUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\UserPanels\FolderStructureSettingsCtrl.resx">
       <DependentUpon>FolderStructureSettingsCtrl.cs</DependentUpon>

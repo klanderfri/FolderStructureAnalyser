@@ -6,9 +6,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using DevExpress.Utils;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraTreeList;
+using FolderStructureAnalyser.Components.Support;
 using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
@@ -16,9 +16,8 @@ using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
-    public partial class FolderStructureParentCtrl : UserControl, ISessionBound
+    public partial class FolderStructureParentCtrl : AnalyserUserControl
     {
-        public Session Session { get; set; }
 
         /// <summary>
         /// The description used by the wait form to describe the analysis in progress.
@@ -38,11 +37,6 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// The background worker responsible for performing the analysis.
         /// </summary>
         public BackgroundWorker AnalysisWorker { get { return backgroundWorkerTimeHeavyAnalysis; } }
-
-        /// <summary>
-        /// The collection of icons to use in components.
-        /// </summary>
-        public SvgImageCollection IconCollection { get { return svgImageCollectionIcons; } }
 
         /// <summary>
         /// The path the user last requested to be analysed. May or may not have finished the analysis.
@@ -211,13 +205,13 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             InitializeComponent();
         }
 
-        public virtual void SetSession(Session session)
+        public override void SetSession(Session session)
         {
-            Session = session;
+            base.SetSession(session);
+            
             LastKnownRootFormPosition = Session.RootForm.Location;
             LastKnownSize = Size;
             Session.RootForm.Move += RootForm_Move;
-            Session.MessageLog.LogMessageAdded += MessageLog_LogMessageAdded;
         }
 
         /// <summary>
@@ -403,7 +397,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         {
             defaultDraw();
 
-            var cellIcon = svgImageCollectionIcons.GetImage(imageIndex);
+            var cellIcon = IconCollection.GetImage(imageIndex);
 
             var location = bounds.Location;
             int middleX = (columnWidth - cellIcon.Width) / 2;
@@ -427,17 +421,6 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
 
             //Update the known parent position.
             LastKnownRootFormPosition = Session.RootForm.Location;
-        }
-
-        private void MessageLog_LogMessageAdded(object sender, LogMessageAddedArgs e)
-        {
-            if (e.Type == LogMessageType.SettingChanged)
-            {
-                foreach (var child in Controls)
-                {
-                    (child as Control).Refresh();
-                }
-            }
         }
 
         private void FolderStructureParentCtrl_Resize(object sender, EventArgs e)

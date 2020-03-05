@@ -33,8 +33,6 @@
             this.splashScreenManagerWaitForm = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FolderStructureAnalyser.Components.Support.WaitForStructureAnalyseForm), true, true, typeof(System.Windows.Forms.UserControl));
             this.backgroundWorkerTimeHeavyAnalysis = new System.ComponentModel.BackgroundWorker();
             this.timerAnalysisProgress = new System.Windows.Forms.Timer(this.components);
-            this.svgImageCollectionIcons = new DevExpress.Utils.SvgImageCollection(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionIcons)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraFolderBrowserDialogSelectFolder
@@ -55,25 +53,12 @@
             // 
             this.timerAnalysisProgress.Tick += new System.EventHandler(this.timerAnalysisProgress_Tick);
             // 
-            // svgImageCollectionIcons
-            // 
-            this.svgImageCollectionIcons.Add("collapsedFolder", "image://svgimages/icon builder/actions_folderclose.svg");
-            this.svgImageCollectionIcons.Add("expandedFolder", "image://svgimages/actions/open.svg");
-            this.svgImageCollectionIcons.Add("file", "image://svgimages/actions/new.svg");
-            this.svgImageCollectionIcons.Add("open", "image://svgimages/actions/open2.svg");
-            this.svgImageCollectionIcons.Add("additional", "image://svgimages/icon builder/actions_addcircled.svg");
-            this.svgImageCollectionIcons.Add("missing", "image://svgimages/icon builder/actions_deletecircled.svg");
-            this.svgImageCollectionIcons.Add("size", "image://svgimages/outlook inspired/fittopage.svg");
-            this.svgImageCollectionIcons.Add("attributes", "image://svgimages/setup/properties.svg");
-            this.svgImageCollectionIcons.Add("hash", "image://svgimages/reports/barcodeshowtext.svg");
-            // 
             // FolderStructureParentCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "FolderStructureParentCtrl";
             this.Resize += new System.EventHandler(this.FolderStructureParentCtrl_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionIcons)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -84,6 +69,5 @@
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManagerWaitForm;
         private System.ComponentModel.BackgroundWorker backgroundWorkerTimeHeavyAnalysis;
         private System.Windows.Forms.Timer timerAnalysisProgress;
-        private DevExpress.Utils.SvgImageCollection svgImageCollectionIcons;
     }
 }
