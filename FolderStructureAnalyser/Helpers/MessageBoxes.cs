@@ -38,15 +38,28 @@ namespace FolderStructureAnalyser.Helpers
 
         public static void ShowProblemOpeningFolderMessage(DirectoryInfo folder, Exception ex)
         {
-            var format = "Problem opening folder {1}.{0}Path: {2}{0}Error: {3}";
+            var format = "Problem opening the folder {1}.{0}Path: {2}{0}Error: {3}";
             var message = String.Format(format, Environment.NewLine, folder.Name, folder.FullName, ex.Message);
             MessageBox.Show(message, "Problem opening folder.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static void ShowProblemOpeningFileMessage(FileInfo file, Exception ex)
+        {
+            var format = "Problem opening the folder containing the file {1}.{0}Path: {2}{0}Error: {3}";
+            var message = String.Format(format, Environment.NewLine, file.Name, file.FullName, ex.Message);
+            MessageBox.Show(message, "Problem opening folder containing file.", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public static void ShowFolderDoesNotExistMessage()
         {
             var message = "The folder does not exist.";
             MessageBox.Show(message, "Non-existing folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static void ShowFileDoesNotExistMessage()
+        {
+            var message = "The file does not exist.";
+            MessageBox.Show(message, "Non-existing file", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static void ShowNoStructureDifferencesFoundMessage()

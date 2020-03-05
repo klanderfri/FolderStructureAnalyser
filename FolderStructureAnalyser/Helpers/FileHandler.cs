@@ -103,32 +103,72 @@ namespace FolderStructureAnalyser.Helpers
             return subItems;
         }
         /// <summary>
-        /// Opens a specific folder in the Windows Explorer.
+        /// Opens, in the Windows Explorer, the folder for the specified disk item.
         /// </summary>
-        /// <param name="folderPath">The full path to the folder to open.</param>
-        public static void OpenFolderInExplorer(string folderPath)
+        /// <param name="diskItemPath">The full path to the disk item to open.</param>
+        public static void OpenDiskItemInExplorer(string diskItemPath)
         {
-            var folder = new DirectoryInfo(folderPath);
-            OpenFolderInExplorer(folder);
+            var info = Directory.Exists(diskItemPath)
+                ? (FileSystemInfo)new DirectoryInfo(diskItemPath)
+                : new FileInfo(diskItemPath);
+            OpenDiskItemInExplorer(info);
         }
 
         /// <summary>
-        /// Opens a specific folder in the Windows Explorer.
+        /// Opens, in the Windows Explorer, the folder for the specified disk item.
         /// </summary>
         /// <param name="diskItem">The disk item for which the folder is to be opened.</param>
-        public static void OpenFolderInExplorer(DiskItemData diskItem)
+        public static void OpenDiskItemInExplorer(DiskItemData diskItem)
         {
-            var folderToOpen = diskItem.IsFolder
-                ? diskItem.Info as DirectoryInfo
-                : (diskItem.Info as FileInfo).Directory;
-            OpenFolderInExplorer(folderToOpen);
+            OpenDiskItemInExplorer(diskItem.Info);
+        }
+
+        /// <summary>
+        /// Opens, in the Windows Explorer, the folder for the specified disk item.
+        /// </summary>
+        /// <param name="diskItem">The disk item for which the folder is to be opened.</param>
+        public static void OpenDiskItemInExplorer(FileSystemInfo diskItem)
+        {
+            if (diskItem is DirectoryInfo)
+            {
+                openFolderInExplorer(diskItem as DirectoryInfo);
+            }
+            else
+            {
+                openFileInExplorer(diskItem as FileInfo);
+            }
+        }
+
+        /// <summary>
+        /// Opens the folder for a specific file in the Windows Explorer.
+        /// </summary>
+        /// <param name="file">The file to open the folder for.</param>
+        private static void openFileInExplorer(FileInfo file)
+        {
+            if (file.Exists)
+            {
+                try
+                {
+                    var format = "/select, \"{0}\"";
+                    var args = String.Format(format, file.FullName);
+                    Process.Start("explorer.exe", args);
+                }
+                catch (Exception ex)
+                {
+                    MessageBoxes.ShowProblemOpeningFileMessage(file, ex);
+                }
+            }
+            else
+            {
+                MessageBoxes.ShowFileDoesNotExistMessage();
+            }
         }
 
         /// <summary>
         /// Opens a specific folder in the Windows Explorer.
         /// </summary>
         /// <param name="folder">The folder to open.</param>
-        public static void OpenFolderInExplorer(DirectoryInfo folder)
+        private static void openFolderInExplorer(DirectoryInfo folder)
         {
             if (folder.Exists)
             {

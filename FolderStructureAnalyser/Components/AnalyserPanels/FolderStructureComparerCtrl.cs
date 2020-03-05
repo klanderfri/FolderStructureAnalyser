@@ -284,12 +284,12 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             if (hitInfo.Band == gridBandOriginal)
             {
                 var parentFolder = FileHandler.GetParentFolder(row.OriginalFullPath);
-                FileHandler.OpenFolderInExplorer(parentFolder);
+                FileHandler.OpenDiskItemInExplorer(parentFolder);
             }
             if (hitInfo.Band == gridBandClone)
             {
                 var parentFolder = FileHandler.GetParentFolder(row.CloneFullPath);
-                FileHandler.OpenFolderInExplorer(parentFolder);
+                FileHandler.OpenDiskItemInExplorer(parentFolder);
             }
         }
 

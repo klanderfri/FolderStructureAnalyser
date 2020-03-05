@@ -81,7 +81,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             if (hitInfo.InSunburstItem)
             {
                 var diskItem = hitInfo.SunburstItem.Tag as DiskItemData;
-                FileHandler.OpenFolderInExplorer(diskItem);
+                FileHandler.OpenDiskItemInExplorer(diskItem);
             }
         }
     }
