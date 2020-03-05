@@ -60,7 +60,7 @@ namespace FolderStructureAnalyser.DataObjects
                 IsFolder = false;
             }
 
-            calculateSize(worker);
+            SizeInBytes = calculateSize(worker);
         }
 
         /// <summary>
@@ -96,33 +96,30 @@ namespace FolderStructureAnalyser.DataObjects
         }
 
         /// <summary>
-        /// Calculates the size of the folder and its content.
+        /// Calculates the size of the disk item and its content.
         /// </summary>
         /// <param name="worker">The background worker responsible for the disk item object creation.</param>
-        private void calculateSize(BackgroundWorker worker)
+        /// <returns>The size of the disk item and its content in bytes, -1 if the calculation was cancelled.</returns>
+        private long calculateSize(BackgroundWorker worker)
         {
             //The bottom folders finish the creation first and therefore
             //have their size when the top folders continue their creation.
 
             if (IsFolder)
             {
-                SizeInBytes = 0;
+                long sizeInBytes = 0;
 
                 foreach (var child in SubItems)
                 {
-                    if (worker.CancellationPending) { return; }
-                    SizeInBytes += child.SizeInBytes;
+                    if (worker.CancellationPending) { return -1; }
+                    sizeInBytes += child.SizeInBytes;
                 }
 
-                foreach (var file in (Info as DirectoryInfo).GetFiles())
-                {
-                    if (worker.CancellationPending) { return; }
-                    SizeInBytes += file.Length;
-                }
+                return sizeInBytes;
             }
             else
             {
-                SizeInBytes = (Info as FileInfo).Length;
+                return (Info as FileInfo).Length;
             }
         }
 
