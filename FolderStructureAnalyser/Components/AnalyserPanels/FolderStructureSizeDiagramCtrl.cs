@@ -24,7 +24,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         public FolderStructureSizeDiagramCtrl()
         {
             InitializeComponent();
-            DataAdapter.Mappings[0].Type = typeof(FolderData);
+            DataAdapter.Mappings[0].Type = typeof(DiskItemData);
         }
 
         public void SetSession(Session session)
@@ -36,17 +36,17 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// Updates the diagram and its data.
         /// </summary>
         /// <param name="root">The folder the diagram should use as root.</param>
-        public void UpdateData(FolderData root)
+        public void UpdateData(DiskItemData root)
         {
-            var diskItems = new List<FolderData>();
-            diskItems.AddRange(root.SubFolders);
+            var diskItems = new List<DiskItemData>();
+            diskItems.AddRange(root.SubItems);
             DataAdapter.DataSource = diskItems;
         }
 
         private void toolTipController1_BeforeShow(object sender, ToolTipControllerShowEventArgs e)
         {
             var sunburstItem = (ISunburstItem)e.SelectedObject;
-            var folder = sunburstItem.Tag as FolderData;
+            var folder = sunburstItem.Tag as DiskItemData;
             var superToolTip = new SuperToolTip() { MaxWidth = 400 };
             superToolTip.Items.Add(new ToolTipTitleItem() { Text = folder.Name });
             superToolTip.Items.Add(new ToolTipSeparatorItem());

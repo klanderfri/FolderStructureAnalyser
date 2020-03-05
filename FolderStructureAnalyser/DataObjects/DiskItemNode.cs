@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-
-namespace FolderStructureAnalyser.DataObjects
+﻿namespace FolderStructureAnalyser.DataObjects
 {
     /// <summary>
     /// Object representing a disk item when viewed in a tree.
@@ -38,33 +35,10 @@ namespace FolderStructureAnalyser.DataObjects
         /// The index of the image the tree should use as state image for the disk item when it is expanded.
         /// </summary>
         public int ExpandedStateImageIndex { get; set; }
-
-        /// <summary>
-        /// The container holding information about the file.
-        /// </summary>
-        public FileInfo FileData { get; set; }
         
         /// <summary>
         /// The container holding information about the folder.
         /// </summary>
-        public FolderData FolderData { get; set; }
-
-        /// <summary>
-        /// Tells if the node represents a folder.
-        /// </summary>
-        public bool IsFolder
-        {
-            get
-            {
-                //Tell the caller if the node represents a folder or not.
-                if (FolderData != null) { return true; }
-                if (FileData != null) { return false; }
-
-                //Oops! Someone forgot to set the data the node is representing.
-                var format = "Neither the folder data nor the file data is set for node '{0}', ID {1}";
-                var message = String.Format(format, Name, ID);
-                throw new InvalidOperationException(message);
-            }
-        }
+        public DiskItemData DiskItem { get; set; }
     }
 }

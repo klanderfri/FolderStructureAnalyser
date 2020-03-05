@@ -111,7 +111,7 @@
     </Compile>
     <Compile Include="DataObjects\DifferenceTypeDescription.cs" />
     <Compile Include="DataObjects\DiskItemNode.cs" />
-    <Compile Include="DataObjects\FolderData.cs" />
+    <Compile Include="DataObjects\DiskItemData.cs" />
     <Compile Include="Components\AnalyserPanels\FolderStructureAnalyserCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
