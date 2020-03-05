@@ -18,7 +18,6 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
     public partial class FolderStructureParentCtrl : AnalyserUserControl
     {
-
         /// <summary>
         /// The description used by the wait form to describe the analysis in progress.
         /// </summary>
