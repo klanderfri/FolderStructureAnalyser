@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using DevExpress.TreeMap;
 using DevExpress.Utils;
@@ -71,6 +72,17 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             var index = isFolder ? 1 : 2;
             var image = new Bitmap(IconCollection.GetImage(index));
             return Icon.FromHandle(image.GetHicon());
+        }
+
+        private void sunburstControl1_DoubleClick(object sender, EventArgs e)
+        {
+            var hitInfo = GridHandler.GetHitInfo(sender as SunburstControl, MousePosition);
+
+            if (hitInfo.InSunburstItem)
+            {
+                var diskItem = hitInfo.SunburstItem.Tag as DiskItemData;
+                FileHandler.OpenFolderInExplorer(diskItem);
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Columns;
+using DevExpress.XtraTreeMap;
 
 namespace FolderStructureAnalyser.Helpers
 {
@@ -36,6 +37,18 @@ namespace FolderStructureAnalyser.Helpers
         {
             var treeHitLocation = tree.PointToClient(screenHitLocation);
             return tree.CalcHitInfo(treeHitLocation);
+        }
+
+        /// <summary>
+        /// Gets the hit info for a certain position.
+        /// </summary>
+        /// <param name="sunburst">The sunburst diagram holding the hit info.</param>
+        /// <param name="screenHitLocation">The location, in screen coordinates, to get the hit info for.</param>
+        /// <returns>The hit info for the specified position.</returns>
+        public static SunburstHitInfo GetHitInfo(SunburstControl sunburst, Point screenHitLocation)
+        {
+            var sunburstHitLocation = sunburst.PointToClient(screenHitLocation);
+            return sunburst.CalcHitInfo(sunburstHitLocation);
         }
 
         /// <summary>

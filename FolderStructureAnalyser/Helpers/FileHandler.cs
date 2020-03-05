@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
+using FolderStructureAnalyser.DataObjects;
 
 namespace FolderStructureAnalyser.Helpers
 {
@@ -109,6 +110,18 @@ namespace FolderStructureAnalyser.Helpers
         {
             var folder = new DirectoryInfo(folderPath);
             OpenFolderInExplorer(folder);
+        }
+
+        /// <summary>
+        /// Opens a specific folder in the Windows Explorer.
+        /// </summary>
+        /// <param name="diskItem">The disk item for which the folder is to be opened.</param>
+        public static void OpenFolderInExplorer(DiskItemData diskItem)
+        {
+            var folderToOpen = diskItem.IsFolder
+                ? diskItem.Info as DirectoryInfo
+                : (diskItem.Info as FileInfo).Directory;
+            OpenFolderInExplorer(folderToOpen);
         }
 
         /// <summary>

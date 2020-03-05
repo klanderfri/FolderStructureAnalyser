@@ -55,6 +55,7 @@
             this.sunburstControl1.Size = new System.Drawing.Size(527, 391);
             this.sunburstControl1.TabIndex = 0;
             this.sunburstControl1.ToolTipController = this.toolTipController1;
+            this.sunburstControl1.DoubleClick += new System.EventHandler(this.sunburstControl1_DoubleClick);
             // 
             // toolTipController1
             // 

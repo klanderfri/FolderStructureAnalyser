@@ -227,16 +227,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 var node = getDiskItemNodeFromTreeNode(hitInfo.Node);
 
                 //Open the folder or the file parent folder.
-                DirectoryInfo folderToOpen;
-                if (node.DiskItem.IsFolder)
-                {
-                    folderToOpen = (node.DiskItem.Info as DirectoryInfo);
-                }
-                else
-                {
-                    folderToOpen = (node.DiskItem.Info as FileInfo).Directory;
-                }
-                FileHandler.OpenFolderInExplorer(folderToOpen);
+                FileHandler.OpenFolderInExplorer(node.DiskItem);
             }
         }
 
