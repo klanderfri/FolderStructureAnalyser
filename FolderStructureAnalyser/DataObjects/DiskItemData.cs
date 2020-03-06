@@ -6,7 +6,7 @@ using System.IO;
 namespace FolderStructureAnalyser.DataObjects
 {
     /// <summary>
-    /// Class for object representing a disk item in a file-folder tree structure.
+    /// Class for object holding data about a disk item in a file-folder tree structure.
     /// </summary>
     public class DiskItemData
     {
