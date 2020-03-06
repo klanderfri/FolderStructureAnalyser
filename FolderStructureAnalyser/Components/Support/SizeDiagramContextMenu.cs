@@ -56,17 +56,6 @@ namespace FolderStructureAnalyser.Components.Support
             MenuItems.Add(SetAsRoot);
         }
 
-        /// <summary>
-        /// Method handling the event raised when the user clicks the option to set a disk item as root.
-        /// </summary>
-        /// <param name="sender">The menu item clicked.</param>
-        /// <param name="e">The arguments for the click event.</param>
-        private void setItemAsRootClicked(object sender, EventArgs e)
-        {
-            var root = LastHitInfo.SunburstItem.Tag as DiskItemData;
-            ParentFolderAnalyser.SetDiskItemAsRoot(root);
-        }
-
         private void ParentSunburst_MouseDown(object sender, MouseEventArgs e)
         {
             //Only show the menu for right clicks.
@@ -88,6 +77,17 @@ namespace FolderStructureAnalyser.Components.Support
 
             //Show the menu.
             Show(ParentSunburst, e.Location);
+        }
+
+        /// <summary>
+        /// Method handling the event raised when the user clicks the option to set a disk item as root.
+        /// </summary>
+        /// <param name="sender">The menu item clicked.</param>
+        /// <param name="e">The arguments for the click event.</param>
+        private void setItemAsRootClicked(object sender, EventArgs e)
+        {
+            var root = LastHitInfo.SunburstItem.Tag as DiskItemData;
+            ParentFolderAnalyser.SetDiskItemAsRoot(root);
         }
     }
 }
