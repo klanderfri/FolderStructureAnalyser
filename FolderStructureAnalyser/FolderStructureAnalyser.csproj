@@ -103,6 +103,7 @@
     <Compile Include="Components\Support\AnalyserUserControl.Designer.cs">
       <DependentUpon>AnalyserUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Support\ParentFinder.cs" />
     <Compile Include="Components\Support\SizeDiagramContextMenu.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -157,6 +158,7 @@
     <Compile Include="Components\Support\WaitForStructureAnalyseForm.Designer.cs">
       <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Events\ParentFoundArgs.cs" />
     <Compile Include="Exceptions\UnhandledEnumException.cs" />
     <Compile Include="Helpers\ColourHandler.cs" />
     <Compile Include="Helpers\FileHandler.cs" />

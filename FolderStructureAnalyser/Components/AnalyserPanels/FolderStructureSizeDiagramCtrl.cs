@@ -7,6 +7,7 @@ using DevExpress.Utils;
 using DevExpress.XtraTreeMap;
 using FolderStructureAnalyser.Components.Support;
 using FolderStructureAnalyser.DataObjects;
+using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
 
@@ -30,6 +31,8 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         public FolderStructureSizeDiagramCtrl()
         {
             InitializeComponent();
+            var parentFinder = new ParentFinder<FolderStructureAnalyserCtrl>(this);
+            parentFinder.ParentFound += ParentFinder_ParentFound;
             DataAdapter.Mappings[0].Type = typeof(DiskItemData);
         }
 
@@ -91,33 +94,9 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             }
         }
 
-        private void Parent_ParentChanged(object sender, EventArgs e)
+        private void ParentFinder_ParentFound(object sender, ParentFoundArgs e)
         {
-            var ctrl = sender as Control;
-            var highestParent = tryGetAnalyserParent(ctrl);
-
-            if (highestParent != ctrl)
-            {
-                if (highestParent is FolderStructureAnalyserCtrl)
-                {
-                    createSunbrustDiagramMenu(highestParent as FolderStructureAnalyserCtrl);
-                }
-                else
-                {
-                    highestParent.ParentChanged += Parent_ParentChanged;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Tries to get the analyser control that is the parent of a specific control.
-        /// </summary>
-        /// <param name="ctrl">The control to get the analyser parent for.</param>
-        /// <returns>The analyser parent or the highest possible parent.</returns>
-        private Control tryGetAnalyserParent(Control ctrl)
-        {
-            if (ctrl is FolderStructureAnalyserCtrl || ctrl.Parent == null) { return ctrl; }
-            return tryGetAnalyserParent(ctrl.Parent);
+            createSunbrustDiagramMenu(e.ParentFound as FolderStructureAnalyserCtrl);
         }
 
         /// <summary>
