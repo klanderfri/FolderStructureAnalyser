@@ -68,6 +68,7 @@
             this.Controls.Add(this.sunburstControl);
             this.Name = "FolderStructureSizeDiagramCtrl";
             this.Size = new System.Drawing.Size(527, 391);
+            this.ParentChanged += new System.EventHandler(this.Parent_ParentChanged);
             ((System.ComponentModel.ISupportInitialize)(this.sunburstControl)).EndInit();
             this.ResumeLayout(false);
 

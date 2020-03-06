@@ -53,17 +53,33 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <summary>
         /// Sets the focused node as root.
         /// </summary>
-        public void SetFocusedNodeAsRoot()
+        /// <returns>TRUE if the disk item was set as root, else FALSE.</returns>
+        public bool SetFocusedNodeAsRoot()
         {
             //Find the node.
             var node = getDiskItemNodeFromTreeNode(treeListFolderStructure.FocusedNode);
 
-            //Check if the node represent a folder.
-            if (node?.DiskItem.IsFolder ?? false)
+            //Set it as root.
+            if (node != null)
             {
-                //OK, set the node as root.
+                return SetDiskItemAsRoot(node.DiskItem);
+            }
 
-                var newRoot = node.DiskItem;
+            return false;
+        }
+
+        /// <summary>
+        /// Sets a specific item as root.
+        /// </summary>
+        /// <param name="newRoot">The disk item to set as root.</param>
+        /// <returns>TRUE if the disk item was set as root, else FALSE.</returns>
+        public bool SetDiskItemAsRoot(DiskItemData newRoot)
+        {
+            //Check if the disk item represent a folder.
+            if (newRoot.IsFolder)
+            {
+                //OK, set the disk item as root.
+                
                 var newStructure = new BindingList<DiskItemNode>();
                 var folderID = 0;
                 var worker = new BackgroundWorker();
@@ -71,7 +87,10 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 addFolderToDataSource(worker, newStructure, newRoot, ref folderID, null);
 
                 updateDataSource(newStructure);
+                return true;
             }
+
+            return false;
         }
 
         /// <summary>

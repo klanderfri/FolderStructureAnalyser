@@ -103,6 +103,9 @@
     <Compile Include="Components\Support\AnalyserUserControl.Designer.cs">
       <DependentUpon>AnalyserUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Support\SizeDiagramContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\UserPanels\FolderStructureSettingsCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>

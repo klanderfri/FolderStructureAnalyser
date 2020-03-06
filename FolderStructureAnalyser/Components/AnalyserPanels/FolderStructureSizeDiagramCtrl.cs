@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 using DevExpress.TreeMap;
 using DevExpress.Utils;
 using DevExpress.XtraTreeMap;
@@ -20,6 +21,11 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         {
             get { return sunburstControl.DataAdapter as SunburstHierarchicalDataAdapter; }
         }
+
+        /// <summary>
+        /// The context menu to show for the sunburst diagram.
+        /// </summary>
+        private SizeDiagramContextMenu DiagramContextMenu { get; set; }
         
         public FolderStructureSizeDiagramCtrl()
         {
@@ -83,6 +89,44 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 var diskItem = hitInfo.SunburstItem.Tag as DiskItemData;
                 FileHandler.OpenDiskItemInExplorer(diskItem.Info);
             }
+        }
+
+        private void Parent_ParentChanged(object sender, EventArgs e)
+        {
+            var ctrl = sender as Control;
+            var highestParent = tryGetAnalyserParent(ctrl);
+
+            if (highestParent != ctrl)
+            {
+                if (highestParent is FolderStructureAnalyserCtrl)
+                {
+                    createSunbrustDiagramMenu(highestParent as FolderStructureAnalyserCtrl);
+                }
+                else
+                {
+                    highestParent.ParentChanged += Parent_ParentChanged;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tries to get the analyser control that is the parent of a specific control.
+        /// </summary>
+        /// <param name="ctrl">The control to get the analyser parent for.</param>
+        /// <returns>The analyser parent or the highest possible parent.</returns>
+        private Control tryGetAnalyserParent(Control ctrl)
+        {
+            if (ctrl is FolderStructureAnalyserCtrl || ctrl.Parent == null) { return ctrl; }
+            return tryGetAnalyserParent(ctrl.Parent);
+        }
+
+        /// <summary>
+        /// Creates the menu to show for the sunburst diagram.
+        /// </summary>
+        /// <param name="parentFolderAnalyserCtrl">The parent folder analyser control that is resposnible for the sunburst diagram.</param>
+        private void createSunbrustDiagramMenu(FolderStructureAnalyserCtrl parentFolderAnalyserCtrl)
+        {
+            DiagramContextMenu = new SizeDiagramContextMenu(parentFolderAnalyserCtrl, sunburstControl);
         }
     }
 }

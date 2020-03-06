@@ -38,16 +38,16 @@
             this.folderStructureSizeDiagramCtrl = new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureSizeDiagramCtrl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splitterItem1 = new DevExpress.XtraLayout.SplitterItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.treeListFolderStructure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditFileSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // treeListFolderStructure
@@ -127,6 +127,8 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.treeListFolderStructure);
+            this.layoutControl1.Controls.Add(this.folderStructureSizeDiagramCtrl);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -140,6 +142,7 @@
             // 
             this.folderStructureSizeDiagramCtrl.Location = new System.Drawing.Point(812, 12);
             this.folderStructureSizeDiagramCtrl.Name = "folderStructureSizeDiagramCtrl";
+            this.folderStructureSizeDiagramCtrl.Session = null;
             this.folderStructureSizeDiagramCtrl.Size = new System.Drawing.Size(483, 617);
             this.folderStructureSizeDiagramCtrl.TabIndex = 4;
             // 
@@ -164,6 +167,13 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
+            // splitterItem1
+            // 
+            this.splitterItem1.AllowHotTrack = true;
+            this.splitterItem1.Location = new System.Drawing.Point(790, 0);
+            this.splitterItem1.Name = "splitterItem1";
+            this.splitterItem1.Size = new System.Drawing.Size(10, 621);
+            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.folderStructureSizeDiagramCtrl;
@@ -172,13 +182,6 @@
             this.layoutControlItem2.Size = new System.Drawing.Size(487, 621);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
-            // 
-            // splitterItem1
-            // 
-            this.splitterItem1.AllowHotTrack = true;
-            this.splitterItem1.Location = new System.Drawing.Point(790, 0);
-            this.splitterItem1.Name = "splitterItem1";
-            this.splitterItem1.Size = new System.Drawing.Size(10, 621);
             // 
             // FolderStructureAnalyserCtrl
             // 
@@ -196,8 +199,8 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
         }
