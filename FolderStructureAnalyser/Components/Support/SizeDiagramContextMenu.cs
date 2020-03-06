@@ -7,18 +7,64 @@ using FolderStructureAnalyser.Helpers;
 
 namespace FolderStructureAnalyser.Components.Support
 {
+    /// <summary>
+    /// Class for object representing a context menu within a sunburst diagram in a folder analyser control.
+    /// </summary>
     public class SizeDiagramContextMenu : ContextMenu
     {
-        public readonly FolderStructureAnalyserCtrl ParentControl;
-        public readonly SunburstControl ParentSunburst;
-        public SunburstHitInfo HitInfo { get; private set; }
+        /// <summary>
+        /// The parent folder analyser control containing the sunburst diagram.
+        /// </summary>
+        public readonly FolderStructureAnalyserCtrl ParentFolderAnalyser;
 
-        public SizeDiagramContextMenu(FolderStructureAnalyserCtrl parentControl, SunburstControl sunburst)
+        /// <summary>
+        /// The parent sunburst diagram that is to show the context menu.
+        /// </summary>
+        public readonly SunburstControl ParentSunburst;
+
+        /// <summary>
+        /// The hit info caught last time the menu was requested.
+        /// </summary>
+        public SunburstHitInfo LastHitInfo { get; private set; }
+
+        /// <summary>
+        /// Menu item for the set as root option.
+        /// </summary>
+        private MenuItem SetAsRoot { get; set; }
+
+        /// <summary>
+        /// Creates an object representing a context menu within a sunburst diagram in a folder analyser control.
+        /// </summary>
+        /// <param name="parentFolderAnalyser">The parent folder analyser control containing the sunburst diagram.</param>
+        /// <param name="parentSunburst">The parent sunburst diagram that is to show the context menu.</param>
+        public SizeDiagramContextMenu(FolderStructureAnalyserCtrl parentFolderAnalyser, SunburstControl parentSunburst)
         {
-            ParentControl = parentControl;
-            ParentSunburst = sunburst;
+            ParentFolderAnalyser = parentFolderAnalyser;
+            ParentSunburst = parentSunburst;
             
             setupMenu();
+        }
+
+        /// <summary>
+        /// Sets up the menu and its items.
+        /// </summary>
+        private void setupMenu()
+        {
+            ParentSunburst.MouseDown += ParentSunburst_MouseDown;
+
+            SetAsRoot = new MenuItem("Set as root", new EventHandler(setItemAsRootClicked));
+            MenuItems.Add(SetAsRoot);
+        }
+
+        /// <summary>
+        /// Method handling the event raised when the user clicks the option to set a disk item as root.
+        /// </summary>
+        /// <param name="sender">The menu item clicked.</param>
+        /// <param name="e">The arguments for the click event.</param>
+        private void setItemAsRootClicked(object sender, EventArgs e)
+        {
+            var root = LastHitInfo.SunburstItem.Tag as DiskItemData;
+            ParentFolderAnalyser.SetDiskItemAsRoot(root);
         }
 
         private void ParentSunburst_MouseDown(object sender, MouseEventArgs e)
@@ -28,26 +74,20 @@ namespace FolderStructureAnalyser.Components.Support
             var location = ParentSunburst.PointToScreen(e.Location);
 
             //Find the hit info.
-            HitInfo = GridHandler.GetHitInfo(ParentSunburst, location);
+            LastHitInfo = GridHandler.GetHitInfo(ParentSunburst, location);
 
-            if (e.Button == MouseButtons.Right && HitInfo.InSunburstItem)
-            {
-                Show(ParentSunburst, e.Location);
-            }
-        }
+            //Only show the menu for right clicks.
+            if (e.Button != MouseButtons.Right) { return; }
 
-        private void setupMenu()
-        {
-            ParentSunburst.MouseDown += ParentSunburst_MouseDown;
+            //Only show the menu when a sunburst item was hit.
+            if (!LastHitInfo.InSunburstItem) { return; }
 
-            var setAsRoot = new MenuItem("Set as root", new EventHandler(setItemAsRoot));
-            MenuItems.Add(setAsRoot);
-        }
+            //Only show the set as root option if a folder was hit.
+            var diskItem = LastHitInfo.SunburstItem.Tag as DiskItemData;
+            SetAsRoot.Enabled = diskItem.IsFolder;
 
-        private void setItemAsRoot(object sender, EventArgs e)
-        {
-            var root = HitInfo.SunburstItem.Tag as DiskItemData;
-            ParentControl.SetDiskItemAsRoot(root);
+            //Show the menu.
+            Show(ParentSunburst, e.Location);
         }
     }
 }
