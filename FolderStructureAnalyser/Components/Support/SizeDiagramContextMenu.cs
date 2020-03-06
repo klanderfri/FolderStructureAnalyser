@@ -69,16 +69,16 @@ namespace FolderStructureAnalyser.Components.Support
 
         private void ParentSunburst_MouseDown(object sender, MouseEventArgs e)
         {
+            //Only show the menu for right clicks.
+            if (e.Button != MouseButtons.Right) { return; }
+
             //The helper uses screen location so convert the client point to screen point
             //so the helper then can convert that screen point back to a client point. Sigh!
             var location = ParentSunburst.PointToScreen(e.Location);
 
             //Find the hit info.
             LastHitInfo = GridHandler.GetHitInfo(ParentSunburst, location);
-
-            //Only show the menu for right clicks.
-            if (e.Button != MouseButtons.Right) { return; }
-
+            
             //Only show the menu when a sunburst item was hit.
             if (!LastHitInfo.InSunburstItem) { return; }
 
