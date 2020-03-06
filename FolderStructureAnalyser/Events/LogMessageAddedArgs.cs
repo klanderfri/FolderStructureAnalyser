@@ -22,7 +22,7 @@ namespace FolderStructureAnalyser.Events
         /// <summary>
         /// The message format to use when creating a log message.
         /// </summary>
-        public string MessageFormat { get; set; }
+        public string MessageFormat { get; private set; }
 
         /// <summary>
         /// Creates an object holding the arguments for the event used when a control has requested a log message to be added.
