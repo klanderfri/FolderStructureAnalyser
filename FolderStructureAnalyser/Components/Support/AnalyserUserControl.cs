@@ -1,12 +1,13 @@
 ﻿using System.Windows.Forms;
 using DevExpress.Utils;
+using DevExpress.XtraEditors;
 using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.SessionBound;
 
 namespace FolderStructureAnalyser.Components.Support
 {
-    public partial class AnalyserUserControl : UserControl, ISessionBound
+    public partial class AnalyserUserControl : XtraUserControl, ISessionBound
     {
         /// <summary>
         /// The application session.

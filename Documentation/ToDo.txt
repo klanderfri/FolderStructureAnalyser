@@ -5,7 +5,6 @@ Session
 Code smell
 	It doesnt look good that DiskItemNode is validating its state in the IsFolder and not in a constructor.
 	Create better handling of colour settings. Right know there need to be 5 rows of duplicated code for each colour settings.
-	Could FolderData be replaced by something handling both folders and files, and could that class be used instead of DiskItemNode?
 
 Graphical updates
 	The icon indicating additional clone folder should be red (a red plus sign) instead of green as it is a problem.
