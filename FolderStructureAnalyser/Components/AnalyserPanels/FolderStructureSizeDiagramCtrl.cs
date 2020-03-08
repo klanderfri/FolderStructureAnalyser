@@ -35,7 +35,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             DataAdapter.Mappings[0].Type = typeof(DiskItemData);
 
             //Find the parent analyser so we can crate a diagram context menu.
-            UserControlHandler.FindParent<FolderStructureAnalyserCtrl>(this, ParentFinder_ParentFound);
+            UserControlHandler.FindParent<FolderStructureAnalyserCtrl>(this, analyserParentFound);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             }
         }
 
-        private void ParentFinder_ParentFound(object sender, ParentFoundArgs e)
+        private void analyserParentFound(object sender, ParentFoundArgs e)
         {
             createSunbrustDiagramMenu(e.ParentFound as FolderStructureAnalyserCtrl);
         }
