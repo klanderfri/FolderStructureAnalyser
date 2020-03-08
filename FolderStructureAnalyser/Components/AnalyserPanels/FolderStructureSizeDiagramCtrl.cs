@@ -30,10 +30,14 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         
         public FolderStructureSizeDiagramCtrl()
         {
+            //Setup the diagram.
             InitializeComponent();
-            var parentFinder = new ParentFinder<FolderStructureAnalyserCtrl>(this);
-            parentFinder.ParentFound += ParentFinder_ParentFound;
             DataAdapter.Mappings[0].Type = typeof(DiskItemData);
+
+            //Find the parent analyser so we can crate a diagram context menu.
+            var parentFinder = new ParentFinder<FolderStructureAnalyserCtrl>();
+            parentFinder.ParentFound += ParentFinder_ParentFound;
+            parentFinder.SearchForParent(this);
         }
 
         /// <summary>

@@ -40,33 +40,48 @@ namespace FolderStructureAnalyser.Components.Support
         }
 
         /// <summary>
-        /// Creates an object used when a control needs to find a parent of a certain type.
+        /// Starts the search for a parent of the requested type.
         /// </summary>
         /// <param name="orphan">The control to find the parent for.</param>
-        public ParentFinder(Control orphan)
+        /// <exception cref="InvalidOperationException">The finder is already searching for the parent of an orphan.</exception>
+        public void SearchForParent(Control orphan)
         {
-            Orphan = orphan;
-            Orphan.ParentChanged += Control_ParentChanged;
+            //Make sure we are not already searching for the parent of an orphan.
+            if (Orphan != null)
+            {
+                var message = "The finder is already searching for the parent of an orphan.";
+                throw new InvalidOperationException(message);
+            }
 
-            //TODO: What if the parent is already set in the orphan and hence won't fire the ParentChanged-event?!
+            //Store the orphan.
+            Orphan = orphan;
+
+            //Start the search for the parent.
+            searchForParent(Orphan);
         }
 
         private void Control_ParentChanged(object sender, EventArgs e)
         {
             var ctrl = sender as Control;
+            searchForParent(ctrl);
+        }
+
+        /// <summary>
+        /// Searches for a parent of the requested type.
+        /// </summary>
+        /// <param name="ctrl">The control to start the search at.</param>
+        private void searchForParent(Control ctrl)
+        {
             var highestParent = tryGetSearchedParent(ctrl);
 
-            if (highestParent != ctrl)
+            if (highestParent is T && highestParent != ctrl)
             {
-                if (highestParent is T)
-                {
-                    var args = new ParentFoundArgs(highestParent);
-                    OnParentFound(args);
-                }
-                else
-                {
-                    highestParent.ParentChanged += Control_ParentChanged;
-                }
+                var args = new ParentFoundArgs(highestParent);
+                OnParentFound(args);
+            }
+            else
+            {
+                highestParent.ParentChanged += Control_ParentChanged;
             }
         }
 
