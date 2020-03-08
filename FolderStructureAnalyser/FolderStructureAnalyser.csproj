@@ -165,6 +165,7 @@
     <Compile Include="Helpers\GridHandler.cs" />
     <Compile Include="Helpers\MessageBoxes.cs" />
     <Compile Include="Helpers\ByteSizeConverter.cs" />
+    <Compile Include="Helpers\UserControlHandler.cs" />
     <Compile Include="SessionBound\ISessionBound.cs" />
     <Compile Include="SessionBound\MessageLog.cs" />
     <Compile Include="SessionBound\Session.cs" />

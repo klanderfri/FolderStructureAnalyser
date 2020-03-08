@@ -35,9 +35,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             DataAdapter.Mappings[0].Type = typeof(DiskItemData);
 
             //Find the parent analyser so we can crate a diagram context menu.
-            var parentFinder = new ParentFinder<FolderStructureAnalyserCtrl>();
-            parentFinder.ParentFound += ParentFinder_ParentFound;
-            parentFinder.SearchForParent(this);
+            UserControlHandler.FindParent<FolderStructureAnalyserCtrl>(this, ParentFinder_ParentFound);
         }
 
         /// <summary>
