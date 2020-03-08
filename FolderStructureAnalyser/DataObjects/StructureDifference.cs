@@ -9,12 +9,12 @@ namespace FolderStructureAnalyser.DataObjects
     public class StructureDifference
     {
         /// <summary>
-        /// The original item.
+        /// Information about the original item.
         /// </summary>
         public DiskItemInfo Original { get; private set; }
 
         /// <summary>
-        /// The item that is supposed to be a clone of the original.
+        /// Information about the item that is supposed to be a clone of the original.
         /// </summary>
         public DiskItemInfo Clone { get; private set; }
 
@@ -26,8 +26,8 @@ namespace FolderStructureAnalyser.DataObjects
         /// <summary>
         /// Creates an object holding data about a difference between two folder structures.
         /// </summary>
-        /// <param name="original">The original item.</param>
-        /// <param name="clone">The item that is supposed to be a clone of the original.</param>
+        /// <param name="original">nformation about the original item.</param>
+        /// <param name="clone">Information about the item that is supposed to be a clone of the original.</param>
         /// <param name="type">The type of difference.</param>
         public StructureDifference(FileSystemInfo original, FileSystemInfo clone, DifferenceType type)
         {
