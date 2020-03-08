@@ -123,6 +123,7 @@
       <DependentUpon>OperationMessageLogCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="DataObjects\DifferenceTypeDescription.cs" />
+    <Compile Include="DataObjects\DiskItemInfo.cs" />
     <Compile Include="DataObjects\DiskItemNode.cs" />
     <Compile Include="DataObjects\DiskItemData.cs" />
     <Compile Include="Components\AnalyserPanels\FolderStructureAnalyserCtrl.cs">

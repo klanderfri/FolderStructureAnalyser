@@ -283,12 +283,12 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
 
             if (hitInfo.Band == gridBandOriginal)
             {
-                var parentFolder = FileHandler.GetParentFolder(row.OriginalFullPath);
+                var parentFolder = FileHandler.GetParentFolder(row.Original.Info.FullName);
                 FileHandler.OpenDiskItemInExplorer(parentFolder);
             }
             if (hitInfo.Band == gridBandClone)
             {
-                var parentFolder = FileHandler.GetParentFolder(row.CloneFullPath);
+                var parentFolder = FileHandler.GetParentFolder(row.Clone.Info.FullName);
                 FileHandler.OpenDiskItemInExplorer(parentFolder);
             }
         }
@@ -300,24 +300,24 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
 
             if (column == bandedGridColumnItemTypeIndex)
             {
-                DrawCellNodeIcon(e, e.Column.Width, row.ItemTypeIndex);
+                DrawCellNodeIcon(e, e.Column.Width, row.DiffInfo.ItemTypeImageIndex);
             }
             if (column == bandedGridColumnProblemTypeIndex)
             {
-                DrawCellNodeIcon(e, e.Column.Width, row.ProblemTypeIndex);
+                DrawCellNodeIcon(e, e.Column.Width, row.DiffInfo.DifferenceTypeImageIndex);
             }
             if (column.OwnerBand == gridBandClone)
             {
-                if (row.DifferenceType == DifferenceType.FileMissing
-                    || row.DifferenceType == DifferenceType.SubfolderMissing)
+                if (row.DiffInfo.DifferenceType == DifferenceType.FileMissing
+                    || row.DiffInfo.DifferenceType == DifferenceType.SubfolderMissing)
                 {
                     e.Appearance.BackColor = Session.Settings.GridErrorColour;
                 }
             }
             if (column.OwnerBand == gridBandOriginal)
             {
-                if (row.DifferenceType == DifferenceType.FileAdditional
-                   || row.DifferenceType == DifferenceType.SubfolderAdditional)
+                if (row.DiffInfo.DifferenceType == DifferenceType.FileAdditional
+                   || row.DiffInfo.DifferenceType == DifferenceType.SubfolderAdditional)
                 {
                     e.Appearance.BackColor = Session.Settings.GridErrorColour;
                 }

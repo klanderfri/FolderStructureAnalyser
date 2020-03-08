@@ -32,8 +32,8 @@
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBandDifference = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnDescription = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumnItemTypeIndex = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnProblemTypeIndex = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnItemTypeIndex = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBandOriginal = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnOriginalName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnOriginalFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -89,32 +89,32 @@
             // bandedGridColumnDescription
             // 
             this.bandedGridColumnDescription.Caption = "Description";
-            this.bandedGridColumnDescription.FieldName = "Description";
+            this.bandedGridColumnDescription.FieldName = "DiffInfo.Description";
             this.bandedGridColumnDescription.Name = "bandedGridColumnDescription";
             this.bandedGridColumnDescription.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnDescription.ToolTip = "A description of the difference between the original and the clone.";
             this.bandedGridColumnDescription.Visible = true;
             this.bandedGridColumnDescription.Width = 220;
             // 
-            // bandedGridColumnItemTypeIndex
-            // 
-            this.bandedGridColumnItemTypeIndex.Caption = "Item";
-            this.bandedGridColumnItemTypeIndex.FieldName = "ItemTypeIndex";
-            this.bandedGridColumnItemTypeIndex.Name = "bandedGridColumnItemTypeIndex";
-            this.bandedGridColumnItemTypeIndex.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumnItemTypeIndex.ToolTip = "The type of item the difference is about (i.e file or folder).";
-            this.bandedGridColumnItemTypeIndex.Visible = true;
-            this.bandedGridColumnItemTypeIndex.Width = 50;
-            // 
             // bandedGridColumnProblemTypeIndex
             // 
             this.bandedGridColumnProblemTypeIndex.Caption = "Type";
-            this.bandedGridColumnProblemTypeIndex.FieldName = "ProblemTypeIndex";
+            this.bandedGridColumnProblemTypeIndex.FieldName = "DiffInfo.DifferenceTypeImageIndex";
             this.bandedGridColumnProblemTypeIndex.Name = "bandedGridColumnProblemTypeIndex";
             this.bandedGridColumnProblemTypeIndex.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnProblemTypeIndex.ToolTip = "The type of difference.";
             this.bandedGridColumnProblemTypeIndex.Visible = true;
             this.bandedGridColumnProblemTypeIndex.Width = 50;
+            // 
+            // bandedGridColumnItemTypeIndex
+            // 
+            this.bandedGridColumnItemTypeIndex.Caption = "Item";
+            this.bandedGridColumnItemTypeIndex.FieldName = "DiffInfo.ItemTypeImageIndex";
+            this.bandedGridColumnItemTypeIndex.Name = "bandedGridColumnItemTypeIndex";
+            this.bandedGridColumnItemTypeIndex.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumnItemTypeIndex.ToolTip = "The type of item the difference is about (i.e file or folder).";
+            this.bandedGridColumnItemTypeIndex.Visible = true;
+            this.bandedGridColumnItemTypeIndex.Width = 50;
             // 
             // gridBandOriginal
             // 
@@ -129,7 +129,7 @@
             // bandedGridColumnOriginalName
             // 
             this.bandedGridColumnOriginalName.Caption = "Name";
-            this.bandedGridColumnOriginalName.FieldName = "OriginalName";
+            this.bandedGridColumnOriginalName.FieldName = "Original.Name";
             this.bandedGridColumnOriginalName.Name = "bandedGridColumnOriginalName";
             this.bandedGridColumnOriginalName.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnOriginalName.ToolTip = "The name of the original item.";
@@ -139,7 +139,7 @@
             // bandedGridColumnOriginalFullPath
             // 
             this.bandedGridColumnOriginalFullPath.Caption = "Path";
-            this.bandedGridColumnOriginalFullPath.FieldName = "OriginalFullPath";
+            this.bandedGridColumnOriginalFullPath.FieldName = "Original.Info.FullName";
             this.bandedGridColumnOriginalFullPath.Name = "bandedGridColumnOriginalFullPath";
             this.bandedGridColumnOriginalFullPath.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnOriginalFullPath.ToolTip = "The path to the original item.";
@@ -159,7 +159,7 @@
             // bandedGridColumnCloneName
             // 
             this.bandedGridColumnCloneName.Caption = "Name";
-            this.bandedGridColumnCloneName.FieldName = "CloneName";
+            this.bandedGridColumnCloneName.FieldName = "Clone.Name";
             this.bandedGridColumnCloneName.Name = "bandedGridColumnCloneName";
             this.bandedGridColumnCloneName.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnCloneName.ToolTip = "The name of the cloned item.";
@@ -169,7 +169,7 @@
             // bandedGridColumnCloneFullPath
             // 
             this.bandedGridColumnCloneFullPath.Caption = "Path";
-            this.bandedGridColumnCloneFullPath.FieldName = "CloneFullPath";
+            this.bandedGridColumnCloneFullPath.FieldName = "Clone.Info.FullName";
             this.bandedGridColumnCloneFullPath.Name = "bandedGridColumnCloneFullPath";
             this.bandedGridColumnCloneFullPath.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnCloneFullPath.ToolTip = "The path to the cloned item.";
