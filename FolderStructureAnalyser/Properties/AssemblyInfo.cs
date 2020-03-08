@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FolderStructureAnalyser")]
+[assembly: AssemblyProduct("Folder Structure Analyser")]
 [assembly: AssemblyCopyright("Copyright © Björn Larsson 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
