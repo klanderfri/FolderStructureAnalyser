@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.Utils.Svg;
 using DevExpress.XtraTreeMap;
 using FolderStructureAnalyser.Components.AnalyserPanels;
 using FolderStructureAnalyser.DataObjects;
@@ -10,7 +12,7 @@ namespace FolderStructureAnalyser.Components.Support
     /// <summary>
     /// Class for object representing a context menu within a sunburst diagram in a folder analyser control.
     /// </summary>
-    public class SizeDiagramContextMenu : ContextMenu
+    public class SizeDiagramContextMenu : ContextMenuStrip
     {
         /// <summary>
         /// The parent folder analyser control containing the sunburst diagram.
@@ -30,7 +32,7 @@ namespace FolderStructureAnalyser.Components.Support
         /// <summary>
         /// Menu item for the set as root option.
         /// </summary>
-        private MenuItem SetAsRoot { get; set; }
+        private ToolStripItem SetAsRoot { get; set; }
 
         /// <summary>
         /// Creates an object representing a context menu within a sunburst diagram in a folder analyser control.
@@ -52,8 +54,8 @@ namespace FolderStructureAnalyser.Components.Support
         {
             ParentSunburst.MouseDown += ParentSunburst_MouseDown;
 
-            SetAsRoot = new MenuItem("Set as root", new EventHandler(setItemAsRootClicked));
-            MenuItems.Add(SetAsRoot);
+            var icons = new AppSvgIcons();
+            SetAsRoot = Items.Add("Set as root", icons.GetImage(8), new EventHandler(setItemAsRootClicked));
         }
 
         private void ParentSunburst_MouseDown(object sender, MouseEventArgs e)

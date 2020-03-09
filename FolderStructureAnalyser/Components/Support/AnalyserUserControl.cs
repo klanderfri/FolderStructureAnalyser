@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
@@ -17,11 +16,12 @@ namespace FolderStructureAnalyser.Components.Support
         /// <summary>
         /// The collection of icons to use in components.
         /// </summary>
-        public SvgImageCollection IconCollection { get { return svgImageCollectionIcons; } }
+        public AppSvgIcons IconCollection { get; private set; }
 
         public AnalyserUserControl()
         {
             InitializeComponent();
+            IconCollection = new AppSvgIcons();
         }
 
         public virtual void SetSession(Session session)

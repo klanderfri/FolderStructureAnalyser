@@ -106,6 +106,9 @@
     <Compile Include="Components\Support\AnalyserUserControl.Designer.cs">
       <DependentUpon>AnalyserUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Support\AppSvgIcons.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\Support\ParentFinder.cs" />
     <Compile Include="Components\Support\SizeDiagramContextMenu.cs">
       <SubType>Component</SubType>
@@ -198,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Support\AnalyserUserControl.resx">
       <DependentUpon>AnalyserUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Support\AppSvgIcons.resx">
+      <DependentUpon>AppSvgIcons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\UserPanels\FolderStructureSettingsCtrl.resx">
       <DependentUpon>FolderStructureSettingsCtrl.cs</DependentUpon>

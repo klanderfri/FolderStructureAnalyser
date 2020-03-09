@@ -28,35 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.svgImageCollectionIcons = new DevExpress.Utils.SvgImageCollection(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionIcons)).BeginInit();
             this.SuspendLayout();
-            // 
-            // svgImageCollectionIcons
-            // 
-            this.svgImageCollectionIcons.Add("collapsedFolder", "image://svgimages/icon builder/actions_folderclose.svg");
-            this.svgImageCollectionIcons.Add("expandedFolder", "image://svgimages/actions/open.svg");
-            this.svgImageCollectionIcons.Add("file", "image://svgimages/actions/new.svg");
-            this.svgImageCollectionIcons.Add("open", "image://svgimages/actions/open2.svg");
-            this.svgImageCollectionIcons.Add("additional", "image://svgimages/icon builder/actions_addcircled.svg");
-            this.svgImageCollectionIcons.Add("missing", "image://svgimages/icon builder/actions_deletecircled.svg");
-            this.svgImageCollectionIcons.Add("size", "image://svgimages/outlook inspired/fittopage.svg");
-            this.svgImageCollectionIcons.Add("attributes", "image://svgimages/setup/properties.svg");
-            this.svgImageCollectionIcons.Add("hash", "image://svgimages/reports/barcodeshowtext.svg");
             // 
             // AnalyserUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "AnalyserUserControl";
-            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollectionIcons)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DevExpress.Utils.SvgImageCollection svgImageCollectionIcons;
     }
 }
