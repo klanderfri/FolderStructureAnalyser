@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraTreeMap;
 using FolderStructureAnalyser.Components.AnalyserPanels;
@@ -70,7 +71,7 @@ namespace FolderStructureAnalyser.Components.Support
         /// <param name="item">The menu item to set as default.</param>
         private void setItemAsDefault(ToolStripItem item)
         {
-            item.Font = new System.Drawing.Font(item.Font, item.Font.Style | System.Drawing.FontStyle.Bold);
+            item.Font = new Font(item.Font, item.Font.Style | FontStyle.Bold);
         }
 
         /// <summary>
