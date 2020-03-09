@@ -43,6 +43,13 @@ namespace FolderStructureAnalyser.DataObjects
         /// <summary>
         /// Creates an object representing a disk item in a file-folder tree structure.
         /// </summary>
+        /// <param name="diskItemPath">The physical path to the disk item.</param>
+        public DiskItemData(string diskItemPath)
+            : this(new BackgroundWorker(), diskItemPath) { }
+
+        /// <summary>
+        /// Creates an object representing a disk item in a file-folder tree structure.
+        /// </summary>
         /// <param name="worker">The background worker responsible for the disk item object creation.</param>
         /// <param name="diskItemPath">The physical path to the disk item.</param>
         public DiskItemData(BackgroundWorker worker, string diskItemPath)
