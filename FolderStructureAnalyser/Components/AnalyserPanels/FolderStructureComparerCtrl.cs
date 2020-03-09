@@ -330,6 +330,15 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 || diffInfo.DifferenceType == DifferenceType.SubfolderAdditional;
         }
 
+        /// <summary>
+        /// Sets the forecolor of a cell to indicate a missing file.
+        /// </summary>
+        /// <param name="e">The arguments for the custom draw cell event.</param>
+        private void setMissingFileFontColour(RowCellCustomDrawEventArgs e)
+        {
+            e.Appearance.ForeColor = Session.Settings.GridErrorColour;
+        }
+
         private void gridControl_DoubleClick(object sender, EventArgs e)
         {
             var hitInfo = GridHandler.GetHitInfo(sender as GridControl, MousePosition) as BandedGridHitInfo;
@@ -358,11 +367,11 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             }
             if (ColumnsForClone.Contains(column) && cloneIsMissingDiskItem(row.DiffInfo))
             {
-                e.Appearance.BackColor = Session.Settings.GridErrorColour;
+                setMissingFileFontColour(e);
             }
             if (ColumnsForOriginal.Contains(column) && cloneHasAdditionalDiskItem(row.DiffInfo))
             {
-                e.Appearance.BackColor = Session.Settings.GridErrorColour;
+                setMissingFileFontColour(e);
             }
         }
     }
