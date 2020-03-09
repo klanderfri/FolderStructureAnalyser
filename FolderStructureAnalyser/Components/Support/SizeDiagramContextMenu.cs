@@ -28,9 +28,14 @@ namespace FolderStructureAnalyser.Components.Support
         public SunburstHitInfo LastHitInfo { get; private set; }
 
         /// <summary>
+        /// Menu item for opening a disk item in Windows Explorer.
+        /// </summary>
+        public ToolStripItem OpenInExplorer { get; private set; }
+
+        /// <summary>
         /// Menu item for the set as root option.
         /// </summary>
-        private ToolStripItem SetAsRoot { get; set; }
+        public ToolStripItem SetAsRoot { get; private set; }
 
         /// <summary>
         /// Creates an object representing a context menu within a sunburst diagram in a folder analyser control.
@@ -53,7 +58,28 @@ namespace FolderStructureAnalyser.Components.Support
             ParentSunburst.MouseDown += ParentSunburst_MouseDown;
 
             var icons = new AppSvgIcons();
+            OpenInExplorer = Items.Add("Open in Explorer", icons.GetImage(3), new EventHandler(openInExplorerClicked));
             SetAsRoot = Items.Add("Set as root", icons.GetImage(9), new EventHandler(setItemAsRootClicked));
+
+            setItemAsDefault(OpenInExplorer);
+        }
+
+        /// <summary>
+        /// Sets a menu item as the default option.
+        /// </summary>
+        /// <param name="item">The menu item to set as default.</param>
+        private void setItemAsDefault(ToolStripItem item)
+        {
+            item.Font = new System.Drawing.Font(item.Font, item.Font.Style | System.Drawing.FontStyle.Bold);
+        }
+
+        /// <summary>
+        /// Gets the disk item that was last hit in the sunburst diagram.
+        /// </summary>
+        /// <returns>The last hit disk item.</returns>
+        private DiskItemData getLastHitDiskItem()
+        {
+            return LastHitInfo.SunburstItem.Tag as DiskItemData;
         }
 
         private void ParentSunburst_MouseDown(object sender, MouseEventArgs e)
@@ -79,15 +105,14 @@ namespace FolderStructureAnalyser.Components.Support
             Show(ParentSunburst, e.Location);
         }
 
-        /// <summary>
-        /// Method handling the event raised when the user clicks the option to set a disk item as root.
-        /// </summary>
-        /// <param name="sender">The menu item clicked.</param>
-        /// <param name="e">The arguments for the click event.</param>
+        private void openInExplorerClicked(object sender, EventArgs e)
+        {
+            FileHandler.OpenDiskItemInExplorer(getLastHitDiskItem().Info);
+        }
+        
         private void setItemAsRootClicked(object sender, EventArgs e)
         {
-            var root = LastHitInfo.SunburstItem.Tag as DiskItemData;
-            ParentFolderAnalyser.SetDiskItemAsRoot(root);
+            ParentFolderAnalyser.SetDiskItemAsRoot(getLastHitDiskItem());
         }
     }
 }
