@@ -50,6 +50,38 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// </summary>
         private string LastSelectedClonePath { get; set; }
 
+        /// <summary>
+        /// List of columns holding information about the original disk item.
+        /// </summary>
+        private List<BandedGridColumn> ColumnsForOriginal
+        {
+            get
+            {
+                return new List<BandedGridColumn>()
+                {
+                    bandedGridColumnOriginalName,
+                    bandedGridColumnOriginalFullPath,
+                    bandedGridColumnOriginalHash
+                };
+            }
+        }
+
+        /// <summary>
+        /// List of columns holding information about the clone disk item.
+        /// </summary>
+        private List<BandedGridColumn> ColumnsForClone
+        {
+            get
+            {
+                return new List<BandedGridColumn>()
+                {
+                    bandedGridColumnCloneName,
+                    bandedGridColumnCloneFullPath,
+                    bandedGridColumnCloneHash
+                };
+            }
+        }
+
         public FolderStructureComparerCtrl()
         {
             InitializeComponent();
@@ -276,19 +308,37 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             gridControl1.DataSource = differences;
         }
 
+        /// <summary>
+        /// Checks if the clone is missing a file.
+        /// </summary>
+        /// <param name="diffInfo">The information about the folder strucure difference.</param>
+        /// <returns>TRUE if the clone is missing a file, else FALSE.</returns>
+        private static bool cloneIsMissingDiskItem(DifferenceTypeDescription diffInfo)
+        {
+            return diffInfo.DifferenceType == DifferenceType.FileMissing
+                || diffInfo.DifferenceType == DifferenceType.SubfolderMissing;
+        }
+
+        /// <summary>
+        /// Checks if the clone has an additional file.
+        /// </summary>
+        /// <param name="diffInfo">The information about the folder strucure difference.</param>
+        /// <returns>TRUE if the clone has an additional file, else FALSE.</returns>
+        private static bool cloneHasAdditionalDiskItem(DifferenceTypeDescription diffInfo)
+        {
+            return diffInfo.DifferenceType == DifferenceType.FileAdditional
+                || diffInfo.DifferenceType == DifferenceType.SubfolderAdditional;
+        }
+
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
             var hitInfo = GridHandler.GetHitInfo(sender as GridControl, MousePosition) as BandedGridHitInfo;
             var row = hitInfo.View.GetRow(hitInfo.RowHandle) as StructureDifference;
 
-            if (hitInfo.Band == gridBandOriginal)
+            if (hitInfo.Band == gridBandDiskItems)
             {
-                var parentFolder = FileHandler.GetParentFolder(row.Original.Info.FullName);
-                FileHandler.OpenDiskItemInExplorer(parentFolder);
-            }
-            if (hitInfo.Band == gridBandClone)
-            {
-                var parentFolder = FileHandler.GetParentFolder(row.Clone.Info.FullName);
+                var diskItem = ColumnsForOriginal.Contains(hitInfo.Column) ? row.Original : row.Clone;
+                var parentFolder = FileHandler.GetParentFolder(diskItem.Info.FullName);
                 FileHandler.OpenDiskItemInExplorer(parentFolder);
             }
         }
@@ -296,7 +346,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         private void bandedGridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
             var column = e.Column as BandedGridColumn;
-            var row = bandedGridView1.GetRow(e.RowHandle) as StructureDifference;
+            var row = advBandedGridView1.GetRow(e.RowHandle) as StructureDifference;
 
             if (column == bandedGridColumnItemTypeIndex)
             {
@@ -306,21 +356,13 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             {
                 DrawCellNodeIcon(e, e.Column.Width, row.DiffInfo.DifferenceTypeImageIndex);
             }
-            if (column.OwnerBand == gridBandClone)
+            if (ColumnsForClone.Contains(column) && cloneIsMissingDiskItem(row.DiffInfo))
             {
-                if (row.DiffInfo.DifferenceType == DifferenceType.FileMissing
-                    || row.DiffInfo.DifferenceType == DifferenceType.SubfolderMissing)
-                {
-                    e.Appearance.BackColor = Session.Settings.GridErrorColour;
-                }
+                e.Appearance.BackColor = Session.Settings.GridErrorColour;
             }
-            if (column.OwnerBand == gridBandOriginal)
+            if (ColumnsForOriginal.Contains(column) && cloneHasAdditionalDiskItem(row.DiffInfo))
             {
-                if (row.DiffInfo.DifferenceType == DifferenceType.FileAdditional
-                   || row.DiffInfo.DifferenceType == DifferenceType.SubfolderAdditional)
-                {
-                    e.Appearance.BackColor = Session.Settings.GridErrorColour;
-                }
+                e.Appearance.BackColor = Session.Settings.GridErrorColour;
             }
         }
     }
