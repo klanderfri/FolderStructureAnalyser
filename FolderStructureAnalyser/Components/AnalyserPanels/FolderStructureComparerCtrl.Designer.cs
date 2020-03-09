@@ -78,7 +78,7 @@
             // 
             // bandedGridColumnOriginalName
             // 
-            this.bandedGridColumnOriginalName.Caption = "Name";
+            this.bandedGridColumnOriginalName.Caption = "Original Name";
             this.bandedGridColumnOriginalName.FieldName = "Original.Name";
             this.bandedGridColumnOriginalName.Name = "bandedGridColumnOriginalName";
             this.bandedGridColumnOriginalName.OptionsColumn.AllowEdit = false;
@@ -88,7 +88,7 @@
             // 
             // bandedGridColumnOriginalFullPath
             // 
-            this.bandedGridColumnOriginalFullPath.Caption = "Path";
+            this.bandedGridColumnOriginalFullPath.Caption = "Original Path";
             this.bandedGridColumnOriginalFullPath.FieldName = "Original.Info.FullName";
             this.bandedGridColumnOriginalFullPath.Name = "bandedGridColumnOriginalFullPath";
             this.bandedGridColumnOriginalFullPath.OptionsColumn.AllowEdit = false;
@@ -98,7 +98,7 @@
             // 
             // bandedGridColumnCloneName
             // 
-            this.bandedGridColumnCloneName.Caption = "Name";
+            this.bandedGridColumnCloneName.Caption = "Clone Name";
             this.bandedGridColumnCloneName.FieldName = "Clone.Name";
             this.bandedGridColumnCloneName.Name = "bandedGridColumnCloneName";
             this.bandedGridColumnCloneName.OptionsColumn.AllowEdit = false;
@@ -109,7 +109,7 @@
             // 
             // bandedGridColumnCloneFullPath
             // 
-            this.bandedGridColumnCloneFullPath.Caption = "Path";
+            this.bandedGridColumnCloneFullPath.Caption = "Clone Path";
             this.bandedGridColumnCloneFullPath.FieldName = "Clone.Info.FullName";
             this.bandedGridColumnCloneFullPath.Name = "bandedGridColumnCloneFullPath";
             this.bandedGridColumnCloneFullPath.OptionsColumn.AllowEdit = false;
@@ -150,7 +150,7 @@
             // 
             // bandedGridColumnOriginalHash
             // 
-            this.bandedGridColumnOriginalHash.Caption = "Hash";
+            this.bandedGridColumnOriginalHash.Caption = "Original Hash";
             this.bandedGridColumnOriginalHash.FieldName = "Original.MD5";
             this.bandedGridColumnOriginalHash.Name = "bandedGridColumnOriginalHash";
             this.bandedGridColumnOriginalHash.Visible = true;
@@ -158,7 +158,7 @@
             // 
             // bandedGridColumnCloneHash
             // 
-            this.bandedGridColumnCloneHash.Caption = "Hash";
+            this.bandedGridColumnCloneHash.Caption = "Clone Hash";
             this.bandedGridColumnCloneHash.FieldName = "Clone.MD5";
             this.bandedGridColumnCloneHash.Name = "bandedGridColumnCloneHash";
             this.bandedGridColumnCloneHash.RowIndex = 1;
