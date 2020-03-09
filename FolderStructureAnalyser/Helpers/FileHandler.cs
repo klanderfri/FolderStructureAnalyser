@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace FolderStructureAnalyser.Helpers
@@ -101,6 +102,27 @@ namespace FolderStructureAnalyser.Helpers
 
             return subItems;
         }
+
+        /// <summary>
+        /// Checks if a disk item is an existing file.
+        /// </summary>
+        /// <param name="diskItem">The disk item to test.</param>
+        /// <returns>TRUE if the disk item is an existing file, else FALSE.</returns>
+        public static bool IsExistingFile(FileSystemInfo diskItem)
+        {
+            return diskItem.Exists && !(diskItem is DirectoryInfo);
+        }
+
+        /// <summary>
+        /// Checks if a disk item is an existing folder.
+        /// </summary>
+        /// <param name="diskItem">The disk item to test.</param>
+        /// <returns>TRUE if the disk item is an existing folder, else FALSE.</returns>
+        public static bool IsExistingFolder(FileSystemInfo diskItem)
+        {
+            return diskItem.Exists && diskItem is DirectoryInfo;
+        }
+
         /// <summary>
         /// Opens, in the Windows Explorer, the folder for the specified disk item.
         /// </summary>
@@ -188,10 +210,10 @@ namespace FolderStructureAnalyser.Helpers
         }
 
         /// <summary>
-        /// Gives the hash code for a file
+        /// Gives the hash code for a file.
         /// </summary>
-        /// <param name="file">The full path to the file to get the hash code for.</param>
-        /// <returns>The has code of the file.</returns>
+        /// <param name="fullFilePath">The full path to the file to get the hash code for.</param>
+        /// <returns>The hash code of the file.</returns>
         public static byte[] GetHash(string fullFilePath)
         {
             using (var md5 = MD5.Create())
@@ -201,6 +223,36 @@ namespace FolderStructureAnalyser.Helpers
                     return md5.ComputeHash(stream);
                 }
             }
+        }
+
+        /// <summary>
+        /// Gives the hash string for a file.
+        /// </summary>
+        /// <param name="fullFilePath">The full path to the file to get the hash string for.</param>
+        /// <returns>The hash string of the file.</returns>
+        public static string GetHashString(string fullFilePath)
+        {
+            //Get the hash code.
+            var hash = GetHash(fullFilePath);
+
+            //Convert the hash code to a string.
+            var checksum = new StringBuilder("Byte [");
+            foreach (var part in hash)
+            {
+                var format = "{0}, ";
+                checksum.AppendFormat(format, part);
+            }
+
+            //Remove the last comma and whitespace.
+            if (hash.Length > 0)
+            {
+                checksum.Remove(checksum.Length - 2, 2);
+            }
+
+            //Add character marking the end of the hash string.
+            checksum.Append("]");
+
+            return checksum.ToString();
         }
 
         /// <summary>
