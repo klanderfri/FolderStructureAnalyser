@@ -129,7 +129,7 @@
             this.gridBandOriginal.Name = "gridBandOriginal";
             this.gridBandOriginal.ToolTip = "Contains columns holding information about the original.";
             this.gridBandOriginal.VisibleIndex = 1;
-            this.gridBandOriginal.Width = 1120;
+            this.gridBandOriginal.Width = 1150;
             // 
             // bandedGridColumnOriginalName
             // 
@@ -149,7 +149,7 @@
             this.bandedGridColumnOriginalFullPath.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnOriginalFullPath.ToolTip = "The path to the original item.";
             this.bandedGridColumnOriginalFullPath.Visible = true;
-            this.bandedGridColumnOriginalFullPath.Width = 520;
+            this.bandedGridColumnOriginalFullPath.Width = 550;
             // 
             // bandedGridColumnOriginalHash
             // 
@@ -168,7 +168,7 @@
             this.gridBandClone.Name = "gridBandClone";
             this.gridBandClone.ToolTip = "Contains columns holding information about the clone.";
             this.gridBandClone.VisibleIndex = 2;
-            this.gridBandClone.Width = 1120;
+            this.gridBandClone.Width = 1150;
             // 
             // bandedGridColumnCloneName
             // 
@@ -188,7 +188,7 @@
             this.bandedGridColumnCloneFullPath.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnCloneFullPath.ToolTip = "The path to the cloned item.";
             this.bandedGridColumnCloneFullPath.Visible = true;
-            this.bandedGridColumnCloneFullPath.Width = 520;
+            this.bandedGridColumnCloneFullPath.Width = 550;
             // 
             // bandedGridColumnCloneHash
             // 
