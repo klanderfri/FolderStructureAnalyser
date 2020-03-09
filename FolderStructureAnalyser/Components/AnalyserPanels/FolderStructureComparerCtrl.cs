@@ -305,7 +305,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <param name="differences">The list of differences to show the user.</param>
         private void updateDataSource(BindingList<StructureDifference> differences)
         {
-            gridControl1.DataSource = differences;
+            gridControl.DataSource = differences;
         }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 || diffInfo.DifferenceType == DifferenceType.SubfolderAdditional;
         }
 
-        private void gridControl1_DoubleClick(object sender, EventArgs e)
+        private void gridControl_DoubleClick(object sender, EventArgs e)
         {
             var hitInfo = GridHandler.GetHitInfo(sender as GridControl, MousePosition) as BandedGridHitInfo;
             var row = hitInfo.View.GetRow(hitInfo.RowHandle) as StructureDifference;
@@ -343,10 +343,10 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             }
         }
 
-        private void bandedGridView1_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        private void advBandedGridView_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
             var column = e.Column as BandedGridColumn;
-            var row = advBandedGridView1.GetRow(e.RowHandle) as StructureDifference;
+            var row = advBandedGridView.GetRow(e.RowHandle) as StructureDifference;
 
             if (column == bandedGridColumnItemTypeIndex)
             {
