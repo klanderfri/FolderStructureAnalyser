@@ -31,6 +31,7 @@ namespace FolderStructureAnalyser.Components.Support
             this.svgImageCollection.Add("size", "image://svgimages/outlook inspired/fittopage.svg");
             this.svgImageCollection.Add("attributes", "image://svgimages/setup/properties.svg");
             this.svgImageCollection.Add("hash", "image://svgimages/reports/barcodeshowtext.svg");
+            this.svgImageCollection.Add("root", "image://svgimages/business objects/bo_category.svg");
             ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

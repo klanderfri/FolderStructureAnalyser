@@ -55,7 +55,7 @@ namespace FolderStructureAnalyser.Components.Support
             ParentSunburst.MouseDown += ParentSunburst_MouseDown;
 
             var icons = new AppSvgIcons();
-            SetAsRoot = Items.Add("Set as root", icons.GetImage(8), new EventHandler(setItemAsRootClicked));
+            SetAsRoot = Items.Add("Set as root", icons.GetImage(9), new EventHandler(setItemAsRootClicked));
         }
 
         private void ParentSunburst_MouseDown(object sender, MouseEventArgs e)
