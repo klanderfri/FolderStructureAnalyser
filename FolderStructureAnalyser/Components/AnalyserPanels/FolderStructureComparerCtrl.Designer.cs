@@ -178,6 +178,7 @@
             this.bandedGridColumnOriginalHash.Caption = "Original Hash";
             this.bandedGridColumnOriginalHash.FieldName = "Original.MD5";
             this.bandedGridColumnOriginalHash.Name = "bandedGridColumnOriginalHash";
+            this.bandedGridColumnOriginalHash.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnOriginalHash.Visible = true;
             this.bandedGridColumnOriginalHash.Width = 450;
             // 
@@ -208,6 +209,7 @@
             this.bandedGridColumnCloneHash.Caption = "Clone Hash";
             this.bandedGridColumnCloneHash.FieldName = "Clone.MD5";
             this.bandedGridColumnCloneHash.Name = "bandedGridColumnCloneHash";
+            this.bandedGridColumnCloneHash.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnCloneHash.RowIndex = 1;
             this.bandedGridColumnCloneHash.Visible = true;
             this.bandedGridColumnCloneHash.Width = 450;
