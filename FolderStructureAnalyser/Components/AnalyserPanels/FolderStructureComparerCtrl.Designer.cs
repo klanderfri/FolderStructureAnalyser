@@ -68,9 +68,9 @@
             // 
             // advBandedGridView
             // 
-            this.advBandedGridView.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.advBandedGridView.Appearance.Empty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(239)))), ((int)(((byte)(235)))));
             this.advBandedGridView.Appearance.Empty.Options.UseBackColor = true;
-            this.advBandedGridView.Appearance.RowSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.advBandedGridView.Appearance.RowSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(239)))), ((int)(((byte)(235)))));
             this.advBandedGridView.Appearance.RowSeparator.Options.UseBackColor = true;
             this.advBandedGridView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBandDifference,
