@@ -90,7 +90,7 @@ namespace FolderStructureAnalyser.DataObjects
                 default:
                     var format = "Unhandled folder structure difference: {0}";
                     var message = String.Format(format, diffType);
-                    throw new UnhandledEnumException(typeof(DifferenceType), message);
+                    throw new UnhandledSwitchCaseException(typeof(DifferenceType), message);
             }
         }
     }

@@ -414,7 +414,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                     e.DisplayText = "Different hash codes";
                     break;
                 default:
-                    throw new UnhandledEnumException(typeof(int), problem);
+                    throw new UnhandledSwitchCaseException(typeof(int), problem);
             }
         }
     }

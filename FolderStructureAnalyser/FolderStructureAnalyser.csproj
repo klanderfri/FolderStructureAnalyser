@@ -166,7 +166,7 @@
       <DependentUpon>WaitForStructureAnalyseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Events\ParentFoundArgs.cs" />
-    <Compile Include="Exceptions\UnhandledEnumException.cs" />
+    <Compile Include="Exceptions\UnhandledSwitchCaseException.cs" />
     <Compile Include="Helpers\ColourHandler.cs" />
     <Compile Include="Helpers\FileHandler.cs" />
     <Compile Include="Helpers\GridHandler.cs" />

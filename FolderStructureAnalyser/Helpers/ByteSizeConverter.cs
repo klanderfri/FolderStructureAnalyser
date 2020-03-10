@@ -27,7 +27,7 @@ namespace FolderStructureAnalyser.Helpers
                 case SizeDisplayUnit.OnlyMB:
                     return sizeStringFromByteAsMB(sizeInBytes);
                 default:
-                    throw new UnhandledEnumException(typeof(SizeDisplayUnit), displayUnit);
+                    throw new UnhandledSwitchCaseException(typeof(SizeDisplayUnit), displayUnit);
             }
         }
 
