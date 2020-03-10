@@ -24,6 +24,11 @@ namespace FolderStructureAnalyser.DataObjects
         public string MD5 { get; private set; }
 
         /// <summary>
+        /// The string representing the disk item attributes.
+        /// </summary>
+        public string Attributes { get; private set; }
+
+        /// <summary>
         /// Creates an object holding information about a disk item.
         /// </summary>
         /// <param name="diskItem">Base information about the disk item.</param>
@@ -31,6 +36,7 @@ namespace FolderStructureAnalyser.DataObjects
         {
             Info = diskItem;
             MD5 = getHashString(diskItem);
+            Attributes = getAttributeString(diskItem);
         }
 
         /// <summary>
@@ -42,6 +48,17 @@ namespace FolderStructureAnalyser.DataObjects
         {
             if (!FileHandler.IsExistingFile(diskItem)) { return null; }
             return FileHandler.GetHashString(diskItem.FullName);
+        }
+
+        /// <summary>
+        /// Gets the attributes for the disk item as a string.
+        /// </summary>
+        /// <param name="diskItem">The disk item to get the attributes string for.</param>
+        /// <returns>The string representing the disk item attributes.</returns>
+        private string getAttributeString(FileSystemInfo diskItem)
+        {
+            if (!diskItem.Exists) { return "N/A"; }
+            return diskItem.Attributes.ToString();
         }
     }
 }

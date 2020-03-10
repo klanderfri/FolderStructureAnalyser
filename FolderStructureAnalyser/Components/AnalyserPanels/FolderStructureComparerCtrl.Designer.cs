@@ -40,9 +40,11 @@
             this.bandedGridColumnOriginalName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnOriginalFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnOriginalHash = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnOriginalAttributes = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCloneName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCloneFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCloneHash = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnCloneAttributes = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditProblemTypeIndex)).BeginInit();
@@ -78,7 +80,9 @@
             this.bandedGridColumnItemTypeIndex,
             this.bandedGridColumnProblemTypeIndex,
             this.bandedGridColumnOriginalHash,
-            this.bandedGridColumnCloneHash});
+            this.bandedGridColumnCloneHash,
+            this.bandedGridColumnOriginalAttributes,
+            this.bandedGridColumnCloneAttributes});
             this.advBandedGridView.GridControl = this.gridControl;
             this.advBandedGridView.Name = "advBandedGridView";
             this.advBandedGridView.RowSeparatorHeight = 7;
@@ -145,13 +149,15 @@
             this.gridBandDiskItems.Columns.Add(this.bandedGridColumnOriginalName);
             this.gridBandDiskItems.Columns.Add(this.bandedGridColumnOriginalFullPath);
             this.gridBandDiskItems.Columns.Add(this.bandedGridColumnOriginalHash);
+            this.gridBandDiskItems.Columns.Add(this.bandedGridColumnOriginalAttributes);
             this.gridBandDiskItems.Columns.Add(this.bandedGridColumnCloneName);
             this.gridBandDiskItems.Columns.Add(this.bandedGridColumnCloneFullPath);
             this.gridBandDiskItems.Columns.Add(this.bandedGridColumnCloneHash);
+            this.gridBandDiskItems.Columns.Add(this.bandedGridColumnCloneAttributes);
             this.gridBandDiskItems.Name = "gridBandDiskItems";
             this.gridBandDiskItems.ToolTip = "Contains columns holding information about the disk items";
             this.gridBandDiskItems.VisibleIndex = 1;
-            this.gridBandDiskItems.Width = 1150;
+            this.gridBandDiskItems.Width = 1320;
             // 
             // bandedGridColumnOriginalName
             // 
@@ -179,8 +185,19 @@
             this.bandedGridColumnOriginalHash.FieldName = "Original.MD5";
             this.bandedGridColumnOriginalHash.Name = "bandedGridColumnOriginalHash";
             this.bandedGridColumnOriginalHash.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumnOriginalHash.ToolTip = "The hash code of the original item.";
             this.bandedGridColumnOriginalHash.Visible = true;
             this.bandedGridColumnOriginalHash.Width = 450;
+            // 
+            // bandedGridColumnOriginalAttributes
+            // 
+            this.bandedGridColumnOriginalAttributes.Caption = "Original Attributes";
+            this.bandedGridColumnOriginalAttributes.FieldName = "Original.Attributes";
+            this.bandedGridColumnOriginalAttributes.Name = "bandedGridColumnOriginalAttributes";
+            this.bandedGridColumnOriginalAttributes.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumnOriginalAttributes.ToolTip = "The attributes of the original item.";
+            this.bandedGridColumnOriginalAttributes.Visible = true;
+            this.bandedGridColumnOriginalAttributes.Width = 170;
             // 
             // bandedGridColumnCloneName
             // 
@@ -211,8 +228,20 @@
             this.bandedGridColumnCloneHash.Name = "bandedGridColumnCloneHash";
             this.bandedGridColumnCloneHash.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnCloneHash.RowIndex = 1;
+            this.bandedGridColumnCloneHash.ToolTip = "The hash code of the clone item.";
             this.bandedGridColumnCloneHash.Visible = true;
             this.bandedGridColumnCloneHash.Width = 450;
+            // 
+            // bandedGridColumnCloneAttributes
+            // 
+            this.bandedGridColumnCloneAttributes.Caption = "Clone Attributes";
+            this.bandedGridColumnCloneAttributes.FieldName = "Clone.Attributes";
+            this.bandedGridColumnCloneAttributes.Name = "bandedGridColumnCloneAttributes";
+            this.bandedGridColumnCloneAttributes.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumnCloneAttributes.RowIndex = 1;
+            this.bandedGridColumnCloneAttributes.ToolTip = "The attributes of the clone item.";
+            this.bandedGridColumnCloneAttributes.Visible = true;
+            this.bandedGridColumnCloneAttributes.Width = 170;
             // 
             // FolderStructureComparerCtrl
             // 
@@ -249,5 +278,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandDiskItems;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditProblemTypeIndex;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditItemTypeIndex;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnOriginalAttributes;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnCloneAttributes;
     }
 }

@@ -39,7 +39,8 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 {
                     bandedGridColumnOriginalName,
                     bandedGridColumnOriginalFullPath,
-                    bandedGridColumnOriginalHash
+                    bandedGridColumnOriginalHash,
+                    bandedGridColumnOriginalAttributes
                 };
             }
         }
@@ -55,7 +56,8 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 {
                     bandedGridColumnCloneName,
                     bandedGridColumnCloneFullPath,
-                    bandedGridColumnCloneHash
+                    bandedGridColumnCloneHash,
+                    bandedGridColumnCloneAttributes
                 };
             }
         }
