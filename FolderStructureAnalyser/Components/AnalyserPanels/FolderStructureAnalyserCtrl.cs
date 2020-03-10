@@ -7,6 +7,7 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
 using FolderStructureAnalyser.DataObjects;
+using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
@@ -245,7 +246,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                 var node = getDiskItemNodeFromTreeNode(hitInfo.Node);
 
                 //Open the folder or the file parent folder.
-                FileHandler.InvokeExplorer(node.DiskItem.Info, true);
+                FileHandler.InvokeExplorer(node.DiskItem.Info, OpenFolderBehaviour.OpenItself);
             }
         }
 

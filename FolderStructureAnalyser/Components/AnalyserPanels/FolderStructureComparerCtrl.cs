@@ -225,16 +225,16 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             if (hitInfo.Band == gridBandDiskItems)
             {
                 var diskItem = ColumnsForOriginal.Contains(hitInfo.Column) ? row.Original.Info : row.Clone.Info;
-                var openItselfIfFolder = false;
+                var folderBehaviour = OpenFolderBehaviour.SelectInParent;
 
                 if (!diskItem.Exists)
                 {
                     //The file or folder is missing. Open its parent.
                     diskItem = FileHandler.GetParentFolder(diskItem.FullName);
-                    openItselfIfFolder = true;
+                    folderBehaviour = OpenFolderBehaviour.OpenItself;
                 }
 
-                FileHandler.InvokeExplorer(diskItem, openItselfIfFolder);
+                FileHandler.InvokeExplorer(diskItem, folderBehaviour);
             }
         }
 

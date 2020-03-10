@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml.Serialization;
+using FolderStructureAnalyser.Enums;
 
 namespace FolderStructureAnalyser.Helpers
 {
@@ -127,8 +128,8 @@ namespace FolderStructureAnalyser.Helpers
         /// Shows, in the Windows Explorer, the disk item, markerd in the folder containing it.
         /// </summary>
         /// <param name="diskItem">The disk item to show.</param>
-        /// <param name="openFolder">Tells if a folder should be opened itself instead of being marked in its parent.</param>
-        public static void InvokeExplorer(FileSystemInfo diskItem, bool openFolder)
+        /// <param name="folderBehaviour">Tells how a folder should behave when opened.</param>
+        public static void InvokeExplorer(FileSystemInfo diskItem, OpenFolderBehaviour folderBehaviour)
         {
             if (!diskItem.Exists)
             {
@@ -138,7 +139,8 @@ namespace FolderStructureAnalyser.Helpers
 
             try
             {
-                if (openFolder && diskItem is DirectoryInfo)
+                if (folderBehaviour == OpenFolderBehaviour.OpenItself
+                    && diskItem is DirectoryInfo)
                 {
                     //Open the folder itself.
                     Process.Start(diskItem.FullName);

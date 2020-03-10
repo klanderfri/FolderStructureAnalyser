@@ -6,6 +6,7 @@ using DevExpress.Utils;
 using DevExpress.XtraTreeMap;
 using FolderStructureAnalyser.Components.Support;
 using FolderStructureAnalyser.DataObjects;
+using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
@@ -91,7 +92,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             if (hitInfo.InSunburstItem)
             {
                 var diskItem = hitInfo.SunburstItem.Tag as DiskItemData;
-                FileHandler.InvokeExplorer(diskItem.Info, true);
+                FileHandler.InvokeExplorer(diskItem.Info, OpenFolderBehaviour.OpenItself);
             }
         }
 

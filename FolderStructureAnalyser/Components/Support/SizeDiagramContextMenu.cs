@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using DevExpress.XtraTreeMap;
 using FolderStructureAnalyser.Components.AnalyserPanels;
 using FolderStructureAnalyser.DataObjects;
+using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Helpers;
 
 namespace FolderStructureAnalyser.Components.Support
@@ -108,7 +109,7 @@ namespace FolderStructureAnalyser.Components.Support
 
         private void openInExplorerClicked(object sender, EventArgs e)
         {
-            FileHandler.InvokeExplorer(getLastHitDiskItem().Info, true);
+            FileHandler.InvokeExplorer(getLastHitDiskItem().Info, OpenFolderBehaviour.OpenItself);
         }
         
         private void setItemAsRootClicked(object sender, EventArgs e)
