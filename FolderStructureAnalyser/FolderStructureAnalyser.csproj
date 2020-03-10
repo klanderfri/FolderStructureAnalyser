@@ -148,6 +148,7 @@
       <DependentUpon>FolderStructureComparerCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="DataObjects\LogMessage.cs" />
+    <Compile Include="Helpers\StructureComparer.cs" />
     <Compile Include="DataObjects\StructureDifference.cs" />
     <Compile Include="Enums\DifferenceType.cs" />
     <Compile Include="Enums\LogMessageType.cs" />
