@@ -46,7 +46,8 @@ namespace FolderStructureAnalyser.DataObjects
         /// <returns>The hash string for the disk item, NULL if no such string can be fetched.</returns>
         private static string getHashString(FileSystemInfo diskItem)
         {
-            if (!FileHandler.IsExistingFile(diskItem)) { return null; }
+            if (diskItem is DirectoryInfo) { return ""; }
+            if (!diskItem.Exists) { return "N/A"; }
             return FileHandler.GetHashString(diskItem.FullName);
         }
 
