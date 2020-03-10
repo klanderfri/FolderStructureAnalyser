@@ -3,7 +3,6 @@ Session
 	Better handling of Session (subscribing to session set event?).
 
 Code smell
-	It doesnt look good that DiskItemNode is validating its state in the IsFolder and not in a constructor.
 	Create better handling of colour settings. Right know there need to be 5 rows of duplicated code for each colour settings.
 
 Graphical updates
@@ -27,4 +26,5 @@ Under the hood
 	Make the BackgroundWorker report a difference object back so the grid can be updated while the user is waiting
 	Find out how to make FirstOrDefault search most efficently when the item most likely is in the end (method: OperationMessageLogCtrl.removeLogMessage).
 	Add the original sender to log messages.
+	Extract all texts shown to the user to a separate localizer class to avoid hardcoding.
 	

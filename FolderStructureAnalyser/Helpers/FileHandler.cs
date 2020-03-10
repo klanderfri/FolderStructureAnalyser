@@ -155,7 +155,7 @@ namespace FolderStructureAnalyser.Helpers
             }
             catch (Exception ex)
             {
-                MessageBoxes.ShowProblemOpeningDiskItemMessage(diskItem, ex);
+                MessageBoxes.ShowProblemOpeningDiskItemMessage(diskItem, ex, folderBehaviour);
             }
         }
 

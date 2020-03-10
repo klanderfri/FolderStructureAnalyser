@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
+using FolderStructureAnalyser.Enums;
 
 namespace FolderStructureAnalyser.Helpers
 {
@@ -35,22 +37,39 @@ namespace FolderStructureAnalyser.Helpers
             var message = "You have selected the same folder as both original and clone. Select different folders!";
             MessageBox.Show(message, "Same folder selected twice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
-        public static void ShowProblemOpeningDiskItemMessage(FileSystemInfo file, Exception ex)
+        
+        public static void ShowProblemOpeningDiskItemMessage(FileSystemInfo diskItem, Exception ex, OpenFolderBehaviour folderBehaviour)
         {
-            var type = (file is DirectoryInfo) ? "subfolder" : "file";
-            var format = "Problem opening the folder containing the {4} {1}.{0}Path: {2}{0}Error: {3}";
-            var message = String.Format(format, Environment.NewLine, file.Name, file.FullName, ex.Message, type);
-            MessageBox.Show(message, "Problem opening folder containing file.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            var diskItemIsFolder = diskItem is DirectoryInfo;
+
+            string diskItemType;
+            var messageFormat = new StringBuilder("Problem opening the ");
+            if (folderBehaviour == OpenFolderBehaviour.OpenItself
+                && diskItem is DirectoryInfo)
+            {
+                diskItemType = "folder";
+            }
+            else
+            {
+                messageFormat.Append("folder containing the ");
+                diskItemType = diskItemIsFolder ? "subfolder" : "file";
+            }
+            messageFormat.Append("{4} '{1}'.{0}Path: {2}{0}Error: {3}");
+
+            var captionFormat = "Problem opening folder containing {0}.";
+            var message = String.Format(messageFormat.ToString(), Environment.NewLine, diskItem.Name, diskItem.FullName, ex.Message, diskItemType);
+            var caption = String.Format(captionFormat, diskItemType);
+
+            MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static void ShowDiskItemDoesNotExistMessage(FileSystemInfo file)
+        public static void ShowDiskItemDoesNotExistMessage(FileSystemInfo diskItem)
         {
-            var type = (file is DirectoryInfo) ? "folder" : "file";
-            var messageformat = "The {0} does not exist.";
+            var diskItemType = (diskItem is DirectoryInfo) ? "folder" : "file";
+            var messageformat = "The {0} '{1}' does not exist.";
             var captionFormat = "Non-existing {0}";
-            var message = String.Format(messageformat, type);
-            var caption = String.Format(captionFormat, type);
+            var message = String.Format(messageformat, diskItemType, diskItem.Name);
+            var caption = String.Format(captionFormat, diskItemType);
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
