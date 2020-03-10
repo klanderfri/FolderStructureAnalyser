@@ -21,7 +21,7 @@ namespace FolderStructureAnalyser.Helpers
             var differences = new BindingList<StructureDifference>();
 
             //Compare the folders.
-            compareFolders(originalFolderPath, cloneFolderPath, differences, worker, compareFileHashes);
+            compareFolders(originalFolderPath, cloneFolderPath, compareFileHashes, worker, differences);
 
             //Return the differences.
             return differences;
@@ -32,10 +32,10 @@ namespace FolderStructureAnalyser.Helpers
         /// </summary>
         /// <param name="originalFolderPath">The full path to the original folder.</param>
         /// <param name="cloneFolderPath">The full path to the clone folder.</param>
-        /// <param name="differences">The data source holding any differences found.</param>
-        /// <param name="worker">The worker responsible for the comparision.</param>
         /// <param name="compareFileHashes">Tells if the comparer should compare file hashes.</param>
-        private static void compareFolders(string originalFolderPath, string cloneFolderPath, BindingList<StructureDifference> differences, BackgroundWorker worker, bool compareFileHashes)
+        /// <param name="worker">The worker responsible for the comparision.</param>
+        /// <param name="differences">The data source holding any differences found.</param>
+        private static void compareFolders(string originalFolderPath, string cloneFolderPath, bool compareFileHashes, BackgroundWorker worker, BindingList<StructureDifference> differences)
         {
             //Check for cancellation.
             if (worker.CancellationPending) { return; }
@@ -58,7 +58,7 @@ namespace FolderStructureAnalyser.Helpers
             }
 
             //Compare the files in the folders.
-            compareFiles(originalFolderPath, cloneFolderPath, differences, worker, compareFileHashes);
+            compareFiles(originalFolderPath, cloneFolderPath, compareFileHashes, worker, differences);
 
             //Check if the clone has any folders the original does not.
             foreach (var cloneSubFolder in FileHandler.GetSubfolders(cloneFolderPath))
@@ -81,7 +81,7 @@ namespace FolderStructureAnalyser.Helpers
                 var cloneSubfolderPath = Path.Combine(cloneFolderPath, originalSubfolder.Name);
 
                 //Compare the folders.
-                compareFolders(originalSubfolderPath, cloneSubfolderPath, differences, worker, compareFileHashes);
+                compareFolders(originalSubfolderPath, cloneSubfolderPath, compareFileHashes, worker, differences);
             }
         }
 
@@ -90,10 +90,10 @@ namespace FolderStructureAnalyser.Helpers
         /// </summary>
         /// <param name="originalFolderPath">The full path to the original folder.</param>
         /// <param name="cloneFolderPath">The full path to the clone folder.</param>
-        /// <param name="differences">The data source holding any differences found.</param>
-        /// <param name="worker">The worker responsible for the comparision.</param>
         /// <param name="compareFileHashes">Tells if the comparer should compare file hashes.</param>
-        private static void compareFiles(string originalFolderPath, string cloneFolderPath, BindingList<StructureDifference> differences, BackgroundWorker worker, bool compareFileHashes)
+        /// <param name="worker">The worker responsible for the comparision.</param>
+        /// <param name="differences">The data source holding any differences found.</param>
+        private static void compareFiles(string originalFolderPath, string cloneFolderPath, bool compareFileHashes, BackgroundWorker worker, BindingList<StructureDifference> differences)
         {
             //Check if the clone has all the files the original has.
             foreach (var originalFile in FileHandler.GetFiles(originalFolderPath))
