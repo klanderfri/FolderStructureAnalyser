@@ -155,7 +155,6 @@
     <Compile Include="Enums\LogMessageType.cs" />
     <Compile Include="Enums\SizeDisplayUnit.cs" />
     <Compile Include="Events\LogMessageAddedArgs.cs" />
-    <Compile Include="Events\FolderStructureDifferenceAddedArgs.cs" />
     <Compile Include="Events\OperationStartingArgs.cs" />
     <Compile Include="Events\OperationEventArgs.cs" />
     <Compile Include="Events\OperationFinishedArgs.cs" />

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid;
@@ -19,29 +18,6 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
 {
     public partial class FolderStructureComparerCtrl : FolderStructureParentCtrl
     {
-        /// <summary>
-        /// Event raised when the control has found a difference between two folder structures.
-        /// </summary>
-        [Category("Compare")]
-        [Description("Occurs when the control has found a difference between two folder structures.")]
-        public event FolderStructureDifferenceAddedHandler FolderStructureDifferenceAdded;
-
-        /// <summary>
-        /// Eventhandler for the event used when the control has found a difference between two folder structures.
-        /// </summary>
-        /// <param name="sender">The user control raising the event.</param>
-        /// <param name="e">The arguments for the event.</param>
-        public delegate void FolderStructureDifferenceAddedHandler(object sender, FolderStructureDifferenceAddedArgs e);
-
-        /// <summary>
-        /// Method raising the event used when the control has found a difference between two folder structures.
-        /// </summary>
-        /// <param name="e">The arguments for the event.</param>
-        protected virtual void OnFolderStructureDifferenceAdded(FolderStructureDifferenceAddedArgs e)
-        {
-            FolderStructureDifferenceAdded?.Invoke(this, e);
-        }
-
         /// <summary>
         /// The path to the original folder the user last selected.
         /// </summary>
