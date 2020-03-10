@@ -124,85 +124,43 @@ namespace FolderStructureAnalyser.Helpers
         }
 
         /// <summary>
-        /// Opens, in the Windows Explorer, the folder for the specified disk item.
+        /// Shows, in the Windows Explorer, the disk item, markerd in the folder containing it.
         /// </summary>
-        /// <param name="diskItemPath">The full path to the disk item to open.</param>
-        public static void OpenDiskItemInExplorer(string diskItemPath)
+        /// <param name="diskItem">The disk item to show.</param>
+        /// <param name="openFolder">Tells if a folder should be opened itself instead of being marked in its parent.</param>
+        public static void InvokeExplorer(FileSystemInfo diskItem, bool openFolder)
         {
-            var info = Directory.Exists(diskItemPath)
-                ? (FileSystemInfo)new DirectoryInfo(diskItemPath)
-                : new FileInfo(diskItemPath);
-            OpenDiskItemInExplorer(info);
-        }
-
-        /// <summary>
-        /// Opens, in the Windows Explorer, the folder for the specified disk item.
-        /// </summary>
-        /// <param name="diskItem">The disk item for which the folder is to be opened.</param>
-        public static void OpenDiskItemInExplorer(FileSystemInfo diskItem)
-        {
-            if (diskItem is DirectoryInfo)
+            if (!diskItem.Exists)
             {
-                openFolderInExplorer(diskItem as DirectoryInfo);
+                MessageBoxes.ShowDiskItemDoesNotExistMessage(diskItem);
+                return;
             }
-            else
-            {
-                openFileInExplorer(diskItem as FileInfo);
-            }
-        }
 
-        /// <summary>
-        /// Opens the folder for a specific file in the Windows Explorer.
-        /// </summary>
-        /// <param name="file">The file to open the folder for.</param>
-        private static void openFileInExplorer(FileInfo file)
-        {
-            if (file.Exists)
+            try
             {
-                try
+                if (openFolder && diskItem is DirectoryInfo)
                 {
+                    //Open the folder itself.
+                    Process.Start(diskItem.FullName);
+                }
+                else
+                {
+                    //Open the parent folder and mark the disk item in it.
                     var format = "/select, \"{0}\"";
-                    var args = String.Format(format, file.FullName);
+                    var args = String.Format(format, diskItem.FullName);
                     Process.Start("explorer.exe", args);
                 }
-                catch (Exception ex)
-                {
-                    MessageBoxes.ShowProblemOpeningFileMessage(file, ex);
-                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBoxes.ShowFileDoesNotExistMessage();
-            }
-        }
-
-        /// <summary>
-        /// Opens a specific folder in the Windows Explorer.
-        /// </summary>
-        /// <param name="folder">The folder to open.</param>
-        private static void openFolderInExplorer(DirectoryInfo folder)
-        {
-            if (folder.Exists)
-            {
-                try
-                {
-                    Process.Start(folder.FullName);
-                }
-                catch (Exception ex)
-                {
-                    MessageBoxes.ShowProblemOpeningFolderMessage(folder, ex);
-                }
-            }
-            else
-            {
-                MessageBoxes.ShowFolderDoesNotExistMessage();
+                MessageBoxes.ShowProblemOpeningDiskItemMessage(diskItem, ex);
             }
         }
 
         /// <summary>
         /// Gets the information about the parent folder.
         /// </summary>
-        /// <param name="fullPath">The full path to the item of whom we are to get the parent folder.</param>
+        /// <param name="fullPath">The full path to the disk item of whom we are to get the parent folder.</param>
         /// <returns>The information about the parent folder.</returns>
         public static DirectoryInfo GetParentFolder(string fullPath)
         {

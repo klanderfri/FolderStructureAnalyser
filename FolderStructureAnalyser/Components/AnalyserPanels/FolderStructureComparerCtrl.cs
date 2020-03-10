@@ -224,9 +224,17 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
 
             if (hitInfo.Band == gridBandDiskItems)
             {
-                var diskItem = ColumnsForOriginal.Contains(hitInfo.Column) ? row.Original : row.Clone;
-                var parentFolder = FileHandler.GetParentFolder(diskItem.Info.FullName);
-                FileHandler.OpenDiskItemInExplorer(parentFolder);
+                var diskItem = ColumnsForOriginal.Contains(hitInfo.Column) ? row.Original.Info : row.Clone.Info;
+                var openItselfIfFolder = false;
+
+                if (!diskItem.Exists)
+                {
+                    //The file or folder is missing. Open its parent.
+                    diskItem = FileHandler.GetParentFolder(diskItem.FullName);
+                    openItselfIfFolder = true;
+                }
+
+                FileHandler.InvokeExplorer(diskItem, openItselfIfFolder);
             }
         }
 

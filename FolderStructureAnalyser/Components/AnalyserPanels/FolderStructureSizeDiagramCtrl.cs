@@ -91,7 +91,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             if (hitInfo.InSunburstItem)
             {
                 var diskItem = hitInfo.SunburstItem.Tag as DiskItemData;
-                FileHandler.OpenDiskItemInExplorer(diskItem.Info);
+                FileHandler.InvokeExplorer(diskItem.Info, true);
             }
         }
 

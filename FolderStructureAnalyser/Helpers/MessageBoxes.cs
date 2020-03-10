@@ -36,30 +36,22 @@ namespace FolderStructureAnalyser.Helpers
             MessageBox.Show(message, "Same folder selected twice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        public static void ShowProblemOpeningFolderMessage(DirectoryInfo folder, Exception ex)
+        public static void ShowProblemOpeningDiskItemMessage(FileSystemInfo file, Exception ex)
         {
-            var format = "Problem opening the folder {1}.{0}Path: {2}{0}Error: {3}";
-            var message = String.Format(format, Environment.NewLine, folder.Name, folder.FullName, ex.Message);
-            MessageBox.Show(message, "Problem opening folder.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        public static void ShowProblemOpeningFileMessage(FileInfo file, Exception ex)
-        {
-            var format = "Problem opening the folder containing the file {1}.{0}Path: {2}{0}Error: {3}";
-            var message = String.Format(format, Environment.NewLine, file.Name, file.FullName, ex.Message);
+            var type = (file is DirectoryInfo) ? "subfolder" : "file";
+            var format = "Problem opening the folder containing the {4} {1}.{0}Path: {2}{0}Error: {3}";
+            var message = String.Format(format, Environment.NewLine, file.Name, file.FullName, ex.Message, type);
             MessageBox.Show(message, "Problem opening folder containing file.", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static void ShowFolderDoesNotExistMessage()
+        public static void ShowDiskItemDoesNotExistMessage(FileSystemInfo file)
         {
-            var message = "The folder does not exist.";
-            MessageBox.Show(message, "Non-existing folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        public static void ShowFileDoesNotExistMessage()
-        {
-            var message = "The file does not exist.";
-            MessageBox.Show(message, "Non-existing file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var type = (file is DirectoryInfo) ? "folder" : "file";
+            var messageformat = "The {0} does not exist.";
+            var captionFormat = "Non-existing {0}";
+            var message = String.Format(messageformat, type);
+            var caption = String.Format(captionFormat, type);
+            MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static void ShowNoStructureDifferencesFoundMessage()

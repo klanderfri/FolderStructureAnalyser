@@ -108,7 +108,7 @@ namespace FolderStructureAnalyser.Components.Support
 
         private void openInExplorerClicked(object sender, EventArgs e)
         {
-            FileHandler.OpenDiskItemInExplorer(getLastHitDiskItem().Info);
+            FileHandler.InvokeExplorer(getLastHitDiskItem().Info, true);
         }
         
         private void setItemAsRootClicked(object sender, EventArgs e)
