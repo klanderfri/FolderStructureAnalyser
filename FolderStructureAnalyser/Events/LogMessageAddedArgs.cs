@@ -55,7 +55,7 @@ namespace FolderStructureAnalyser.Events
                 case LogMessageType.SettingChanged:
                     return "The application settings were changed.";
                 default:
-                    throw new UnhandledSwitchCaseException(typeof(LogMessageType), type);
+                    throw new UnhandledSwitchCaseException(type);
             }
         }
     }

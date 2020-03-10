@@ -395,7 +395,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         private void repositoryItemTextEditProblemTypeIndex_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
         {
             var problem = Convert.ToInt32(e.Value);
-
+            
             switch (problem)
             {
                 case 4:
@@ -414,7 +414,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
                     e.DisplayText = "Different hash codes";
                     break;
                 default:
-                    throw new UnhandledSwitchCaseException(typeof(int), problem);
+                    throw new UnhandledSwitchCaseException(problem);
             }
         }
     }
