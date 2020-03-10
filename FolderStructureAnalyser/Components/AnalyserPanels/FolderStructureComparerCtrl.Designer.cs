@@ -33,7 +33,9 @@
             this.gridBandDifference = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnDescription = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnProblemTypeIndex = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemTextEditProblemTypeIndex = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.bandedGridColumnItemTypeIndex = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemTextEditItemTypeIndex = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridBandDiskItems = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnOriginalName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnOriginalFullPath = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -43,6 +45,8 @@
             this.bandedGridColumnCloneHash = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditProblemTypeIndex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditItemTypeIndex)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
@@ -51,6 +55,9 @@
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.advBandedGridView;
             this.gridControl.Name = "gridControl";
+            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEditItemTypeIndex,
+            this.repositoryItemTextEditProblemTypeIndex});
             this.gridControl.Size = new System.Drawing.Size(1512, 676);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -101,6 +108,7 @@
             // bandedGridColumnProblemTypeIndex
             // 
             this.bandedGridColumnProblemTypeIndex.Caption = "Type";
+            this.bandedGridColumnProblemTypeIndex.ColumnEdit = this.repositoryItemTextEditProblemTypeIndex;
             this.bandedGridColumnProblemTypeIndex.FieldName = "DiffInfo.DifferenceTypeImageIndex";
             this.bandedGridColumnProblemTypeIndex.Name = "bandedGridColumnProblemTypeIndex";
             this.bandedGridColumnProblemTypeIndex.OptionsColumn.AllowEdit = false;
@@ -108,15 +116,28 @@
             this.bandedGridColumnProblemTypeIndex.Visible = true;
             this.bandedGridColumnProblemTypeIndex.Width = 50;
             // 
+            // repositoryItemTextEditProblemTypeIndex
+            // 
+            this.repositoryItemTextEditProblemTypeIndex.AutoHeight = false;
+            this.repositoryItemTextEditProblemTypeIndex.Name = "repositoryItemTextEditProblemTypeIndex";
+            this.repositoryItemTextEditProblemTypeIndex.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.repositoryItemTextEditProblemTypeIndex_CustomDisplayText);
+            // 
             // bandedGridColumnItemTypeIndex
             // 
             this.bandedGridColumnItemTypeIndex.Caption = "Item";
+            this.bandedGridColumnItemTypeIndex.ColumnEdit = this.repositoryItemTextEditItemTypeIndex;
             this.bandedGridColumnItemTypeIndex.FieldName = "DiffInfo.ItemTypeImageIndex";
             this.bandedGridColumnItemTypeIndex.Name = "bandedGridColumnItemTypeIndex";
             this.bandedGridColumnItemTypeIndex.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnItemTypeIndex.ToolTip = "The type of item the difference is about (i.e file or folder).";
             this.bandedGridColumnItemTypeIndex.Visible = true;
             this.bandedGridColumnItemTypeIndex.Width = 50;
+            // 
+            // repositoryItemTextEditItemTypeIndex
+            // 
+            this.repositoryItemTextEditItemTypeIndex.AutoHeight = false;
+            this.repositoryItemTextEditItemTypeIndex.Name = "repositoryItemTextEditItemTypeIndex";
+            this.repositoryItemTextEditItemTypeIndex.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.repositoryItemTextEditItemTypeIndex_CustomDisplayText);
             // 
             // gridBandDiskItems
             // 
@@ -203,6 +224,8 @@
             this.DoFolderStructureAnalysis += new FolderStructureAnalyser.Components.AnalyserPanels.FolderStructureParentCtrl.DoFolderStructureAnalysisHandler(this.FolderStructureComparerCtrl_DoFolderStructureAnalysis);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditProblemTypeIndex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditItemTypeIndex)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -222,5 +245,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnCloneHash;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandDifference;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandDiskItems;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditProblemTypeIndex;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditItemTypeIndex;
     }
 }

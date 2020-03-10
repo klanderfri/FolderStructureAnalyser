@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.BandedGrid;
 using DevExpress.XtraGrid.Views.BandedGrid.ViewInfo;
@@ -10,6 +11,7 @@ using DevExpress.XtraGrid.Views.Base;
 using FolderStructureAnalyser.DataObjects;
 using FolderStructureAnalyser.Enums;
 using FolderStructureAnalyser.Events;
+using FolderStructureAnalyser.Exceptions;
 using FolderStructureAnalyser.Helpers;
 using FolderStructureAnalyser.SessionBound;
 
@@ -150,7 +152,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             //Pass the comparison result back.
             e.Result = differences;
         }
-        
+
         private void FolderStructureComparerCtrl_FolderStructureAnalysisFinished(object sender, OperationFinishedArgs e)
         {
             if (!e.Cancelled)
@@ -339,6 +341,16 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             e.Appearance.ForeColor = Session.Settings.GridErrorColour;
         }
 
+        /// <summary>
+        /// Gets a specific row from the grid.
+        /// </summary>
+        /// <param name="rowHandle">The row handle of the row to get.</param>
+        /// <returns>The fetched row.</returns>
+        private StructureDifference getRow(int rowHandle)
+        {
+            return advBandedGridView.GetRow(rowHandle) as StructureDifference;
+        }
+
         private void gridControl_DoubleClick(object sender, EventArgs e)
         {
             var hitInfo = GridHandler.GetHitInfo(sender as GridControl, MousePosition) as BandedGridHitInfo;
@@ -355,7 +367,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         private void advBandedGridView_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
             var column = e.Column as BandedGridColumn;
-            var row = advBandedGridView.GetRow(e.RowHandle) as StructureDifference;
+            var row = getRow(e.RowHandle);
 
             if (column == bandedGridColumnItemTypeIndex)
             {
@@ -372,6 +384,37 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             if (ColumnsForOriginal.Contains(column) && cloneHasAdditionalDiskItem(row.DiffInfo))
             {
                 setMissingFileFontColour(e);
+            }
+        }
+
+        private void repositoryItemTextEditItemTypeIndex_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            e.DisplayText = (Convert.ToInt32(e.Value) == 1) ? "Folder" : "File";
+        }
+
+        private void repositoryItemTextEditProblemTypeIndex_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            var problem = Convert.ToInt32(e.Value);
+
+            switch (problem)
+            {
+                case 4:
+                    e.DisplayText = "Additional disk item";
+                    break;
+                case 5:
+                    e.DisplayText = "Missing disk item";
+                    break;
+                case 6:
+                    e.DisplayText = "Different sizes";
+                    break;
+                case 7:
+                    e.DisplayText = "Different attributes";
+                    break;
+                case 8:
+                    e.DisplayText = "Different hash codes";
+                    break;
+                default:
+                    throw new UnhandledEnumException(typeof(int), problem);
             }
         }
     }
