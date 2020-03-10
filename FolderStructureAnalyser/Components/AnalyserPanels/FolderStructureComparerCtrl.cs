@@ -28,40 +28,6 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// </summary>
         private string LastSelectedClonePath { get; set; }
 
-        /// <summary>
-        /// List of columns holding information about the original disk item.
-        /// </summary>
-        private List<BandedGridColumn> ColumnsForOriginal
-        {
-            get
-            {
-                return new List<BandedGridColumn>()
-                {
-                    bandedGridColumnOriginalName,
-                    bandedGridColumnOriginalFullPath,
-                    bandedGridColumnOriginalHash,
-                    bandedGridColumnOriginalAttributes
-                };
-            }
-        }
-
-        /// <summary>
-        /// List of columns holding information about the clone disk item.
-        /// </summary>
-        private List<BandedGridColumn> ColumnsForClone
-        {
-            get
-            {
-                return new List<BandedGridColumn>()
-                {
-                    bandedGridColumnCloneName,
-                    bandedGridColumnCloneFullPath,
-                    bandedGridColumnCloneHash,
-                    bandedGridColumnCloneAttributes
-                };
-            }
-        }
-
         public FolderStructureComparerCtrl()
         {
             InitializeComponent();
@@ -195,6 +161,26 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             return advBandedGridView.GetRow(rowHandle) as StructureDifference;
         }
 
+        /// <summary>
+        /// Checks if a column holds information about the original disk item.
+        /// </summary>
+        /// <param name="column">The column to test.</param>
+        /// <returns>TRUE if the column holds information about the original disk item, else FALSE.</returns>
+        private bool columnHoldsOriginal(BandedGridColumn column)
+        {
+            return column.Name.StartsWith("bandedGridColumnOriginal");
+        }
+
+        /// <summary>
+        /// Checks if a column holds information about the clone disk item.
+        /// </summary>
+        /// <param name="column">The column to test.</param>
+        /// <returns>TRUE if the column holds information about the clone disk item, else FALSE.</returns>
+        private bool columnHoldsClone(BandedGridColumn column)
+        {
+            return column.Name.StartsWith("bandedGridColumnClone");
+        }
+
         private void gridControl_DoubleClick(object sender, EventArgs e)
         {
             var hitInfo = GridHandler.GetHitInfo(sender as GridControl, MousePosition) as BandedGridHitInfo;
@@ -202,7 +188,7 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
 
             if (hitInfo.Band == gridBandDiskItems)
             {
-                var diskItem = ColumnsForOriginal.Contains(hitInfo.Column) ? row.Original.Info : row.Clone.Info;
+                var diskItem = columnHoldsOriginal(hitInfo.Column) ? row.Original.Info : row.Clone.Info;
                 var folderBehaviour = OpenFolderBehaviour.SelectInParent;
 
                 if (!diskItem.Exists)
@@ -229,11 +215,11 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
             {
                 DrawCellNodeIcon(e, e.Column.Width, row.DiffInfo.DifferenceTypeImageIndex);
             }
-            if (ColumnsForClone.Contains(column) && cloneIsMissingDiskItem(row.DiffInfo))
+            if (columnHoldsClone(column) && cloneIsMissingDiskItem(row.DiffInfo))
             {
                 setMissingFileFontColour(e);
             }
-            if (ColumnsForOriginal.Contains(column) && cloneHasAdditionalDiskItem(row.DiffInfo))
+            if (columnHoldsOriginal(column) && cloneHasAdditionalDiskItem(row.DiffInfo))
             {
                 setMissingFileFontColour(e);
             }
