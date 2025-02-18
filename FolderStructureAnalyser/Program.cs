@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using FolderStructureAnalyser.Components;
@@ -15,6 +16,13 @@ namespace FolderStructureAnalyser
         [STAThread]
         static void Main()
         {
+            //By setting the default thread culture to English, the exceptions
+            //raised will be in English and not in Swedish (or whatever
+            //language the local computer has), making error researching
+            //(aka googling) easier.
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
+
             WindowsFormsSettings.ScrollUIMode = ScrollUIMode.Fluent;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -117,7 +117,28 @@ namespace FolderStructureAnalyser.Components.AnalyserPanels
         /// <param name="differences">The list of differences to show the user.</param>
         private void updateDataSource(BindingList<StructureDifference> differences)
         {
-            gridControl.DataSource = differences;
+            /* For some reason, assigning the differences directly to the
+             * data-source, like so:
+             * 
+             * gridControl.DataSource = differences;
+             * 
+             * ... raises the exception below:
+             * 
+             * System.Reflection.TargetInvocationException: 'Property accessor 'FullName' on object 'System.IO.FileInfo' threw the following exception:'Object does not match target type.''
+             * TargetException: Object does not match target type.
+             * 
+             * I do not know why, but assigning a new, empty binding list, and
+             * then adding all the differences, one by one, seems to work.
+             * 
+             * I speculate that the grid-control wants to be able to raise some
+             * event for every row added to it, and that it can't do that when
+             * all rows are added as a collection?
+             */
+            gridControl.DataSource = new BindingList<StructureDifference>();
+            foreach (var diff in differences)
+            {
+                (gridControl.DataSource as BindingList<StructureDifference>).Add(diff);
+            }
         }
 
         /// <summary>
